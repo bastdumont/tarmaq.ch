@@ -1,460 +1,802 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title data-i18n="support.page_title">Nous Soutenir - TARMAQ</title>
-    <meta name="description" content="Découvrez comment soutenir TARMAQ : donations, mentorat, prêt de locaux, matériel informatique, partenariats événements.">
-    
+    <meta
+      name="description"
+      content="Découvrez comment soutenir TARMAQ : donations, mentorat, prêt de locaux, matériel informatique, partenariats événements."
+    />
+
     <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
-    
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
+
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
-    
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css"
+    />
+
     <!-- Custom Styles -->
-    <link rel="stylesheet" href="css/style.css">
-    
+    <link rel="stylesheet" href="css/style.css" />
+
     <!-- Tailwind Config -->
     <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: '#DA2F2C',
-                        secondary: '#111827',
-                        accent: '#F3F4F6'
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif']
-                    }
-                }
-            }
-        }
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: '#DA2F2C',
+              secondary: '#111827',
+              accent: '#F3F4F6',
+            },
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+            },
+          },
+        },
+      };
     </script>
-</head>
-<body class="font-sans bg-white text-secondary">
-    
+  </head>
+  <body class="font-sans bg-white text-secondary">
     <!-- Header / Navigation -->
-    <header id="header" class="fixed w-full top-0 z-50 bg-white shadow-sm transition-all duration-300">
-        <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
-            <!-- Logo -->
-            <a href="index.html" class="flex items-center space-x-2">
-                <img src="assets/logo.svg" alt="TARMAQ Logo" class="h-10">
-            </a>
-            
-            <!-- Desktop Menu -->
-            <div class="hidden lg:flex items-center space-x-8">
-                <a href="index.html" class="nav-link hover:text-primary transition" data-i18n="nav.home">Accueil</a>
-                <a href="projet.html" class="nav-link hover:text-primary transition" data-i18n="nav.project">Le projet</a>
-                <a href="activites.html" class="nav-link hover:text-primary transition" data-i18n="nav.activities">Activités</a>
-                <a href="impact.html" class="nav-link hover:text-primary transition" data-i18n="nav.impact">Impact</a>
-                <a href="soutenir.html" class="nav-link text-primary font-semibold" data-i18n="nav.support">Nous soutenir</a>
-                <a href="contact.html" class="nav-link hover:text-primary transition" data-i18n="nav.contact">Contact</a>
-            </div>
-            
-            <!-- Language Selector -->
-            <div class="hidden lg:flex items-center space-x-2">
-                <button onclick="changeLanguage('fr')" class="lang-btn w-8 h-8 rounded-full overflow-hidden border-2 border-transparent hover:border-primary transition" title="Français">
-                    <span class="text-xl">🇫🇷</span>
-                </button>
-                <button onclick="changeLanguage('en')" class="lang-btn w-8 h-8 rounded-full overflow-hidden border-2 border-transparent hover:border-primary transition" title="English">
-                    <span class="text-xl">🇬🇧</span>
-                </button>
-                <button onclick="changeLanguage('de')" class="lang-btn w-8 h-8 rounded-full overflow-hidden border-2 border-transparent hover:border-primary transition" title="Deutsch">
-                    <span class="text-xl">🇩🇪</span>
-                </button>
-                <button onclick="changeLanguage('it')" class="lang-btn w-8 h-8 rounded-full overflow-hidden border-2 border-transparent hover:border-primary transition" title="Italiano">
-                    <span class="text-xl">🇮🇹</span>
-                </button>
-            </div>
-            
-            <!-- Mobile Menu Button -->
-            <button id="mobile-menu-btn" class="lg:hidden text-2xl">
-                <i class="fas fa-bars"></i>
+    <header
+      id="header"
+      class="fixed w-full top-0 z-50 bg-white shadow-sm transition-all duration-300"
+    >
+      <nav
+        class="container mx-auto px-4 py-4 flex justify-between items-center"
+      >
+        <!-- Logo -->
+        <a href="index.html" class="flex items-center space-x-2">
+          <img src="assets/logo.svg" alt="TARMAQ Logo" class="h-10" />
+        </a>
+
+        <!-- Desktop Menu -->
+        <div class="hidden lg:flex items-center space-x-8">
+          <a
+            href="index.html"
+            class="nav-link hover:text-primary transition"
+            data-i18n="nav.home"
+            >Accueil</a
+          >
+          <a
+            href="projet.html"
+            class="nav-link hover:text-primary transition"
+            data-i18n="nav.project"
+            >Le projet</a
+          >
+          <a
+            href="activites.html"
+            class="nav-link hover:text-primary transition"
+            data-i18n="nav.activities"
+            >Activités</a
+          >
+          <a
+            href="impact.html"
+            class="nav-link hover:text-primary transition"
+            data-i18n="nav.impact"
+            >Impact</a
+          >
+          <a
+            href="soutenir.html"
+            class="nav-link text-primary font-semibold"
+            data-i18n="nav.support"
+            >Nous soutenir</a
+          >
+          <a
+            href="contact.html"
+            class="nav-link hover:text-primary transition"
+            data-i18n="nav.contact"
+            >Contact</a
+          >
+          <a
+            href="charte.html"
+            class="nav-link hover:text-primary transition"
+            data-i18n="nav.charter"
+            >Charte</a
+          >
+        </div>
+
+        <!-- Language Selector -->
+        <div class="hidden lg:flex items-center space-x-2">
+          <button
+            onclick="changeLanguage('fr')"
+            class="lang-btn w-8 h-8 rounded-full overflow-hidden border-2 border-transparent hover:border-primary transition"
+            title="Français"
+          >
+            <span class="text-xl">🇫🇷</span>
+          </button>
+          <button
+            onclick="changeLanguage('en')"
+            class="lang-btn w-8 h-8 rounded-full overflow-hidden border-2 border-transparent hover:border-primary transition"
+            title="English"
+          >
+            <span class="text-xl">🇬🇧</span>
+          </button>
+          <button
+            onclick="changeLanguage('de')"
+            class="lang-btn w-8 h-8 rounded-full overflow-hidden border-2 border-transparent hover:border-primary transition"
+            title="Deutsch"
+          >
+            <span class="text-xl">🇩🇪</span>
+          </button>
+          <button
+            onclick="changeLanguage('it')"
+            class="lang-btn w-8 h-8 rounded-full overflow-hidden border-2 border-transparent hover:border-primary transition"
+            title="Italiano"
+          >
+            <span class="text-xl">🇮🇹</span>
+          </button>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <button id="mobile-menu-btn" class="lg:hidden text-2xl">
+          <i class="fas fa-bars"></i>
+        </button>
+      </nav>
+
+      <!-- Mobile Menu -->
+      <div id="mobile-menu" class="hidden lg:hidden bg-white border-t">
+        <div class="container mx-auto px-4 py-4 flex flex-col space-y-4">
+          <a
+            href="index.html"
+            class="nav-link hover:text-primary transition"
+            data-i18n="nav.home"
+            >Accueil</a
+          >
+          <a
+            href="projet.html"
+            class="nav-link hover:text-primary transition"
+            data-i18n="nav.project"
+            >Le projet</a
+          >
+          <a
+            href="activites.html"
+            class="nav-link hover:text-primary transition"
+            data-i18n="nav.activities"
+            >Activités</a
+          >
+          <a
+            href="impact.html"
+            class="nav-link hover:text-primary transition"
+            data-i18n="nav.impact"
+            >Impact</a
+          >
+          <a
+            href="soutenir.html"
+            class="nav-link text-primary font-semibold"
+            data-i18n="nav.support"
+            >Nous soutenir</a
+          >
+          <a
+            href="contact.html"
+            class="nav-link hover:text-primary transition"
+            data-i18n="nav.contact"
+            >Contact</a
+          >
+
+          <div class="flex space-x-3 pt-2">
+            <button onclick="changeLanguage('fr')" class="lang-btn text-2xl">
+              🇫🇷
             </button>
-        </nav>
-        
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden lg:hidden bg-white border-t">
-            <div class="container mx-auto px-4 py-4 flex flex-col space-y-4">
-                <a href="index.html" class="nav-link hover:text-primary transition" data-i18n="nav.home">Accueil</a>
-                <a href="projet.html" class="nav-link hover:text-primary transition" data-i18n="nav.project">Le projet</a>
-                <a href="activites.html" class="nav-link hover:text-primary transition" data-i18n="nav.activities">Activités</a>
-                <a href="impact.html" class="nav-link hover:text-primary transition" data-i18n="nav.impact">Impact</a>
-                <a href="soutenir.html" class="nav-link text-primary font-semibold" data-i18n="nav.support">Nous soutenir</a>
-                <a href="contact.html" class="nav-link hover:text-primary transition" data-i18n="nav.contact">Contact</a>
-                
-                <div class="flex space-x-3 pt-2">
-                    <button onclick="changeLanguage('fr')" class="lang-btn text-2xl">🇫🇷</button>
-                    <button onclick="changeLanguage('en')" class="lang-btn text-2xl">🇬🇧</button>
-                    <button onclick="changeLanguage('de')" class="lang-btn text-2xl">🇩🇪</button>
-                    <button onclick="changeLanguage('it')" class="lang-btn text-2xl">🇮🇹</button>
-                </div>
-            </div>
+            <button onclick="changeLanguage('en')" class="lang-btn text-2xl">
+              🇬🇧
+            </button>
+            <button onclick="changeLanguage('de')" class="lang-btn text-2xl">
+              🇩🇪
+            </button>
+            <button onclick="changeLanguage('it')" class="lang-btn text-2xl">
+              🇮🇹
+            </button>
+          </div>
         </div>
+      </div>
     </header>
-    
+
     <!-- Hero Section -->
-    <section class="relative bg-gradient-to-br from-primary to-red-700 text-white pt-32 pb-20">
-        <div class="container mx-auto px-4">
-            <div class="max-w-4xl mx-auto text-center">
-                <div class="inline-block bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full mb-6">
-                    <span class="text-sm font-semibold" data-i18n="support.hero.badge">Rejoignez-nous</span>
-                </div>
-                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight" data-i18n="support.hero.title">
-                    Soutenez la nouvelle génération
-                </h1>
-                <p class="text-xl md:text-2xl mb-8 text-white/90 leading-relaxed" data-i18n="support.hero.subtitle">
-                    Ensemble, construisons l'avenir des jeunes talents en technologie
-                </p>
-            </div>
+    <section
+      class="relative bg-gradient-to-br from-primary to-red-700 text-white pt-32 pb-20"
+    >
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto text-center">
+          <div
+            class="inline-block bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full mb-6"
+          >
+            <span class="text-sm font-semibold" data-i18n="support.hero.badge"
+              >Rejoignez-nous</span
+            >
+          </div>
+          <h1
+            class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight"
+            data-i18n="support.hero.title"
+          >
+            Soutenez la nouvelle génération
+          </h1>
+          <p
+            class="text-xl md:text-2xl mb-8 text-white/90 leading-relaxed"
+            data-i18n="support.hero.subtitle"
+          >
+            Ensemble, construisons l'avenir des jeunes talents en technologie
+          </p>
         </div>
-        <!-- Decorative Wave -->
-        <div class="absolute bottom-0 left-0 right-0">
-            <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M0 120L60 105C120 90 240 60 360 45C480 30 600 30 720 37.5C840 45 960 60 1080 67.5C1200 75 1320 75 1380 75L1440 75V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0Z" fill="white"/>
-            </svg>
-        </div>
+      </div>
+      <!-- Decorative Wave -->
+      <div class="absolute bottom-0 left-0 right-0">
+        <svg
+          viewBox="0 0 1440 120"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M0 120L60 105C120 90 240 60 360 45C480 30 600 30 720 37.5C840 45 960 60 1080 67.5C1200 75 1320 75 1380 75L1440 75V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0Z"
+            fill="white"
+          />
+        </svg>
+      </div>
     </section>
 
     <!-- Introduction -->
     <section class="py-16 bg-white">
-        <div class="container mx-auto px-4">
-            <div class="max-w-3xl mx-auto text-center">
-                <h2 class="text-3xl md:text-4xl font-bold mb-6 text-secondary" data-i18n="support.intro.title">
-                    Pourquoi nous soutenir ?
-                </h2>
-                <p class="text-lg text-gray-700 leading-relaxed" data-i18n="support.intro.description">
-                    TARMAQ est une initiative à but non lucratif qui vise à démocratiser l'accès aux technologies émergentes pour les jeunes talents. Votre soutien nous permet de former, d'accompagner et d'inspirer la prochaine génération d'innovateurs.
-                </p>
-            </div>
+      <div class="container mx-auto px-4">
+        <div class="max-w-3xl mx-auto text-center">
+          <h2
+            class="text-3xl md:text-4xl font-bold mb-6 text-secondary"
+            data-i18n="support.intro.title"
+          >
+            Pourquoi nous soutenir ?
+          </h2>
+          <p
+            class="text-lg text-gray-700 leading-relaxed"
+            data-i18n="support.intro.description"
+          >
+            TARMAQ est une initiative à but non lucratif qui vise à démocratiser
+            l'accès aux technologies émergentes pour les jeunes talents. Votre
+            soutien nous permet de former, d'accompagner et d'inspirer la
+            prochaine génération d'innovateurs.
+          </p>
         </div>
+      </div>
     </section>
 
     <!-- Ways to Support -->
     <section class="py-20 bg-accent">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4 text-secondary" data-i18n="support.ways.title">
-                    Comment nous aider ?
-                </h2>
-                <p class="text-xl text-gray-600" data-i18n="support.ways.subtitle">
-                    Plusieurs façons de contribuer à notre mission
-                </p>
-            </div>
-
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-                
-                <!-- 1. Donations Financières -->
-                <div class="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition-shadow duration-300 border-t-4 border-primary">
-                    <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6">
-                        <i class="fas fa-heart text-3xl text-primary"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-4 text-secondary" data-i18n="support.donation.title">
-                        Donations financières
-                    </h3>
-                    <p class="text-gray-600 mb-6 leading-relaxed" data-i18n="support.donation.description">
-                        Vos dons nous permettent de financer nos programmes de formation, d'acquérir du matériel pédagogique et d'offrir des bourses aux jeunes talents.
-                    </p>
-                    <ul class="space-y-3 mb-6">
-                        <li class="flex items-start">
-                            <i class="fas fa-check-circle text-primary mt-1 mr-3"></i>
-                            <span class="text-gray-700" data-i18n="support.donation.item1">Financement de bourses</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check-circle text-primary mt-1 mr-3"></i>
-                            <span class="text-gray-700" data-i18n="support.donation.item2">Équipement pédagogique</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check-circle text-primary mt-1 mr-3"></i>
-                            <span class="text-gray-700" data-i18n="support.donation.item3">Voyages éducatifs</span>
-                        </li>
-                    </ul>
-                    <a href="contact.html" class="inline-block bg-primary text-white px-6 py-3 rounded-lg font-semibold hover:bg-red-700 transition">
-                        <span data-i18n="support.donation.cta">Faire un don</span>
-                        <i class="fas fa-arrow-right ml-2"></i>
-                    </a>
-                </div>
-
-                <!-- 2. Mentorat -->
-                <div class="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition-shadow duration-300 border-t-4 border-blue-600">
-                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-6">
-                        <i class="fas fa-user-tie text-3xl text-blue-600"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-4 text-secondary" data-i18n="support.mentoring.title">
-                        Mentorat
-                    </h3>
-                    <p class="text-gray-600 mb-6 leading-relaxed" data-i18n="support.mentoring.description">
-                        Partagez votre expertise et votre expérience en devenant mentor. Accompagnez les jeunes dans leur parcours professionnel et le développement de leurs projets.
-                    </p>
-                    <ul class="space-y-3 mb-6">
-                        <li class="flex items-start">
-                            <i class="fas fa-check-circle text-blue-600 mt-1 mr-3"></i>
-                            <span class="text-gray-700" data-i18n="support.mentoring.item1">2-4h par mois</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check-circle text-blue-600 mt-1 mr-3"></i>
-                            <span class="text-gray-700" data-i18n="support.mentoring.item2">En présentiel ou en ligne</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check-circle text-blue-600 mt-1 mr-3"></i>
-                            <span class="text-gray-700" data-i18n="support.mentoring.item3">Formation fournie</span>
-                        </li>
-                    </ul>
-                    <a href="contact.html" class="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition">
-                        <span data-i18n="support.mentoring.cta">Devenir mentor</span>
-                        <i class="fas fa-arrow-right ml-2"></i>
-                    </a>
-                </div>
-
-                <!-- 3. Prêt de locaux -->
-                <div class="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition-shadow duration-300 border-t-4 border-green-600">
-                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-6">
-                        <i class="fas fa-building text-3xl text-green-600"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-4 text-secondary" data-i18n="support.space.title">
-                        Prêt de locaux ou bureaux
-                    </h3>
-                    <p class="text-gray-600 mb-6 leading-relaxed" data-i18n="support.space.description">
-                        Mettez à disposition des espaces pour nos formations, hackathons, ou comme bureaux permanents. Un espace adéquat est essentiel à notre mission.
-                    </p>
-                    <ul class="space-y-3 mb-6">
-                        <li class="flex items-start">
-                            <i class="fas fa-check-circle text-green-600 mt-1 mr-3"></i>
-                            <span class="text-gray-700" data-i18n="support.space.item1">Salles de formation</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check-circle text-green-600 mt-1 mr-3"></i>
-                            <span class="text-gray-700" data-i18n="support.space.item2">Espaces de coworking</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check-circle text-green-600 mt-1 mr-3"></i>
-                            <span class="text-gray-700" data-i18n="support.space.item3">Bureaux permanents</span>
-                        </li>
-                    </ul>
-                    <a href="contact.html" class="inline-block bg-green-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-700 transition">
-                        <span data-i18n="support.space.cta">Proposer un espace</span>
-                        <i class="fas fa-arrow-right ml-2"></i>
-                    </a>
-                </div>
-
-                <!-- 4. Don de matériel informatique -->
-                <div class="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition-shadow duration-300 border-t-4 border-purple-600">
-                    <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mb-6">
-                        <i class="fas fa-laptop text-3xl text-purple-600"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-4 text-secondary" data-i18n="support.equipment.title">
-                        Don de matériel informatique
-                    </h3>
-                    <p class="text-gray-600 mb-6 leading-relaxed" data-i18n="support.equipment.description">
-                        Donnez du matériel informatique (ordinateurs, tablettes, serveurs) pour équiper nos espaces de formation et permettre aux jeunes d'accéder aux technologies.
-                    </p>
-                    <ul class="space-y-3 mb-6">
-                        <li class="flex items-start">
-                            <i class="fas fa-check-circle text-purple-600 mt-1 mr-3"></i>
-                            <span class="text-gray-700" data-i18n="support.equipment.item1">Ordinateurs portables</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check-circle text-purple-600 mt-1 mr-3"></i>
-                            <span class="text-gray-700" data-i18n="support.equipment.item2">Matériel réseau</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check-circle text-purple-600 mt-1 mr-3"></i>
-                            <span class="text-gray-700" data-i18n="support.equipment.item3">Licences logicielles</span>
-                        </li>
-                    </ul>
-                    <a href="contact.html" class="inline-block bg-purple-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-purple-700 transition">
-                        <span data-i18n="support.equipment.cta">Donner du matériel</span>
-                        <i class="fas fa-arrow-right ml-2"></i>
-                    </a>
-                </div>
-
-                <!-- 5. Partenaires événements -->
-                <div class="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition-shadow duration-300 border-t-4 border-orange-600">
-                    <div class="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mb-6">
-                        <i class="fas fa-calendar-star text-3xl text-orange-600"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-4 text-secondary" data-i18n="support.events.title">
-                        Partenaires événements
-                    </h3>
-                    <p class="text-gray-600 mb-6 leading-relaxed" data-i18n="support.events.description">
-                        Participez à l'organisation de nos événements (hackathons, conférences, meetups) en tant que sponsor, organisateur ou intervenant.
-                    </p>
-                    <ul class="space-y-3 mb-6">
-                        <li class="flex items-start">
-                            <i class="fas fa-check-circle text-orange-600 mt-1 mr-3"></i>
-                            <span class="text-gray-700" data-i18n="support.events.item1">Sponsoring événements</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check-circle text-orange-600 mt-1 mr-3"></i>
-                            <span class="text-gray-700" data-i18n="support.events.item2">Intervention speakers</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check-circle text-orange-600 mt-1 mr-3"></i>
-                            <span class="text-gray-700" data-i18n="support.events.item3">Co-organisation</span>
-                        </li>
-                    </ul>
-                    <a href="contact.html" class="inline-block bg-orange-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-orange-700 transition">
-                        <span data-i18n="support.events.cta">Devenir partenaire</span>
-                        <i class="fas fa-arrow-right ml-2"></i>
-                    </a>
-                </div>
-
-                <!-- 6. Communauté de soutien -->
-                <div class="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition-shadow duration-300 border-t-4 border-pink-600">
-                    <div class="w-16 h-16 bg-pink-100 rounded-full flex items-center justify-center mb-6">
-                        <i class="fas fa-users text-3xl text-pink-600"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-4 text-secondary" data-i18n="support.community.title">
-                        Communauté de soutien
-                    </h3>
-                    <p class="text-gray-600 mb-6 leading-relaxed" data-i18n="support.community.description">
-                        Rejoignez notre communauté ! Partagez nos contenus, parlez de nous autour de vous, participez à nos événements et aidez à faire connaître TARMAQ.
-                    </p>
-                    <ul class="space-y-3 mb-6">
-                        <li class="flex items-start">
-                            <i class="fas fa-check-circle text-pink-600 mt-1 mr-3"></i>
-                            <span class="text-gray-700" data-i18n="support.community.item1">Partage sur réseaux sociaux</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check-circle text-pink-600 mt-1 mr-3"></i>
-                            <span class="text-gray-700" data-i18n="support.community.item2">Bouche-à-oreille</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check-circle text-pink-600 mt-1 mr-3"></i>
-                            <span class="text-gray-700" data-i18n="support.community.item3">Bénévolat ponctuel</span>
-                        </li>
-                    </ul>
-                    <a href="contact.html" class="inline-block bg-pink-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-pink-700 transition">
-                        <span data-i18n="support.community.cta">Rejoindre la communauté</span>
-                        <i class="fas fa-arrow-right ml-2"></i>
-                    </a>
-                </div>
-
-            </div>
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-16">
+          <h2
+            class="text-3xl md:text-4xl font-bold mb-4 text-secondary"
+            data-i18n="support.ways.title"
+          >
+            Comment nous aider ?
+          </h2>
+          <p class="text-xl text-gray-600" data-i18n="support.ways.subtitle">
+            Plusieurs façons de contribuer à notre mission
+          </p>
         </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+          <!-- 1. Donations Financières -->
+          <div
+            class="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition-shadow duration-300 border-t-4 border-primary"
+          >
+            <div
+              class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6"
+            >
+              <i class="fas fa-heart text-3xl text-primary"></i>
+            </div>
+            <h3
+              class="text-2xl font-bold mb-4 text-secondary"
+              data-i18n="support.donation.title"
+            >
+              Donations financières
+            </h3>
+            <p
+              class="text-gray-600 mb-6 leading-relaxed"
+              data-i18n="support.donation.description"
+            >
+              Vos dons nous permettent de financer nos programmes de formation,
+              d'acquérir du matériel pédagogique et d'offrir des bourses aux
+              jeunes talents.
+            </p>
+            <ul class="space-y-3 mb-6">
+              <li class="flex items-start">
+                <i class="fas fa-check-circle text-primary mt-1 mr-3"></i>
+                <span class="text-gray-700" data-i18n="support.donation.item1"
+                  >Financement de bourses</span
+                >
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-check-circle text-primary mt-1 mr-3"></i>
+                <span class="text-gray-700" data-i18n="support.donation.item2"
+                  >Équipement pédagogique</span
+                >
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-check-circle text-primary mt-1 mr-3"></i>
+                <span class="text-gray-700" data-i18n="support.donation.item3"
+                  >Voyages éducatifs</span
+                >
+              </li>
+            </ul>
+            <a
+              href="contact.html"
+              class="inline-block bg-primary text-white px-6 py-3 rounded-lg font-semibold hover:bg-red-700 transition"
+            >
+              <span data-i18n="support.donation.cta">Faire un don</span>
+              <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+          </div>
+
+          <!-- 2. Mentorat -->
+          <div
+            class="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition-shadow duration-300 border-t-4 border-blue-600"
+          >
+            <div
+              class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-6"
+            >
+              <i class="fas fa-user-tie text-3xl text-blue-600"></i>
+            </div>
+            <h3
+              class="text-2xl font-bold mb-4 text-secondary"
+              data-i18n="support.mentoring.title"
+            >
+              Mentorat
+            </h3>
+            <p
+              class="text-gray-600 mb-6 leading-relaxed"
+              data-i18n="support.mentoring.description"
+            >
+              Partagez votre expertise et votre expérience en devenant mentor.
+              Accompagnez les jeunes dans leur parcours professionnel et le
+              développement de leurs projets.
+            </p>
+            <ul class="space-y-3 mb-6">
+              <li class="flex items-start">
+                <i class="fas fa-check-circle text-blue-600 mt-1 mr-3"></i>
+                <span class="text-gray-700" data-i18n="support.mentoring.item1"
+                  >2-4h par mois</span
+                >
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-check-circle text-blue-600 mt-1 mr-3"></i>
+                <span class="text-gray-700" data-i18n="support.mentoring.item2"
+                  >En présentiel ou en ligne</span
+                >
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-check-circle text-blue-600 mt-1 mr-3"></i>
+                <span class="text-gray-700" data-i18n="support.mentoring.item3"
+                  >Formation fournie</span
+                >
+              </li>
+            </ul>
+            <a
+              href="contact.html"
+              class="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition"
+            >
+              <span data-i18n="support.mentoring.cta">Devenir mentor</span>
+              <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+          </div>
+
+          <!-- 3. Prêt de locaux -->
+          <div
+            class="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition-shadow duration-300 border-t-4 border-green-600"
+          >
+            <div
+              class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-6"
+            >
+              <i class="fas fa-building text-3xl text-green-600"></i>
+            </div>
+            <h3
+              class="text-2xl font-bold mb-4 text-secondary"
+              data-i18n="support.space.title"
+            >
+              Prêt de locaux ou bureaux
+            </h3>
+            <p
+              class="text-gray-600 mb-6 leading-relaxed"
+              data-i18n="support.space.description"
+            >
+              Mettez à disposition des espaces pour nos formations, hackathons,
+              ou comme bureaux permanents. Un espace adéquat est essentiel à
+              notre mission.
+            </p>
+            <ul class="space-y-3 mb-6">
+              <li class="flex items-start">
+                <i class="fas fa-check-circle text-green-600 mt-1 mr-3"></i>
+                <span class="text-gray-700" data-i18n="support.space.item1"
+                  >Salles de formation</span
+                >
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-check-circle text-green-600 mt-1 mr-3"></i>
+                <span class="text-gray-700" data-i18n="support.space.item2"
+                  >Espaces de coworking</span
+                >
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-check-circle text-green-600 mt-1 mr-3"></i>
+                <span class="text-gray-700" data-i18n="support.space.item3"
+                  >Bureaux permanents</span
+                >
+              </li>
+            </ul>
+            <a
+              href="contact.html"
+              class="inline-block bg-green-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-700 transition"
+            >
+              <span data-i18n="support.space.cta">Proposer un espace</span>
+              <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+          </div>
+
+          <!-- 4. Don de matériel informatique -->
+          <div
+            class="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition-shadow duration-300 border-t-4 border-purple-600"
+          >
+            <div
+              class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mb-6"
+            >
+              <i class="fas fa-laptop text-3xl text-purple-600"></i>
+            </div>
+            <h3
+              class="text-2xl font-bold mb-4 text-secondary"
+              data-i18n="support.equipment.title"
+            >
+              Don de matériel informatique
+            </h3>
+            <p
+              class="text-gray-600 mb-6 leading-relaxed"
+              data-i18n="support.equipment.description"
+            >
+              Donnez du matériel informatique (ordinateurs, tablettes, serveurs)
+              pour équiper nos espaces de formation et permettre aux jeunes
+              d'accéder aux technologies.
+            </p>
+            <ul class="space-y-3 mb-6">
+              <li class="flex items-start">
+                <i class="fas fa-check-circle text-purple-600 mt-1 mr-3"></i>
+                <span class="text-gray-700" data-i18n="support.equipment.item1"
+                  >Ordinateurs portables</span
+                >
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-check-circle text-purple-600 mt-1 mr-3"></i>
+                <span class="text-gray-700" data-i18n="support.equipment.item2"
+                  >Matériel réseau</span
+                >
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-check-circle text-purple-600 mt-1 mr-3"></i>
+                <span class="text-gray-700" data-i18n="support.equipment.item3"
+                  >Licences logicielles</span
+                >
+              </li>
+            </ul>
+            <a
+              href="contact.html"
+              class="inline-block bg-purple-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-purple-700 transition"
+            >
+              <span data-i18n="support.equipment.cta">Donner du matériel</span>
+              <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+          </div>
+
+          <!-- 5. Partenaires événements -->
+          <div
+            class="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition-shadow duration-300 border-t-4 border-orange-600"
+          >
+            <div
+              class="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mb-6"
+            >
+              <i class="fas fa-calendar-star text-3xl text-orange-600"></i>
+            </div>
+            <h3
+              class="text-2xl font-bold mb-4 text-secondary"
+              data-i18n="support.events.title"
+            >
+              Partenaires événements
+            </h3>
+            <p
+              class="text-gray-600 mb-6 leading-relaxed"
+              data-i18n="support.events.description"
+            >
+              Participez à l'organisation de nos événements (hackathons,
+              conférences, meetups) en tant que sponsor, organisateur ou
+              intervenant.
+            </p>
+            <ul class="space-y-3 mb-6">
+              <li class="flex items-start">
+                <i class="fas fa-check-circle text-orange-600 mt-1 mr-3"></i>
+                <span class="text-gray-700" data-i18n="support.events.item1"
+                  >Sponsoring événements</span
+                >
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-check-circle text-orange-600 mt-1 mr-3"></i>
+                <span class="text-gray-700" data-i18n="support.events.item2"
+                  >Intervention speakers</span
+                >
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-check-circle text-orange-600 mt-1 mr-3"></i>
+                <span class="text-gray-700" data-i18n="support.events.item3"
+                  >Co-organisation</span
+                >
+              </li>
+            </ul>
+            <a
+              href="contact.html"
+              class="inline-block bg-orange-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-orange-700 transition"
+            >
+              <span data-i18n="support.events.cta">Devenir partenaire</span>
+              <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+          </div>
+
+          <!-- 6. Communauté de soutien -->
+          <div
+            class="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition-shadow duration-300 border-t-4 border-pink-600"
+          >
+            <div
+              class="w-16 h-16 bg-pink-100 rounded-full flex items-center justify-center mb-6"
+            >
+              <i class="fas fa-users text-3xl text-pink-600"></i>
+            </div>
+            <h3
+              class="text-2xl font-bold mb-4 text-secondary"
+              data-i18n="support.community.title"
+            >
+              Communauté de soutien
+            </h3>
+            <p
+              class="text-gray-600 mb-6 leading-relaxed"
+              data-i18n="support.community.description"
+            >
+              Rejoignez notre communauté ! Partagez nos contenus, parlez de nous
+              autour de vous, participez à nos événements et aidez à faire
+              connaître TARMAQ.
+            </p>
+            <ul class="space-y-3 mb-6">
+              <li class="flex items-start">
+                <i class="fas fa-check-circle text-pink-600 mt-1 mr-3"></i>
+                <span class="text-gray-700" data-i18n="support.community.item1"
+                  >Partage sur réseaux sociaux</span
+                >
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-check-circle text-pink-600 mt-1 mr-3"></i>
+                <span class="text-gray-700" data-i18n="support.community.item2"
+                  >Bouche-à-oreille</span
+                >
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-check-circle text-pink-600 mt-1 mr-3"></i>
+                <span class="text-gray-700" data-i18n="support.community.item3"
+                  >Bénévolat ponctuel</span
+                >
+              </li>
+            </ul>
+            <a
+              href="contact.html"
+              class="inline-block bg-pink-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-pink-700 transition"
+            >
+              <span data-i18n="support.community.cta"
+                >Rejoindre la communauté</span
+              >
+              <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- Impact of Support -->
     <section class="py-20 bg-white">
-        <div class="container mx-auto px-4">
-            <div class="max-w-5xl mx-auto">
-                <div class="text-center mb-16">
-                    <h2 class="text-3xl md:text-4xl font-bold mb-4 text-secondary" data-i18n="support.impact.title">
-                        L'impact de votre soutien
-                    </h2>
-                    <p class="text-xl text-gray-600" data-i18n="support.impact.subtitle">
-                        Chaque contribution fait une réelle différence
-                    </p>
-                </div>
+      <div class="container mx-auto px-4">
+        <div class="max-w-5xl mx-auto">
+          <div class="text-center mb-16">
+            <h2
+              class="text-3xl md:text-4xl font-bold mb-4 text-secondary"
+              data-i18n="support.impact.title"
+            >
+              L'impact de votre soutien
+            </h2>
+            <p
+              class="text-xl text-gray-600"
+              data-i18n="support.impact.subtitle"
+            >
+              Chaque contribution fait une réelle différence
+            </p>
+          </div>
 
-                <div class="grid md:grid-cols-3 gap-8">
-                    <div class="text-center p-6">
-                        <div class="text-5xl font-bold text-primary mb-3">100+</div>
-                        <p class="text-lg text-gray-700" data-i18n="support.impact.stat1">
-                            Jeunes formés chaque année
-                        </p>
-                    </div>
-                    <div class="text-center p-6">
-                        <div class="text-5xl font-bold text-primary mb-3">85%</div>
-                        <p class="text-lg text-gray-700" data-i18n="support.impact.stat2">
-                            Taux d'insertion professionnelle
-                        </p>
-                    </div>
-                    <div class="text-center p-6">
-                        <div class="text-5xl font-bold text-primary mb-3">30+</div>
-                        <p class="text-lg text-gray-700" data-i18n="support.impact.stat3">
-                            Projets innovants lancés
-                        </p>
-                    </div>
-                </div>
+          <div class="grid md:grid-cols-3 gap-8">
+            <div class="text-center p-6">
+              <div class="text-5xl font-bold text-primary mb-3">100+</div>
+              <p class="text-lg text-gray-700" data-i18n="support.impact.stat1">
+                Jeunes formés chaque année
+              </p>
             </div>
+            <div class="text-center p-6">
+              <div class="text-5xl font-bold text-primary mb-3">85%</div>
+              <p class="text-lg text-gray-700" data-i18n="support.impact.stat2">
+                Taux d'insertion professionnelle
+              </p>
+            </div>
+            <div class="text-center p-6">
+              <div class="text-5xl font-bold text-primary mb-3">30+</div>
+              <p class="text-lg text-gray-700" data-i18n="support.impact.stat3">
+                Projets innovants lancés
+              </p>
+            </div>
+          </div>
         </div>
+      </div>
     </section>
 
     <!-- Call to Action -->
     <section class="py-20 bg-gradient-to-br from-primary to-red-700 text-white">
-        <div class="container mx-auto px-4 text-center">
-            <h2 class="text-3xl md:text-4xl font-bold mb-6" data-i18n="support.cta.title">
-                Prêt à faire la différence ?
-            </h2>
-            <p class="text-xl mb-8 max-w-2xl mx-auto" data-i18n="support.cta.description">
-                Contactez-nous dès aujourd'hui pour discuter de la meilleure façon de contribuer à notre mission.
-            </p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="contact.html" class="inline-block bg-white text-primary px-8 py-4 rounded-lg font-bold text-lg hover:bg-gray-100 transition">
-                    <span data-i18n="support.cta.contact">Nous contacter</span>
-                    <i class="fas fa-arrow-right ml-2"></i>
-                </a>
-                <a href="https://meetings-eu1.hubspot.com/bdumont?uuid=a342bacf-b1c4-4182-82dd-64b39fa7b307" target="_blank" class="inline-block bg-transparent border-2 border-white text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-white hover:text-primary transition">
-                    <span data-i18n="support.cta.meeting">Réserver un rendez-vous</span>
-                    <i class="fas fa-calendar ml-2"></i>
-                </a>
-            </div>
+      <div class="container mx-auto px-4 text-center">
+        <h2
+          class="text-3xl md:text-4xl font-bold mb-6"
+          data-i18n="support.cta.title"
+        >
+          Prêt à faire la différence ?
+        </h2>
+        <p
+          class="text-xl mb-8 max-w-2xl mx-auto"
+          data-i18n="support.cta.description"
+        >
+          Contactez-nous dès aujourd'hui pour discuter de la meilleure façon de
+          contribuer à notre mission.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a
+            href="contact.html"
+            class="inline-block bg-white text-primary px-8 py-4 rounded-lg font-bold text-lg hover:bg-gray-100 transition"
+          >
+            <span data-i18n="support.cta.contact">Nous contacter</span>
+            <i class="fas fa-arrow-right ml-2"></i>
+          </a>
+          <a
+            href="https://meetings-eu1.hubspot.com/bdumont?uuid=a342bacf-b1c4-4182-82dd-64b39fa7b307"
+            target="_blank"
+            class="inline-block bg-transparent border-2 border-white text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-white hover:text-primary transition"
+          >
+            <span data-i18n="support.cta.meeting">Réserver un rendez-vous</span>
+            <i class="fas fa-calendar ml-2"></i>
+          </a>
         </div>
+      </div>
     </section>
 
     <!-- Footer -->
     <footer class="bg-gray-900 text-white py-12">
-        <div class="container mx-auto px-4">
-            <div class="grid md:grid-cols-4 gap-8 mb-8">
-                <!-- About -->
-                <div>
-                    <img src="assets/logo-white.svg" alt="TARMAQ Logo" class="h-12 mb-4">
-                    <p class="text-gray-400 text-sm" data-i18n="footer.about">
-                        Catalyseur d'excellence pour la nouvelle génération de talents en technologie.
-                    </p>
-                </div>
-                
-                <!-- Quick Links -->
-                <div>
-                    <h4 class="font-semibold mb-4" data-i18n="footer.links">Liens rapides</h4>
-                    <ul class="space-y-2 text-sm">
-                        <li><a href="index.html" class="text-gray-400 hover:text-white transition" data-i18n="nav.home">Accueil</a></li>
-                        <li><a href="projet.html" class="text-gray-400 hover:text-white transition" data-i18n="nav.project">Le projet</a></li>
-                        <li><a href="activites.html" class="text-gray-400 hover:text-white transition" data-i18n="nav.activities">Activités</a></li>
-                        <li><a href="impact.html" class="text-gray-400 hover:text-white transition" data-i18n="nav.impact">Impact</a></li>
-                    </ul>
-                </div>
-                
-                <!-- Contact -->
-                <div>
-                    <h4 class="font-semibold mb-4" data-i18n="footer.contact_title">Contact</h4>
-                    <ul class="space-y-2 text-sm text-gray-400">
-                        <li><i class="fas fa-envelope mr-2"></i>bastien@bdi-solutions.com</li>
-                        <li><i class="fas fa-phone mr-2"></i>+41 79 670 77 43</li>
-                        <li><i class="fas fa-map-marker-alt mr-2"></i>Genève, Suisse</li>
-                    </ul>
-                </div>
-                
-                <!-- Social -->
-                <div>
-                    <h4 class="font-semibold mb-4" data-i18n="footer.follow">Suivez-nous</h4>
-                    <div class="flex space-x-4">
-                        <a href="#" class="text-gray-400 hover:text-white transition text-xl"><i class="fab fa-linkedin"></i></a>
-                        <a href="#" class="text-gray-400 hover:text-white transition text-xl"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="text-gray-400 hover:text-white transition text-xl"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="text-gray-400 hover:text-white transition text-xl"><i class="fab fa-facebook"></i></a>
-                    </div>
-                </div>
+      <div class="container mx-auto px-4">
+        <div class="grid md:grid-cols-4 gap-8 mb-8">
+          <!-- About -->
+          <div>
+            <img
+              src="assets/logo-white.svg"
+              alt="TARMAQ Logo"
+              class="h-12 mb-4"
+            />
+            <p class="text-gray-400 text-sm" data-i18n="footer.about">
+              Catalyseur d'excellence pour la nouvelle génération de talents en
+              technologie.
+            </p>
+          </div>
+
+          <!-- Quick Links -->
+          <div>
+            <h4 class="font-semibold mb-4" data-i18n="footer.links">
+              Liens rapides
+            </h4>
+            <ul class="space-y-2 text-sm">
+              <li>
+                <a
+                  href="index.html"
+                  class="text-gray-400 hover:text-white transition"
+                  data-i18n="nav.home"
+                  >Accueil</a
+                >
+              </li>
+              <li>
+                <a
+                  href="projet.html"
+                  class="text-gray-400 hover:text-white transition"
+                  data-i18n="nav.project"
+                  >Le projet</a
+                >
+              </li>
+              <li>
+                <a
+                  href="activites.html"
+                  class="text-gray-400 hover:text-white transition"
+                  data-i18n="nav.activities"
+                  >Activités</a
+                >
+              </li>
+              <li>
+                <a
+                  href="impact.html"
+                  class="text-gray-400 hover:text-white transition"
+                  data-i18n="nav.impact"
+                  >Impact</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- Contact -->
+          <div>
+            <h4 class="font-semibold mb-4" data-i18n="footer.contact_title">
+              Contact
+            </h4>
+            <ul class="space-y-2 text-sm text-gray-400">
+              <li>
+                <i class="fas fa-envelope mr-2"></i>bastien@bdi-solutions.com
+              </li>
+              <li><i class="fas fa-phone mr-2"></i>+41 79 670 77 43</li>
+              <li><i class="fas fa-map-marker-alt mr-2"></i>Genève, Suisse</li>
+            </ul>
+          </div>
+
+          <!-- Social -->
+          <div>
+            <h4 class="font-semibold mb-4" data-i18n="footer.follow">
+              Suivez-nous
+            </h4>
+            <div class="flex space-x-4">
+              <a
+                href="#"
+                class="text-gray-400 hover:text-white transition text-xl"
+                ><i class="fab fa-linkedin"></i
+              ></a>
+              <a
+                href="#"
+                class="text-gray-400 hover:text-white transition text-xl"
+                ><i class="fab fa-twitter"></i
+              ></a>
+              <a
+                href="#"
+                class="text-gray-400 hover:text-white transition text-xl"
+                ><i class="fab fa-instagram"></i
+              ></a>
+              <a
+                href="#"
+                class="text-gray-400 hover:text-white transition text-xl"
+                ><i class="fab fa-facebook"></i
+              ></a>
             </div>
-            
-            <div class="border-t border-gray-800 pt-8 text-center text-sm text-gray-400">
-                <p>&copy; <span id="current-year"></span> TARMAQ. <span data-i18n="footer.rights">Tous droits réservés.</span></p>
-            </div>
+          </div>
         </div>
+
+        <div
+          class="border-t border-gray-800 pt-8 text-center text-sm text-gray-400"
+        >
+          <p>
+            &copy; <span id="current-year"></span> TARMAQ.
+            <span data-i18n="footer.rights">Tous droits réservés.</span>
+          </p>
+        </div>
+      </div>
     </footer>
 
     <!-- Scripts -->
     <script src="js/translations.js"></script>
     <script src="js/i18n.js"></script>
     <script src="js/main.js"></script>
-</body>
+  </body>
 </html>

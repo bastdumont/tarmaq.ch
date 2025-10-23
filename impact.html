@@ -1,223 +1,375 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Impact & Rapports - TARMAQ</title>
-    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="css/style.css">
-    <script>tailwind.config = { theme: { extend: { colors: { primary: '#DA2F2C', secondary: '#111827' }, fontFamily: { sans: ['Inter', 'sans-serif'] } } } }</script>
-</head>
-<body class="font-sans bg-white">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: { primary: '#DA2F2C', secondary: '#111827' },
+            fontFamily: { sans: ['Inter', 'sans-serif'] },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body class="font-sans bg-white">
     <header id="header" class="fixed w-full top-0 z-50 bg-white shadow-sm">
-        <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
-            <a href="index.html"><img src="assets/logo.svg" alt="TARMAQ" class="h-10"></a>
-            <div class="hidden lg:flex items-center space-x-8">
-                <a href="index.html" class="nav-link hover:text-primary">Accueil</a>
-                <a href="projet.html" class="nav-link hover:text-primary">Le projet</a>
-                <a href="activites.html" class="nav-link hover:text-primary">Activités</a>
-                <a href="impact.html" class="nav-link text-primary font-semibold">Impact</a>
-                <a href="soutenir.html" class="nav-link hover:text-primary" data-i18n="nav.support">Nous soutenir</a>
-                <a href="contact.html" class="nav-link hover:text-primary">Contact</a>
-            </div>
-            <div class="hidden lg:flex space-x-2">
-                <button onclick="changeLanguage('fr')" class="lang-btn"><span class="text-xl">🇫🇷</span></button>
-                <button onclick="changeLanguage('en')" class="lang-btn"><span class="text-xl">🇬🇧</span></button>
-                <button onclick="changeLanguage('de')" class="lang-btn"><span class="text-xl">🇩🇪</span></button>
-                <button onclick="changeLanguage('it')" class="lang-btn"><span class="text-xl">🇮🇹</span></button>
-            </div>
-            <button id="mobile-menu-btn" class="lg:hidden text-2xl"><i class="fas fa-bars"></i></button>
-        </nav>
-    </header>
-    
-    <section class="pt-32 pb-16 bg-gradient-to-br from-secondary to-gray-800 text-white">
-        <div class="container mx-auto px-4 text-center">
-            <h1 class="text-5xl font-bold mb-6">Notre Impact</h1>
-            <p class="text-xl opacity-90 max-w-3xl mx-auto">Mesurer, évaluer et partager les résultats de nos actions</p>
+      <nav
+        class="container mx-auto px-4 py-4 flex justify-between items-center"
+      >
+        <a href="index.html"
+          ><img src="assets/logo.svg" alt="TARMAQ" class="h-10"
+        /></a>
+        <div class="hidden lg:flex items-center space-x-8">
+          <a href="index.html" class="nav-link hover:text-primary">Accueil</a>
+          <a href="projet.html" class="nav-link hover:text-primary"
+            >Le projet</a
+          >
+          <a href="activites.html" class="nav-link hover:text-primary"
+            >Activités</a
+          >
+          <a href="impact.html" class="nav-link text-primary font-semibold"
+            >Impact</a
+          >
+          <a
+            href="soutenir.html"
+            class="nav-link hover:text-primary"
+            data-i18n="nav.support"
+            >Nous soutenir</a
+          >
+          <a href="contact.html" class="nav-link hover:text-primary">Contact</a>
+          <a
+            href="charte.html"
+            class="nav-link hover:text-primary"
+            data-i18n="nav.charter"
+            >Charte</a
+          >
         </div>
+        <div class="hidden lg:flex space-x-2">
+          <button onclick="changeLanguage('fr')" class="lang-btn">
+            <span class="text-xl">🇫🇷</span>
+          </button>
+          <button onclick="changeLanguage('en')" class="lang-btn">
+            <span class="text-xl">🇬🇧</span>
+          </button>
+          <button onclick="changeLanguage('de')" class="lang-btn">
+            <span class="text-xl">🇩🇪</span>
+          </button>
+          <button onclick="changeLanguage('it')" class="lang-btn">
+            <span class="text-xl">🇮🇹</span>
+          </button>
+        </div>
+        <button id="mobile-menu-btn" class="lg:hidden text-2xl">
+          <i class="fas fa-bars"></i>
+        </button>
+      </nav>
+    </header>
+
+    <section
+      class="pt-32 pb-16 bg-gradient-to-br from-secondary to-gray-800 text-white"
+    >
+      <div class="container mx-auto px-4 text-center">
+        <h1 class="text-5xl font-bold mb-6">Notre Impact</h1>
+        <p class="text-xl opacity-90 max-w-3xl mx-auto">
+          Mesurer, évaluer et partager les résultats de nos actions
+        </p>
+      </div>
     </section>
-    
+
     <!-- Stats -->
     <section class="py-20 bg-white">
-        <div class="container mx-auto px-4">
-            <h2 class="text-4xl font-bold text-center mb-16">Chiffres Clés 2024</h2>
-            <div class="max-w-6xl mx-auto grid md:grid-cols-4 gap-8">
-                <div class="text-center">
-                    <div class="text-6xl font-bold text-primary mb-2">523</div>
-                    <p class="text-lg font-semibold">Jeunes formés</p>
-                    <p class="text-sm text-gray-600">+42% vs 2023</p>
-                </div>
-                <div class="text-center">
-                    <div class="text-6xl font-bold text-primary mb-2">87%</div>
-                    <p class="text-lg font-semibold">Taux d'insertion</p>
-                    <p class="text-sm text-gray-600">Dans les 6 mois</p>
-                </div>
-                <div class="text-center">
-                    <div class="text-6xl font-bold text-primary mb-2">52</div>
-                    <p class="text-lg font-semibold">Mentors actifs</p>
-                    <p class="text-sm text-gray-600">De 18 entreprises</p>
-                </div>
-                <div class="text-center">
-                    <div class="text-6xl font-bold text-primary mb-2">34</div>
-                    <p class="text-lg font-semibold">Projets lancés</p>
-                    <p class="text-sm text-gray-600">Dont 12 startups</p>
-                </div>
-            </div>
+      <div class="container mx-auto px-4">
+        <h2 class="text-4xl font-bold text-center mb-16">Chiffres Clés 2024</h2>
+        <div class="max-w-6xl mx-auto grid md:grid-cols-4 gap-8">
+          <div class="text-center">
+            <div class="text-6xl font-bold text-primary mb-2">523</div>
+            <p class="text-lg font-semibold">Jeunes formés</p>
+            <p class="text-sm text-gray-600">+42% vs 2023</p>
+          </div>
+          <div class="text-center">
+            <div class="text-6xl font-bold text-primary mb-2">87%</div>
+            <p class="text-lg font-semibold">Taux d'insertion</p>
+            <p class="text-sm text-gray-600">Dans les 6 mois</p>
+          </div>
+          <div class="text-center">
+            <div class="text-6xl font-bold text-primary mb-2">52</div>
+            <p class="text-lg font-semibold">Mentors actifs</p>
+            <p class="text-sm text-gray-600">De 18 entreprises</p>
+          </div>
+          <div class="text-center">
+            <div class="text-6xl font-bold text-primary mb-2">34</div>
+            <p class="text-lg font-semibold">Projets lancés</p>
+            <p class="text-sm text-gray-600">Dont 12 startups</p>
+          </div>
         </div>
+      </div>
     </section>
-    
+
     <!-- Testimonials -->
     <section class="py-20 bg-accent">
-        <div class="container mx-auto px-4">
-            <h2 class="text-4xl font-bold text-center mb-16">Témoignages</h2>
-            <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-8">
-                <div class="bg-white p-8 rounded-2xl shadow-lg">
-                    <div class="flex items-center mb-4">
-                        <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center text-white text-2xl font-bold mr-4">
-                            SM
-                        </div>
-                        <div>
-                            <h3 class="font-bold">Sarah M.</h3>
-                            <p class="text-sm text-gray-600">Data Scientist chez Google</p>
-                        </div>
-                    </div>
-                    <p class="text-gray-700 italic">"TARMAQ m'a permis de passer d'une carrière administrative à la data science. Le mentorat et les formations sont exceptionnels !"</p>
-                    <div class="flex text-primary mt-4">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                    </div>
-                </div>
-                
-                <div class="bg-white p-8 rounded-2xl shadow-lg">
-                    <div class="flex items-center mb-4">
-                        <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center text-white text-2xl font-bold mr-4">
-                            AK
-                        </div>
-                        <div>
-                            <h3 class="font-bold">Ahmed K.</h3>
-                            <p class="text-sm text-gray-600">Co-fondateur startup IA</p>
-                        </div>
-                    </div>
-                    <p class="text-gray-700 italic">"Les hackathons m'ont permis de rencontrer mes cofondateurs. Aujourd'hui nous avons levé 2M CHF pour notre solution d'IA."</p>
-                    <div class="flex text-primary mt-4">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                    </div>
-                </div>
-                
-                <div class="bg-white p-8 rounded-2xl shadow-lg">
-                    <div class="flex items-center mb-4">
-                        <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center text-white text-2xl font-bold mr-4">
-                            LR
-                        </div>
-                        <div>
-                            <h3 class="font-bold">Laura R.</h3>
-                            <p class="text-sm text-gray-600">DevOps Engineer</p>
-                        </div>
-                    </div>
-                    <p class="text-gray-700 italic">"L'environnement d'apprentissage est bienveillant et stimulant. J'ai développé des compétences que je n'aurais jamais acquises seule."</p>
-                    <div class="flex text-primary mt-4">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                    </div>
-                </div>
+      <div class="container mx-auto px-4">
+        <h2 class="text-4xl font-bold text-center mb-16">Témoignages</h2>
+        <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-8">
+          <div class="bg-white p-8 rounded-2xl shadow-lg">
+            <div class="flex items-center mb-4">
+              <div
+                class="w-16 h-16 bg-primary rounded-full flex items-center justify-center text-white text-2xl font-bold mr-4"
+              >
+                SM
+              </div>
+              <div>
+                <h3 class="font-bold">Sarah M.</h3>
+                <p class="text-sm text-gray-600">Data Scientist chez Google</p>
+              </div>
             </div>
+            <p class="text-gray-700 italic">
+              "TARMAQ m'a permis de passer d'une carrière administrative à la
+              data science. Le mentorat et les formations sont exceptionnels !"
+            </p>
+            <div class="flex text-primary mt-4">
+              <i class="fas fa-star"></i><i class="fas fa-star"></i
+              ><i class="fas fa-star"></i><i class="fas fa-star"></i
+              ><i class="fas fa-star"></i>
+            </div>
+          </div>
+
+          <div class="bg-white p-8 rounded-2xl shadow-lg">
+            <div class="flex items-center mb-4">
+              <div
+                class="w-16 h-16 bg-primary rounded-full flex items-center justify-center text-white text-2xl font-bold mr-4"
+              >
+                AK
+              </div>
+              <div>
+                <h3 class="font-bold">Ahmed K.</h3>
+                <p class="text-sm text-gray-600">Co-fondateur startup IA</p>
+              </div>
+            </div>
+            <p class="text-gray-700 italic">
+              "Les hackathons m'ont permis de rencontrer mes cofondateurs.
+              Aujourd'hui nous avons levé 2M CHF pour notre solution d'IA."
+            </p>
+            <div class="flex text-primary mt-4">
+              <i class="fas fa-star"></i><i class="fas fa-star"></i
+              ><i class="fas fa-star"></i><i class="fas fa-star"></i
+              ><i class="fas fa-star"></i>
+            </div>
+          </div>
+
+          <div class="bg-white p-8 rounded-2xl shadow-lg">
+            <div class="flex items-center mb-4">
+              <div
+                class="w-16 h-16 bg-primary rounded-full flex items-center justify-center text-white text-2xl font-bold mr-4"
+              >
+                LR
+              </div>
+              <div>
+                <h3 class="font-bold">Laura R.</h3>
+                <p class="text-sm text-gray-600">DevOps Engineer</p>
+              </div>
+            </div>
+            <p class="text-gray-700 italic">
+              "L'environnement d'apprentissage est bienveillant et stimulant.
+              J'ai développé des compétences que je n'aurais jamais acquises
+              seule."
+            </p>
+            <div class="flex text-primary mt-4">
+              <i class="fas fa-star"></i><i class="fas fa-star"></i
+              ><i class="fas fa-star"></i><i class="fas fa-star"></i
+              ><i class="fas fa-star"></i>
+            </div>
+          </div>
         </div>
+      </div>
     </section>
-    
+
     <!-- Reports -->
     <section class="py-20 bg-white">
-        <div class="container mx-auto px-4">
-            <h2 class="text-4xl font-bold text-center mb-16">Rapports & Publications</h2>
-            <div class="max-w-4xl mx-auto space-y-6">
-                <div class="bg-gradient-to-r from-accent to-white p-6 rounded-2xl border border-gray-200 flex items-center justify-between hover:shadow-xl transition">
-                    <div class="flex items-center">
-                        <i class="fas fa-file-pdf text-primary text-4xl mr-6"></i>
-                        <div>
-                            <h3 class="font-bold text-xl">Rapport d'activité 2024</h3>
-                            <p class="text-gray-600">Bilan complet des actions et résultats</p>
-                        </div>
-                    </div>
-                    <a href="#" class="bg-primary hover:bg-red-700 text-white px-6 py-3 rounded-lg font-semibold transition">
-                        Télécharger
-                    </a>
-                </div>
-                
-                <div class="bg-gradient-to-r from-accent to-white p-6 rounded-2xl border border-gray-200 flex items-center justify-between hover:shadow-xl transition">
-                    <div class="flex items-center">
-                        <i class="fas fa-file-pdf text-primary text-4xl mr-6"></i>
-                        <div>
-                            <h3 class="font-bold text-xl">Étude d'impact social 2024</h3>
-                            <p class="text-gray-600">Analyse de notre contribution sociétale</p>
-                        </div>
-                    </div>
-                    <a href="#" class="bg-primary hover:bg-red-700 text-white px-6 py-3 rounded-lg font-semibold transition">
-                        Télécharger
-                    </a>
-                </div>
-                
-                <div class="bg-gradient-to-r from-accent to-white p-6 rounded-2xl border border-gray-200 flex items-center justify-between hover:shadow-xl transition">
-                    <div class="flex items-center">
-                        <i class="fas fa-file-pdf text-primary text-4xl mr-6"></i>
-                        <div>
-                            <h3 class="font-bold text-xl">Comptes financiers 2024</h3>
-                            <p class="text-gray-600">Transparence financière et budget</p>
-                        </div>
-                    </div>
-                    <a href="#" class="bg-primary hover:bg-red-700 text-white px-6 py-3 rounded-lg font-semibold transition">
-                        Télécharger
-                    </a>
-                </div>
-                
-                <div class="bg-gradient-to-r from-accent to-white p-6 rounded-2xl border border-gray-200 flex items-center justify-between hover:shadow-xl transition">
-                    <div class="flex items-center">
-                        <i class="fas fa-newspaper text-primary text-4xl mr-6"></i>
-                        <div>
-                            <h3 class="font-bold text-xl">Newsletter trimestrielle</h3>
-                            <p class="text-gray-600">Actualités et prochains événements</p>
-                        </div>
-                    </div>
-                    <a href="#" class="bg-primary hover:bg-red-700 text-white px-6 py-3 rounded-lg font-semibold transition">
-                        S'abonner
-                    </a>
-                </div>
+      <div class="container mx-auto px-4">
+        <h2 class="text-4xl font-bold text-center mb-16">
+          Rapports & Publications
+        </h2>
+        <div class="max-w-4xl mx-auto space-y-6">
+          <div
+            class="bg-gradient-to-r from-accent to-white p-6 rounded-2xl border border-gray-200 flex items-center justify-between hover:shadow-xl transition"
+          >
+            <div class="flex items-center">
+              <i class="fas fa-file-pdf text-primary text-4xl mr-6"></i>
+              <div>
+                <h3 class="font-bold text-xl">Rapport d'activité 2024</h3>
+                <p class="text-gray-600">
+                  Bilan complet des actions et résultats
+                </p>
+              </div>
             </div>
+            <a
+              href="#"
+              class="bg-primary hover:bg-red-700 text-white px-6 py-3 rounded-lg font-semibold transition"
+            >
+              Télécharger
+            </a>
+          </div>
+
+          <div
+            class="bg-gradient-to-r from-accent to-white p-6 rounded-2xl border border-gray-200 flex items-center justify-between hover:shadow-xl transition"
+          >
+            <div class="flex items-center">
+              <i class="fas fa-file-pdf text-primary text-4xl mr-6"></i>
+              <div>
+                <h3 class="font-bold text-xl">Étude d'impact social 2024</h3>
+                <p class="text-gray-600">
+                  Analyse de notre contribution sociétale
+                </p>
+              </div>
+            </div>
+            <a
+              href="#"
+              class="bg-primary hover:bg-red-700 text-white px-6 py-3 rounded-lg font-semibold transition"
+            >
+              Télécharger
+            </a>
+          </div>
+
+          <div
+            class="bg-gradient-to-r from-accent to-white p-6 rounded-2xl border border-gray-200 flex items-center justify-between hover:shadow-xl transition"
+          >
+            <div class="flex items-center">
+              <i class="fas fa-file-pdf text-primary text-4xl mr-6"></i>
+              <div>
+                <h3 class="font-bold text-xl">Comptes financiers 2024</h3>
+                <p class="text-gray-600">Transparence financière et budget</p>
+              </div>
+            </div>
+            <a
+              href="#"
+              class="bg-primary hover:bg-red-700 text-white px-6 py-3 rounded-lg font-semibold transition"
+            >
+              Télécharger
+            </a>
+          </div>
+
+          <div
+            class="bg-gradient-to-r from-accent to-white p-6 rounded-2xl border border-gray-200 flex items-center justify-between hover:shadow-xl transition"
+          >
+            <div class="flex items-center">
+              <i class="fas fa-newspaper text-primary text-4xl mr-6"></i>
+              <div>
+                <h3 class="font-bold text-xl">Newsletter trimestrielle</h3>
+                <p class="text-gray-600">Actualités et prochains événements</p>
+              </div>
+            </div>
+            <a
+              href="#"
+              class="bg-primary hover:bg-red-700 text-white px-6 py-3 rounded-lg font-semibold transition"
+            >
+              S'abonner
+            </a>
+          </div>
         </div>
+      </div>
     </section>
-    
+
     <!-- Success Stories -->
     <section class="py-20 bg-primary text-white">
-        <div class="container mx-auto px-4">
-            <h2 class="text-4xl font-bold text-center mb-12">Success Stories</h2>
-            <div class="max-w-4xl mx-auto">
-                <div class="bg-white/10 backdrop-blur p-8 rounded-2xl mb-6">
-                    <h3 class="text-2xl font-bold mb-3">🚀 De TARMAQ à la Silicon Valley</h3>
-                    <p class="opacity-90 mb-4">Marc, 26 ans, a participé à notre programme IA en 2022. Après un voyage éducatif en Californie organisé par TARMAQ, il a été recruté par une startup de la Silicon Valley comme ML Engineer.</p>
-                    <a href="#" class="text-white underline hover:no-underline">Lire l'histoire complète →</a>
-                </div>
-                
-                <div class="bg-white/10 backdrop-blur p-8 rounded-2xl">
-                    <h3 class="text-2xl font-bold mb-3">💡 Une startup née d'un hackathon</h3>
-                    <p class="opacity-90 mb-4">L'équipe CyberGuard, formée lors d'un hackathon cybersécurité, a développé une solution innovante de protection des PME. Levée de fonds : 1.5M CHF en 2024.</p>
-                    <a href="#" class="text-white underline hover:no-underline">Lire l'histoire complète →</a>
-                </div>
-            </div>
+      <div class="container mx-auto px-4">
+        <h2 class="text-4xl font-bold text-center mb-12">Success Stories</h2>
+        <div class="max-w-4xl mx-auto">
+          <div class="bg-white/10 backdrop-blur p-8 rounded-2xl mb-6">
+            <h3 class="text-2xl font-bold mb-3">
+              🚀 De TARMAQ à la Silicon Valley
+            </h3>
+            <p class="opacity-90 mb-4">
+              Marc, 26 ans, a participé à notre programme IA en 2022. Après un
+              voyage éducatif en Californie organisé par TARMAQ, il a été
+              recruté par une startup de la Silicon Valley comme ML Engineer.
+            </p>
+            <a href="#" class="text-white underline hover:no-underline"
+              >Lire l'histoire complète →</a
+            >
+          </div>
+
+          <div class="bg-white/10 backdrop-blur p-8 rounded-2xl">
+            <h3 class="text-2xl font-bold mb-3">
+              💡 Une startup née d'un hackathon
+            </h3>
+            <p class="opacity-90 mb-4">
+              L'équipe CyberGuard, formée lors d'un hackathon cybersécurité, a
+              développé une solution innovante de protection des PME. Levée de
+              fonds : 1.5M CHF en 2024.
+            </p>
+            <a href="#" class="text-white underline hover:no-underline"
+              >Lire l'histoire complète →</a
+            >
+          </div>
         </div>
+      </div>
     </section>
-    
+
     <footer class="bg-secondary text-white py-12">
-        <div class="container mx-auto px-4">
-            <div class="grid md:grid-cols-4 gap-8 mb-8">
-                <div><img src="assets/logo-white.svg" alt="TARMAQ" class="h-10 mb-4"><p class="text-gray-400 text-sm">Catalyseur d'excellence</p></div>
-                <div><h4 class="font-bold mb-4">Liens</h4><ul class="space-y-2 text-gray-400 text-sm"><li><a href="projet.html" class="hover:text-white">Le projet</a></li><li><a href="activites.html" class="hover:text-white">Activités</a></li></ul></div>
-                <div><h4 class="font-bold mb-4">Contact</h4><ul class="space-y-2 text-gray-400 text-sm"><li><i class="fas fa-envelope mr-2"></i>bastien@bdi-solutions.com</li><li><i class="fas fa-phone mr-2"></i>+41 79 670 77 43</li><li><i class="fas fa-map-marker-alt mr-2"></i>11 avenue Eugène-Pittard, 1206 Genève</li></ul></div>
-                <div><h4 class="font-bold mb-4">Suivez-nous</h4><div class="flex space-x-4"><a href="#" class="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center hover:bg-primary"><i class="fab fa-linkedin-in"></i></a></div></div>
+      <div class="container mx-auto px-4">
+        <div class="grid md:grid-cols-4 gap-8 mb-8">
+          <div>
+            <img src="assets/logo-white.svg" alt="TARMAQ" class="h-10 mb-4" />
+            <p class="text-gray-400 text-sm">Catalyseur d'excellence</p>
+          </div>
+          <div>
+            <h4 class="font-bold mb-4">Liens</h4>
+            <ul class="space-y-2 text-gray-400 text-sm">
+              <li>
+                <a href="projet.html" class="hover:text-white">Le projet</a>
+              </li>
+              <li>
+                <a href="activites.html" class="hover:text-white">Activités</a>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-bold mb-4">Contact</h4>
+            <ul class="space-y-2 text-gray-400 text-sm">
+              <li>
+                <i class="fas fa-envelope mr-2"></i>bastien@bdi-solutions.com
+              </li>
+              <li><i class="fas fa-phone mr-2"></i>+41 79 670 77 43</li>
+              <li>
+                <i class="fas fa-map-marker-alt mr-2"></i>11 avenue
+                Eugène-Pittard, 1206 Genève
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-bold mb-4">Suivez-nous</h4>
+            <div class="flex space-x-4">
+              <a
+                href="#"
+                class="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center hover:bg-primary"
+                ><i class="fab fa-linkedin-in"></i
+              ></a>
             </div>
-            <div class="border-t border-gray-700 pt-8 text-center text-gray-400 text-sm"><p>&copy; 2025 TARMAQ.</p></div>
+          </div>
         </div>
+        <div
+          class="border-t border-gray-700 pt-8 text-center text-gray-400 text-sm"
+        >
+          <p>&copy; 2025 TARMAQ.</p>
+        </div>
+      </div>
     </footer>
-    
+
     <script src="js/i18n.js"></script>
     <script src="js/main.js"></script>
-</body>
+  </body>
 </html>

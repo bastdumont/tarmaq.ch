@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Charte d'Engagement - TARMAQ</title>
+    <meta
+      name="description"
+      content="Rejoignez notre charte d'engagement pour transformer les valeurs en actions concrètes et construire un avenir collaboratif."
+    />
+
+    <link rel="icon" href="assets/logo.png" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: '#DA2F2C',
+              secondary: '#111827',
+              accent: '#F3F4F6',
+            },
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+              caveat: ['Caveat', 'cursive'],
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body class="font-sans bg-gray-50 text-gray-800 min-h-screen">
+    <!-- Header / Navigation -->
+    <header
+      id="header"
+      class="fixed w-full top-0 z-50 bg-white shadow-sm transition-all duration-300"
+    >
+      <nav
+        class="container mx-auto px-4 py-4 flex justify-between items-center"
+      >
+        <!-- Logo -->
+        <a href="index.html" class="flex items-center space-x-2">
+          <img src="assets/logo.png" alt="TARMAQ Logo" class="h-10" />
+        </a>
+
+        <!-- Desktop Menu -->
+        <div class="hidden lg:flex items-center space-x-8">
+          <a
+            href="index.html"
+            class="nav-link hover:text-primary transition"
+            data-i18n="nav.home"
+            >Accueil</a
+          >
+          <a
+            href="projet.html"
+            class="nav-link hover:text-primary transition"
+            data-i18n="nav.project"
+            >Le projet</a
+          >
+          <a
+            href="activites.html"
+            class="nav-link hover:text-primary transition"
+            data-i18n="nav.activities"
+            >Activités</a
+          >
+          <a
+            href="impact.html"
+            class="nav-link hover:text-primary transition"
+            data-i18n="nav.impact"
+            >Impact</a
+          >
+          <a
+            href="soutenir.html"
+            class="nav-link hover:text-primary transition"
+            data-i18n="nav.support"
+            >Nous soutenir</a
+          >
+          <a
+            href="contact.html"
+            class="nav-link hover:text-primary transition"
+            data-i18n="nav.contact"
+            >Contact</a
+          >
+          <a
+            href="charte.html"
+            class="nav-link text-primary font-semibold"
+            data-i18n="nav.charter"
+            >Charte</a
+          >
+        </div>
+
+        <!-- Language Selector -->
+        <div class="hidden lg:flex items-center space-x-2">
+          <button
+            onclick="changeLanguage('fr')"
+            class="lang-btn w-8 h-8 rounded-full overflow-hidden border-2 border-transparent hover:border-primary transition"
+            title="Français"
+          >
+            <span class="text-xl">🇫🇷</span>
+          </button>
+          <button
+            onclick="changeLanguage('en')"
+            class="lang-btn w-8 h-8 rounded-full overflow-hidden border-2 border-transparent hover:border-primary transition"
+            title="English"
+          >
+            <span class="text-xl">🇬🇧</span>
+          </button>
+          <button
+            onclick="changeLanguage('de')"
+            class="lang-btn w-8 h-8 rounded-full overflow-hidden border-2 border-transparent hover:border-primary transition"
+            title="Deutsch"
+          >
+            <span class="text-xl">🇩🇪</span>
+          </button>
+          <button
+            onclick="changeLanguage('it')"
+            class="lang-btn w-8 h-8 rounded-full overflow-hidden border-2 border-transparent hover:border-primary transition"
+            title="Italiano"
+          >
+            <span class="text-xl">🇮🇹</span>
+          </button>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <button id="mobile-menu-btn" class="lg:hidden text-2xl">
+          <i class="fas fa-bars"></i>
+        </button>
+      </nav>
+
+      <!-- Mobile Menu -->
+      <div id="mobile-menu" class="hidden lg:hidden bg-white border-t">
+        <div class="container mx-auto px-4 py-4 flex flex-col space-y-4">
+          <a
+            href="index.html"
+            class="nav-link hover:text-primary transition"
+            data-i18n="nav.home"
+            >Accueil</a
+          >
+          <a
+            href="projet.html"
+            class="nav-link hover:text-primary transition"
+            data-i18n="nav.project"
+            >Le projet</a
+          >
+          <a
+            href="activites.html"
+            class="nav-link hover:text-primary transition"
+            data-i18n="nav.activities"
+            >Activités</a
+          >
+          <a
+            href="impact.html"
+            class="nav-link hover:text-primary transition"
+            data-i18n="nav.impact"
+            >Impact</a
+          >
+          <a
+            href="soutenir.html"
+            class="nav-link hover:text-primary transition"
+            data-i18n="nav.support"
+            >Nous soutenir</a
+          >
+          <a
+            href="contact.html"
+            class="nav-link hover:text-primary transition"
+            data-i18n="nav.contact"
+            >Contact</a
+          >
+          <a
+            href="charte.html"
+            class="nav-link text-primary font-semibold"
+            data-i18n="nav.charter"
+            >Charte</a
+          >
+
+          <div class="flex space-x-3 pt-2">
+            <button onclick="changeLanguage('fr')" class="lang-btn text-2xl">
+              🇫🇷
+            </button>
+            <button onclick="changeLanguage('en')" class="lang-btn text-2xl">
+              🇬🇧
+            </button>
+            <button onclick="changeLanguage('de')" class="lang-btn text-2xl">
+              🇩🇪
+            </button>
+            <button onclick="changeLanguage('it')" class="lang-btn text-2xl">
+              🇮🇹
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="container mx-auto p-4 sm:p-6 lg:p-8 pt-24">
+      <header class="text-center mb-10">
+        <div class="flex items-center justify-center space-x-3 mb-4">
+          <svg
+            class="w-10 h-10 text-primary"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M13 7l5 5m0 0l-5 5m5-5H6"
+            ></path>
+          </svg>
+          <h1 class="text-5xl font-bold text-gray-900 tracking-tight">
+            tarmaq
+          </h1>
+        </div>
+        <h2
+          class="text-3xl sm:text-4xl font-bold text-gray-900"
+          data-i18n="charter.title"
+        >
+          Charte d'Engagement
+        </h2>
+        <p class="mt-3 text-lg text-gray-600" data-i18n="charter.subtitle">
+          Ensemble, créons un avenir où l'action collective transforme les
+          possibilités en réalités.
+        </p>
+        <div class="mt-4 max-w-2xl mx-auto">
+          <p class="text-primary italic font-medium" data-i18n="charter.quote">
+            "Ne demandez pas ce que le monde peut faire pour vous, mais ce que
+            vous pouvez faire pour le monde. Partagez, agissez, osez, et créez
+            de la valeur qui transcende la richesse."
+          </p>
+        </div>
+      </header>
+
+      <main class="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-12">
+        <!-- Section de la Charte (gauche) -->
+        <div class="lg:col-span-3 bg-white p-6 sm:p-8 rounded-xl shadow-md">
+          <h2
+            class="text-2xl font-bold mb-6 border-b pb-4"
+            data-i18n="charter.text.title"
+          >
+            Le Texte de la Charte
+          </h2>
+          <div class="prose prose-lg max-w-none text-gray-700 space-y-4">
+            <p data-i18n="charter.text.preamble">
+              <strong>Préambule :</strong> Convaincus que la jeunesse est le
+              moteur de l'innovation et que l'écart entre la formation et les
+              besoins du marché doit être comblé, nous nous engageons à travers
+              cette charte à catalyser les opportunités pour la relève romande
+              et à préparer les talents aux métiers de demain. Nous fondons
+              notre action sur des valeurs essentielles : le partage plutôt que
+              la compétition, l'action plutôt que la plainte, l'audace plutôt
+              que l'inquiétude, et la création de valeur au-delà de la simple
+              richesse matérielle.
+            </p>
+
+            <h3
+              class="font-semibold text-lg pt-4"
+              data-i18n="charter.text.article1.title"
+            >
+              Article 1 : Formation et Accès à l'Opportunité
+            </h3>
+            <p data-i18n="charter.text.article1.content">
+              Nous nous engageons à offrir un accès équitable aux dernières
+              technologies et à des formations pratiques. Nous agirons pour que
+              chaque jeune motivé, quel que soit son parcours, puisse développer
+              des compétences techniques et personnelles solides pour construire
+              son avenir avec confiance.
+            </p>
+
+            <h3
+              class="font-semibold text-lg pt-4"
+              data-i18n="charter.text.article2.title"
+            >
+              Article 2 : Collaboration et Impact Communautaire
+            </h3>
+            <p data-i18n="charter.text.article2.content">
+              Nous nous engageons à créer un cercle vertueux en connectant les
+              jeunes talents avec des organisations à but non lucratif et des
+              projets locaux. Nous favoriserons l'apprentissage par la pratique
+              sur des projets concrets qui renforcent le tissu économique et
+              social de notre communauté.
+            </p>
+
+            <h3
+              class="font-semibold text-lg pt-4"
+              data-i18n="charter.text.article3.title"
+            >
+              Article 3 : Innovation et Esprit d'Entreprise
+            </h3>
+            <p data-i18n="charter.text.article3.content">
+              Nous nous engageons à encourager et à soutenir l'esprit
+              d'initiative, la créativité et l'entrepreneuriat. Nous mettrons à
+              disposition un écosystème de mentors, d'experts et d'équipements
+              de pointe pour transformer les idées innovantes en projets
+              viables.
+            </p>
+
+            <h3
+              class="font-semibold text-lg pt-4"
+              data-i18n="charter.text.article4.title"
+            >
+              Article 4 : Mobilité et Ouverture Internationale
+            </h3>
+            <p data-i18n="charter.text.article4.content">
+              Nous nous engageons à promouvoir l'ouverture sur le monde. Nous
+              soutiendrons activement les jeunes dans leurs projets de mobilité
+              internationale, qu'ils soient éducatifs ou professionnels, afin de
+              favoriser les échanges culturels et l'acquisition de compétences
+              globales.
+            </p>
+
+            <h3
+              class="font-semibold text-lg pt-4"
+              data-i18n="charter.text.article5.title"
+            >
+              Article 5 : Nos Valeurs Fondamentales
+            </h3>
+            <p data-i18n="charter.text.article5.intro">
+              Nous nous engageons à incarner et à transmettre ces valeurs
+              essentielles :
+            </p>
+            <ul class="list-disc pl-5 space-y-2 mt-2">
+              <li>
+                <strong
+                  class="text-primary"
+                  data-i18n="charter.text.article5.value1.title"
+                  >Partager plutôt que compétitionner</strong
+                >
+                :
+                <span data-i18n="charter.text.article5.value1.content"
+                  >Nous croyons en la force de la collaboration et du partage
+                  des connaissances. Le succès collectif surpasse toujours les
+                  victoires individuelles.</span
+                >
+              </li>
+              <li>
+                <strong
+                  class="text-primary"
+                  data-i18n="charter.text.article5.value2.title"
+                  >Agir plutôt que se plaindre</strong
+                >
+                :
+                <span data-i18n="charter.text.article5.value2.content"
+                  >Face aux défis, nous choisissons l'action constructive.
+                  Chaque problème est une opportunité de créer une solution
+                  innovante.</span
+                >
+              </li>
+              <li>
+                <strong
+                  class="text-primary"
+                  data-i18n="charter.text.article5.value3.title"
+                  >Oser plutôt que s'inquiéter</strong
+                >
+                :
+                <span data-i18n="charter.text.article5.value3.content"
+                  >Nous encourageons la prise de risque mesurée et
+                  l'expérimentation. L'échec n'est pas une fin mais une étape
+                  d'apprentissage.</span
+                >
+              </li>
+              <li>
+                <strong
+                  class="text-primary"
+                  data-i18n="charter.text.article5.value4.title"
+                  >Créer de la valeur au-delà de la richesse</strong
+                >
+                :
+                <span data-i18n="charter.text.article5.value4.content"
+                  >Nous visons un impact positif sur la société, l'environnement
+                  et les individus. La réussite se mesure autant en termes
+                  d'impact qu'en termes financiers.</span
+                >
+              </li>
+            </ul>
+
+            <p class="pt-4" data-i18n="charter.text.conclusion">
+              En signant cette charte, nous rejoignons une communauté active qui
+              investit dans la jeunesse pour bâtir un avenir plus collaboratif,
+              plus audacieux et plus porteur de sens pour tous.
+            </p>
+          </div>
+        </div>
+
+        <!-- Section de Signature et Liste (droite) -->
+        <div class="lg:col-span-2 space-y-8">
+          <!-- Bloc de Signature -->
+          <div class="bg-white p-6 sm:p-8 rounded-xl shadow-md">
+            <h2 class="text-2xl font-bold mb-2" data-i18n="charter.form.title">
+              Soutenir la vision
+            </h2>
+            <p class="text-gray-600 mb-6" data-i18n="charter.form.subtitle">
+              Rejoignez notre mouvement pour transformer les valeurs en actions
+              concrètes. Votre engagement compte.
+            </p>
+            <form id="charter-form">
+              <div class="space-y-4">
+                <div>
+                  <label
+                    for="prenom"
+                    class="block text-sm font-medium text-gray-700"
+                    data-i18n="charter.form.firstname"
+                  >
+                    Prénom
+                  </label>
+                  <input
+                    type="text"
+                    id="prenom"
+                    name="prenom"
+                    required
+                    class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-primary focus:border-primary sm:text-sm"
+                  />
+                </div>
+                <div>
+                  <label
+                    for="nom"
+                    class="block text-sm font-medium text-gray-700"
+                    data-i18n="charter.form.lastname"
+                  >
+                    Nom
+                  </label>
+                  <input
+                    type="text"
+                    id="nom"
+                    name="nom"
+                    required
+                    class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-primary focus:border-primary sm:text-sm"
+                  />
+                </div>
+                <div>
+                  <label
+                    for="email"
+                    class="block text-sm font-medium text-gray-700"
+                    data-i18n="charter.form.email"
+                  >
+                    Adresse e-mail (optionnel)
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-primary focus:border-primary sm:text-sm"
+                  />
+                </div>
+                <div class="flex items-start pt-2">
+                  <div class="flex items-center h-5">
+                    <input
+                      id="consent"
+                      name="consent"
+                      type="checkbox"
+                      required
+                      class="focus:ring-primary h-4 w-4 text-primary border-gray-300 rounded"
+                    />
+                  </div>
+                  <div class="ml-3 text-sm">
+                    <label
+                      for="consent"
+                      class="font-medium text-gray-700"
+                      data-i18n="charter.form.consent"
+                    >
+                      Je certifie avoir lu et j'approuve les termes de la
+                      charte.
+                    </label>
+                    <p
+                      class="text-gray-500 text-xs mt-1"
+                      data-i18n="charter.form.consent_note"
+                    >
+                      En signant, vous acceptez que votre nom et prénom soient
+                      affichés publiquement dans la liste des signataires.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <button
+                type="submit"
+                class="mt-6 w-full inline-flex justify-center py-3 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-primary hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition-colors"
+                data-i18n="charter.form.submit"
+              >
+                Je m'engage à agir et partager
+              </button>
+            </form>
+          </div>
+
+          <!-- Bloc des Signataires -->
+          <div class="bg-white p-6 sm:p-8 rounded-xl shadow-md">
+            <h2
+              class="text-2xl font-bold mb-2"
+              data-i18n="charter.signatories.title"
+            >
+              Les Pionniers du Changement
+            </h2>
+            <p class="text-gray-600 mb-6">
+              <span data-i18n="charter.signatories.subtitle"
+                >Rejoignez les</span
+              >
+              <strong class="text-primary" id="signature-count">3</strong>
+              <span data-i18n="charter.signatories.subtitle2"
+                >catalyseurs qui transforment déjà les valeurs en actions
+                !</span
+              >
+            </p>
+            <div
+              class="h-64 overflow-y-auto border rounded-lg p-4 bg-gray-50 space-y-3"
+            >
+              <ul id="signatories-list" class="divide-y divide-gray-200">
+                <li
+                  class="py-2"
+                  style="
+                    font-family: 'Caveat', cursive;
+                    font-size: 1.75rem;
+                    line-height: 2.25rem;
+                    color: #1f2937;
+                    border-bottom-width: 1px;
+                  "
+                >
+                  Marie Dubois
+                </li>
+                <li
+                  class="py-2"
+                  style="
+                    font-family: 'Caveat', cursive;
+                    font-size: 1.75rem;
+                    line-height: 2.25rem;
+                    color: #1f2937;
+                    border-bottom-width: 1px;
+                  "
+                >
+                  Jean Dupont
+                </li>
+                <li
+                  class="py-2"
+                  style="
+                    font-family: 'Caveat', cursive;
+                    font-size: 1.75rem;
+                    line-height: 2.25rem;
+                    color: #1f2937;
+                    border-bottom-width: 1px;
+                  "
+                >
+                  Alex Martin
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <footer class="text-center mt-12 py-6 border-t">
+        <p class="text-gray-500">
+          &copy; 2025 TARMAQ.
+          <span data-i18n="footer.rights">Tous droits réservés.</span>
+        </p>
+      </footer>
+    </div>
+
+    <!-- Notification de succès -->
+    <div
+      id="notification"
+      class="notification fixed bottom-5 right-5 bg-green-500 text-white py-2 px-4 rounded-lg shadow-xl transition-all duration-500 opacity-0 translate-y-3"
+    >
+      <span data-i18n="charter.notification"
+        >Merci de rejoindre notre mouvement d'action et de partage !</span
+      >
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/i18n.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/charter.js"></script>
+  </body>
+</html>
