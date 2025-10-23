@@ -6,6 +6,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 **TARMAQ Website** - Static multilingual site (FR/EN/DE/IT) for a Geneva-based youth tech organization. Pure HTML/CSS/JS with zero dependencies, no build tools, no CMS.
 
+**Repository**: https://github.com/bastdumont/tarmaq.ch
+
 **Tech Stack**: HTML5, Tailwind CSS 3.4 (CDN), Vanilla JavaScript, Google Fonts (Inter), Font Awesome 6.4.0
 
 **Critical Constraint**: This is a **pure static HTML project**. No npm, no build process, no server-side code. Everything runs directly in the browser via CDN-loaded libraries.
