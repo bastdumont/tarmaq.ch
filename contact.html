@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - TARMAQ</title>
+    <meta name="description" content="Contactez TARMAQ pour rejoindre nos programmes ou devenir partenaire.">
+    
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#DA2F2C',
+                        secondary: '#111827',
+                        accent: '#F3F4F6'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-sans bg-white text-secondary">
+    
+    <!-- Header -->
+    <header id="header" class="fixed w-full top-0 z-50 bg-white shadow-sm transition-all duration-300">
+        <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="index.html" class="flex items-center space-x-2">
+                <img src="assets/logo.svg" alt="TARMAQ Logo" class="h-10">
+            </a>
+            
+            <div class="hidden lg:flex items-center space-x-8">
+                <a href="index.html" class="nav-link hover:text-primary transition">Accueil</a>
+                <a href="projet.html" class="nav-link hover:text-primary transition">Le projet</a>
+                <a href="activites.html" class="nav-link hover:text-primary transition">Activités</a>
+                <a href="impact.html" class="nav-link hover:text-primary transition">Impact</a>
+                <a href="soutenir.html" class="nav-link hover:text-primary transition" data-i18n="nav.support">Nous soutenir</a>
+                <a href="contact.html" class="nav-link text-primary font-semibold">Contact</a>
+            </div>
+            
+            <div class="hidden lg:flex items-center space-x-2">
+                <button onclick="changeLanguage('fr')" class="lang-btn w-8 h-8 rounded-full overflow-hidden border-2 border-transparent hover:border-primary transition">
+                    <span class="text-xl">🇫🇷</span>
+                </button>
+                <button onclick="changeLanguage('en')" class="lang-btn w-8 h-8 rounded-full overflow-hidden border-2 border-transparent hover:border-primary transition">
+                    <span class="text-xl">🇬🇧</span>
+                </button>
+                <button onclick="changeLanguage('de')" class="lang-btn w-8 h-8 rounded-full overflow-hidden border-2 border-transparent hover:border-primary transition">
+                    <span class="text-xl">🇩🇪</span>
+                </button>
+                <button onclick="changeLanguage('it')" class="lang-btn w-8 h-8 rounded-full overflow-hidden border-2 border-transparent hover:border-primary transition">
+                    <span class="text-xl">🇮🇹</span>
+                </button>
+            </div>
+            
+            <button id="mobile-menu-btn" class="lg:hidden text-2xl">
+                <i class="fas fa-bars"></i>
+            </button>
+        </nav>
+        
+        <div id="mobile-menu" class="hidden lg:hidden bg-white border-t">
+            <div class="container mx-auto px-4 py-4 flex flex-col space-y-4">
+                <a href="index.html" class="nav-link hover:text-primary transition">Accueil</a>
+                <a href="projet.html" class="nav-link hover:text-primary transition">Le projet</a>
+                <a href="activites.html" class="nav-link hover:text-primary transition">Activités</a>
+                <a href="impact.html" class="nav-link hover:text-primary transition">Impact</a>
+                <a href="soutenir.html" class="nav-link hover:text-primary transition" data-i18n="nav.support">Nous soutenir</a>
+                <a href="contact.html" class="nav-link text-primary font-semibold">Contact</a>
+                
+                <div class="flex space-x-3 pt-2">
+                    <button onclick="changeLanguage('fr')" class="lang-btn text-2xl">🇫🇷</button>
+                    <button onclick="changeLanguage('en')" class="lang-btn text-2xl">🇬🇧</button>
+                    <button onclick="changeLanguage('de')" class="lang-btn text-2xl">🇩🇪</button>
+                    <button onclick="changeLanguage('it')" class="lang-btn text-2xl">🇮🇹</button>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Page Header -->
+    <section class="pt-32 pb-16 bg-gradient-to-br from-primary to-red-700 text-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto text-center">
+                <h1 class="text-5xl md:text-6xl font-bold mb-6">Contactez-nous</h1>
+                <p class="text-xl opacity-90">
+                    Rejoignez l'aventure TARMAQ ou posez-nous vos questions
+                </p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contact Section -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12">
+                <!-- Contact Form -->
+                <div>
+                    <h2 class="text-3xl font-bold mb-6">Envoyez-nous un message</h2>
+                    <form id="contact-form" class="space-y-6">
+                        <div>
+                            <label for="name" class="block text-sm font-semibold mb-2">Nom complet *</label>
+                            <input 
+                                type="text" 
+                                id="name" 
+                                name="name" 
+                                required 
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition"
+                                placeholder="Votre nom"
+                            >
+                        </div>
+                        
+                        <div>
+                            <label for="email" class="block text-sm font-semibold mb-2">Email *</label>
+                            <input 
+                                type="email" 
+                                id="email" 
+                                name="email" 
+                                required 
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition"
+                                placeholder="votre@email.com"
+                            >
+                        </div>
+                        
+                        <div>
+                            <label for="phone" class="block text-sm font-semibold mb-2">Téléphone</label>
+                            <input 
+                                type="tel" 
+                                id="phone" 
+                                name="phone" 
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition"
+                                placeholder="+41 XX XXX XX XX"
+                            >
+                        </div>
+                        
+                        <div>
+                            <label for="subject" class="block text-sm font-semibold mb-2">Sujet *</label>
+                            <select 
+                                id="subject" 
+                                name="subject" 
+                                required 
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition"
+                            >
+                                <option value="">Sélectionnez un sujet</option>
+                                <option value="participation">Participer aux programmes</option>
+                                <option value="partenariat">Devenir partenaire</option>
+                                <option value="mentorat">Devenir mentor</option>
+                                <option value="financement">Soutien financier</option>
+                                <option value="autre">Autre question</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <label for="message" class="block text-sm font-semibold mb-2">Message *</label>
+                            <textarea 
+                                id="message" 
+                                name="message" 
+                                required 
+                                rows="6" 
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition"
+                                placeholder="Votre message..."
+                            ></textarea>
+                        </div>
+                        
+                        <button 
+                            type="submit" 
+                            class="w-full bg-primary hover:bg-red-700 text-white font-semibold py-4 px-8 rounded-lg transition duration-300 transform hover:scale-105"
+                        >
+                            <i class="fas fa-paper-plane mr-2"></i> Envoyer le message
+                        </button>
+                        
+                        <p class="text-sm text-gray-500 text-center">
+                            * Champs obligatoires
+                        </p>
+                    </form>
+                </div>
+                
+                <!-- Contact Info -->
+                <div>
+                    <h2 class="text-3xl font-bold mb-6">Informations de contact</h2>
+                    
+                    <div class="space-y-6 mb-8">
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 bg-primary rounded-lg flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-map-marker-alt text-white text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold mb-1">Adresse</h3>
+                                <p class="text-gray-600">Perspectives Jeunesse<br>11 avenue Eugène-Pittard<br>1206 Genève, Suisse</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 bg-primary rounded-lg flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-envelope text-white text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold mb-1">Email</h3>
+                                <a href="mailto:bastien@bdi-solutions.com" class="text-primary hover:underline">bastien@bdi-solutions.com</a>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 bg-primary rounded-lg flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-phone text-white text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold mb-1">Téléphone</h3>
+                                <a href="tel:+41796707743" class="text-primary hover:underline">+41 79 670 77 43</a>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 bg-primary rounded-lg flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-clock text-white text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold mb-1">Horaires</h3>
+                                <p class="text-gray-600">Lundi - Vendredi: 9h - 18h<br>Samedi: Sur rendez-vous</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-accent p-6 rounded-2xl">
+                        <h3 class="font-bold text-xl mb-4">Suivez-nous</h3>
+                        <div class="flex space-x-4">
+                            <a href="#" class="w-12 h-12 bg-primary rounded-lg flex items-center justify-center hover:bg-red-700 transition text-white">
+                                <i class="fab fa-linkedin-in text-xl"></i>
+                            </a>
+                            <a href="#" class="w-12 h-12 bg-primary rounded-lg flex items-center justify-center hover:bg-red-700 transition text-white">
+                                <i class="fab fa-twitter text-xl"></i>
+                            </a>
+                            <a href="#" class="w-12 h-12 bg-primary rounded-lg flex items-center justify-center hover:bg-red-700 transition text-white">
+                                <i class="fab fa-instagram text-xl"></i>
+                            </a>
+                            <a href="#" class="w-12 h-12 bg-primary rounded-lg flex items-center justify-center hover:bg-red-700 transition text-white">
+                                <i class="fab fa-facebook-f text-xl"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8 bg-gradient-to-br from-primary to-red-700 text-white p-6 rounded-2xl">
+                        <h3 class="font-bold text-xl mb-3">💡 Envie de nous rencontrer ?</h3>
+                        <p class="mb-4 opacity-90">Réservez un créneau pour discuter de votre projet avec nous !</p>
+                        <a href="https://meetings-eu1.hubspot.com/bdumont?uuid=a342bacf-b1c4-4182-82dd-64b39fa7b307" target="_blank" rel="noopener noreferrer" class="inline-block bg-white text-primary px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition">
+                            Réserver un rendez-vous →
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="bg-secondary text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <img src="assets/logo-white.svg" alt="TARMAQ" class="h-10 mb-4">
+                    <p class="text-gray-400 text-sm">
+                        Catalyseur d'excellence pour les jeunes talents dans les technologies émergentes.
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold mb-4">Liens rapides</h4>
+                    <ul class="space-y-2 text-gray-400 text-sm">
+                        <li><a href="projet.html" class="hover:text-white transition">Le projet</a></li>
+                        <li><a href="activites.html" class="hover:text-white transition">Activités</a></li>
+                        <li><a href="impact.html" class="hover:text-white transition">Impact</a></li>
+                        <li><a href="soutenir.html" class="hover:text-white transition" data-i18n="nav.support">Nous soutenir</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold mb-4">Contact</h4>
+                    <ul class="space-y-2 text-gray-400 text-sm">
+                        <li><i class="fas fa-envelope mr-2"></i>bastien@bdi-solutions.com</li>
+                        <li><i class="fas fa-phone mr-2"></i>+41 79 670 77 43</li>
+                        <li><i class="fas fa-map-marker-alt mr-2"></i>11 avenue Eugène-Pittard, 1206 Genève</li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold mb-4">Suivez-nous</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center hover:bg-primary transition">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center hover:bg-primary transition">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center hover:bg-primary transition">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 pt-8 text-center text-gray-400 text-sm">
+                <p>&copy; 2025 TARMAQ. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="js/i18n.js"></script>
+    <script src="js/main.js"></script>
+
+    <!-- Contact Form Handler -->
+    <script>
+        document.getElementById('contact-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalBtnText = submitBtn.innerHTML;
+
+            // Disable button and show loading state
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Envoi en cours...';
+
+            // Get form data
+            const formData = new FormData(this);
+            const data = {
+                name: formData.get('name'),
+                email: formData.get('email'),
+                phone: formData.get('phone') || 'Non fourni',
+                subject: formData.get('subject'),
+                message: formData.get('message')
+            };
+
+            // Format email body
+            const emailBody = `
+Nouveau message depuis le formulaire de contact TARMAQ
+
+Nom: ${data.name}
+Email: ${data.email}
+Téléphone: ${data.phone}
+Sujet: ${data.subject}
+
+Message:
+${data.message}
+            `.trim();
+
+            try {
+                // Send email using FormSubmit (free service, no API key needed)
+                const response = await fetch('https://formsubmit.co/ajax/bastien@balder-app.com', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        name: data.name,
+                        email: data.email,
+                        phone: data.phone,
+                        subject: `TARMAQ Contact: ${data.subject}`,
+                        message: emailBody,
+                        _captcha: 'false' // Disable captcha for now
+                    })
+                });
+
+                const result = await response.json();
+
+                if (response.ok) {
+                    // Success message
+                    this.reset();
+                    submitBtn.innerHTML = '<i class="fas fa-check-circle mr-2"></i> Message envoyé !';
+                    submitBtn.classList.remove('bg-primary', 'hover:bg-red-700');
+                    submitBtn.classList.add('bg-green-600');
+
+                    // Show success alert
+                    const successAlert = document.createElement('div');
+                    successAlert.className = 'fixed top-24 right-4 bg-green-600 text-white px-6 py-4 rounded-lg shadow-lg z-50 animate-fade-in';
+                    successAlert.innerHTML = '<i class="fas fa-check-circle mr-2"></i> Votre message a été envoyé avec succès !';
+                    document.body.appendChild(successAlert);
+
+                    setTimeout(() => {
+                        successAlert.remove();
+                        submitBtn.disabled = false;
+                        submitBtn.innerHTML = originalBtnText;
+                        submitBtn.classList.remove('bg-green-600');
+                        submitBtn.classList.add('bg-primary', 'hover:bg-red-700');
+                    }, 5000);
+                } else {
+                    throw new Error('Erreur lors de l\'envoi');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+
+                // Error message
+                submitBtn.innerHTML = '<i class="fas fa-exclamation-circle mr-2"></i> Erreur';
+                submitBtn.classList.remove('bg-primary');
+                submitBtn.classList.add('bg-red-800');
+
+                // Show error alert
+                const errorAlert = document.createElement('div');
+                errorAlert.className = 'fixed top-24 right-4 bg-red-600 text-white px-6 py-4 rounded-lg shadow-lg z-50 animate-fade-in';
+                errorAlert.innerHTML = '<i class="fas fa-exclamation-circle mr-2"></i> Erreur lors de l\'envoi. Veuillez réessayer ou nous contacter directement.';
+                document.body.appendChild(errorAlert);
+
+                setTimeout(() => {
+                    errorAlert.remove();
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = originalBtnText;
+                    submitBtn.classList.remove('bg-red-800');
+                    submitBtn.classList.add('bg-primary', 'hover:bg-red-700');
+                }, 5000);
+            }
+        });
+    </script>
+</body>
+</html>

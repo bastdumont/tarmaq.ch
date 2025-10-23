@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TARMAQ - Catalyseur d'excellence</title>
+    <meta name="description" content="TARMAQ : espace d'innovation dédié à la formation, au mentorat et aux technologies émergentes pour les jeunes talents.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="css/style.css">
+    
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#DA2F2C',
+                        secondary: '#111827',
+                        accent: '#F3F4F6'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-sans bg-white text-secondary">
+    
+    <!-- Header / Navigation -->
+    <header id="header" class="fixed w-full top-0 z-50 bg-white shadow-sm transition-all duration-300">
+        <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <!-- Logo -->
+            <a href="index.html" class="flex items-center space-x-2">
+                <img src="assets/logo.svg" alt="TARMAQ Logo" class="h-10">
+            </a>
+            
+            <!-- Desktop Menu -->
+            <div class="hidden lg:flex items-center space-x-8">
+                <a href="index.html" class="nav-link text-primary font-semibold" data-i18n="nav.home">Accueil</a>
+                <a href="projet.html" class="nav-link hover:text-primary transition" data-i18n="nav.project">Le projet</a>
+                <a href="activites.html" class="nav-link hover:text-primary transition" data-i18n="nav.activities">Activités</a>
+                <a href="impact.html" class="nav-link hover:text-primary transition" data-i18n="nav.impact">Impact</a>
+                <a href="soutenir.html" class="nav-link hover:text-primary transition" data-i18n="nav.support">Nous soutenir</a>
+                <a href="contact.html" class="nav-link hover:text-primary transition" data-i18n="nav.contact">Contact</a>
+            </div>
+            
+            <!-- Language Selector -->
+            <div class="hidden lg:flex items-center space-x-2">
+                <button onclick="changeLanguage('fr')" class="lang-btn w-8 h-8 rounded-full overflow-hidden border-2 border-transparent hover:border-primary transition" title="Français">
+                    <span class="text-xl">🇫🇷</span>
+                </button>
+                <button onclick="changeLanguage('en')" class="lang-btn w-8 h-8 rounded-full overflow-hidden border-2 border-transparent hover:border-primary transition" title="English">
+                    <span class="text-xl">🇬🇧</span>
+                </button>
+                <button onclick="changeLanguage('de')" class="lang-btn w-8 h-8 rounded-full overflow-hidden border-2 border-transparent hover:border-primary transition" title="Deutsch">
+                    <span class="text-xl">🇩🇪</span>
+                </button>
+                <button onclick="changeLanguage('it')" class="lang-btn w-8 h-8 rounded-full overflow-hidden border-2 border-transparent hover:border-primary transition" title="Italiano">
+                    <span class="text-xl">🇮🇹</span>
+                </button>
+            </div>
+            
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="lg:hidden text-2xl">
+                <i class="fas fa-bars"></i>
+            </button>
+        </nav>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-white border-t">
+            <div class="container mx-auto px-4 py-4 flex flex-col space-y-4">
+                <a href="index.html" class="nav-link text-primary font-semibold" data-i18n="nav.home">Accueil</a>
+                <a href="projet.html" class="nav-link hover:text-primary transition" data-i18n="nav.project">Le projet</a>
+                <a href="activites.html" class="nav-link hover:text-primary transition" data-i18n="nav.activities">Activités</a>
+                <a href="impact.html" class="nav-link hover:text-primary transition" data-i18n="nav.impact">Impact</a>
+                <a href="soutenir.html" class="nav-link hover:text-primary transition" data-i18n="nav.support">Nous soutenir</a>
+                <a href="contact.html" class="nav-link hover:text-primary transition" data-i18n="nav.contact">Contact</a>
+                
+                <div class="flex space-x-3 pt-2">
+                    <button onclick="changeLanguage('fr')" class="lang-btn text-2xl">🇫🇷</button>
+                    <button onclick="changeLanguage('en')" class="lang-btn text-2xl">🇬🇧</button>
+                    <button onclick="changeLanguage('de')" class="lang-btn text-2xl">🇩🇪</button>
+                    <button onclick="changeLanguage('it')" class="lang-btn text-2xl">🇮🇹</button>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Hero Section -->
+    <section class="pt-24 pb-16 bg-gradient-to-br from-primary to-red-700 text-white">
+        <div class="container mx-auto px-4 py-16">
+            <div class="max-w-4xl mx-auto text-center">
+                <h1 class="text-5xl md:text-6xl font-bold mb-6 animate-fade-in" data-i18n="hero.title">
+                    Catalyseur d'excellence
+                </h1>
+                <p class="text-xl md:text-2xl mb-8 opacity-90 animate-fade-in-delay" data-i18n="hero.subtitle">
+                    Un espace d'innovation dédié à la formation, au mentorat et aux technologies émergentes pour les jeunes talents
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-delay-2">
+                    <a href="projet.html" class="btn-primary bg-white text-primary hover:bg-gray-100 px-8 py-4 rounded-full font-semibold text-lg transition inline-flex items-center justify-center" data-i18n="hero.cta1">
+                        Découvrir Tarmaq
+                    </a>
+                    <a href="contact.html" class="btn-secondary border-2 border-white text-white hover:bg-white hover:text-primary px-8 py-4 rounded-full font-semibold text-lg transition inline-flex items-center justify-center" data-i18n="hero.cta2">
+                        Soutenir le projet
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Scroll Indicator -->
+        <div class="text-center pb-8">
+            <i class="fas fa-chevron-down text-3xl animate-bounce opacity-50"></i>
+        </div>
+    </section>
+    
+    <!-- Mission Section -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto text-center mb-16">
+                <h2 class="text-4xl font-bold mb-6" data-i18n="mission.title">Notre mission</h2>
+                <p class="text-xl text-gray-600" data-i18n="mission.description">
+                    TARMAQ est un catalyseur d'excellence qui vise à démocratiser l'accès aux technologies émergentes et à accompagner les jeunes talents dans leur développement professionnel.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="bg-accent p-8 rounded-2xl hover:shadow-xl transition duration-300">
+                    <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mb-6 mx-auto">
+                        <i class="fas fa-graduation-cap text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-center" data-i18n="mission.card1.title">Formation</h3>
+                    <p class="text-gray-600 text-center" data-i18n="mission.card1.description">
+                        Programmes de formation en IA, blockchain, cybersécurité et technologies émergentes adaptés aux besoins du marché.
+                    </p>
+                </div>
+                
+                <!-- Card 2 -->
+                <div class="bg-accent p-8 rounded-2xl hover:shadow-xl transition duration-300">
+                    <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mb-6 mx-auto">
+                        <i class="fas fa-users text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-center" data-i18n="mission.card2.title">Mentorat</h3>
+                    <p class="text-gray-600 text-center" data-i18n="mission.card2.description">
+                        Accompagnement personnalisé par des professionnels expérimentés pour guider les jeunes dans leur parcours.
+                    </p>
+                </div>
+                
+                <!-- Card 3 -->
+                <div class="bg-accent p-8 rounded-2xl hover:shadow-xl transition duration-300">
+                    <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mb-6 mx-auto">
+                        <i class="fas fa-rocket text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-center" data-i18n="mission.card3.title">Innovation</h3>
+                    <p class="text-gray-600 text-center" data-i18n="mission.card3.description">
+                        Espace d'expérimentation et d'innovation pour développer des projets concrets et impactants.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Statistics Section -->
+    <section class="py-20 bg-gradient-to-r from-secondary to-gray-800 text-white">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8 text-center">
+                <div>
+                    <div class="text-5xl font-bold text-primary mb-2">500+</div>
+                    <p class="text-lg opacity-90" data-i18n="stats.participants">Jeunes formés</p>
+                </div>
+                <div>
+                    <div class="text-5xl font-bold text-primary mb-2">50+</div>
+                    <p class="text-lg opacity-90" data-i18n="stats.mentors">Mentors actifs</p>
+                </div>
+                <div>
+                    <div class="text-5xl font-bold text-primary mb-2">30+</div>
+                    <p class="text-lg opacity-90" data-i18n="stats.projects">Projets réalisés</p>
+                </div>
+                <div>
+                    <div class="text-5xl font-bold text-primary mb-2">10+</div>
+                    <p class="text-lg opacity-90" data-i18n="stats.partners">Partenaires</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Programs Preview -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4" data-i18n="programs.title">Nos programmes</h2>
+                <p class="text-xl text-gray-600" data-i18n="programs.subtitle">
+                    Des formations et activités conçues pour développer les compétences du futur
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+                <!-- Program 1 -->
+                <div class="bg-gradient-to-br from-accent to-white p-8 rounded-2xl border border-gray-200 hover:shadow-xl transition">
+                    <div class="flex items-start space-x-4">
+                        <div class="w-12 h-12 bg-primary rounded-xl flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-brain text-white text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold mb-3" data-i18n="programs.ai.title">Formation IA</h3>
+                            <p class="text-gray-600 mb-4" data-i18n="programs.ai.description">
+                                Ateliers pratiques et théoriques sur l'intelligence artificielle, le machine learning et les applications concrètes.
+                            </p>
+                            <a href="activites.html" class="text-primary font-semibold hover:underline" data-i18n="programs.learn_more">
+                                En savoir plus →
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Program 2 -->
+                <div class="bg-gradient-to-br from-accent to-white p-8 rounded-2xl border border-gray-200 hover:shadow-xl transition">
+                    <div class="flex items-start space-x-4">
+                        <div class="w-12 h-12 bg-primary rounded-xl flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-code text-white text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold mb-3" data-i18n="programs.hackathon.title">Hackathons</h3>
+                            <p class="text-gray-600 mb-4" data-i18n="programs.hackathon.description">
+                                Événements intensifs pour développer des solutions innovantes en équipe sur des défis concrets.
+                            </p>
+                            <a href="activites.html" class="text-primary font-semibold hover:underline" data-i18n="programs.learn_more">
+                                En savoir plus →
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Program 3 -->
+                <div class="bg-gradient-to-br from-accent to-white p-8 rounded-2xl border border-gray-200 hover:shadow-xl transition">
+                    <div class="flex items-start space-x-4">
+                        <div class="w-12 h-12 bg-primary rounded-xl flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-plane text-white text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold mb-3" data-i18n="programs.travel.title">Voyages éducatifs</h3>
+                            <p class="text-gray-600 mb-4" data-i18n="programs.travel.description">
+                                Découverte des écosystèmes tech internationaux et rencontres avec des leaders de l'industrie.
+                            </p>
+                            <a href="activites.html" class="text-primary font-semibold hover:underline" data-i18n="programs.learn_more">
+                                En savoir plus →
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Program 4 -->
+                <div class="bg-gradient-to-br from-accent to-white p-8 rounded-2xl border border-gray-200 hover:shadow-xl transition">
+                    <div class="flex items-start space-x-4">
+                        <div class="w-12 h-12 bg-primary rounded-xl flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-handshake text-white text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold mb-3" data-i18n="programs.mentoring.title">Programme de mentorat</h3>
+                            <p class="text-gray-600 mb-4" data-i18n="programs.mentoring.description">
+                                Accompagnement individuel par des professionnels pour le développement de carrière.
+                            </p>
+                            <a href="activites.html" class="text-primary font-semibold hover:underline" data-i18n="programs.learn_more">
+                                En savoir plus →
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- CTA Section -->
+    <section class="py-20 bg-primary text-white">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-4xl font-bold mb-6" data-i18n="cta.title">Rejoignez l'aventure TARMAQ</h2>
+            <p class="text-xl mb-8 opacity-90 max-w-2xl mx-auto" data-i18n="cta.description">
+                Que vous soyez un jeune talent, un mentor, un partenaire ou un mécène, il y a une place pour vous dans notre écosystème.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="contact.html" class="bg-white text-primary hover:bg-gray-100 px-8 py-4 rounded-full font-semibold text-lg transition inline-flex items-center justify-center" data-i18n="cta.btn1">
+                    Nous contacter
+                </a>
+                <a href="soutenir.html" class="border-2 border-white text-white hover:bg-white hover:text-primary px-8 py-4 rounded-full font-semibold text-lg transition inline-flex items-center justify-center" data-i18n="cta.btn2">
+                    Devenir partenaire
+                </a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="bg-secondary text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <!-- About -->
+                <div>
+                    <img src="assets/logo-white.svg" alt="TARMAQ" class="h-10 mb-4">
+                    <p class="text-gray-400 text-sm" data-i18n="footer.about">
+                        Catalyseur d'excellence pour les jeunes talents dans les technologies émergentes.
+                    </p>
+                </div>
+                
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="font-bold mb-4" data-i18n="footer.links">Liens rapides</h4>
+                    <ul class="space-y-2 text-gray-400 text-sm">
+                        <li><a href="projet.html" class="hover:text-white transition" data-i18n="nav.project">Le projet</a></li>
+                        <li><a href="activites.html" class="hover:text-white transition" data-i18n="nav.activities">Activités</a></li>
+                        <li><a href="impact.html" class="hover:text-white transition" data-i18n="nav.impact">Impact</a></li>
+                        <li><a href="soutenir.html" class="hover:text-white transition" data-i18n="nav.support">Nous soutenir</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Contact -->
+                <div>
+                    <h4 class="font-bold mb-4" data-i18n="footer.contact">Contact</h4>
+                    <ul class="space-y-2 text-gray-400 text-sm">
+                        <li><i class="fas fa-envelope mr-2"></i>bastien@bdi-solutions.com</li>
+                        <li><i class="fas fa-phone mr-2"></i>+41 79 670 77 43</li>
+                        <li><i class="fas fa-map-marker-alt mr-2"></i>11 avenue Eugène-Pittard, 1206 Genève</li>
+                    </ul>
+                </div>
+                
+                <!-- Social -->
+                <div>
+                    <h4 class="font-bold mb-4" data-i18n="footer.social">Suivez-nous</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center hover:bg-primary transition">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center hover:bg-primary transition">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center hover:bg-primary transition">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 pt-8 text-center text-gray-400 text-sm">
+                <p>&copy; 2025 TARMAQ. <span data-i18n="footer.rights">Tous droits réservés.</span></p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Scripts -->
+    <script src="js/i18n.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Page non trouvée | TARMAQ</title>
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: { extend: { colors: { primary: '#DA2F2C', secondary: '#111827' }, fontFamily: { sans: ['Inter', 'sans-serif'] } } }
+        }
+    </script>
+    <style>
+        .float-animation {
+            animation: float 3s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+    </style>
+</head>
+<body class="font-sans bg-gradient-to-br from-accent to-white min-h-screen flex items-center justify-center">
+    <div class="container mx-auto px-4 text-center">
+        <div class="max-w-2xl mx-auto">
+            <!-- 404 Icon -->
+            <div class="mb-8 float-animation">
+                <i class="fas fa-exclamation-triangle text-primary" style="font-size: 120px;"></i>
+            </div>
+            
+            <!-- Error Message -->
+            <h1 class="text-6xl md:text-8xl font-bold text-secondary mb-4">404</h1>
+            <h2 class="text-3xl md:text-4xl font-bold text-secondary mb-6">Page non trouvée</h2>
+            
+            <p class="text-xl text-gray-600 mb-8">
+                Désolé, la page que vous recherchez n'existe pas ou a été déplacée.
+            </p>
+            
+            <!-- Search suggestions -->
+            <div class="bg-white p-8 rounded-2xl shadow-lg mb-8">
+                <h3 class="text-xl font-bold mb-4">Peut-être recherchez-vous :</h3>
+                <div class="grid md:grid-cols-2 gap-4">
+                    <a href="index.html" class="flex items-center p-4 bg-accent rounded-lg hover:bg-primary hover:text-white transition">
+                        <i class="fas fa-home text-2xl mr-3"></i>
+                        <span class="font-semibold">Accueil</span>
+                    </a>
+                    <a href="projet.html" class="flex items-center p-4 bg-accent rounded-lg hover:bg-primary hover:text-white transition">
+                        <i class="fas fa-info-circle text-2xl mr-3"></i>
+                        <span class="font-semibold">Le Projet</span>
+                    </a>
+                    <a href="activites.html" class="flex items-center p-4 bg-accent rounded-lg hover:bg-primary hover:text-white transition">
+                        <i class="fas fa-graduation-cap text-2xl mr-3"></i>
+                        <span class="font-semibold">Activités</span>
+                    </a>
+                    <a href="contact.html" class="flex items-center p-4 bg-accent rounded-lg hover:bg-primary hover:text-white transition">
+                        <i class="fas fa-envelope text-2xl mr-3"></i>
+                        <span class="font-semibold">Contact</span>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- CTA Buttons -->
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="index.html" class="bg-primary hover:bg-red-700 text-white px-8 py-4 rounded-full font-semibold text-lg transition inline-flex items-center justify-center">
+                    <i class="fas fa-home mr-2"></i>
+                    Retour à l'accueil
+                </a>
+                <a href="javascript:history.back()" class="border-2 border-primary text-primary hover:bg-primary hover:text-white px-8 py-4 rounded-full font-semibold text-lg transition inline-flex items-center justify-center">
+                    <i class="fas fa-arrow-left mr-2"></i>
+                    Page précédente
+                </a>
+            </div>
+            
+            <!-- Help text -->
+            <p class="mt-8 text-gray-500">
+                Si vous pensez qu'il s'agit d'une erreur, 
+                <a href="contact.html" class="text-primary hover:underline">contactez-nous</a>.
+            </p>
+        </div>
+    </div>
+    
+    <!-- Logo in corner -->
+    <div class="fixed bottom-8 left-8">
+        <a href="index.html">
+            <img src="assets/logo.svg" alt="TARMAQ" class="h-12 opacity-50 hover:opacity-100 transition">
+        </a>
+    </div>
+</body>
+</html>

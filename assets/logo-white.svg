@@ -1,0 +1,23 @@
+<svg width="180" height="50" viewBox="0 0 180 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- T -->
+  <path d="M10 10 L35 10 M22.5 10 L22.5 40" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  
+  <!-- A -->
+  <path d="M42 40 L50 10 L58 40 M45 28 L55 28" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  
+  <!-- R -->
+  <path d="M65 40 L65 10 L75 10 Q82 10 82 17 Q82 24 75 24 L65 24 M75 24 L82 40" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  
+  <!-- M -->
+  <path d="M89 40 L89 10 L97 25 L105 10 L105 40" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  
+  <!-- A -->
+  <path d="M112 40 L120 10 L128 40 M115 28 L125 28" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  
+  <!-- Q -->
+  <circle cx="145" cy="25" r="10" stroke="#FFFFFF" stroke-width="4" fill="none"/>
+  <path d="M150 30 L155 40" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round"/>
+  
+  <!-- Accent dot -->
+  <circle cx="165" cy="35" r="3" fill="#FFFFFF"/>
+</svg>
