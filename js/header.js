@@ -32,7 +32,7 @@ class TarmaqHeader {
       >
         <!-- Logo -->
         <a href="index.html" class="flex items-center space-x-2">
-          <img src="assets/logo.png" alt="TARMAQ Logo" class="h-10" />
+          <img src="assets/logo.png" alt="TARMAQ Logo" class="h-12" />
         </a>
 
         <!-- Desktop Menu -->
@@ -41,19 +41,13 @@ class TarmaqHeader {
             href="index.html"
             class="nav-link ${this.currentPage === 'index' ? 'text-primary font-semibold' : 'hover:text-primary transition'}"
             data-i18n="nav.home"
-            >Accueil</a
-          >
-          <a
-            href="projet.html"
-            class="nav-link ${this.currentPage === 'projet' ? 'text-primary font-semibold' : 'hover:text-primary transition'}"
-            data-i18n="nav.project"
-            >Le projet</a
+            >On décolle</a
           >
           <a
             href="about.html"
             class="nav-link ${this.currentPage === 'about' ? 'text-primary font-semibold' : 'hover:text-primary transition'}"
             data-i18n="nav.about"
-            >À propos</a
+            >Mission</a
           >
           <a
             href="activites.html"
@@ -62,10 +56,10 @@ class TarmaqHeader {
             >Activités</a
           >
           <a
-            href="soutenir.html"
-            class="nav-link ${this.currentPage === 'soutenir' ? 'text-primary font-semibold' : 'hover:text-primary transition'}"
-            data-i18n="nav.support"
-            >Soutien</a
+            href="projet.html"
+            class="nav-link ${this.currentPage === 'projet' ? 'text-primary font-semibold' : 'hover:text-primary transition'}"
+            data-i18n="nav.project"
+            >Projet</a
           >
           <a
             href="charte.html"
@@ -126,19 +120,13 @@ class TarmaqHeader {
             href="index.html"
             class="nav-link ${this.currentPage === 'index' ? 'text-primary font-semibold' : 'hover:text-primary transition'}"
             data-i18n="nav.home"
-            >Accueil</a
-          >
-          <a
-            href="projet.html"
-            class="nav-link ${this.currentPage === 'projet' ? 'text-primary font-semibold' : 'hover:text-primary transition'}"
-            data-i18n="nav.project"
-            >Le projet</a
+            >On décolle</a
           >
           <a
             href="about.html"
             class="nav-link ${this.currentPage === 'about' ? 'text-primary font-semibold' : 'hover:text-primary transition'}"
             data-i18n="nav.about"
-            >À propos</a
+            >Mission</a
           >
           <a
             href="activites.html"
@@ -147,10 +135,10 @@ class TarmaqHeader {
             >Activités</a
           >
           <a
-            href="soutenir.html"
-            class="nav-link ${this.currentPage === 'soutenir' ? 'text-primary font-semibold' : 'hover:text-primary transition'}"
-            data-i18n="nav.support"
-            >Soutien</a
+            href="projet.html"
+            class="nav-link ${this.currentPage === 'projet' ? 'text-primary font-semibold' : 'hover:text-primary transition'}"
+            data-i18n="nav.project"
+            >Projet</a
           >
           <a
             href="charte.html"
