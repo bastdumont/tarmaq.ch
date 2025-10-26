@@ -39,161 +39,7 @@
     </script>
   </head>
   <body class="font-sans bg-white text-secondary">
-    <!-- Header / Navigation (same as index.html) -->
-    <header
-      id="header"
-      class="fixed w-full top-0 z-50 bg-white shadow-sm transition-all duration-300"
-    >
-      <nav
-        class="container mx-auto px-4 py-4 flex justify-between items-center"
-      >
-        <a href="index.html" class="flex items-center space-x-2">
-          <img src="assets/logo.png" alt="TARMAQ Logo" class="h-10" />
-        </a>
-
-        <div class="hidden lg:flex items-center space-x-8">
-          <a
-            href="index.html"
-            class="nav-link hover:text-primary transition"
-            data-i18n="nav.home"
-            >Accueil</a
-          >
-          <a
-            href="projet.html"
-            class="nav-link text-primary font-semibold"
-            data-i18n="nav.project"
-            >Le projet</a
-          >
-          <a
-            href="activites.html"
-            class="nav-link hover:text-primary transition"
-            data-i18n="nav.activities"
-            >Activités</a
-          >
-          <a
-            href="impact.html"
-            class="nav-link hover:text-primary transition"
-            data-i18n="nav.impact"
-            >Impact</a
-          >
-          <a
-            href="soutenir.html"
-            class="nav-link hover:text-primary transition"
-            data-i18n="nav.support"
-            >Nous soutenir</a
-          >
-          <a
-            href="contact.html"
-            class="nav-link hover:text-primary transition"
-            data-i18n="nav.contact"
-            >Contact</a
-          >
-          <a
-            href="charte.html"
-            class="nav-link hover:text-primary transition"
-            data-i18n="nav.charter"
-            >Charte</a
-          >
-        </div>
-
-        <div class="hidden lg:flex items-center space-x-2">
-          <button
-            onclick="changeLanguage('fr')"
-            class="lang-btn w-8 h-8 rounded-full overflow-hidden border-2 border-transparent hover:border-primary transition"
-            title="Français"
-          >
-            <span class="text-xl">🇫🇷</span>
-          </button>
-          <button
-            onclick="changeLanguage('en')"
-            class="lang-btn w-8 h-8 rounded-full overflow-hidden border-2 border-transparent hover:border-primary transition"
-            title="English"
-          >
-            <span class="text-xl">🇬🇧</span>
-          </button>
-          <button
-            onclick="changeLanguage('de')"
-            class="lang-btn w-8 h-8 rounded-full overflow-hidden border-2 border-transparent hover:border-primary transition"
-            title="Deutsch"
-          >
-            <span class="text-xl">🇩🇪</span>
-          </button>
-          <button
-            onclick="changeLanguage('it')"
-            class="lang-btn w-8 h-8 rounded-full overflow-hidden border-2 border-transparent hover:border-primary transition"
-            title="Italiano"
-          >
-            <span class="text-xl">🇮🇹</span>
-          </button>
-        </div>
-
-        <button id="mobile-menu-btn" class="lg:hidden text-2xl">
-          <i class="fas fa-bars"></i>
-        </button>
-      </nav>
-
-      <div id="mobile-menu" class="hidden lg:hidden bg-white border-t">
-        <div class="container mx-auto px-4 py-4 flex flex-col space-y-4">
-          <a
-            href="index.html"
-            class="nav-link hover:text-primary transition"
-            data-i18n="nav.home"
-            >Accueil</a
-          >
-          <a
-            href="projet.html"
-            class="nav-link text-primary font-semibold"
-            data-i18n="nav.project"
-            >Le projet</a
-          >
-          <a
-            href="activites.html"
-            class="nav-link hover:text-primary transition"
-            data-i18n="nav.activities"
-            >Activités</a
-          >
-          <a
-            href="impact.html"
-            class="nav-link hover:text-primary transition"
-            data-i18n="nav.impact"
-            >Impact</a
-          >
-          <a
-            href="soutenir.html"
-            class="nav-link hover:text-primary transition"
-            data-i18n="nav.support"
-            >Nous soutenir</a
-          >
-          <a
-            href="contact.html"
-            class="nav-link hover:text-primary transition"
-            data-i18n="nav.contact"
-            >Contact</a
-          >
-          <a
-            href="charte.html"
-            class="nav-link hover:text-primary transition"
-            data-i18n="nav.charter"
-            >Charte</a
-          >
-
-          <div class="flex space-x-3 pt-2">
-            <button onclick="changeLanguage('fr')" class="lang-btn text-2xl">
-              🇫🇷
-            </button>
-            <button onclick="changeLanguage('en')" class="lang-btn text-2xl">
-              🇬🇧
-            </button>
-            <button onclick="changeLanguage('de')" class="lang-btn text-2xl">
-              🇩🇪
-            </button>
-            <button onclick="changeLanguage('it')" class="lang-btn text-2xl">
-              🇮🇹
-            </button>
-          </div>
-        </div>
-      </div>
-    </header>
+    <!-- Header will be loaded by header.js -->
 
     <!-- Page Header -->
     <section
@@ -719,30 +565,21 @@
             </ul>
           </div>
 
+          <!-- Newsletter -->
           <div>
-            <h4 class="font-bold mb-4" data-i18n="footer.social">
-              Suivez-nous
+            <h4 class="font-bold mb-4" data-i18n="footer.newsletter">
+              Restez Informé
             </h4>
-            <div class="flex space-x-4">
-              <a
-                href="#"
-                class="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center hover:bg-primary transition"
-              >
-                <i class="fab fa-linkedin-in"></i>
-              </a>
-              <a
-                href="#"
-                class="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center hover:bg-primary transition"
-              >
-                <i class="fab fa-twitter"></i>
-              </a>
-              <a
-                href="#"
-                class="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center hover:bg-primary transition"
-              >
-                <i class="fab fa-instagram"></i>
-              </a>
-            </div>
+            <p class="text-gray-400 text-sm mb-4" data-i18n="footer.newsletter.description">
+              Recevez nos dernières actualités et opportunités.
+            </p>
+            <a
+              href="contact.html"
+              class="bg-primary hover:bg-red-700 text-white px-4 py-2 rounded-full text-sm transition inline-flex items-center"
+              data-i18n="footer.newsletter.cta"
+            >
+              Nous Contacter
+            </a>
           </div>
         </div>
 
@@ -757,6 +594,7 @@
       </div>
     </footer>
 
+    <script src="js/header.js"></script>
     <script src="js/i18n.js"></script>
     <script src="js/main.js"></script>
   </body>

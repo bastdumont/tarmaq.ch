@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<!-- saved from url=(0141)https://gensparkpublicblob.blob.core.windows.net/user-upload-image/page/tooluse_1oWcntHGQW2LH1yvx6O_Sg/guide_agents_ia_claude_n8n_docker.html -->
+<html lang="fr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guide Complet : Créer des Agents IA avec Claude + N8N + Docker</title>
+    <link href="./Guide Complet _ Créer des Agents IA avec Claude + N8N + Docker_files/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./Guide Complet _ Créer des Agents IA avec Claude + N8N + Docker_files/all.min.css">
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+      body {
+        font-family: 'Inter', sans-serif;
+      }
+      .gradient-bg {
+        background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+      }
+      .tool-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      .tool-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+      }
+      .feature-item {
+        border-left: 4px solid #3b82f6;
+      }
+      .stats-card {
+        background: linear-gradient(135deg, #93c5fd 0%, #3b82f6 100%);
+      }
+      .learning-card {
+        background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+        color: #2a2a2a;
+      }
+      .learning-card h3 {
+        color: #3b82f6;
+      }
+      .learning-card p {
+        color: #6f6f78;
+      }
+      .btn-primary {
+        background: #3b82f6;
+        color: white;
+        border: none;
+        padding: 12px 18px;
+        border-radius: 14px;
+        font-weight: 700;
+        text-decoration: none;
+        display: inline-block;
+        transition: background 0.2s ease;
+      }
+      .btn-primary:hover {
+        background: #1d4ed8;
+      }
+      .btn-secondary {
+        background: rgba(255, 255, 255, 0.6);
+        color: #2a2a2a;
+        border: 1px solid #e8e8ec;
+        padding: 12px 18px;
+        border-radius: 14px;
+        font-weight: 700;
+        text-decoration: none;
+        display: inline-block;
+        transition: all 0.2s ease;
+      }
+      .btn-secondary:hover {
+        background: rgba(255, 255, 255, 0.8);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 24px rgba(0, 0, 0, 0.06);
+      }
+      .card {
+        background: #ffffff;
+        border: 1px solid #e8e8ec;
+        border-radius: 22px;
+        box-shadow: 0 6px 24px rgba(0, 0, 0, 0.06);
+      }
+      .card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 16px 40px rgba(0, 0, 0, 0.1);
+        border-color: #e1e1e8;
+      }
+      .section-title {
+        color: #2a2a2a;
+      }
+      .section-subtitle {
+        color: #6f6f78;
+      }
+      .text-brand {
+        color: #3b82f6;
+      }
+      .bg-brand-light {
+        background: #eff6ff;
+        border: 1px solid #bfdbfe;
+        color: #1e40af;
+      }
+      .bg-surface {
+        background: #fcfcfd;
+      }
+      .text-muted {
+        color: #6f6f78;
+      }
+      .border-brand {
+        border-color: #3b82f6;
+      }
+      .shadow-soft {
+        box-shadow: 0 6px 24px rgba(0, 0, 0, 0.06);
+      }
+      .shadow-elev {
+        box-shadow: 0 16px 40px rgba(0, 0, 0, 0.1);
+      }
+    </style>
+  <style>
+    .genspark-notice-dialog {
+      display: flex;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 10001;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .genspark-notice-content {
+      background-color: white;
+      border-radius: 8px;
+      max-width: 600px;
+      width: 90%;
+      box-sizing: border-box;
+      padding: 10px 30px 30px 30px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      font-size: 16px;
+    }
+
+    .genspark-notice-title {
+      color: #000;
+      font-family: Arial;
+      font-size: 20px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 150%; 
+    }
+
+    .genspark-notice-list {
+      margin: 24px 0;
+      
+      color: #606366;
+      font-family: Arial;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 150%;
+      padding-left: 12px;
+    }
+
+    .genspark-notice-list li {
+      margin-bottom: 12px;
+      list-style-type: disc;
+    }
+
+    .genspark-notice-list li a {
+      color: #606366;
+      text-decoration: underline;
+    }
+
+    .genspark-notice-checkbox {
+      display: flex;
+      align-items: center;
+      margin-top: 20px;
+      gap: 10px;
+
+      color: #232425;
+
+      font-family: Arial;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+    }
+
+    .genspark-notice-actions {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+      
+    .genspark-notice-ok {
+      color: #232425;
+
+      text-align: center;
+      font-family: Arial;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 150%; 
+
+      cursor: pointer;
+      display: flex;
+      height: 40px;
+      padding: 6px 14px;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      align-self: stretch;
+      border-radius: 8px;
+      border: 1px solid #000;
+      box-sizing: border-box;
+      width: 100%;
+    }
+  </style><style>[data-v-cfe3fdef],[data-v-cfe3fdef]:before,[data-v-cfe3fdef]:after{--tw-border-spacing-x: 0;--tw-border-spacing-y: 0;--tw-translate-x: 0;--tw-translate-y: 0;--tw-rotate: 0;--tw-skew-x: 0;--tw-skew-y: 0;--tw-scale-x: 1;--tw-scale-y: 1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness: proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width: 0px;--tw-ring-offset-color: #fff;--tw-ring-color: rgb(59 130 246 / .5);--tw-ring-offset-shadow: 0 0 #0000;--tw-ring-shadow: 0 0 #0000;--tw-shadow: 0 0 #0000;--tw-shadow-colored: 0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }[data-v-cfe3fdef]::backdrop{--tw-border-spacing-x: 0;--tw-border-spacing-y: 0;--tw-translate-x: 0;--tw-translate-y: 0;--tw-rotate: 0;--tw-skew-x: 0;--tw-skew-y: 0;--tw-scale-x: 1;--tw-scale-y: 1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness: proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width: 0px;--tw-ring-offset-color: #fff;--tw-ring-color: rgb(59 130 246 / .5);--tw-ring-offset-shadow: 0 0 #0000;--tw-ring-shadow: 0 0 #0000;--tw-shadow: 0 0 #0000;--tw-shadow-colored: 0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }[data-v-cfe3fdef],[data-v-cfe3fdef]:before,[data-v-cfe3fdef]:after{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}[data-v-cfe3fdef]:before,[data-v-cfe3fdef]:after{--tw-content: ""}html[data-v-cfe3fdef],[data-v-cfe3fdef]:host{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;-o-tab-size:4;tab-size:4;font-family:ui-sans-serif,system-ui,sans-serif,"Apple Color Emoji","Segoe UI Emoji",Segoe UI Symbol,"Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body[data-v-cfe3fdef]{margin:0;line-height:inherit}hr[data-v-cfe3fdef]{height:0;color:inherit;border-top-width:1px}abbr[data-v-cfe3fdef]:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1[data-v-cfe3fdef],h2[data-v-cfe3fdef],h3[data-v-cfe3fdef],h4[data-v-cfe3fdef],h5[data-v-cfe3fdef],h6[data-v-cfe3fdef]{font-size:inherit;font-weight:inherit}a[data-v-cfe3fdef]{color:inherit;text-decoration:inherit}b[data-v-cfe3fdef],strong[data-v-cfe3fdef]{font-weight:bolder}code[data-v-cfe3fdef],kbd[data-v-cfe3fdef],samp[data-v-cfe3fdef],pre[data-v-cfe3fdef]{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small[data-v-cfe3fdef]{font-size:80%}sub[data-v-cfe3fdef],sup[data-v-cfe3fdef]{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub[data-v-cfe3fdef]{bottom:-.25em}sup[data-v-cfe3fdef]{top:-.5em}table[data-v-cfe3fdef]{text-indent:0;border-color:inherit;border-collapse:collapse}button[data-v-cfe3fdef],input[data-v-cfe3fdef],optgroup[data-v-cfe3fdef],select[data-v-cfe3fdef],textarea[data-v-cfe3fdef]{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button[data-v-cfe3fdef],select[data-v-cfe3fdef]{text-transform:none}button[data-v-cfe3fdef],input[data-v-cfe3fdef]:where([type=button]),input[data-v-cfe3fdef]:where([type=reset]),input[data-v-cfe3fdef]:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}[data-v-cfe3fdef]:-moz-focusring{outline:auto}[data-v-cfe3fdef]:-moz-ui-invalid{box-shadow:none}progress[data-v-cfe3fdef]{vertical-align:baseline}[data-v-cfe3fdef]::-webkit-inner-spin-button,[data-v-cfe3fdef]::-webkit-outer-spin-button{height:auto}[type=search][data-v-cfe3fdef]{-webkit-appearance:textfield;outline-offset:-2px}[data-v-cfe3fdef]::-webkit-search-decoration{-webkit-appearance:none}[data-v-cfe3fdef]::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary[data-v-cfe3fdef]{display:list-item}blockquote[data-v-cfe3fdef],dl[data-v-cfe3fdef],dd[data-v-cfe3fdef],h1[data-v-cfe3fdef],h2[data-v-cfe3fdef],h3[data-v-cfe3fdef],h4[data-v-cfe3fdef],h5[data-v-cfe3fdef],h6[data-v-cfe3fdef],hr[data-v-cfe3fdef],figure[data-v-cfe3fdef],p[data-v-cfe3fdef],pre[data-v-cfe3fdef]{margin:0}fieldset[data-v-cfe3fdef]{margin:0;padding:0}legend[data-v-cfe3fdef]{padding:0}ol[data-v-cfe3fdef],ul[data-v-cfe3fdef],menu[data-v-cfe3fdef]{list-style:none;margin:0;padding:0}dialog[data-v-cfe3fdef]{padding:0}textarea[data-v-cfe3fdef]{resize:vertical}input[data-v-cfe3fdef]::-moz-placeholder,textarea[data-v-cfe3fdef]::-moz-placeholder{opacity:1;color:#9ca3af}input[data-v-cfe3fdef]::placeholder,textarea[data-v-cfe3fdef]::placeholder{opacity:1;color:#9ca3af}button[data-v-cfe3fdef],[role=button][data-v-cfe3fdef]{cursor:pointer}[data-v-cfe3fdef]:disabled{cursor:default}img[data-v-cfe3fdef],svg[data-v-cfe3fdef],video[data-v-cfe3fdef],canvas[data-v-cfe3fdef],audio[data-v-cfe3fdef],iframe[data-v-cfe3fdef],embed[data-v-cfe3fdef],object[data-v-cfe3fdef]{display:block;vertical-align:middle}img[data-v-cfe3fdef],video[data-v-cfe3fdef]{max-width:100%;height:auto}[hidden][data-v-cfe3fdef]:where(:not([hidden=until-found])){display:none}.container[data-v-cfe3fdef]{width:100%}@media (min-width: 640px){.container[data-v-cfe3fdef]{max-width:640px}}@media (min-width: 768px){.container[data-v-cfe3fdef]{max-width:768px}}@media (min-width: 1024px){.container[data-v-cfe3fdef]{max-width:1024px}}@media (min-width: 1280px){.container[data-v-cfe3fdef]{max-width:1280px}}@media (min-width: 1536px){.container[data-v-cfe3fdef]{max-width:1536px}}.static[data-v-cfe3fdef]{position:static}.fixed[data-v-cfe3fdef]{position:fixed}.absolute[data-v-cfe3fdef]{position:absolute}.relative[data-v-cfe3fdef]{position:relative}.\!top-0[data-v-cfe3fdef]{top:0!important}.bottom-\[40px\][data-v-cfe3fdef]{bottom:40px}.right-0[data-v-cfe3fdef]{right:0}.top-\[15px\][data-v-cfe3fdef]{top:15px}.top-\[30px\][data-v-cfe3fdef]{top:30px}.z-\[9999\][data-v-cfe3fdef]{z-index:9999}.float-right[data-v-cfe3fdef]{float:right}.mx-\[6px\][data-v-cfe3fdef]{margin-left:6px;margin-right:6px}.my-\[16px\][data-v-cfe3fdef]{margin-top:16px;margin-bottom:16px}.my-\[2px\][data-v-cfe3fdef]{margin-top:2px;margin-bottom:2px}.mb-10[data-v-cfe3fdef]{margin-bottom:2.5rem}.mb-\[16px\][data-v-cfe3fdef]{margin-bottom:16px}.mb-\[17px\][data-v-cfe3fdef]{margin-bottom:17px}.ml-\[8px\][data-v-cfe3fdef]{margin-left:8px}.mt-10[data-v-cfe3fdef]{margin-top:2.5rem}.block[data-v-cfe3fdef]{display:block}.flex[data-v-cfe3fdef]{display:flex}.table[data-v-cfe3fdef]{display:table}.contents[data-v-cfe3fdef]{display:contents}.hidden[data-v-cfe3fdef]{display:none}.h-\[100vh\][data-v-cfe3fdef]{height:100vh}.h-\[15px\][data-v-cfe3fdef]{height:15px}.h-\[16px\][data-v-cfe3fdef]{height:16px}.h-\[1px\][data-v-cfe3fdef]{height:1px}.h-\[20px\][data-v-cfe3fdef]{height:20px}.h-\[24px\][data-v-cfe3fdef]{height:24px}.h-\[26px\][data-v-cfe3fdef]{height:26px}.h-\[32px\][data-v-cfe3fdef]{height:32px}.h-\[36px\][data-v-cfe3fdef]{height:36px}.h-\[40px\][data-v-cfe3fdef]{height:40px}.h-full[data-v-cfe3fdef]{height:100%}.w-\[100vw\][data-v-cfe3fdef]{width:100vw}.w-\[16px\][data-v-cfe3fdef]{width:16px}.w-\[1px\][data-v-cfe3fdef]{width:1px}.w-\[20px\][data-v-cfe3fdef]{width:20px}.w-\[24px\][data-v-cfe3fdef]{width:24px}.w-\[26px\][data-v-cfe3fdef]{width:26px}.w-\[36px\][data-v-cfe3fdef]{width:36px}.w-\[441px\][data-v-cfe3fdef]{width:441px}.w-full[data-v-cfe3fdef]{width:100%}.shrink[data-v-cfe3fdef]{flex-shrink:1}.flex-grow[data-v-cfe3fdef],.grow[data-v-cfe3fdef]{flex-grow:1}.transform[data-v-cfe3fdef]{transform:translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skew(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.cursor-pointer[data-v-cfe3fdef]{cursor:pointer}.resize-none[data-v-cfe3fdef]{resize:none}.resize[data-v-cfe3fdef]{resize:both}.flex-col[data-v-cfe3fdef]{flex-direction:column}.items-start[data-v-cfe3fdef]{align-items:flex-start}.items-center[data-v-cfe3fdef]{align-items:center}.justify-start[data-v-cfe3fdef]{justify-content:flex-start}.justify-center[data-v-cfe3fdef]{justify-content:center}.justify-between[data-v-cfe3fdef]{justify-content:space-between}.gap-\[10px\][data-v-cfe3fdef]{gap:10px}.gap-\[13px\][data-v-cfe3fdef]{gap:13px}.gap-\[4px\][data-v-cfe3fdef]{gap:4px}.gap-\[6px\][data-v-cfe3fdef]{gap:6px}.gap-\[8px\][data-v-cfe3fdef]{gap:8px}.self-stretch[data-v-cfe3fdef]{align-self:stretch}.whitespace-nowrap[data-v-cfe3fdef]{white-space:nowrap}.\!rounded-\[8px\][data-v-cfe3fdef]{border-radius:8px!important}.rounded-2xl[data-v-cfe3fdef]{border-radius:1rem}.rounded-\[12px\][data-v-cfe3fdef]{border-radius:12px}.rounded-\[16px\][data-v-cfe3fdef]{border-radius:16px}.rounded-\[8px\][data-v-cfe3fdef]{border-radius:8px}.border[data-v-cfe3fdef]{border-width:1px}.border-none[data-v-cfe3fdef]{border-style:none}.border-\[\#EAEAEA\][data-v-cfe3fdef]{--tw-border-opacity: 1;border-color:rgb(234 234 234 / var(--tw-border-opacity, 1))}.\!bg-\[\#031933\][data-v-cfe3fdef]{--tw-bg-opacity: 1 !important;background-color:rgb(3 25 51 / var(--tw-bg-opacity, 1))!important}.bg-\[\#232425\][data-v-cfe3fdef]{--tw-bg-opacity: 1;background-color:rgb(35 36 37 / var(--tw-bg-opacity, 1))}.bg-\[\#EAEAEA\][data-v-cfe3fdef]{--tw-bg-opacity: 1;background-color:rgb(234 234 234 / var(--tw-bg-opacity, 1))}.bg-\[\#EFEFEF\][data-v-cfe3fdef]{--tw-bg-opacity: 1;background-color:rgb(239 239 239 / var(--tw-bg-opacity, 1))}.bg-\[\#FFF\][data-v-cfe3fdef]{--tw-bg-opacity: 1;background-color:rgb(255 255 255 / var(--tw-bg-opacity, 1))}.bg-\[\#f2f2f2\][data-v-cfe3fdef]{--tw-bg-opacity: 1;background-color:rgb(242 242 242 / var(--tw-bg-opacity, 1))}.bg-transparent[data-v-cfe3fdef]{background-color:transparent}.bg-white[data-v-cfe3fdef]{--tw-bg-opacity: 1;background-color:rgb(255 255 255 / var(--tw-bg-opacity, 1))}.p-\[16px\][data-v-cfe3fdef]{padding:16px}.p-\[4px\][data-v-cfe3fdef]{padding:4px}.p-\[6px\][data-v-cfe3fdef]{padding:6px}.p-\[8px\][data-v-cfe3fdef]{padding:8px}.px-\[10px\][data-v-cfe3fdef]{padding-left:10px;padding-right:10px}.px-\[12px\][data-v-cfe3fdef]{padding-left:12px;padding-right:12px}.px-\[16px\][data-v-cfe3fdef]{padding-left:16px;padding-right:16px}.px-\[6px\][data-v-cfe3fdef]{padding-left:6px;padding-right:6px}.px-\[8px\][data-v-cfe3fdef]{padding-left:8px;padding-right:8px}.py-\[12px\][data-v-cfe3fdef]{padding-top:12px;padding-bottom:12px}.py-\[16px\][data-v-cfe3fdef]{padding-top:16px;padding-bottom:16px}.py-\[4px\][data-v-cfe3fdef]{padding-top:4px;padding-bottom:4px}.py-\[5px\][data-v-cfe3fdef]{padding-top:5px;padding-bottom:5px}.text-center[data-v-cfe3fdef]{text-align:center}.font-\[\'Arial\'\][data-v-cfe3fdef]{font-family:Arial}.font-\[\'Inter\'\,Arial\][data-v-cfe3fdef]{font-family:Inter,Arial}.text-\[14px\][data-v-cfe3fdef]{font-size:14px}.text-\[16px\][data-v-cfe3fdef]{font-size:16px}.font-\[600\][data-v-cfe3fdef]{font-weight:600}.font-normal[data-v-cfe3fdef]{font-weight:400}.font-semibold[data-v-cfe3fdef]{font-weight:600}.leading-\[1\.25\][data-v-cfe3fdef]{line-height:1.25}.leading-\[1\.5\][data-v-cfe3fdef]{line-height:1.5}.text-\[\#232425\][data-v-cfe3fdef]{--tw-text-opacity: 1;color:rgb(35 36 37 / var(--tw-text-opacity, 1))}.text-black[data-v-cfe3fdef]{--tw-text-opacity: 1;color:rgb(0 0 0 / var(--tw-text-opacity, 1))}.text-gray-600[data-v-cfe3fdef]{--tw-text-opacity: 1;color:rgb(75 85 99 / var(--tw-text-opacity, 1))}.text-neutral-800[data-v-cfe3fdef]{--tw-text-opacity: 1;color:rgb(38 38 38 / var(--tw-text-opacity, 1))}.text-white[data-v-cfe3fdef]{--tw-text-opacity: 1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.underline[data-v-cfe3fdef]{text-decoration-line:underline}.shadow[data-v-cfe3fdef]{--tw-shadow: 0 1px 3px 0 rgb(0 0 0 / .1), 0 1px 2px -1px rgb(0 0 0 / .1);--tw-shadow-colored: 0 1px 3px 0 var(--tw-shadow-color), 0 1px 2px -1px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow)}.shadow-\[0px_2px_8px_0px_rgba\(0\,0\,0\,0\.10\)\][data-v-cfe3fdef]{--tw-shadow: 0px 2px 8px 0px rgba(0,0,0,.1);--tw-shadow-colored: 0px 2px 8px 0px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow)}.shadow-\[0px_4px_10px_0px_rgba\(0\,0\,0\,0\.15\)\][data-v-cfe3fdef]{--tw-shadow: 0px 4px 10px 0px rgba(0,0,0,.15);--tw-shadow-colored: 0px 4px 10px 0px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow)}.shadow-\[0px_4px_15px_0px_rgba\(0\,0\,0\,0\.10\)\][data-v-cfe3fdef]{--tw-shadow: 0px 4px 15px 0px rgba(0,0,0,.1);--tw-shadow-colored: 0px 4px 15px 0px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow)}.outline-none[data-v-cfe3fdef]{outline:2px solid transparent;outline-offset:2px}.outline[data-v-cfe3fdef]{outline-style:solid}.outline-1[data-v-cfe3fdef]{outline-width:1px}.outline-offset-\[-1px\][data-v-cfe3fdef]{outline-offset:-1px}.outline-gray-200[data-v-cfe3fdef]{outline-color:#e5e7eb}.blur[data-v-cfe3fdef]{--tw-blur: blur(8px);filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)}.filter[data-v-cfe3fdef]{filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)}.transition[data-v-cfe3fdef]{transition-property:color,background-color,border-color,text-decoration-color,fill,stroke,opacity,box-shadow,transform,filter,-webkit-backdrop-filter;transition-property:color,background-color,border-color,text-decoration-color,fill,stroke,opacity,box-shadow,transform,filter,backdrop-filter;transition-property:color,background-color,border-color,text-decoration-color,fill,stroke,opacity,box-shadow,transform,filter,backdrop-filter,-webkit-backdrop-filter;transition-timing-function:cubic-bezier(.4,0,.2,1);transition-duration:.15s}.ease-in-out[data-v-cfe3fdef]{transition-timing-function:cubic-bezier(.4,0,.2,1)}.hover\:bg-\[\#F5F5F5\][data-v-cfe3fdef]:hover{--tw-bg-opacity: 1;background-color:rgb(245 245 245 / var(--tw-bg-opacity, 1))}.hover\:bg-gray-200[data-v-cfe3fdef]:hover{--tw-bg-opacity: 1;background-color:rgb(229 231 235 / var(--tw-bg-opacity, 1))}@media (prefers-color-scheme: dark){.dark\:bg-black[data-v-cfe3fdef]{--tw-bg-opacity: 1;background-color:rgb(0 0 0 / var(--tw-bg-opacity, 1))}}[data-v-9fb0aa2b],[data-v-9fb0aa2b]:before,[data-v-9fb0aa2b]:after{--tw-border-spacing-x: 0;--tw-border-spacing-y: 0;--tw-translate-x: 0;--tw-translate-y: 0;--tw-rotate: 0;--tw-skew-x: 0;--tw-skew-y: 0;--tw-scale-x: 1;--tw-scale-y: 1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness: proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width: 0px;--tw-ring-offset-color: #fff;--tw-ring-color: rgb(59 130 246 / .5);--tw-ring-offset-shadow: 0 0 #0000;--tw-ring-shadow: 0 0 #0000;--tw-shadow: 0 0 #0000;--tw-shadow-colored: 0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }[data-v-9fb0aa2b]::backdrop{--tw-border-spacing-x: 0;--tw-border-spacing-y: 0;--tw-translate-x: 0;--tw-translate-y: 0;--tw-rotate: 0;--tw-skew-x: 0;--tw-skew-y: 0;--tw-scale-x: 1;--tw-scale-y: 1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness: proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width: 0px;--tw-ring-offset-color: #fff;--tw-ring-color: rgb(59 130 246 / .5);--tw-ring-offset-shadow: 0 0 #0000;--tw-ring-shadow: 0 0 #0000;--tw-shadow: 0 0 #0000;--tw-shadow-colored: 0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }[data-v-9fb0aa2b],[data-v-9fb0aa2b]:before,[data-v-9fb0aa2b]:after{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}[data-v-9fb0aa2b]:before,[data-v-9fb0aa2b]:after{--tw-content: ""}html[data-v-9fb0aa2b],[data-v-9fb0aa2b]:host{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;-o-tab-size:4;tab-size:4;font-family:ui-sans-serif,system-ui,sans-serif,"Apple Color Emoji","Segoe UI Emoji",Segoe UI Symbol,"Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body[data-v-9fb0aa2b]{margin:0;line-height:inherit}hr[data-v-9fb0aa2b]{height:0;color:inherit;border-top-width:1px}abbr[data-v-9fb0aa2b]:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1[data-v-9fb0aa2b],h2[data-v-9fb0aa2b],h3[data-v-9fb0aa2b],h4[data-v-9fb0aa2b],h5[data-v-9fb0aa2b],h6[data-v-9fb0aa2b]{font-size:inherit;font-weight:inherit}a[data-v-9fb0aa2b]{color:inherit;text-decoration:inherit}b[data-v-9fb0aa2b],strong[data-v-9fb0aa2b]{font-weight:bolder}code[data-v-9fb0aa2b],kbd[data-v-9fb0aa2b],samp[data-v-9fb0aa2b],pre[data-v-9fb0aa2b]{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small[data-v-9fb0aa2b]{font-size:80%}sub[data-v-9fb0aa2b],sup[data-v-9fb0aa2b]{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub[data-v-9fb0aa2b]{bottom:-.25em}sup[data-v-9fb0aa2b]{top:-.5em}table[data-v-9fb0aa2b]{text-indent:0;border-color:inherit;border-collapse:collapse}button[data-v-9fb0aa2b],input[data-v-9fb0aa2b],optgroup[data-v-9fb0aa2b],select[data-v-9fb0aa2b],textarea[data-v-9fb0aa2b]{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button[data-v-9fb0aa2b],select[data-v-9fb0aa2b]{text-transform:none}button[data-v-9fb0aa2b],input[data-v-9fb0aa2b]:where([type=button]),input[data-v-9fb0aa2b]:where([type=reset]),input[data-v-9fb0aa2b]:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}[data-v-9fb0aa2b]:-moz-focusring{outline:auto}[data-v-9fb0aa2b]:-moz-ui-invalid{box-shadow:none}progress[data-v-9fb0aa2b]{vertical-align:baseline}[data-v-9fb0aa2b]::-webkit-inner-spin-button,[data-v-9fb0aa2b]::-webkit-outer-spin-button{height:auto}[type=search][data-v-9fb0aa2b]{-webkit-appearance:textfield;outline-offset:-2px}[data-v-9fb0aa2b]::-webkit-search-decoration{-webkit-appearance:none}[data-v-9fb0aa2b]::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary[data-v-9fb0aa2b]{display:list-item}blockquote[data-v-9fb0aa2b],dl[data-v-9fb0aa2b],dd[data-v-9fb0aa2b],h1[data-v-9fb0aa2b],h2[data-v-9fb0aa2b],h3[data-v-9fb0aa2b],h4[data-v-9fb0aa2b],h5[data-v-9fb0aa2b],h6[data-v-9fb0aa2b],hr[data-v-9fb0aa2b],figure[data-v-9fb0aa2b],p[data-v-9fb0aa2b],pre[data-v-9fb0aa2b]{margin:0}fieldset[data-v-9fb0aa2b]{margin:0;padding:0}legend[data-v-9fb0aa2b]{padding:0}ol[data-v-9fb0aa2b],ul[data-v-9fb0aa2b],menu[data-v-9fb0aa2b]{list-style:none;margin:0;padding:0}dialog[data-v-9fb0aa2b]{padding:0}textarea[data-v-9fb0aa2b]{resize:vertical}input[data-v-9fb0aa2b]::-moz-placeholder,textarea[data-v-9fb0aa2b]::-moz-placeholder{opacity:1;color:#9ca3af}input[data-v-9fb0aa2b]::placeholder,textarea[data-v-9fb0aa2b]::placeholder{opacity:1;color:#9ca3af}button[data-v-9fb0aa2b],[role=button][data-v-9fb0aa2b]{cursor:pointer}[data-v-9fb0aa2b]:disabled{cursor:default}img[data-v-9fb0aa2b],svg[data-v-9fb0aa2b],video[data-v-9fb0aa2b],canvas[data-v-9fb0aa2b],audio[data-v-9fb0aa2b],iframe[data-v-9fb0aa2b],embed[data-v-9fb0aa2b],object[data-v-9fb0aa2b]{display:block;vertical-align:middle}img[data-v-9fb0aa2b],video[data-v-9fb0aa2b]{max-width:100%;height:auto}[hidden][data-v-9fb0aa2b]:where(:not([hidden=until-found])){display:none}.container[data-v-9fb0aa2b]{width:100%}@media (min-width: 640px){.container[data-v-9fb0aa2b]{max-width:640px}}@media (min-width: 768px){.container[data-v-9fb0aa2b]{max-width:768px}}@media (min-width: 1024px){.container[data-v-9fb0aa2b]{max-width:1024px}}@media (min-width: 1280px){.container[data-v-9fb0aa2b]{max-width:1280px}}@media (min-width: 1536px){.container[data-v-9fb0aa2b]{max-width:1536px}}.static[data-v-9fb0aa2b]{position:static}.fixed[data-v-9fb0aa2b]{position:fixed}.absolute[data-v-9fb0aa2b]{position:absolute}.relative[data-v-9fb0aa2b]{position:relative}.\!top-0[data-v-9fb0aa2b]{top:0!important}.bottom-\[40px\][data-v-9fb0aa2b]{bottom:40px}.right-0[data-v-9fb0aa2b]{right:0}.top-\[15px\][data-v-9fb0aa2b]{top:15px}.top-\[30px\][data-v-9fb0aa2b]{top:30px}.z-\[9999\][data-v-9fb0aa2b]{z-index:9999}.float-right[data-v-9fb0aa2b]{float:right}.mx-\[6px\][data-v-9fb0aa2b]{margin-left:6px;margin-right:6px}.my-\[16px\][data-v-9fb0aa2b]{margin-top:16px;margin-bottom:16px}.my-\[2px\][data-v-9fb0aa2b]{margin-top:2px;margin-bottom:2px}.mb-10[data-v-9fb0aa2b]{margin-bottom:2.5rem}.mb-\[16px\][data-v-9fb0aa2b]{margin-bottom:16px}.mb-\[17px\][data-v-9fb0aa2b]{margin-bottom:17px}.ml-\[8px\][data-v-9fb0aa2b]{margin-left:8px}.mt-10[data-v-9fb0aa2b]{margin-top:2.5rem}.block[data-v-9fb0aa2b]{display:block}.flex[data-v-9fb0aa2b]{display:flex}.table[data-v-9fb0aa2b]{display:table}.contents[data-v-9fb0aa2b]{display:contents}.hidden[data-v-9fb0aa2b]{display:none}.h-\[100vh\][data-v-9fb0aa2b]{height:100vh}.h-\[15px\][data-v-9fb0aa2b]{height:15px}.h-\[16px\][data-v-9fb0aa2b]{height:16px}.h-\[1px\][data-v-9fb0aa2b]{height:1px}.h-\[20px\][data-v-9fb0aa2b]{height:20px}.h-\[24px\][data-v-9fb0aa2b]{height:24px}.h-\[26px\][data-v-9fb0aa2b]{height:26px}.h-\[32px\][data-v-9fb0aa2b]{height:32px}.h-\[36px\][data-v-9fb0aa2b]{height:36px}.h-\[40px\][data-v-9fb0aa2b]{height:40px}.h-full[data-v-9fb0aa2b]{height:100%}.w-\[100vw\][data-v-9fb0aa2b]{width:100vw}.w-\[16px\][data-v-9fb0aa2b]{width:16px}.w-\[1px\][data-v-9fb0aa2b]{width:1px}.w-\[20px\][data-v-9fb0aa2b]{width:20px}.w-\[24px\][data-v-9fb0aa2b]{width:24px}.w-\[26px\][data-v-9fb0aa2b]{width:26px}.w-\[36px\][data-v-9fb0aa2b]{width:36px}.w-\[441px\][data-v-9fb0aa2b]{width:441px}.w-full[data-v-9fb0aa2b]{width:100%}.shrink[data-v-9fb0aa2b]{flex-shrink:1}.flex-grow[data-v-9fb0aa2b],.grow[data-v-9fb0aa2b]{flex-grow:1}.transform[data-v-9fb0aa2b]{transform:translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skew(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.cursor-pointer[data-v-9fb0aa2b]{cursor:pointer}.resize-none[data-v-9fb0aa2b]{resize:none}.resize[data-v-9fb0aa2b]{resize:both}.flex-col[data-v-9fb0aa2b]{flex-direction:column}.items-start[data-v-9fb0aa2b]{align-items:flex-start}.items-center[data-v-9fb0aa2b]{align-items:center}.justify-start[data-v-9fb0aa2b]{justify-content:flex-start}.justify-center[data-v-9fb0aa2b]{justify-content:center}.justify-between[data-v-9fb0aa2b]{justify-content:space-between}.gap-\[10px\][data-v-9fb0aa2b]{gap:10px}.gap-\[13px\][data-v-9fb0aa2b]{gap:13px}.gap-\[4px\][data-v-9fb0aa2b]{gap:4px}.gap-\[6px\][data-v-9fb0aa2b]{gap:6px}.gap-\[8px\][data-v-9fb0aa2b]{gap:8px}.self-stretch[data-v-9fb0aa2b]{align-self:stretch}.whitespace-nowrap[data-v-9fb0aa2b]{white-space:nowrap}.\!rounded-\[8px\][data-v-9fb0aa2b]{border-radius:8px!important}.rounded-2xl[data-v-9fb0aa2b]{border-radius:1rem}.rounded-\[12px\][data-v-9fb0aa2b]{border-radius:12px}.rounded-\[16px\][data-v-9fb0aa2b]{border-radius:16px}.rounded-\[8px\][data-v-9fb0aa2b]{border-radius:8px}.border[data-v-9fb0aa2b]{border-width:1px}.border-none[data-v-9fb0aa2b]{border-style:none}.border-\[\#EAEAEA\][data-v-9fb0aa2b]{--tw-border-opacity: 1;border-color:rgb(234 234 234 / var(--tw-border-opacity, 1))}.\!bg-\[\#031933\][data-v-9fb0aa2b]{--tw-bg-opacity: 1 !important;background-color:rgb(3 25 51 / var(--tw-bg-opacity, 1))!important}.bg-\[\#232425\][data-v-9fb0aa2b]{--tw-bg-opacity: 1;background-color:rgb(35 36 37 / var(--tw-bg-opacity, 1))}.bg-\[\#EAEAEA\][data-v-9fb0aa2b]{--tw-bg-opacity: 1;background-color:rgb(234 234 234 / var(--tw-bg-opacity, 1))}.bg-\[\#EFEFEF\][data-v-9fb0aa2b]{--tw-bg-opacity: 1;background-color:rgb(239 239 239 / var(--tw-bg-opacity, 1))}.bg-\[\#FFF\][data-v-9fb0aa2b]{--tw-bg-opacity: 1;background-color:rgb(255 255 255 / var(--tw-bg-opacity, 1))}.bg-\[\#f2f2f2\][data-v-9fb0aa2b]{--tw-bg-opacity: 1;background-color:rgb(242 242 242 / var(--tw-bg-opacity, 1))}.bg-transparent[data-v-9fb0aa2b]{background-color:transparent}.bg-white[data-v-9fb0aa2b]{--tw-bg-opacity: 1;background-color:rgb(255 255 255 / var(--tw-bg-opacity, 1))}.p-\[16px\][data-v-9fb0aa2b]{padding:16px}.p-\[4px\][data-v-9fb0aa2b]{padding:4px}.p-\[6px\][data-v-9fb0aa2b]{padding:6px}.p-\[8px\][data-v-9fb0aa2b]{padding:8px}.px-\[10px\][data-v-9fb0aa2b]{padding-left:10px;padding-right:10px}.px-\[12px\][data-v-9fb0aa2b]{padding-left:12px;padding-right:12px}.px-\[16px\][data-v-9fb0aa2b]{padding-left:16px;padding-right:16px}.px-\[6px\][data-v-9fb0aa2b]{padding-left:6px;padding-right:6px}.px-\[8px\][data-v-9fb0aa2b]{padding-left:8px;padding-right:8px}.py-\[12px\][data-v-9fb0aa2b]{padding-top:12px;padding-bottom:12px}.py-\[16px\][data-v-9fb0aa2b]{padding-top:16px;padding-bottom:16px}.py-\[4px\][data-v-9fb0aa2b]{padding-top:4px;padding-bottom:4px}.py-\[5px\][data-v-9fb0aa2b]{padding-top:5px;padding-bottom:5px}.text-center[data-v-9fb0aa2b]{text-align:center}.font-\[\'Arial\'\][data-v-9fb0aa2b]{font-family:Arial}.font-\[\'Inter\'\,Arial\][data-v-9fb0aa2b]{font-family:Inter,Arial}.text-\[14px\][data-v-9fb0aa2b]{font-size:14px}.text-\[16px\][data-v-9fb0aa2b]{font-size:16px}.font-\[600\][data-v-9fb0aa2b]{font-weight:600}.font-normal[data-v-9fb0aa2b]{font-weight:400}.font-semibold[data-v-9fb0aa2b]{font-weight:600}.leading-\[1\.25\][data-v-9fb0aa2b]{line-height:1.25}.leading-\[1\.5\][data-v-9fb0aa2b]{line-height:1.5}.text-\[\#232425\][data-v-9fb0aa2b]{--tw-text-opacity: 1;color:rgb(35 36 37 / var(--tw-text-opacity, 1))}.text-black[data-v-9fb0aa2b]{--tw-text-opacity: 1;color:rgb(0 0 0 / var(--tw-text-opacity, 1))}.text-gray-600[data-v-9fb0aa2b]{--tw-text-opacity: 1;color:rgb(75 85 99 / var(--tw-text-opacity, 1))}.text-neutral-800[data-v-9fb0aa2b]{--tw-text-opacity: 1;color:rgb(38 38 38 / var(--tw-text-opacity, 1))}.text-white[data-v-9fb0aa2b]{--tw-text-opacity: 1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.underline[data-v-9fb0aa2b]{text-decoration-line:underline}.shadow[data-v-9fb0aa2b]{--tw-shadow: 0 1px 3px 0 rgb(0 0 0 / .1), 0 1px 2px -1px rgb(0 0 0 / .1);--tw-shadow-colored: 0 1px 3px 0 var(--tw-shadow-color), 0 1px 2px -1px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow)}.shadow-\[0px_2px_8px_0px_rgba\(0\,0\,0\,0\.10\)\][data-v-9fb0aa2b]{--tw-shadow: 0px 2px 8px 0px rgba(0,0,0,.1);--tw-shadow-colored: 0px 2px 8px 0px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow)}.shadow-\[0px_4px_10px_0px_rgba\(0\,0\,0\,0\.15\)\][data-v-9fb0aa2b]{--tw-shadow: 0px 4px 10px 0px rgba(0,0,0,.15);--tw-shadow-colored: 0px 4px 10px 0px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow)}.shadow-\[0px_4px_15px_0px_rgba\(0\,0\,0\,0\.10\)\][data-v-9fb0aa2b]{--tw-shadow: 0px 4px 15px 0px rgba(0,0,0,.1);--tw-shadow-colored: 0px 4px 15px 0px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow)}.outline-none[data-v-9fb0aa2b]{outline:2px solid transparent;outline-offset:2px}.outline[data-v-9fb0aa2b]{outline-style:solid}.outline-1[data-v-9fb0aa2b]{outline-width:1px}.outline-offset-\[-1px\][data-v-9fb0aa2b]{outline-offset:-1px}.outline-gray-200[data-v-9fb0aa2b]{outline-color:#e5e7eb}.blur[data-v-9fb0aa2b]{--tw-blur: blur(8px);filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)}.filter[data-v-9fb0aa2b]{filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)}.transition[data-v-9fb0aa2b]{transition-property:color,background-color,border-color,text-decoration-color,fill,stroke,opacity,box-shadow,transform,filter,-webkit-backdrop-filter;transition-property:color,background-color,border-color,text-decoration-color,fill,stroke,opacity,box-shadow,transform,filter,backdrop-filter;transition-property:color,background-color,border-color,text-decoration-color,fill,stroke,opacity,box-shadow,transform,filter,backdrop-filter,-webkit-backdrop-filter;transition-timing-function:cubic-bezier(.4,0,.2,1);transition-duration:.15s}.ease-in-out[data-v-9fb0aa2b]{transition-timing-function:cubic-bezier(.4,0,.2,1)}.hover\:bg-\[\#F5F5F5\][data-v-9fb0aa2b]:hover{--tw-bg-opacity: 1;background-color:rgb(245 245 245 / var(--tw-bg-opacity, 1))}.hover\:bg-gray-200[data-v-9fb0aa2b]:hover{--tw-bg-opacity: 1;background-color:rgb(229 231 235 / var(--tw-bg-opacity, 1))}@media (prefers-color-scheme: dark){.dark\:bg-black[data-v-9fb0aa2b]{--tw-bg-opacity: 1;background-color:rgb(0 0 0 / var(--tw-bg-opacity, 1))}}[data-v-9a4908c3],[data-v-9a4908c3]:before,[data-v-9a4908c3]:after{--tw-border-spacing-x: 0;--tw-border-spacing-y: 0;--tw-translate-x: 0;--tw-translate-y: 0;--tw-rotate: 0;--tw-skew-x: 0;--tw-skew-y: 0;--tw-scale-x: 1;--tw-scale-y: 1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness: proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width: 0px;--tw-ring-offset-color: #fff;--tw-ring-color: rgb(59 130 246 / .5);--tw-ring-offset-shadow: 0 0 #0000;--tw-ring-shadow: 0 0 #0000;--tw-shadow: 0 0 #0000;--tw-shadow-colored: 0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }[data-v-9a4908c3]::backdrop{--tw-border-spacing-x: 0;--tw-border-spacing-y: 0;--tw-translate-x: 0;--tw-translate-y: 0;--tw-rotate: 0;--tw-skew-x: 0;--tw-skew-y: 0;--tw-scale-x: 1;--tw-scale-y: 1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness: proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width: 0px;--tw-ring-offset-color: #fff;--tw-ring-color: rgb(59 130 246 / .5);--tw-ring-offset-shadow: 0 0 #0000;--tw-ring-shadow: 0 0 #0000;--tw-shadow: 0 0 #0000;--tw-shadow-colored: 0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }[data-v-9a4908c3],[data-v-9a4908c3]:before,[data-v-9a4908c3]:after{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}[data-v-9a4908c3]:before,[data-v-9a4908c3]:after{--tw-content: ""}html[data-v-9a4908c3],[data-v-9a4908c3]:host{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;-o-tab-size:4;tab-size:4;font-family:ui-sans-serif,system-ui,sans-serif,"Apple Color Emoji","Segoe UI Emoji",Segoe UI Symbol,"Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body[data-v-9a4908c3]{margin:0;line-height:inherit}hr[data-v-9a4908c3]{height:0;color:inherit;border-top-width:1px}abbr[data-v-9a4908c3]:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1[data-v-9a4908c3],h2[data-v-9a4908c3],h3[data-v-9a4908c3],h4[data-v-9a4908c3],h5[data-v-9a4908c3],h6[data-v-9a4908c3]{font-size:inherit;font-weight:inherit}a[data-v-9a4908c3]{color:inherit;text-decoration:inherit}b[data-v-9a4908c3],strong[data-v-9a4908c3]{font-weight:bolder}code[data-v-9a4908c3],kbd[data-v-9a4908c3],samp[data-v-9a4908c3],pre[data-v-9a4908c3]{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small[data-v-9a4908c3]{font-size:80%}sub[data-v-9a4908c3],sup[data-v-9a4908c3]{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub[data-v-9a4908c3]{bottom:-.25em}sup[data-v-9a4908c3]{top:-.5em}table[data-v-9a4908c3]{text-indent:0;border-color:inherit;border-collapse:collapse}button[data-v-9a4908c3],input[data-v-9a4908c3],optgroup[data-v-9a4908c3],select[data-v-9a4908c3],textarea[data-v-9a4908c3]{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button[data-v-9a4908c3],select[data-v-9a4908c3]{text-transform:none}button[data-v-9a4908c3],input[data-v-9a4908c3]:where([type=button]),input[data-v-9a4908c3]:where([type=reset]),input[data-v-9a4908c3]:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}[data-v-9a4908c3]:-moz-focusring{outline:auto}[data-v-9a4908c3]:-moz-ui-invalid{box-shadow:none}progress[data-v-9a4908c3]{vertical-align:baseline}[data-v-9a4908c3]::-webkit-inner-spin-button,[data-v-9a4908c3]::-webkit-outer-spin-button{height:auto}[type=search][data-v-9a4908c3]{-webkit-appearance:textfield;outline-offset:-2px}[data-v-9a4908c3]::-webkit-search-decoration{-webkit-appearance:none}[data-v-9a4908c3]::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary[data-v-9a4908c3]{display:list-item}blockquote[data-v-9a4908c3],dl[data-v-9a4908c3],dd[data-v-9a4908c3],h1[data-v-9a4908c3],h2[data-v-9a4908c3],h3[data-v-9a4908c3],h4[data-v-9a4908c3],h5[data-v-9a4908c3],h6[data-v-9a4908c3],hr[data-v-9a4908c3],figure[data-v-9a4908c3],p[data-v-9a4908c3],pre[data-v-9a4908c3]{margin:0}fieldset[data-v-9a4908c3]{margin:0;padding:0}legend[data-v-9a4908c3]{padding:0}ol[data-v-9a4908c3],ul[data-v-9a4908c3],menu[data-v-9a4908c3]{list-style:none;margin:0;padding:0}dialog[data-v-9a4908c3]{padding:0}textarea[data-v-9a4908c3]{resize:vertical}input[data-v-9a4908c3]::-moz-placeholder,textarea[data-v-9a4908c3]::-moz-placeholder{opacity:1;color:#9ca3af}input[data-v-9a4908c3]::placeholder,textarea[data-v-9a4908c3]::placeholder{opacity:1;color:#9ca3af}button[data-v-9a4908c3],[role=button][data-v-9a4908c3]{cursor:pointer}[data-v-9a4908c3]:disabled{cursor:default}img[data-v-9a4908c3],svg[data-v-9a4908c3],video[data-v-9a4908c3],canvas[data-v-9a4908c3],audio[data-v-9a4908c3],iframe[data-v-9a4908c3],embed[data-v-9a4908c3],object[data-v-9a4908c3]{display:block;vertical-align:middle}img[data-v-9a4908c3],video[data-v-9a4908c3]{max-width:100%;height:auto}[hidden][data-v-9a4908c3]:where(:not([hidden=until-found])){display:none}.container[data-v-9a4908c3]{width:100%}@media (min-width: 640px){.container[data-v-9a4908c3]{max-width:640px}}@media (min-width: 768px){.container[data-v-9a4908c3]{max-width:768px}}@media (min-width: 1024px){.container[data-v-9a4908c3]{max-width:1024px}}@media (min-width: 1280px){.container[data-v-9a4908c3]{max-width:1280px}}@media (min-width: 1536px){.container[data-v-9a4908c3]{max-width:1536px}}.static[data-v-9a4908c3]{position:static}.fixed[data-v-9a4908c3]{position:fixed}.absolute[data-v-9a4908c3]{position:absolute}.relative[data-v-9a4908c3]{position:relative}.\!top-0[data-v-9a4908c3]{top:0!important}.bottom-\[40px\][data-v-9a4908c3]{bottom:40px}.right-0[data-v-9a4908c3]{right:0}.top-\[15px\][data-v-9a4908c3]{top:15px}.top-\[30px\][data-v-9a4908c3]{top:30px}.z-\[9999\][data-v-9a4908c3]{z-index:9999}.float-right[data-v-9a4908c3]{float:right}.mx-\[6px\][data-v-9a4908c3]{margin-left:6px;margin-right:6px}.my-\[16px\][data-v-9a4908c3]{margin-top:16px;margin-bottom:16px}.my-\[2px\][data-v-9a4908c3]{margin-top:2px;margin-bottom:2px}.mb-10[data-v-9a4908c3]{margin-bottom:2.5rem}.mb-\[16px\][data-v-9a4908c3]{margin-bottom:16px}.mb-\[17px\][data-v-9a4908c3]{margin-bottom:17px}.ml-\[8px\][data-v-9a4908c3]{margin-left:8px}.mt-10[data-v-9a4908c3]{margin-top:2.5rem}.block[data-v-9a4908c3]{display:block}.flex[data-v-9a4908c3]{display:flex}.table[data-v-9a4908c3]{display:table}.contents[data-v-9a4908c3]{display:contents}.hidden[data-v-9a4908c3]{display:none}.h-\[100vh\][data-v-9a4908c3]{height:100vh}.h-\[15px\][data-v-9a4908c3]{height:15px}.h-\[16px\][data-v-9a4908c3]{height:16px}.h-\[1px\][data-v-9a4908c3]{height:1px}.h-\[20px\][data-v-9a4908c3]{height:20px}.h-\[24px\][data-v-9a4908c3]{height:24px}.h-\[26px\][data-v-9a4908c3]{height:26px}.h-\[32px\][data-v-9a4908c3]{height:32px}.h-\[36px\][data-v-9a4908c3]{height:36px}.h-\[40px\][data-v-9a4908c3]{height:40px}.h-full[data-v-9a4908c3]{height:100%}.w-\[100vw\][data-v-9a4908c3]{width:100vw}.w-\[16px\][data-v-9a4908c3]{width:16px}.w-\[1px\][data-v-9a4908c3]{width:1px}.w-\[20px\][data-v-9a4908c3]{width:20px}.w-\[24px\][data-v-9a4908c3]{width:24px}.w-\[26px\][data-v-9a4908c3]{width:26px}.w-\[36px\][data-v-9a4908c3]{width:36px}.w-\[441px\][data-v-9a4908c3]{width:441px}.w-full[data-v-9a4908c3]{width:100%}.shrink[data-v-9a4908c3]{flex-shrink:1}.flex-grow[data-v-9a4908c3],.grow[data-v-9a4908c3]{flex-grow:1}.transform[data-v-9a4908c3]{transform:translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skew(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.cursor-pointer[data-v-9a4908c3]{cursor:pointer}.resize-none[data-v-9a4908c3]{resize:none}.resize[data-v-9a4908c3]{resize:both}.flex-col[data-v-9a4908c3]{flex-direction:column}.items-start[data-v-9a4908c3]{align-items:flex-start}.items-center[data-v-9a4908c3]{align-items:center}.justify-start[data-v-9a4908c3]{justify-content:flex-start}.justify-center[data-v-9a4908c3]{justify-content:center}.justify-between[data-v-9a4908c3]{justify-content:space-between}.gap-\[10px\][data-v-9a4908c3]{gap:10px}.gap-\[13px\][data-v-9a4908c3]{gap:13px}.gap-\[4px\][data-v-9a4908c3]{gap:4px}.gap-\[6px\][data-v-9a4908c3]{gap:6px}.gap-\[8px\][data-v-9a4908c3]{gap:8px}.self-stretch[data-v-9a4908c3]{align-self:stretch}.whitespace-nowrap[data-v-9a4908c3]{white-space:nowrap}.\!rounded-\[8px\][data-v-9a4908c3]{border-radius:8px!important}.rounded-2xl[data-v-9a4908c3]{border-radius:1rem}.rounded-\[12px\][data-v-9a4908c3]{border-radius:12px}.rounded-\[16px\][data-v-9a4908c3]{border-radius:16px}.rounded-\[8px\][data-v-9a4908c3]{border-radius:8px}.border[data-v-9a4908c3]{border-width:1px}.border-none[data-v-9a4908c3]{border-style:none}.border-\[\#EAEAEA\][data-v-9a4908c3]{--tw-border-opacity: 1;border-color:rgb(234 234 234 / var(--tw-border-opacity, 1))}.\!bg-\[\#031933\][data-v-9a4908c3]{--tw-bg-opacity: 1 !important;background-color:rgb(3 25 51 / var(--tw-bg-opacity, 1))!important}.bg-\[\#232425\][data-v-9a4908c3]{--tw-bg-opacity: 1;background-color:rgb(35 36 37 / var(--tw-bg-opacity, 1))}.bg-\[\#EAEAEA\][data-v-9a4908c3]{--tw-bg-opacity: 1;background-color:rgb(234 234 234 / var(--tw-bg-opacity, 1))}.bg-\[\#EFEFEF\][data-v-9a4908c3]{--tw-bg-opacity: 1;background-color:rgb(239 239 239 / var(--tw-bg-opacity, 1))}.bg-\[\#FFF\][data-v-9a4908c3]{--tw-bg-opacity: 1;background-color:rgb(255 255 255 / var(--tw-bg-opacity, 1))}.bg-\[\#f2f2f2\][data-v-9a4908c3]{--tw-bg-opacity: 1;background-color:rgb(242 242 242 / var(--tw-bg-opacity, 1))}.bg-transparent[data-v-9a4908c3]{background-color:transparent}.bg-white[data-v-9a4908c3]{--tw-bg-opacity: 1;background-color:rgb(255 255 255 / var(--tw-bg-opacity, 1))}.p-\[16px\][data-v-9a4908c3]{padding:16px}.p-\[4px\][data-v-9a4908c3]{padding:4px}.p-\[6px\][data-v-9a4908c3]{padding:6px}.p-\[8px\][data-v-9a4908c3]{padding:8px}.px-\[10px\][data-v-9a4908c3]{padding-left:10px;padding-right:10px}.px-\[12px\][data-v-9a4908c3]{padding-left:12px;padding-right:12px}.px-\[16px\][data-v-9a4908c3]{padding-left:16px;padding-right:16px}.px-\[6px\][data-v-9a4908c3]{padding-left:6px;padding-right:6px}.px-\[8px\][data-v-9a4908c3]{padding-left:8px;padding-right:8px}.py-\[12px\][data-v-9a4908c3]{padding-top:12px;padding-bottom:12px}.py-\[16px\][data-v-9a4908c3]{padding-top:16px;padding-bottom:16px}.py-\[4px\][data-v-9a4908c3]{padding-top:4px;padding-bottom:4px}.py-\[5px\][data-v-9a4908c3]{padding-top:5px;padding-bottom:5px}.text-center[data-v-9a4908c3]{text-align:center}.font-\[\'Arial\'\][data-v-9a4908c3]{font-family:Arial}.font-\[\'Inter\'\,Arial\][data-v-9a4908c3]{font-family:Inter,Arial}.text-\[14px\][data-v-9a4908c3]{font-size:14px}.text-\[16px\][data-v-9a4908c3]{font-size:16px}.font-\[600\][data-v-9a4908c3]{font-weight:600}.font-normal[data-v-9a4908c3]{font-weight:400}.font-semibold[data-v-9a4908c3]{font-weight:600}.leading-\[1\.25\][data-v-9a4908c3]{line-height:1.25}.leading-\[1\.5\][data-v-9a4908c3]{line-height:1.5}.text-\[\#232425\][data-v-9a4908c3]{--tw-text-opacity: 1;color:rgb(35 36 37 / var(--tw-text-opacity, 1))}.text-black[data-v-9a4908c3]{--tw-text-opacity: 1;color:rgb(0 0 0 / var(--tw-text-opacity, 1))}.text-gray-600[data-v-9a4908c3]{--tw-text-opacity: 1;color:rgb(75 85 99 / var(--tw-text-opacity, 1))}.text-neutral-800[data-v-9a4908c3]{--tw-text-opacity: 1;color:rgb(38 38 38 / var(--tw-text-opacity, 1))}.text-white[data-v-9a4908c3]{--tw-text-opacity: 1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.underline[data-v-9a4908c3]{text-decoration-line:underline}.shadow[data-v-9a4908c3]{--tw-shadow: 0 1px 3px 0 rgb(0 0 0 / .1), 0 1px 2px -1px rgb(0 0 0 / .1);--tw-shadow-colored: 0 1px 3px 0 var(--tw-shadow-color), 0 1px 2px -1px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow)}.shadow-\[0px_2px_8px_0px_rgba\(0\,0\,0\,0\.10\)\][data-v-9a4908c3]{--tw-shadow: 0px 2px 8px 0px rgba(0,0,0,.1);--tw-shadow-colored: 0px 2px 8px 0px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow)}.shadow-\[0px_4px_10px_0px_rgba\(0\,0\,0\,0\.15\)\][data-v-9a4908c3]{--tw-shadow: 0px 4px 10px 0px rgba(0,0,0,.15);--tw-shadow-colored: 0px 4px 10px 0px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow)}.shadow-\[0px_4px_15px_0px_rgba\(0\,0\,0\,0\.10\)\][data-v-9a4908c3]{--tw-shadow: 0px 4px 15px 0px rgba(0,0,0,.1);--tw-shadow-colored: 0px 4px 15px 0px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow)}.outline-none[data-v-9a4908c3]{outline:2px solid transparent;outline-offset:2px}.outline[data-v-9a4908c3]{outline-style:solid}.outline-1[data-v-9a4908c3]{outline-width:1px}.outline-offset-\[-1px\][data-v-9a4908c3]{outline-offset:-1px}.outline-gray-200[data-v-9a4908c3]{outline-color:#e5e7eb}.blur[data-v-9a4908c3]{--tw-blur: blur(8px);filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)}.filter[data-v-9a4908c3]{filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)}.transition[data-v-9a4908c3]{transition-property:color,background-color,border-color,text-decoration-color,fill,stroke,opacity,box-shadow,transform,filter,-webkit-backdrop-filter;transition-property:color,background-color,border-color,text-decoration-color,fill,stroke,opacity,box-shadow,transform,filter,backdrop-filter;transition-property:color,background-color,border-color,text-decoration-color,fill,stroke,opacity,box-shadow,transform,filter,backdrop-filter,-webkit-backdrop-filter;transition-timing-function:cubic-bezier(.4,0,.2,1);transition-duration:.15s}.ease-in-out[data-v-9a4908c3]{transition-timing-function:cubic-bezier(.4,0,.2,1)}.hover\:bg-\[\#F5F5F5\][data-v-9a4908c3]:hover{--tw-bg-opacity: 1;background-color:rgb(245 245 245 / var(--tw-bg-opacity, 1))}.hover\:bg-gray-200[data-v-9a4908c3]:hover{--tw-bg-opacity: 1;background-color:rgb(229 231 235 / var(--tw-bg-opacity, 1))}@media (prefers-color-scheme: dark){.dark\:bg-black[data-v-9a4908c3]{--tw-bg-opacity: 1;background-color:rgb(0 0 0 / var(--tw-bg-opacity, 1))}}[data-v-d10c7236],[data-v-d10c7236]:before,[data-v-d10c7236]:after{--tw-border-spacing-x: 0;--tw-border-spacing-y: 0;--tw-translate-x: 0;--tw-translate-y: 0;--tw-rotate: 0;--tw-skew-x: 0;--tw-skew-y: 0;--tw-scale-x: 1;--tw-scale-y: 1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness: proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width: 0px;--tw-ring-offset-color: #fff;--tw-ring-color: rgb(59 130 246 / .5);--tw-ring-offset-shadow: 0 0 #0000;--tw-ring-shadow: 0 0 #0000;--tw-shadow: 0 0 #0000;--tw-shadow-colored: 0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }[data-v-d10c7236]::backdrop{--tw-border-spacing-x: 0;--tw-border-spacing-y: 0;--tw-translate-x: 0;--tw-translate-y: 0;--tw-rotate: 0;--tw-skew-x: 0;--tw-skew-y: 0;--tw-scale-x: 1;--tw-scale-y: 1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness: proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width: 0px;--tw-ring-offset-color: #fff;--tw-ring-color: rgb(59 130 246 / .5);--tw-ring-offset-shadow: 0 0 #0000;--tw-ring-shadow: 0 0 #0000;--tw-shadow: 0 0 #0000;--tw-shadow-colored: 0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }[data-v-d10c7236],[data-v-d10c7236]:before,[data-v-d10c7236]:after{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}[data-v-d10c7236]:before,[data-v-d10c7236]:after{--tw-content: ""}html[data-v-d10c7236],[data-v-d10c7236]:host{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;-o-tab-size:4;tab-size:4;font-family:ui-sans-serif,system-ui,sans-serif,"Apple Color Emoji","Segoe UI Emoji",Segoe UI Symbol,"Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body[data-v-d10c7236]{margin:0;line-height:inherit}hr[data-v-d10c7236]{height:0;color:inherit;border-top-width:1px}abbr[data-v-d10c7236]:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1[data-v-d10c7236],h2[data-v-d10c7236],h3[data-v-d10c7236],h4[data-v-d10c7236],h5[data-v-d10c7236],h6[data-v-d10c7236]{font-size:inherit;font-weight:inherit}a[data-v-d10c7236]{color:inherit;text-decoration:inherit}b[data-v-d10c7236],strong[data-v-d10c7236]{font-weight:bolder}code[data-v-d10c7236],kbd[data-v-d10c7236],samp[data-v-d10c7236],pre[data-v-d10c7236]{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small[data-v-d10c7236]{font-size:80%}sub[data-v-d10c7236],sup[data-v-d10c7236]{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub[data-v-d10c7236]{bottom:-.25em}sup[data-v-d10c7236]{top:-.5em}table[data-v-d10c7236]{text-indent:0;border-color:inherit;border-collapse:collapse}button[data-v-d10c7236],input[data-v-d10c7236],optgroup[data-v-d10c7236],select[data-v-d10c7236],textarea[data-v-d10c7236]{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button[data-v-d10c7236],select[data-v-d10c7236]{text-transform:none}button[data-v-d10c7236],input[data-v-d10c7236]:where([type=button]),input[data-v-d10c7236]:where([type=reset]),input[data-v-d10c7236]:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}[data-v-d10c7236]:-moz-focusring{outline:auto}[data-v-d10c7236]:-moz-ui-invalid{box-shadow:none}progress[data-v-d10c7236]{vertical-align:baseline}[data-v-d10c7236]::-webkit-inner-spin-button,[data-v-d10c7236]::-webkit-outer-spin-button{height:auto}[type=search][data-v-d10c7236]{-webkit-appearance:textfield;outline-offset:-2px}[data-v-d10c7236]::-webkit-search-decoration{-webkit-appearance:none}[data-v-d10c7236]::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary[data-v-d10c7236]{display:list-item}blockquote[data-v-d10c7236],dl[data-v-d10c7236],dd[data-v-d10c7236],h1[data-v-d10c7236],h2[data-v-d10c7236],h3[data-v-d10c7236],h4[data-v-d10c7236],h5[data-v-d10c7236],h6[data-v-d10c7236],hr[data-v-d10c7236],figure[data-v-d10c7236],p[data-v-d10c7236],pre[data-v-d10c7236]{margin:0}fieldset[data-v-d10c7236]{margin:0;padding:0}legend[data-v-d10c7236]{padding:0}ol[data-v-d10c7236],ul[data-v-d10c7236],menu[data-v-d10c7236]{list-style:none;margin:0;padding:0}dialog[data-v-d10c7236]{padding:0}textarea[data-v-d10c7236]{resize:vertical}input[data-v-d10c7236]::-moz-placeholder,textarea[data-v-d10c7236]::-moz-placeholder{opacity:1;color:#9ca3af}input[data-v-d10c7236]::placeholder,textarea[data-v-d10c7236]::placeholder{opacity:1;color:#9ca3af}button[data-v-d10c7236],[role=button][data-v-d10c7236]{cursor:pointer}[data-v-d10c7236]:disabled{cursor:default}img[data-v-d10c7236],svg[data-v-d10c7236],video[data-v-d10c7236],canvas[data-v-d10c7236],audio[data-v-d10c7236],iframe[data-v-d10c7236],embed[data-v-d10c7236],object[data-v-d10c7236]{display:block;vertical-align:middle}img[data-v-d10c7236],video[data-v-d10c7236]{max-width:100%;height:auto}[hidden][data-v-d10c7236]:where(:not([hidden=until-found])){display:none}.container[data-v-d10c7236]{width:100%}@media (min-width: 640px){.container[data-v-d10c7236]{max-width:640px}}@media (min-width: 768px){.container[data-v-d10c7236]{max-width:768px}}@media (min-width: 1024px){.container[data-v-d10c7236]{max-width:1024px}}@media (min-width: 1280px){.container[data-v-d10c7236]{max-width:1280px}}@media (min-width: 1536px){.container[data-v-d10c7236]{max-width:1536px}}.static[data-v-d10c7236]{position:static}.fixed[data-v-d10c7236]{position:fixed}.absolute[data-v-d10c7236]{position:absolute}.relative[data-v-d10c7236]{position:relative}.\!top-0[data-v-d10c7236]{top:0!important}.bottom-\[40px\][data-v-d10c7236]{bottom:40px}.right-0[data-v-d10c7236]{right:0}.top-\[15px\][data-v-d10c7236]{top:15px}.top-\[30px\][data-v-d10c7236]{top:30px}.z-\[9999\][data-v-d10c7236]{z-index:9999}.float-right[data-v-d10c7236]{float:right}.mx-\[6px\][data-v-d10c7236]{margin-left:6px;margin-right:6px}.my-\[16px\][data-v-d10c7236]{margin-top:16px;margin-bottom:16px}.my-\[2px\][data-v-d10c7236]{margin-top:2px;margin-bottom:2px}.mb-10[data-v-d10c7236]{margin-bottom:2.5rem}.mb-\[16px\][data-v-d10c7236]{margin-bottom:16px}.mb-\[17px\][data-v-d10c7236]{margin-bottom:17px}.ml-\[8px\][data-v-d10c7236]{margin-left:8px}.mt-10[data-v-d10c7236]{margin-top:2.5rem}.block[data-v-d10c7236]{display:block}.flex[data-v-d10c7236]{display:flex}.table[data-v-d10c7236]{display:table}.contents[data-v-d10c7236]{display:contents}.hidden[data-v-d10c7236]{display:none}.h-\[100vh\][data-v-d10c7236]{height:100vh}.h-\[15px\][data-v-d10c7236]{height:15px}.h-\[16px\][data-v-d10c7236]{height:16px}.h-\[1px\][data-v-d10c7236]{height:1px}.h-\[20px\][data-v-d10c7236]{height:20px}.h-\[24px\][data-v-d10c7236]{height:24px}.h-\[26px\][data-v-d10c7236]{height:26px}.h-\[32px\][data-v-d10c7236]{height:32px}.h-\[36px\][data-v-d10c7236]{height:36px}.h-\[40px\][data-v-d10c7236]{height:40px}.h-full[data-v-d10c7236]{height:100%}.w-\[100vw\][data-v-d10c7236]{width:100vw}.w-\[16px\][data-v-d10c7236]{width:16px}.w-\[1px\][data-v-d10c7236]{width:1px}.w-\[20px\][data-v-d10c7236]{width:20px}.w-\[24px\][data-v-d10c7236]{width:24px}.w-\[26px\][data-v-d10c7236]{width:26px}.w-\[36px\][data-v-d10c7236]{width:36px}.w-\[441px\][data-v-d10c7236]{width:441px}.w-full[data-v-d10c7236]{width:100%}.shrink[data-v-d10c7236]{flex-shrink:1}.flex-grow[data-v-d10c7236],.grow[data-v-d10c7236]{flex-grow:1}.transform[data-v-d10c7236]{transform:translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skew(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.cursor-pointer[data-v-d10c7236]{cursor:pointer}.resize-none[data-v-d10c7236]{resize:none}.resize[data-v-d10c7236]{resize:both}.flex-col[data-v-d10c7236]{flex-direction:column}.items-start[data-v-d10c7236]{align-items:flex-start}.items-center[data-v-d10c7236]{align-items:center}.justify-start[data-v-d10c7236]{justify-content:flex-start}.justify-center[data-v-d10c7236]{justify-content:center}.justify-between[data-v-d10c7236]{justify-content:space-between}.gap-\[10px\][data-v-d10c7236]{gap:10px}.gap-\[13px\][data-v-d10c7236]{gap:13px}.gap-\[4px\][data-v-d10c7236]{gap:4px}.gap-\[6px\][data-v-d10c7236]{gap:6px}.gap-\[8px\][data-v-d10c7236]{gap:8px}.self-stretch[data-v-d10c7236]{align-self:stretch}.whitespace-nowrap[data-v-d10c7236]{white-space:nowrap}.\!rounded-\[8px\][data-v-d10c7236]{border-radius:8px!important}.rounded-2xl[data-v-d10c7236]{border-radius:1rem}.rounded-\[12px\][data-v-d10c7236]{border-radius:12px}.rounded-\[16px\][data-v-d10c7236]{border-radius:16px}.rounded-\[8px\][data-v-d10c7236]{border-radius:8px}.border[data-v-d10c7236]{border-width:1px}.border-none[data-v-d10c7236]{border-style:none}.border-\[\#EAEAEA\][data-v-d10c7236]{--tw-border-opacity: 1;border-color:rgb(234 234 234 / var(--tw-border-opacity, 1))}.\!bg-\[\#031933\][data-v-d10c7236]{--tw-bg-opacity: 1 !important;background-color:rgb(3 25 51 / var(--tw-bg-opacity, 1))!important}.bg-\[\#232425\][data-v-d10c7236]{--tw-bg-opacity: 1;background-color:rgb(35 36 37 / var(--tw-bg-opacity, 1))}.bg-\[\#EAEAEA\][data-v-d10c7236]{--tw-bg-opacity: 1;background-color:rgb(234 234 234 / var(--tw-bg-opacity, 1))}.bg-\[\#EFEFEF\][data-v-d10c7236]{--tw-bg-opacity: 1;background-color:rgb(239 239 239 / var(--tw-bg-opacity, 1))}.bg-\[\#FFF\][data-v-d10c7236]{--tw-bg-opacity: 1;background-color:rgb(255 255 255 / var(--tw-bg-opacity, 1))}.bg-\[\#f2f2f2\][data-v-d10c7236]{--tw-bg-opacity: 1;background-color:rgb(242 242 242 / var(--tw-bg-opacity, 1))}.bg-transparent[data-v-d10c7236]{background-color:transparent}.bg-white[data-v-d10c7236]{--tw-bg-opacity: 1;background-color:rgb(255 255 255 / var(--tw-bg-opacity, 1))}.p-\[16px\][data-v-d10c7236]{padding:16px}.p-\[4px\][data-v-d10c7236]{padding:4px}.p-\[6px\][data-v-d10c7236]{padding:6px}.p-\[8px\][data-v-d10c7236]{padding:8px}.px-\[10px\][data-v-d10c7236]{padding-left:10px;padding-right:10px}.px-\[12px\][data-v-d10c7236]{padding-left:12px;padding-right:12px}.px-\[16px\][data-v-d10c7236]{padding-left:16px;padding-right:16px}.px-\[6px\][data-v-d10c7236]{padding-left:6px;padding-right:6px}.px-\[8px\][data-v-d10c7236]{padding-left:8px;padding-right:8px}.py-\[12px\][data-v-d10c7236]{padding-top:12px;padding-bottom:12px}.py-\[16px\][data-v-d10c7236]{padding-top:16px;padding-bottom:16px}.py-\[4px\][data-v-d10c7236]{padding-top:4px;padding-bottom:4px}.py-\[5px\][data-v-d10c7236]{padding-top:5px;padding-bottom:5px}.text-center[data-v-d10c7236]{text-align:center}.font-\[\'Arial\'\][data-v-d10c7236]{font-family:Arial}.font-\[\'Inter\'\,Arial\][data-v-d10c7236]{font-family:Inter,Arial}.text-\[14px\][data-v-d10c7236]{font-size:14px}.text-\[16px\][data-v-d10c7236]{font-size:16px}.font-\[600\][data-v-d10c7236]{font-weight:600}.font-normal[data-v-d10c7236]{font-weight:400}.font-semibold[data-v-d10c7236]{font-weight:600}.leading-\[1\.25\][data-v-d10c7236]{line-height:1.25}.leading-\[1\.5\][data-v-d10c7236]{line-height:1.5}.text-\[\#232425\][data-v-d10c7236]{--tw-text-opacity: 1;color:rgb(35 36 37 / var(--tw-text-opacity, 1))}.text-black[data-v-d10c7236]{--tw-text-opacity: 1;color:rgb(0 0 0 / var(--tw-text-opacity, 1))}.text-gray-600[data-v-d10c7236]{--tw-text-opacity: 1;color:rgb(75 85 99 / var(--tw-text-opacity, 1))}.text-neutral-800[data-v-d10c7236]{--tw-text-opacity: 1;color:rgb(38 38 38 / var(--tw-text-opacity, 1))}.text-white[data-v-d10c7236]{--tw-text-opacity: 1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.underline[data-v-d10c7236]{text-decoration-line:underline}.shadow[data-v-d10c7236]{--tw-shadow: 0 1px 3px 0 rgb(0 0 0 / .1), 0 1px 2px -1px rgb(0 0 0 / .1);--tw-shadow-colored: 0 1px 3px 0 var(--tw-shadow-color), 0 1px 2px -1px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow)}.shadow-\[0px_2px_8px_0px_rgba\(0\,0\,0\,0\.10\)\][data-v-d10c7236]{--tw-shadow: 0px 2px 8px 0px rgba(0,0,0,.1);--tw-shadow-colored: 0px 2px 8px 0px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow)}.shadow-\[0px_4px_10px_0px_rgba\(0\,0\,0\,0\.15\)\][data-v-d10c7236]{--tw-shadow: 0px 4px 10px 0px rgba(0,0,0,.15);--tw-shadow-colored: 0px 4px 10px 0px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow)}.shadow-\[0px_4px_15px_0px_rgba\(0\,0\,0\,0\.10\)\][data-v-d10c7236]{--tw-shadow: 0px 4px 15px 0px rgba(0,0,0,.1);--tw-shadow-colored: 0px 4px 15px 0px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow)}.outline-none[data-v-d10c7236]{outline:2px solid transparent;outline-offset:2px}.outline[data-v-d10c7236]{outline-style:solid}.outline-1[data-v-d10c7236]{outline-width:1px}.outline-offset-\[-1px\][data-v-d10c7236]{outline-offset:-1px}.outline-gray-200[data-v-d10c7236]{outline-color:#e5e7eb}.blur[data-v-d10c7236]{--tw-blur: blur(8px);filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)}.filter[data-v-d10c7236]{filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)}.transition[data-v-d10c7236]{transition-property:color,background-color,border-color,text-decoration-color,fill,stroke,opacity,box-shadow,transform,filter,-webkit-backdrop-filter;transition-property:color,background-color,border-color,text-decoration-color,fill,stroke,opacity,box-shadow,transform,filter,backdrop-filter;transition-property:color,background-color,border-color,text-decoration-color,fill,stroke,opacity,box-shadow,transform,filter,backdrop-filter,-webkit-backdrop-filter;transition-timing-function:cubic-bezier(.4,0,.2,1);transition-duration:.15s}.ease-in-out[data-v-d10c7236]{transition-timing-function:cubic-bezier(.4,0,.2,1)}div[data-v-d10c7236]{font-family:Inter,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,sans-serif,IBM Plex Mono,SFMono-Regular,Consolas,Liberation Mono,Menlo,Courier,monospace}.hover\:bg-\[\#F5F5F5\][data-v-d10c7236]:hover{--tw-bg-opacity: 1;background-color:rgb(245 245 245 / var(--tw-bg-opacity, 1))}.hover\:bg-gray-200[data-v-d10c7236]:hover{--tw-bg-opacity: 1;background-color:rgb(229 231 235 / var(--tw-bg-opacity, 1))}@media (prefers-color-scheme: dark){.dark\:bg-black[data-v-d10c7236]{--tw-bg-opacity: 1;background-color:rgb(0 0 0 / var(--tw-bg-opacity, 1))}}[data-v-3a5f8e6b],[data-v-3a5f8e6b]:before,[data-v-3a5f8e6b]:after{--tw-border-spacing-x: 0;--tw-border-spacing-y: 0;--tw-translate-x: 0;--tw-translate-y: 0;--tw-rotate: 0;--tw-skew-x: 0;--tw-skew-y: 0;--tw-scale-x: 1;--tw-scale-y: 1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness: proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width: 0px;--tw-ring-offset-color: #fff;--tw-ring-color: rgb(59 130 246 / .5);--tw-ring-offset-shadow: 0 0 #0000;--tw-ring-shadow: 0 0 #0000;--tw-shadow: 0 0 #0000;--tw-shadow-colored: 0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }[data-v-3a5f8e6b]::backdrop{--tw-border-spacing-x: 0;--tw-border-spacing-y: 0;--tw-translate-x: 0;--tw-translate-y: 0;--tw-rotate: 0;--tw-skew-x: 0;--tw-skew-y: 0;--tw-scale-x: 1;--tw-scale-y: 1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness: proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width: 0px;--tw-ring-offset-color: #fff;--tw-ring-color: rgb(59 130 246 / .5);--tw-ring-offset-shadow: 0 0 #0000;--tw-ring-shadow: 0 0 #0000;--tw-shadow: 0 0 #0000;--tw-shadow-colored: 0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }[data-v-3a5f8e6b],[data-v-3a5f8e6b]:before,[data-v-3a5f8e6b]:after{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}[data-v-3a5f8e6b]:before,[data-v-3a5f8e6b]:after{--tw-content: ""}html[data-v-3a5f8e6b],[data-v-3a5f8e6b]:host{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;-o-tab-size:4;tab-size:4;font-family:ui-sans-serif,system-ui,sans-serif,"Apple Color Emoji","Segoe UI Emoji",Segoe UI Symbol,"Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body[data-v-3a5f8e6b]{margin:0;line-height:inherit}hr[data-v-3a5f8e6b]{height:0;color:inherit;border-top-width:1px}abbr[data-v-3a5f8e6b]:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1[data-v-3a5f8e6b],h2[data-v-3a5f8e6b],h3[data-v-3a5f8e6b],h4[data-v-3a5f8e6b],h5[data-v-3a5f8e6b],h6[data-v-3a5f8e6b]{font-size:inherit;font-weight:inherit}a[data-v-3a5f8e6b]{color:inherit;text-decoration:inherit}b[data-v-3a5f8e6b],strong[data-v-3a5f8e6b]{font-weight:bolder}code[data-v-3a5f8e6b],kbd[data-v-3a5f8e6b],samp[data-v-3a5f8e6b],pre[data-v-3a5f8e6b]{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small[data-v-3a5f8e6b]{font-size:80%}sub[data-v-3a5f8e6b],sup[data-v-3a5f8e6b]{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub[data-v-3a5f8e6b]{bottom:-.25em}sup[data-v-3a5f8e6b]{top:-.5em}table[data-v-3a5f8e6b]{text-indent:0;border-color:inherit;border-collapse:collapse}button[data-v-3a5f8e6b],input[data-v-3a5f8e6b],optgroup[data-v-3a5f8e6b],select[data-v-3a5f8e6b],textarea[data-v-3a5f8e6b]{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button[data-v-3a5f8e6b],select[data-v-3a5f8e6b]{text-transform:none}button[data-v-3a5f8e6b],input[data-v-3a5f8e6b]:where([type=button]),input[data-v-3a5f8e6b]:where([type=reset]),input[data-v-3a5f8e6b]:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}[data-v-3a5f8e6b]:-moz-focusring{outline:auto}[data-v-3a5f8e6b]:-moz-ui-invalid{box-shadow:none}progress[data-v-3a5f8e6b]{vertical-align:baseline}[data-v-3a5f8e6b]::-webkit-inner-spin-button,[data-v-3a5f8e6b]::-webkit-outer-spin-button{height:auto}[type=search][data-v-3a5f8e6b]{-webkit-appearance:textfield;outline-offset:-2px}[data-v-3a5f8e6b]::-webkit-search-decoration{-webkit-appearance:none}[data-v-3a5f8e6b]::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary[data-v-3a5f8e6b]{display:list-item}blockquote[data-v-3a5f8e6b],dl[data-v-3a5f8e6b],dd[data-v-3a5f8e6b],h1[data-v-3a5f8e6b],h2[data-v-3a5f8e6b],h3[data-v-3a5f8e6b],h4[data-v-3a5f8e6b],h5[data-v-3a5f8e6b],h6[data-v-3a5f8e6b],hr[data-v-3a5f8e6b],figure[data-v-3a5f8e6b],p[data-v-3a5f8e6b],pre[data-v-3a5f8e6b]{margin:0}fieldset[data-v-3a5f8e6b]{margin:0;padding:0}legend[data-v-3a5f8e6b]{padding:0}ol[data-v-3a5f8e6b],ul[data-v-3a5f8e6b],menu[data-v-3a5f8e6b]{list-style:none;margin:0;padding:0}dialog[data-v-3a5f8e6b]{padding:0}textarea[data-v-3a5f8e6b]{resize:vertical}input[data-v-3a5f8e6b]::-moz-placeholder,textarea[data-v-3a5f8e6b]::-moz-placeholder{opacity:1;color:#9ca3af}input[data-v-3a5f8e6b]::placeholder,textarea[data-v-3a5f8e6b]::placeholder{opacity:1;color:#9ca3af}button[data-v-3a5f8e6b],[role=button][data-v-3a5f8e6b]{cursor:pointer}[data-v-3a5f8e6b]:disabled{cursor:default}img[data-v-3a5f8e6b],svg[data-v-3a5f8e6b],video[data-v-3a5f8e6b],canvas[data-v-3a5f8e6b],audio[data-v-3a5f8e6b],iframe[data-v-3a5f8e6b],embed[data-v-3a5f8e6b],object[data-v-3a5f8e6b]{display:block;vertical-align:middle}img[data-v-3a5f8e6b],video[data-v-3a5f8e6b]{max-width:100%;height:auto}[hidden][data-v-3a5f8e6b]:where(:not([hidden=until-found])){display:none}.container[data-v-3a5f8e6b]{width:100%}@media (min-width: 640px){.container[data-v-3a5f8e6b]{max-width:640px}}@media (min-width: 768px){.container[data-v-3a5f8e6b]{max-width:768px}}@media (min-width: 1024px){.container[data-v-3a5f8e6b]{max-width:1024px}}@media (min-width: 1280px){.container[data-v-3a5f8e6b]{max-width:1280px}}@media (min-width: 1536px){.container[data-v-3a5f8e6b]{max-width:1536px}}.static[data-v-3a5f8e6b]{position:static}.fixed[data-v-3a5f8e6b]{position:fixed}.absolute[data-v-3a5f8e6b]{position:absolute}.relative[data-v-3a5f8e6b]{position:relative}.\!top-0[data-v-3a5f8e6b]{top:0!important}.bottom-\[40px\][data-v-3a5f8e6b]{bottom:40px}.right-0[data-v-3a5f8e6b]{right:0}.top-\[15px\][data-v-3a5f8e6b]{top:15px}.top-\[30px\][data-v-3a5f8e6b]{top:30px}.z-\[9999\][data-v-3a5f8e6b]{z-index:9999}.float-right[data-v-3a5f8e6b]{float:right}.mx-\[6px\][data-v-3a5f8e6b]{margin-left:6px;margin-right:6px}.my-\[16px\][data-v-3a5f8e6b]{margin-top:16px;margin-bottom:16px}.my-\[2px\][data-v-3a5f8e6b]{margin-top:2px;margin-bottom:2px}.mb-10[data-v-3a5f8e6b]{margin-bottom:2.5rem}.mb-\[16px\][data-v-3a5f8e6b]{margin-bottom:16px}.mb-\[17px\][data-v-3a5f8e6b]{margin-bottom:17px}.ml-\[8px\][data-v-3a5f8e6b]{margin-left:8px}.mt-10[data-v-3a5f8e6b]{margin-top:2.5rem}.block[data-v-3a5f8e6b]{display:block}.flex[data-v-3a5f8e6b]{display:flex}.table[data-v-3a5f8e6b]{display:table}.contents[data-v-3a5f8e6b]{display:contents}.hidden[data-v-3a5f8e6b]{display:none}.h-\[100vh\][data-v-3a5f8e6b]{height:100vh}.h-\[15px\][data-v-3a5f8e6b]{height:15px}.h-\[16px\][data-v-3a5f8e6b]{height:16px}.h-\[1px\][data-v-3a5f8e6b]{height:1px}.h-\[20px\][data-v-3a5f8e6b]{height:20px}.h-\[24px\][data-v-3a5f8e6b]{height:24px}.h-\[26px\][data-v-3a5f8e6b]{height:26px}.h-\[32px\][data-v-3a5f8e6b]{height:32px}.h-\[36px\][data-v-3a5f8e6b]{height:36px}.h-\[40px\][data-v-3a5f8e6b]{height:40px}.h-full[data-v-3a5f8e6b]{height:100%}.w-\[100vw\][data-v-3a5f8e6b]{width:100vw}.w-\[16px\][data-v-3a5f8e6b]{width:16px}.w-\[1px\][data-v-3a5f8e6b]{width:1px}.w-\[20px\][data-v-3a5f8e6b]{width:20px}.w-\[24px\][data-v-3a5f8e6b]{width:24px}.w-\[26px\][data-v-3a5f8e6b]{width:26px}.w-\[36px\][data-v-3a5f8e6b]{width:36px}.w-\[441px\][data-v-3a5f8e6b]{width:441px}.w-full[data-v-3a5f8e6b]{width:100%}.shrink[data-v-3a5f8e6b]{flex-shrink:1}.flex-grow[data-v-3a5f8e6b],.grow[data-v-3a5f8e6b]{flex-grow:1}.transform[data-v-3a5f8e6b]{transform:translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skew(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.cursor-pointer[data-v-3a5f8e6b]{cursor:pointer}.resize-none[data-v-3a5f8e6b]{resize:none}.resize[data-v-3a5f8e6b]{resize:both}.flex-col[data-v-3a5f8e6b]{flex-direction:column}.items-start[data-v-3a5f8e6b]{align-items:flex-start}.items-center[data-v-3a5f8e6b]{align-items:center}.justify-start[data-v-3a5f8e6b]{justify-content:flex-start}.justify-center[data-v-3a5f8e6b]{justify-content:center}.justify-between[data-v-3a5f8e6b]{justify-content:space-between}.gap-\[10px\][data-v-3a5f8e6b]{gap:10px}.gap-\[13px\][data-v-3a5f8e6b]{gap:13px}.gap-\[4px\][data-v-3a5f8e6b]{gap:4px}.gap-\[6px\][data-v-3a5f8e6b]{gap:6px}.gap-\[8px\][data-v-3a5f8e6b]{gap:8px}.self-stretch[data-v-3a5f8e6b]{align-self:stretch}.whitespace-nowrap[data-v-3a5f8e6b]{white-space:nowrap}.\!rounded-\[8px\][data-v-3a5f8e6b]{border-radius:8px!important}.rounded-2xl[data-v-3a5f8e6b]{border-radius:1rem}.rounded-\[12px\][data-v-3a5f8e6b]{border-radius:12px}.rounded-\[16px\][data-v-3a5f8e6b]{border-radius:16px}.rounded-\[8px\][data-v-3a5f8e6b]{border-radius:8px}.border[data-v-3a5f8e6b]{border-width:1px}.border-none[data-v-3a5f8e6b]{border-style:none}.border-\[\#EAEAEA\][data-v-3a5f8e6b]{--tw-border-opacity: 1;border-color:rgb(234 234 234 / var(--tw-border-opacity, 1))}.\!bg-\[\#031933\][data-v-3a5f8e6b]{--tw-bg-opacity: 1 !important;background-color:rgb(3 25 51 / var(--tw-bg-opacity, 1))!important}.bg-\[\#232425\][data-v-3a5f8e6b]{--tw-bg-opacity: 1;background-color:rgb(35 36 37 / var(--tw-bg-opacity, 1))}.bg-\[\#EAEAEA\][data-v-3a5f8e6b]{--tw-bg-opacity: 1;background-color:rgb(234 234 234 / var(--tw-bg-opacity, 1))}.bg-\[\#EFEFEF\][data-v-3a5f8e6b]{--tw-bg-opacity: 1;background-color:rgb(239 239 239 / var(--tw-bg-opacity, 1))}.bg-\[\#FFF\][data-v-3a5f8e6b]{--tw-bg-opacity: 1;background-color:rgb(255 255 255 / var(--tw-bg-opacity, 1))}.bg-\[\#f2f2f2\][data-v-3a5f8e6b]{--tw-bg-opacity: 1;background-color:rgb(242 242 242 / var(--tw-bg-opacity, 1))}.bg-transparent[data-v-3a5f8e6b]{background-color:transparent}.bg-white[data-v-3a5f8e6b]{--tw-bg-opacity: 1;background-color:rgb(255 255 255 / var(--tw-bg-opacity, 1))}.p-\[16px\][data-v-3a5f8e6b]{padding:16px}.p-\[4px\][data-v-3a5f8e6b]{padding:4px}.p-\[6px\][data-v-3a5f8e6b]{padding:6px}.p-\[8px\][data-v-3a5f8e6b]{padding:8px}.px-\[10px\][data-v-3a5f8e6b]{padding-left:10px;padding-right:10px}.px-\[12px\][data-v-3a5f8e6b]{padding-left:12px;padding-right:12px}.px-\[16px\][data-v-3a5f8e6b]{padding-left:16px;padding-right:16px}.px-\[6px\][data-v-3a5f8e6b]{padding-left:6px;padding-right:6px}.px-\[8px\][data-v-3a5f8e6b]{padding-left:8px;padding-right:8px}.py-\[12px\][data-v-3a5f8e6b]{padding-top:12px;padding-bottom:12px}.py-\[16px\][data-v-3a5f8e6b]{padding-top:16px;padding-bottom:16px}.py-\[4px\][data-v-3a5f8e6b]{padding-top:4px;padding-bottom:4px}.py-\[5px\][data-v-3a5f8e6b]{padding-top:5px;padding-bottom:5px}.text-center[data-v-3a5f8e6b]{text-align:center}.font-\[\'Arial\'\][data-v-3a5f8e6b]{font-family:Arial}.font-\[\'Inter\'\,Arial\][data-v-3a5f8e6b]{font-family:Inter,Arial}.text-\[14px\][data-v-3a5f8e6b]{font-size:14px}.text-\[16px\][data-v-3a5f8e6b]{font-size:16px}.font-\[600\][data-v-3a5f8e6b]{font-weight:600}.font-normal[data-v-3a5f8e6b]{font-weight:400}.font-semibold[data-v-3a5f8e6b]{font-weight:600}.leading-\[1\.25\][data-v-3a5f8e6b]{line-height:1.25}.leading-\[1\.5\][data-v-3a5f8e6b]{line-height:1.5}.text-\[\#232425\][data-v-3a5f8e6b]{--tw-text-opacity: 1;color:rgb(35 36 37 / var(--tw-text-opacity, 1))}.text-black[data-v-3a5f8e6b]{--tw-text-opacity: 1;color:rgb(0 0 0 / var(--tw-text-opacity, 1))}.text-gray-600[data-v-3a5f8e6b]{--tw-text-opacity: 1;color:rgb(75 85 99 / var(--tw-text-opacity, 1))}.text-neutral-800[data-v-3a5f8e6b]{--tw-text-opacity: 1;color:rgb(38 38 38 / var(--tw-text-opacity, 1))}.text-white[data-v-3a5f8e6b]{--tw-text-opacity: 1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.underline[data-v-3a5f8e6b]{text-decoration-line:underline}.shadow[data-v-3a5f8e6b]{--tw-shadow: 0 1px 3px 0 rgb(0 0 0 / .1), 0 1px 2px -1px rgb(0 0 0 / .1);--tw-shadow-colored: 0 1px 3px 0 var(--tw-shadow-color), 0 1px 2px -1px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow)}.shadow-\[0px_2px_8px_0px_rgba\(0\,0\,0\,0\.10\)\][data-v-3a5f8e6b]{--tw-shadow: 0px 2px 8px 0px rgba(0,0,0,.1);--tw-shadow-colored: 0px 2px 8px 0px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow)}.shadow-\[0px_4px_10px_0px_rgba\(0\,0\,0\,0\.15\)\][data-v-3a5f8e6b]{--tw-shadow: 0px 4px 10px 0px rgba(0,0,0,.15);--tw-shadow-colored: 0px 4px 10px 0px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow)}.shadow-\[0px_4px_15px_0px_rgba\(0\,0\,0\,0\.10\)\][data-v-3a5f8e6b]{--tw-shadow: 0px 4px 15px 0px rgba(0,0,0,.1);--tw-shadow-colored: 0px 4px 15px 0px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow)}.outline-none[data-v-3a5f8e6b]{outline:2px solid transparent;outline-offset:2px}.outline[data-v-3a5f8e6b]{outline-style:solid}.outline-1[data-v-3a5f8e6b]{outline-width:1px}.outline-offset-\[-1px\][data-v-3a5f8e6b]{outline-offset:-1px}.outline-gray-200[data-v-3a5f8e6b]{outline-color:#e5e7eb}.blur[data-v-3a5f8e6b]{--tw-blur: blur(8px);filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)}.filter[data-v-3a5f8e6b]{filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)}.transition[data-v-3a5f8e6b]{transition-property:color,background-color,border-color,text-decoration-color,fill,stroke,opacity,box-shadow,transform,filter,-webkit-backdrop-filter;transition-property:color,background-color,border-color,text-decoration-color,fill,stroke,opacity,box-shadow,transform,filter,backdrop-filter;transition-property:color,background-color,border-color,text-decoration-color,fill,stroke,opacity,box-shadow,transform,filter,backdrop-filter,-webkit-backdrop-filter;transition-timing-function:cubic-bezier(.4,0,.2,1);transition-duration:.15s}.ease-in-out[data-v-3a5f8e6b]{transition-timing-function:cubic-bezier(.4,0,.2,1)}div[data-v-3a5f8e6b]{font-family:Inter,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,sans-serif,IBM Plex Mono,SFMono-Regular,Consolas,Liberation Mono,Menlo,Courier,monospace}.hover\:bg-\[\#F5F5F5\][data-v-3a5f8e6b]:hover{--tw-bg-opacity: 1;background-color:rgb(245 245 245 / var(--tw-bg-opacity, 1))}.hover\:bg-gray-200[data-v-3a5f8e6b]:hover{--tw-bg-opacity: 1;background-color:rgb(229 231 235 / var(--tw-bg-opacity, 1))}@media (prefers-color-scheme: dark){.dark\:bg-black[data-v-3a5f8e6b]{--tw-bg-opacity: 1;background-color:rgb(0 0 0 / var(--tw-bg-opacity, 1))}}
+/*$vite$:1*/</style><link href="chrome-extension://alhgpfoeiimagjlnfekdhkjlkiomcapa/js/css/inject.css" rel="stylesheet" type="text/css" data-apio="true"><link data-apio="true" rel="stylesheet" type="text/css" href="chrome-extension://alhgpfoeiimagjlnfekdhkjlkiomcapa/js/css/a_chrome-extension_inject_global_module_scss.css"><link data-apio="true" rel="stylesheet" type="text/css" href="chrome-extension://alhgpfoeiimagjlnfekdhkjlkiomcapa/js/css/a_chrome-extension_inject_iframe-sidebar_components_IframeSidebar_module_scss-assets_chr-d600bd.css"><link data-apio="true" rel="stylesheet" type="text/css" href="chrome-extension://alhgpfoeiimagjlnfekdhkjlkiomcapa/js/css/a_chrome-extension_inject_apollo-everywhere_containers_ApolloEverywhereServiceContainerV2_tsx.css"></head>
+  <body class="bg-surface text-ink" style="background: #fcfcfd; color: #161616">
+    <!-- Header -->
+    <header class="gradient-bg text-white py-12">
+      <div class="container mx-auto px-6 text-center">
+        <h1 class="text-4xl md:text-5xl font-bold mb-4">
+          La Nouvelle Façon de Créer des Agents IA
+        </h1>
+        <p class="text-xl mb-6">Claude + N8N + Docker - Fini la Galère</p>
+        <div class="flex flex-wrap justify-center items-center gap-6 text-sm">
+          <div class="flex items-center gap-2">
+            <i class="fas fa-play-circle"></i>
+            <span>Durée: 18min 51s</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <i class="fas fa-eye"></i>
+            <span>18,203 vues</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <i class="fas fa-thumbs-up"></i>
+            <span>724 likes</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <i class="fas fa-user"></i>
+            <span>ExplorIA</span>
+          </div>
+        </div>
+        <div class="mt-6">
+          <a href="https://www.youtube.com/watch?v=FqNoGCk0mOY" target="_blank" class="btn-primary">
+            <i class="fab fa-youtube mr-2"></i>Voir la vidéo originale
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Résumé Exécutif -->
+    <section class="py-12 bg-card" style="background: #ffffff">
+      <div class="container mx-auto px-6">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold mb-4">Résumé Exécutif</h2>
+          <p class="text-lg text-gray-600 max-w-4xl mx-auto">
+            Cette vidéo révèle une méthode révolutionnaire pour créer des agents IA complexes sans programmation. 
+            Grâce à l'architecture Claude Desktop + MCP + N8N + Docker, vous pouvez désormais générer des workflows 
+            d'automatisation complets simplement en conversant avec l'IA en langage naturel.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+          <div class="stats-card text-white p-6 rounded-lg text-center">
+            <i class="fas fa-magic text-3xl mb-4"></i>
+            <h3 class="text-2xl font-bold">Révolution No-Code</h3>
+            <p class="mt-2">
+              Créez des agents IA sophistiqués par simple conversation
+            </p>
+          </div>
+          <div class="learning-card p-6 rounded-lg text-center">
+            <i class="fas fa-clock text-3xl mb-4 text-brand"></i>
+            <h3 class="text-2xl font-bold">Gain de Temps</h3>
+            <p class="mt-2">
+              De plusieurs heures à quelques minutes pour un agent complet
+            </p>
+          </div>
+          <div class="bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-lg text-center" style="
+              background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+              color: #2a2a2a;
+            ">
+            <i class="fas fa-money-bill-wave text-3xl mb-4 text-brand"></i>
+            <h3 class="text-2xl font-bold">Économies</h3>
+            <p class="mt-2">50% de réduction des coûts vs solutions cloud traditionnelles</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Architecture du Système -->
+    <section class="py-12 bg-surface" style="background: #fcfcfd">
+      <div class="container mx-auto px-6">
+        <h2 class="text-3xl font-bold text-center mb-12">
+          Architecture du Système Révolutionnaire
+        </h2>
+
+        <div class="tool-card bg-white rounded-lg shadow-lg mb-8 overflow-hidden">
+          <div class="bg-gradient-to-r from-blue-600 to-indigo-600 text-white p-6">
+            <div class="flex items-center justify-between">
+              <div>
+                <h3 class="text-2xl font-bold flex items-center">
+                  <i class="fas fa-cogs mr-3"></i>Système Claude + MCP + N8N + Docker
+                </h3>
+                <p class="text-lg">
+                  Architecture Complète pour Agents IA Conversationnels
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="p-6">
+            <div class="grid md:grid-cols-2 gap-6">
+              <div>
+                <h4 class="text-lg font-semibold mb-3 text-blue-600">
+                  Composants Clés
+                </h4>
+                <ul class="space-y-2">
+                  <li class="feature-item pl-4 py-2">
+                    <strong>Claude Desktop:</strong> Interface IA conversationnelle pour créer les agents
+                  </li>
+                  <li class="feature-item pl-4 py-2">
+                    <strong>MCP (Model Context Protocol):</strong> Serveur de communication entre Claude et N8N
+                  </li>
+                  <li class="feature-item pl-4 py-2">
+                    <strong>N8N:</strong> Plateforme d'automatisation pour exécuter les workflows
+                  </li>
+                  <li class="feature-item pl-4 py-2">
+                    <strong>Docker:</strong> Conteneurisation pour un déploiement simplifié
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <h4 class="text-lg font-semibold mb-3 text-blue-600">
+                  Workflow Démontré
+                </h4>
+                <div class="bg-gray-50 p-4 rounded-lg">
+                  <p class="mb-3">
+                    <strong>Agent Créé:</strong> Assistant Agenda Intelligent
+                  </p>
+                  <ul class="text-sm space-y-1">
+                    <li>• Interface: Bot Telegram avec support vocal/texte</li>
+                    <li>• Transcription: Audio vers texte via OpenAI</li>
+                    <li>• Intégrations: Google Calendar + Gmail</li>
+                    <li>• Fonctions: CRUD événements, envoi emails</li>
+                    <li>• IA: GPT-4 avec mémoire conversationnelle</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Outils et Ressources -->
+    <section class="py-12 bg-card" style="background: #ffffff">
+      <div class="container mx-auto px-6">
+        <h2 class="text-3xl font-bold text-center mb-12">
+          Outils et Ressources Essentiels
+        </h2>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Claude Desktop -->
+          <div class="tool-card bg-white border-2 border-gray-200 rounded-lg p-6">
+            <div class="text-center mb-4">
+              <div class="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                <i class="fas fa-brain text-2xl text-orange-600"></i>
+              </div>
+              <h3 class="text-xl font-bold">Claude Desktop</h3>
+              <p class="text-sm text-gray-600">Interface IA Conversationnelle</p>
+            </div>
+            <ul class="text-sm space-y-2 mb-4">
+              <li>• Version gratuite suffisante</li>
+              <li>• Configuration MCP requise</li>
+              <li>• Génération workflow JSON</li>
+            </ul>
+            <a href="https://claude.ai/" target="_blank" class="btn-primary w-full text-center">
+              Télécharger
+            </a>
+          </div>
+
+          <!-- N8N -->
+          <div class="tool-card bg-white border-2 border-gray-200 rounded-lg p-6">
+            <div class="text-center mb-4">
+              <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                <i class="fas fa-project-diagram text-2xl text-purple-600"></i>
+              </div>
+              <h3 class="text-xl font-bold">N8N</h3>
+              <p class="text-sm text-gray-600">Plateforme d'Automatisation</p>
+            </div>
+            <ul class="text-sm space-y-2 mb-4">
+              <li>• Open source gratuit</li>
+              <li>• Cloud: 20-24€/mois</li>
+              <li>• VPS: solution économique</li>
+            </ul>
+            <a href="https://n8n.io/" target="_blank" class="btn-primary w-full text-center">
+              Découvrir
+            </a>
+          </div>
+
+          <!-- Docker -->
+          <div class="tool-card bg-white border-2 border-gray-200 rounded-lg p-6">
+            <div class="text-center mb-4">
+              <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                <i class="fab fa-docker text-2xl text-blue-600"></i>
+              </div>
+              <h3 class="text-xl font-bold">Docker</h3>
+              <p class="text-sm text-gray-600">Conteneurisation</p>
+            </div>
+            <ul class="text-sm space-y-2 mb-4">
+              <li>• Installation gratuite</li>
+              <li>• Déploiement uniforme</li>
+              <li>• Mac et PC compatibles</li>
+            </ul>
+            <a href="https://www.docker.com/" target="_blank" class="btn-primary w-full text-center">
+              Installer
+            </a>
+          </div>
+
+          <!-- Hostinger VPS -->
+          <div class="tool-card bg-gradient-to-br from-green-50 to-green-100 border-2 border-green-200 rounded-lg p-6">
+            <div class="text-center mb-4">
+              <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                <i class="fas fa-server text-2xl text-green-600"></i>
+              </div>
+              <h3 class="text-xl font-bold">Hostinger VPS</h3>
+              <p class="text-sm text-gray-600">Hébergement Recommandé</p>
+            </div>
+            <ul class="text-sm space-y-2 mb-4">
+              <li>• 7€/mois vs 20€ N8N Cloud</li>
+              <li>• Agents illimités</li>
+              <li>• <strong>Code: EXPLORIA (-10%)</strong></li>
+            </ul>
+            <a href="https://www.hostinger.fr/exploria" target="_blank" class="btn-primary w-full text-center bg-green-600 hover:bg-green-700">
+              Commencer
+            </a>
+          </div>
+
+          <!-- APIs Intégration -->
+          <div class="tool-card bg-white border-2 border-gray-200 rounded-lg p-6">
+            <div class="text-center mb-4">
+              <div class="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                <i class="fas fa-plug text-2xl text-yellow-600"></i>
+              </div>
+              <h3 class="text-xl font-bold">APIs Requises</h3>
+              <p class="text-sm text-gray-600">Services d'Intégration</p>
+            </div>
+            <ul class="text-sm space-y-2 mb-4">
+              <li>• OpenAI API (transcription)</li>
+              <li>• Google Cloud Console</li>
+              <li>• Telegram BotFather</li>
+            </ul>
+            <div class="btn-secondary w-full text-center cursor-default">
+              Configuration Requise
+            </div>
+          </div>
+
+          <!-- Communauté -->
+          <div class="tool-card bg-gradient-to-br from-red-50 to-red-100 border-2 border-red-200 rounded-lg p-6">
+            <div class="text-center mb-4">
+              <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                <i class="fas fa-users text-2xl text-red-600"></i>
+              </div>
+              <h3 class="text-xl font-bold">Communauté ExplorIA</h3>
+              <p class="text-sm text-gray-600">Ressources Gratuites</p>
+            </div>
+            <ul class="text-sm space-y-2 mb-4">
+              <li>• Procédures détaillées</li>
+              <li>• Lives et webinaires</li>
+              <li>• Support communautaire</li>
+            </ul>
+            <a href="https://www.skool.com/exploria" target="_blank" class="btn-primary w-full text-center bg-red-600 hover:bg-red-700">
+              Rejoindre
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Cas d'Usage Pratiques -->
+    <section class="py-12 bg-surface" style="background: #fcfcfd">
+      <div class="container mx-auto px-6">
+        <h2 class="text-3xl font-bold text-center mb-12">
+          Cas d'Usage Pratiques
+        </h2>
+
+        <div class="grid md:grid-cols-3 gap-8">
+          <div class="card p-6">
+            <div class="text-center mb-4">
+              <i class="fas fa-user-tie text-4xl text-blue-600 mb-3"></i>
+              <h3 class="text-xl font-bold">Assistant Personnel</h3>
+            </div>
+            <ul class="space-y-2 text-sm">
+              <li class="flex items-start"><i class="fas fa-check text-green-500 mt-1 mr-2"></i>Gestion calendrier via Telegram</li>
+              <li class="flex items-start"><i class="fas fa-check text-green-500 mt-1 mr-2"></i>Transcription messages vocaux</li>
+              <li class="flex items-start"><i class="fas fa-check text-green-500 mt-1 mr-2"></i>Envoi emails automatisés</li>
+              <li class="flex items-start"><i class="fas fa-check text-green-500 mt-1 mr-2"></i>Rappels et notifications</li>
+            </ul>
+          </div>
+
+          <div class="card p-6">
+            <div class="text-center mb-4">
+              <i class="fas fa-building text-4xl text-purple-600 mb-3"></i>
+              <h3 class="text-xl font-bold">Automatisation Entreprise</h3>
+            </div>
+            <ul class="space-y-2 text-sm">
+              <li class="flex items-start"><i class="fas fa-check text-green-500 mt-1 mr-2"></i>CRM conversationnel</li>
+              <li class="flex items-start"><i class="fas fa-check text-green-500 mt-1 mr-2"></i>Support client intelligent</li>
+              <li class="flex items-start"><i class="fas fa-check text-green-500 mt-1 mr-2"></i>Traitement emails/documents</li>
+              <li class="flex items-start"><i class="fas fa-check text-green-500 mt-1 mr-2"></i>Workflows métier complexes</li>
+            </ul>
+          </div>
+
+          <div class="card p-6">
+            <div class="text-center mb-4">
+              <i class="fas fa-network-wired text-4xl text-green-600 mb-3"></i>
+              <h3 class="text-xl font-bold">Intégrations Multiplateforme</h3>
+            </div>
+            <ul class="space-y-2 text-sm">
+              <li class="flex items-start"><i class="fas fa-check text-green-500 mt-1 mr-2"></i>Slack, Teams, WhatsApp</li>
+              <li class="flex items-start"><i class="fas fa-check text-green-500 mt-1 mr-2"></i>Bases de données temps réel</li>
+              <li class="flex items-start"><i class="fas fa-check text-green-500 mt-1 mr-2"></i>APIs tierces multiples</li>
+              <li class="flex items-start"><i class="fas fa-check text-green-500 mt-1 mr-2"></i>Logique conditionnelle avancée</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Apprentissages Clés -->
+    <section class="py-12 bg-card" style="background: #ffffff">
+      <div class="container mx-auto px-6">
+        <h2 class="text-3xl font-bold text-center mb-12">
+          Points d'Apprentissage Clés
+        </h2>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+          <div class="text-center p-6 rounded-lg" style="
+              background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+            ">
+            <i class="fas fa-comments text-3xl mb-4" style="color: #3b82f6"></i>
+            <h3 class="font-bold text-lg mb-2" style="color: #2a2a2a">
+              Communication Naturelle
+            </h3>
+            <p class="text-sm" style="color: #6f6f78">
+              Création d'agents complexes par simple conversation avec Claude, sans codage technique.
+            </p>
+          </div>
+          <div class="text-center p-6 rounded-lg" style="
+              background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+            ">
+            <i class="fas fa-link text-3xl mb-4" style="color: #3b82f6"></i>
+            <h3 class="font-bold text-lg mb-2" style="color: #2a2a2a">
+              Architecture MCP
+            </h3>
+            <p class="text-sm" style="color: #6f6f78">
+              Protocol révolutionnaire permettant à Claude de communiquer directement avec N8N.
+            </p>
+          </div>
+          <div class="text-center p-6 rounded-lg" style="
+              background: linear-gradient(135deg, #f0f9ff 0%, #dbeafe 100%);
+            ">
+            <i class="fas fa-dollar-sign text-3xl mb-4" style="color: #3b82f6"></i>
+            <h3 class="font-bold text-lg mb-2" style="color: #2a2a2a">
+              Optimisation Coûts
+            </h3>
+            <p class="text-sm" style="color: #6f6f78">
+              Solutions VPS 50% moins chères avec agents illimités vs plans cloud traditionnels.
+            </p>
+          </div>
+          <div class="text-center p-6 rounded-lg" style="
+              background: linear-gradient(135deg, #eff6ff 0%, #bfdbfe 100%);
+            ">
+            <i class="fas fa-rocket text-3xl mb-4" style="color: #3b82f6"></i>
+            <h3 class="font-bold text-lg mb-2" style="color: #2a2a2a">
+              Déploiement Rapide
+            </h3>
+            <p class="text-sm" style="color: #6f6f78">
+              De plusieurs heures à quelques minutes pour un agent IA complet et fonctionnel.
+            </p>
+          </div>
+        </div>
+
+        <div class="p-8 rounded-lg" style="
+            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+            color: white;
+          ">
+          <h3 class="text-2xl font-bold mb-4 text-center">
+            Processus de Mise en Place
+          </h3>
+          <div class="grid md:grid-cols-5 gap-4 text-center">
+            <div class="flex flex-col items-center">
+              <div class="w-12 h-12 rounded-full flex items-center justify-center font-bold mb-2" style="background: white; color: #3b82f6">
+                1
+              </div>
+              <p class="text-sm">
+                Installer <strong>Docker + Claude Desktop</strong>
+              </p>
+            </div>
+            <div class="flex flex-col items-center">
+              <div class="w-12 h-12 rounded-full flex items-center justify-center font-bold mb-2" style="background: white; color: #3b82f6">
+                2
+              </div>
+              <p class="text-sm">
+                Configurer <strong>N8N + VPS Hostinger</strong>
+              </p>
+            </div>
+            <div class="flex flex-col items-center">
+              <div class="w-12 h-12 rounded-full flex items-center justify-center font-bold mb-2" style="background: white; color: #3b82f6">
+                3
+              </div>
+              <p class="text-sm">
+                Récupérer <strong>clés API et credentials</strong>
+              </p>
+            </div>
+            <div class="flex flex-col items-center">
+              <div class="w-12 h-12 rounded-full flex items-center justify-center font-bold mb-2" style="background: white; color: #3b82f6">
+                4
+              </div>
+              <p class="text-sm">
+                Conversation avec <strong>Claude</strong> pour générer l'agent
+              </p>
+            </div>
+            <div class="flex flex-col items-center">
+              <div class="w-12 h-12 rounded-full flex items-center justify-center font-bold mb-2" style="background: white; color: #3b82f6">
+                5
+              </div>
+              <p class="text-sm">
+                Tester et <strong>ajuster</strong> le workflow final
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Défis d'Apprentissage -->
+    <section class="py-12 bg-surface" style="background: #fcfcfd">
+      <div class="container mx-auto px-6">
+        <h2 class="text-3xl font-bold text-center mb-12">
+          Défis d'Apprentissage Recommandés
+        </h2>
+
+        <div class="space-y-8">
+          <!-- Niveau Débutant -->
+          <div class="card p-8">
+            <div class="flex items-center mb-6">
+              <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mr-4">
+                <i class="fas fa-seedling text-2xl text-green-600"></i>
+              </div>
+              <div>
+                <h3 class="text-2xl font-bold text-green-600">Niveau Débutant</h3>
+                <p class="text-gray-600">Semaines 1-2 : Maîtriser les fondamentaux</p>
+              </div>
+            </div>
+            <div class="grid md:grid-cols-2 gap-6">
+              <div>
+                <h4 class="font-bold mb-3">🏁 Défi Setup Basique</h4>
+                <p class="text-sm mb-2">Installer et configurer l'environnement complet Docker + Claude + N8N</p>
+                <div class="text-xs text-gray-500">Temps estimé: 2-3 heures</div>
+              </div>
+              <div>
+                <h4 class="font-bold mb-3">🤖 Agent Simple Q&amp;R</h4>
+                <p class="text-sm mb-2">Créer un bot Telegram basique de questions-réponses</p>
+                <div class="text-xs text-gray-500">Difficulté: ⭐⭐</div>
+              </div>
+              <div>
+                <h4 class="font-bold mb-3">📧 Intégration Email</h4>
+                <p class="text-sm mb-2">Agent de lecture et tri automatique d'emails Gmail</p>
+                <div class="text-xs text-gray-500">APIs requises: Gmail</div>
+              </div>
+              <div>
+                <h4 class="font-bold mb-3">📝 Documentation Personnelle</h4>
+                <p class="text-sm mb-2">Créer sa propre procédure d'installation step-by-step</p>
+                <div class="text-xs text-gray-500">Objectif: Partage communautaire</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Niveau Intermédiaire -->
+          <div class="card p-8">
+            <div class="flex items-center mb-6">
+              <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mr-4">
+                <i class="fas fa-cog text-2xl text-blue-600"></i>
+              </div>
+              <div>
+                <h3 class="text-2xl font-bold text-blue-600">Niveau Intermédiaire</h3>
+                <p class="text-gray-600">Semaines 3-4 : Complexification des workflows</p>
+              </div>
+            </div>
+            <div class="grid md:grid-cols-2 gap-6">
+              <div>
+                <h4 class="font-bold mb-3">🔗 Agent Multi-Service</h4>
+                <p class="text-sm mb-2">Connecter 3+ plateformes simultanément (Slack, Gmail, Calendar)</p>
+                <div class="text-xs text-gray-500">Intégrations multiples</div>
+              </div>
+              <div>
+                <h4 class="font-bold mb-3">🧠 Logique Conditionnelle</h4>
+                <p class="text-sm mb-2">Créer des workflows avec branches et conditions complexes</p>
+                <div class="text-xs text-gray-500">Difficulté: ⭐⭐⭐</div>
+              </div>
+              <div>
+                <h4 class="font-bold mb-3">🎯 Optimisation Prompts</h4>
+                <p class="text-sm mb-2">Tester différentes formulations pour améliorer la génération</p>
+                <div class="text-xs text-gray-500">A/B Testing requis</div>
+              </div>
+              <div>
+                <h4 class="font-bold mb-3">🛡️ Gestion Erreurs</h4>
+                <p class="text-sm mb-2">Implémenter la récupération automatique d'erreurs</p>
+                <div class="text-xs text-gray-500">Robustesse système</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Niveau Avancé -->
+          <div class="card p-8">
+            <div class="flex items-center mb-6">
+              <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mr-4">
+                <i class="fas fa-rocket text-2xl text-purple-600"></i>
+              </div>
+              <div>
+                <h3 class="text-2xl font-bold text-purple-600">Niveau Avancé</h3>
+                <p class="text-gray-600">Semaines 5-8 : Projets entreprise</p>
+              </div>
+            </div>
+            <div class="grid md:grid-cols-2 gap-6">
+              <div>
+                <h4 class="font-bold mb-3">💼 Agent CRM Complet</h4>
+                <p class="text-sm mb-2">Système de gestion client avec base de données</p>
+                <div class="text-xs text-gray-500">Base de données requise</div>
+              </div>
+              <div>
+                <h4 class="font-bold mb-3">🎭 IA Multimodale</h4>
+                <p class="text-sm mb-2">Traitement texte, audio, images dans un même workflow</p>
+                <div class="text-xs text-gray-500">Difficulté: ⭐⭐⭐⭐</div>
+              </div>
+              <div>
+                <h4 class="font-bold mb-3">🔒 Sécurité Avancée</h4>
+                <p class="text-sm mb-2">Authentification, chiffrement, audit des actions</p>
+                <div class="text-xs text-gray-500">Conformité entreprise</div>
+              </div>
+              <div>
+                <h4 class="font-bold mb-3">📊 Performance Monitoring</h4>
+                <p class="text-sm mb-2">Métriques et optimisation des agents en production</p>
+                <div class="text-xs text-gray-500">Analytics avancés</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projets Portfolio -->
+    <section class="py-12 bg-card" style="background: #ffffff">
+      <div class="container mx-auto px-6">
+        <h2 class="text-3xl font-bold text-center mb-12">
+          Projets Portfolio Recommandés
+        </h2>
+
+        <div class="grid md:grid-cols-2 gap-8">
+          <div class="card p-6 border-2 border-blue-200">
+            <div class="flex items-center mb-4">
+              <i class="fas fa-users text-2xl text-blue-600 mr-3"></i>
+              <h3 class="text-xl font-bold">Assistant RH Intelligent</h3>
+            </div>
+            <p class="text-gray-600 mb-4">
+              Système de recrutement automatisé avec tri de CV et programmation d'entretiens
+            </p>
+            <div class="space-y-2 text-sm">
+              <div class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Parsing automatique CV</div>
+              <div class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Scoring candidats</div>
+              <div class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Planification entretiens</div>
+              <div class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Notifications multicanal</div>
+            </div>
+          </div>
+
+          <div class="card p-6 border-2 border-green-200">
+            <div class="flex items-center mb-4">
+              <i class="fas fa-chart-line text-2xl text-green-600 mr-3"></i>
+              <h3 class="text-xl font-bold">Agent Commercial</h3>
+            </div>
+            <p class="text-gray-600 mb-4">
+              Lead qualification et suivi prospects avec intégrations CRM complètes
+            </p>
+            <div class="space-y-2 text-sm">
+              <div class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Qualification automatique leads</div>
+              <div class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Scoring opportunités</div>
+              <div class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Follow-up automatisé</div>
+              <div class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Reporting temps réel</div>
+            </div>
+          </div>
+
+          <div class="card p-6 border-2 border-purple-200">
+            <div class="flex items-center mb-4">
+              <i class="fas fa-headset text-2xl text-purple-600 mr-3"></i>
+              <h3 class="text-xl font-bold">Système Support</h3>
+            </div>
+            <p class="text-gray-600 mb-4">
+              Chatbot avec escalade intelligente vers équipes humaines selon complexité
+            </p>
+            <div class="space-y-2 text-sm">
+              <div class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Résolution automatique L1</div>
+              <div class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Escalade intelligente</div>
+              <div class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Base connaissance dynamique</div>
+              <div class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Satisfaction client tracking</div>
+            </div>
+          </div>
+
+          <div class="card p-6 border-2 border-orange-200">
+            <div class="flex items-center mb-4">
+              <i class="fas fa-tachometer-alt text-2xl text-orange-600 mr-3"></i>
+              <h3 class="text-xl font-bold">Dashboard Exécutif</h3>
+            </div>
+            <p class="text-gray-600 mb-4">
+              Compilation automatique KPIs depuis sources multiples avec alertes intelligentes
+            </p>
+            <div class="space-y-2 text-sm">
+              <div class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Agrégation données multi-sources</div>
+              <div class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Rapports automatisés</div>
+              <div class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Alertes seuils critiques</div>
+              <div class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Visualisations temps réel</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Ressources Additionnelles -->
+    <section class="py-12 bg-surface" style="background: #fcfcfd">
+      <div class="container mx-auto px-6">
+        <h2 class="text-3xl font-bold text-center mb-12">
+          Ressources d'Approfondissement
+        </h2>
+
+        <div class="grid md:grid-cols-2 gap-8">
+          <div class="bg-card p-6 rounded-lg shadow-soft" style="
+              background: #ffffff;
+              box-shadow: 0 6px 24px rgba(0, 0, 0, 0.06);
+            ">
+            <h3 class="text-xl font-bold mb-4 flex items-center text-brand" style="color: #3b82f6">
+              <i class="fas fa-book mr-2"></i>Documentation Technique
+            </h3>
+            <div class="space-y-3">
+              <a href="https://docs.n8n.io/" target="_blank" class="flex items-center justify-between p-3 bg-blue-50 rounded hover:bg-blue-100 transition-colors">
+                <span><strong>N8N Documentation</strong> - Référence complète</span>
+                <i class="fas fa-external-link-alt text-blue-600"></i>
+              </a>
+              <a href="https://docs.anthropic.com/" target="_blank" class="flex items-center justify-between p-3 bg-orange-50 rounded hover:bg-orange-100 transition-colors">
+                <span><strong>Claude API Docs</strong> - Capacités et limites</span>
+                <i class="fas fa-external-link-alt text-orange-600"></i>
+              </a>
+              <a href="https://docs.docker.com/" target="_blank" class="flex items-center justify-between p-3 bg-gray-50 rounded hover:bg-gray-100 transition-colors">
+                <span><strong>Docker Guides</strong> - Maîtrise conteneurisation</span>
+                <i class="fas fa-external-link-alt text-gray-600"></i>
+              </a>
+              <a href="https://console.cloud.google.com/" target="_blank" class="flex items-center justify-between p-3 bg-green-50 rounded hover:bg-green-100 transition-colors">
+                <span><strong>Google Cloud Console</strong> - APIs management</span>
+                <i class="fas fa-external-link-alt text-green-600"></i>
+              </a>
+            </div>
+          </div>
+
+          <div class="bg-card p-6 rounded-lg shadow-soft" style="
+              background: #ffffff;
+              box-shadow: 0 6px 24px rgba(0, 0, 0, 0.06);
+            ">
+            <h3 class="text-xl font-bold mb-4 flex items-center text-brand" style="color: #3b82f6">
+              <i class="fas fa-users mr-2"></i>Communautés et Forums
+            </h3>
+            <div class="space-y-4">
+              <div class="p-4 rounded-lg" style="
+                  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+                  color: white;
+                ">
+                <h4 class="font-bold mb-2">
+                  <i class="fas fa-graduation-cap mr-2"></i>Communauté ExplorIA Skool
+                </h4>
+                <p class="text-sm mb-3">
+                  Accès gratuit aux procédures, lives et support communautaire
+                </p>
+                <a href="https://www.skool.com/exploria" target="_blank" class="btn-secondary" style="font-size: 0.875rem; padding: 8px 16px">
+                  Rejoindre gratuitement
+                </a>
+              </div>
+
+              <div class="space-y-3">
+                <div class="border border-gray-200 p-3 rounded">
+                  <strong>N8N Community Forum</strong>
+                  <p class="text-sm text-gray-600">Partage workflows et solutions</p>
+                </div>
+                <div class="border border-gray-200 p-3 rounded">
+                  <strong>Discord Claude Developers</strong>
+                  <p class="text-sm text-gray-600">Communauté développeurs avancés</p>
+                </div>
+                <div class="border border-gray-200 p-3 rounded">
+                  <strong>Reddit r/n8n</strong>
+                  <p class="text-sm text-gray-600">Discussions et troubleshooting</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Navigation Vidéo -->
+        <div class="mt-12 bg-card p-6 rounded-lg shadow-soft" style="
+            background: #ffffff;
+            box-shadow: 0 6px 24px rgba(0, 0, 0, 0.06);
+          ">
+          <h3 class="text-xl font-bold mb-4 text-center">
+            <i class="fas fa-video mr-2"></i>Navigation Temporelle de la Vidéo
+          </h3>
+          <div class="grid md:grid-cols-2 gap-4">
+            <div class="space-y-2 text-sm">
+              <a href="https://www.youtube.com/watch?v=FqNoGCk0mOY&amp;t=0s" target="_blank" class="flex items-center justify-between p-2 bg-gray-50 rounded hover:bg-gray-100">
+                <span><strong>[00:00]</strong> Introduction &amp; Problématique</span>
+                <i class="fas fa-external-link-alt text-gray-500"></i>
+              </a>
+              <a href="https://www.youtube.com/watch?v=FqNoGCk0mOY&amp;t=34s" target="_blank" class="flex items-center justify-between p-2 bg-gray-50 rounded hover:bg-gray-100">
+                <span><strong>[00:34]</strong> Présentation du Système</span>
+                <i class="fas fa-external-link-alt text-gray-500"></i>
+              </a>
+              <a href="https://www.youtube.com/watch?v=FqNoGCk0mOY&amp;t=107s" target="_blank" class="flex items-center justify-between p-2 bg-gray-50 rounded hover:bg-gray-100">
+                <span><strong>[01:47]</strong> Installation Docker/Claude</span>
+                <i class="fas fa-external-link-alt text-gray-500"></i>
+              </a>
+              <a href="https://www.youtube.com/watch?v=FqNoGCk0mOY&amp;t=218s" target="_blank" class="flex items-center justify-between p-2 bg-gray-50 rounded hover:bg-gray-100">
+                <span><strong>[03:38]</strong> Connexion N8N</span>
+                <i class="fas fa-external-link-alt text-gray-500"></i>
+              </a>
+              <a href="https://www.youtube.com/watch?v=FqNoGCk0mOY&amp;t=360s" target="_blank" class="flex items-center justify-between p-2 bg-gray-50 rounded hover:bg-gray-100">
+                <span><strong>[06:00]</strong> Configuration API</span>
+                <i class="fas fa-external-link-alt text-gray-500"></i>
+              </a>
+            </div>
+            <div class="space-y-2 text-sm">
+              <a href="https://www.youtube.com/watch?v=FqNoGCk0mOY&amp;t=479s" target="_blank" class="flex items-center justify-between p-2 bg-gray-50 rounded hover:bg-gray-100">
+                <span><strong>[07:59]</strong> Premier Test</span>
+                <i class="fas fa-external-link-alt text-gray-500"></i>
+              </a>
+              <a href="https://www.youtube.com/watch?v=FqNoGCk0mOY&amp;t=655s" target="_blank" class="flex items-center justify-between p-2 bg-gray-50 rounded hover:bg-gray-100">
+                <span><strong>[10:55]</strong> Configuration Google</span>
+                <i class="fas fa-external-link-alt text-gray-500"></i>
+              </a>
+              <a href="https://www.youtube.com/watch?v=FqNoGCk0mOY&amp;t=820s" target="_blank" class="flex items-center justify-between p-2 bg-gray-50 rounded hover:bg-gray-100">
+                <span><strong>[13:40]</strong> Démonstration Agent</span>
+                <i class="fas fa-external-link-alt text-gray-500"></i>
+              </a>
+              <a href="https://www.youtube.com/watch?v=FqNoGCk0mOY&amp;t=974s" target="_blank" class="flex items-center justify-between p-2 bg-gray-50 rounded hover:bg-gray-100">
+                <span><strong>[16:14]</strong> Tests &amp; Validation</span>
+                <i class="fas fa-external-link-alt text-gray-500"></i>
+              </a>
+              <a href="https://www.youtube.com/watch?v=FqNoGCk0mOY&amp;t=1102s" target="_blank" class="flex items-center justify-between p-2 bg-gray-50 rounded hover:bg-gray-100">
+                <span><strong>[18:22]</strong> Conclusion</span>
+                <i class="fas fa-external-link-alt text-gray-500"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="gradient-bg text-white py-8">
+      <div class="container mx-auto px-6 text-center">
+        <div class="mb-6">
+          <h3 class="text-xl font-bold mb-2">Prochaines Étapes</h3>
+          <p class="text-sm mb-4">
+            Commencez dès aujourd'hui votre révolution IA conversationnelle
+          </p>
+          <div class="flex flex-wrap justify-center gap-4">
+            <a href="https://www.youtube.com/watch?v=FqNoGCk0mOY" target="_blank" class="btn-primary">
+              <i class="fab fa-youtube mr-2"></i>Voir la vidéo
+            </a>
+            <a href="https://www.youtube.com/@Explor_IA" target="_blank" class="btn-secondary">
+              <i class="fas fa-bell mr-2"></i>S'abonner ExplorIA
+            </a>
+            <a href="https://www.skool.com/exploria" target="_blank" class="btn-secondary">
+              <i class="fas fa-users mr-2"></i>Rejoindre Communauté
+            </a>
+          </div>
+        </div>
+
+        <div class="border-t border-white border-opacity-20 pt-6">
+          <p class="text-sm text-gray-200">
+            Guide créé à partir de la vidéo
+            <strong>"La Nouvelle Façon de Créer des Agents IA (Fini la Galère)"</strong>
+            par
+            <a href="https://www.youtube.com/@Explor_IA" target="_blank" class="underline hover:no-underline"><strong>ExplorIA</strong></a>
+          </p>
+          <p class="text-xs text-gray-300 mt-2">
+            Architecture Claude + MCP + N8N + Docker • Révolution No-Code • Agents IA Conversationnels
+          </p>
+          <p class="text-xs text-gray-300 mt-1">
+            Toutes les marques et noms de produits mentionnés appartiennent à leurs propriétaires respectifs.
+          </p>
+        </div>
+      </div>
+    </footer>
+  
+
+    <script id="html_badge_script1">
+        window.__genspark_remove_badge_link = "https://www.genspark.ai/api/html_badge/" +
+            "remove_badge?token=To%2FBnjzloZ3UfQdcSaYfDjuImm%2BWp0FZLAm28bFEKS5ooiq0j9V0J%2F%2BfVbzKrmzX3nG%2Fvx8OSnWPcOEX%2FoRRFX2FKsy99o8ZZ6PNbPoczLKpJPh%2F3eXFmVlq0GjJeGPhMzjqHTCqI3LnVGjh4xhu%2FzIbu0GxJbl0MtCmGKYcDr52VNQX57pfN8333xfhKrBqXqYJFmiOkWFNtZx4IUu41kr1OjFGxbKi%2BaHGUGclSS2hWbx0wkHMtO4PFfh8GnCe9oufISrB4egebtbOl11fFbEQJuRzt3Ti0WP2mkMw%2FcQvEVJdRT%2FjrERCoFxD5k%2FyXZmhxE120e7vaKni%2BOU0XhjHiWuBRZHP0R0dhDRNlz7JfENeDTVq7KHFb2lgWOKV7okRnOy89WpJivfj608z%2F5EhqTL4jfG7%2BmxI5vwSOva70gPLvGcxdOCSP93XIKwiwT2WFXJ8dfhsgvJO6OUIBXxbm8BD2b1G3D8oEhpeu4XFMujDRk%2BdTDATj9fN1M1Zo%2FhAPYN8OzbzRyYic8BeHkqJgLeBrjluAriMQ1mtj9c%3D";
+        window.__genspark_locale = "fr-FR";
+        window.__genspark_token = "To/BnjzloZ3UfQdcSaYfDjuImm+Wp0FZLAm28bFEKS5ooiq0j9V0J/+fVbzKrmzX3nG/vx8OSnWPcOEX/oRRFX2FKsy99o8ZZ6PNbPoczLKpJPh/3eXFmVlq0GjJeGPhMzjqHTCqI3LnVGjh4xhu/zIbu0GxJbl0MtCmGKYcDr52VNQX57pfN8333xfhKrBqXqYJFmiOkWFNtZx4IUu41kr1OjFGxbKi+aHGUGclSS2hWbx0wkHMtO4PFfh8GnCe9oufISrB4egebtbOl11fFbEQJuRzt3Ti0WP2mkMw/cQvEVJdRT/jrERCoFxD5k/yXZmhxE120e7vaKni+OU0XhjHiWuBRZHP0R0dhDRNlz7JfENeDTVq7KHFb2lgWOKV7okRnOy89WpJivfj608z/5EhqTL4jfG7+mxI5vwSOva70gPLvGcxdOCSP93XIKwiwT2WFXJ8dfhsgvJO6OUIBXxbm8BD2b1G3D8oEhpeu4XFMujDRk+dTDATj9fN1M1Zo/hAPYN8OzbzRyYic8BeHkqJgLeBrjluAriMQ1mtj9c=";
+    </script>
+    
+    <script id="html_notice_dialog_script" src="./Guide Complet _ Créer des Agents IA avec Claude + N8N + Docker_files/notice_dialog.js"></script>
+    <div id="genspark-float-bar" data-v-app=""><!----><!----></div><div style="position: relative;" id="zp-10-1-5-licdn-root-apollo_everywhere" data-has-tooltip-listener=""><div class="zp"><div></div></div><div class="x_BJJxg" data-disable-focus-trap="true"></div><div class="x_KfhZL" aria-live="polite" aria-atomic="true" data-disable-focus-trap="true"></div><span data-name="tooltip-listener" aria-hidden="true" style="display: none;"></span> </div><div class="extension-opener-icon" style="z-index: 2147483647; position: relative;"><div class="apolloio-css-vars-reset x_EFRzP x_I3MOf" dir="ltr"><div class="x_SrTzk x_pnPas zp-10-1-5-zp-fixed" data-cy="apollo-opener-icon-new" style="right: 0px; top: 18vh; transition: none;"><input type="button" class="x_Q33Is apollo-opener-icon x_sCReY x_keW7D"><img draggable="false" alt="Apollo" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTIxLjQ2NTUgNS4wNzE0N0wyMS40NzAzIDE1Ljk4NjNDMjEuNDcxIDE3LjcxMDYgMTkuNjM2NCAxOC44MTYyIDE4LjExMjEgMTguMDFMNy4xNjk4IDEyLjIyMjZDOC4wMDQzMyAxMC44NDkyIDkuMDUzNzcgOS42MjEwOSAxMC4yNzA0IDguNTgzMzJMMTguODUyNCAxNi41MTQ4QzE5LjMwNzEgMTYuOTM1IDIwLjAyNCAxNi40Nzk0IDE5LjgzNjcgMTUuODg5NEwxNi41MDg1IDUuNDA5MDJDMTcuNjI4OCA1LjE0MjEgMTguNzk3MiA1IDE5Ljk5ODkgNUMyMC40OTM5IDUgMjAuOTgyOSA1LjAyNDYgMjEuNDY1NSA1LjA3MTQ3WiIgZmlsbD0iI0VCRjIxMiIvPgo8cGF0aCBkPSJNMTguNDk2MyAzNC45MjUyTDE4LjQ5MTUgMjQuMDY1NEMxOC40OTA4IDIyLjM0MSAyMC4zMjU0IDIxLjIzNTUgMjEuODQ5NyAyMi4wNDE3TDMyLjc5NiAyNy44MzEyQzMxLjk1NTggMjkuMjAxIDMwLjkwMTYgMzAuNDI1MSAyOS42ODAxIDMxLjQ1ODFMMjEuMTA5NCAyMy41MzY5QzIwLjY1NDcgMjMuMTE2NyAxOS45Mzc4IDIzLjU3MjMgMjAuMTI1MSAyNC4xNjIzTDIzLjQ0MDcgMzQuNjAzMUMyMi4zMzYxIDM0Ljg2MjQgMjEuMTg0NCAzNSAyMC4wMDA1IDM1QzE5LjQ5MjkgMzUgMTguOTkwOSAzNC45NzQ2IDE4LjQ5NjMgMzQuOTI1MloiIGZpbGw9IiNFQkYyMTIiLz4KPHBhdGggZD0iTTIzLjQ5MTggMTguODk4MUwzMS40Mzk3IDEwLjI5OTFDMzAuNDAyNyA5LjA3NzY3IDI5LjE3NDQgOC4wMjM5NSAyNy44IDcuMTg1NjNMMjEuOTk2NCAxOC4xNTc4QzIxLjE5MDEgMTkuNjgyIDIyLjI5NTkgMjEuNTE2NyAyNC4wMjAzIDIxLjUxNTlMMzQuOTI0NSAyMS41MTExQzM0Ljk3NDIgMjEuMDE0MSAzNSAyMC41MTAxIDM1IDIwQzM1IDE4LjgxMzggMzQuODYxNyAxNy42NiAzNC42MDE0IDE2LjU1MzNMMjQuMTE3MiAxOS44ODIzQzIzLjUyNzIgMjAuMDY5NiAyMy4wNzE2IDE5LjM1MjggMjMuNDkxOCAxOC44OTgxWiIgZmlsbD0iI0VCRjIxMiIvPgo8cGF0aCBkPSJNNS4wNzA4MSAxOC41NDA2TDE1Ljk0MiAxOC41MzU4QzE3LjY2NjYgMTguNTM1MSAxOC43NzIyIDIwLjM2OTYgMTcuOTY1OSAyMS44OTM5TDEyLjE5MjIgMzIuODA5NUMxMC44MjMxIDMxLjk3MzIgOS41OTg5OCAzMC45MjMzIDguNTY1MTcgMjkuNzA2N0wxNi40NzA3IDIxLjE1MzZDMTYuODkwOSAyMC42OTg5IDE2LjQzNTEgMTkuOTgyIDE1Ljg0NTEgMjAuMTY5NEw1LjQwNzU0IDIzLjQ4MzZDNS4xNDE2MSAyMi4zNjU3IDUgMjEuMTk5NSA1IDIwQzUgMTkuNTA3NSA1LjAyNDQzIDE5LjAyMDcgNS4wNzA4MSAxOC41NDA2WiIgZmlsbD0iI0VCRjIxMiIvPgo8L3N2Zz4K" class="x_IFkFs x_Zjwlo x_MG3Du"><div class="x_r94Gn x_plPIx" data-cy="draggable-extension-icon"></div></div></div></div></body></html>

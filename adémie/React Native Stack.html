@@ -1,0 +1,1101 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stack Technologique React Native 2025 - Guide Complet</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .gradient-bg { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        .card-hover { transition: transform 0.2s, box-shadow 0.2s; }
+        .card-hover:hover { transform: translateY(-2px); box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+        .tech-badge { background: linear-gradient(45deg, #4f46e5, #7c3aed); }
+        .importance-gradient { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
+        .challenge-gradient { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
+        .resource-gradient { background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); }
+        @media print {
+            .no-print { display: none; }
+            body { font-size: 12px; line-height: 1.4; }
+            .container { max-width: none; margin: 0; padding: 1rem; }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+    
+    <!-- Header -->
+    <header class="gradient-bg text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="text-center">
+                <h1 class="text-4xl md:text-6xl font-bold mb-4">
+                    <i class="fab fa-react mr-4"></i>React Native 2025
+                </h1>
+                <p class="text-xl md:text-2xl mb-6">Stack Technologique Essentiel</p>
+                <div class="bg-white bg-opacity-20 rounded-lg p-4 inline-block">
+                    <p class="text-lg">Guide complet par Simon Grimm - Galaxies.dev</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container mx-auto px-6 py-8">
+        
+        <!-- Résumé Exécutif -->
+        <section class="mb-12">
+            <div class="bg-white rounded-xl shadow-lg p-8">
+                <h2 class="text-3xl font-bold mb-6 text-gray-800">
+                    <i class="fas fa-chart-line text-blue-600 mr-3"></i>Résumé Exécutif
+                </h2>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <h3 class="text-xl font-semibold mb-3 text-purple-600">Contexte 2025</h3>
+                        <ul class="space-y-2 text-gray-700">
+                            <li><i class="fas fa-rocket text-green-500 mr-2"></i>React Native plus performant et stable que jamais</li>
+                            <li><i class="fas fa-users text-blue-500 mr-2"></i>Écosystème mature avec communauté active</li>
+                            <li><i class="fas fa-tools text-orange-500 mr-2"></i>Outils standardisés pour éviter la fragmentation</li>
+                            <li><i class="fas fa-trending-up text-red-500 mr-2"></i>Adoption croissante par les grandes entreprises</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold mb-3 text-purple-600">Objectifs du Guide</h3>
+                        <ul class="space-y-2 text-gray-700">
+                            <li><i class="fas fa-target text-green-500 mr-2"></i>Éviter la perte de temps avec des outils inadaptés</li>
+                            <li><i class="fas fa-filter text-blue-500 mr-2"></i>Recommandations éprouvées et testées</li>
+                            <li><i class="fas fa-route text-orange-500 mr-2"></i>Chemin clair du débutant à l'expert</li>
+                            <li><i class="fas fa-shield-alt text-red-500 mr-2"></i>Stack production-ready sécurisé</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Technologies de Base -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold mb-8 text-gray-800">
+                <i class="fas fa-foundation text-purple-600 mr-3"></i>Technologies de Base
+            </h2>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+                
+                <!-- Expo -->
+                <div class="bg-white rounded-xl shadow-lg p-6 card-hover">
+                    <div class="tech-badge text-white px-3 py-1 rounded-full text-sm font-semibold mb-4 inline-block">
+                        OBLIGATOIRE
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">
+                        <i class="fas fa-mobile-alt text-blue-600 mr-2"></i>Expo Framework
+                    </h3>
+                    <p class="text-gray-600 mb-4">Framework officiel recommandé dans la documentation React Native. Remplace le CLI communautaire.</p>
+                    <div class="space-y-2">
+                        <div class="text-sm"><strong>Avantages:</strong> Outils intégrés, déploiement simplifié</div>
+                        <div class="text-sm"><strong>Migration:</strong> Même projets legacy devraient migrer</div>
+                    </div>
+                    <a href="https://expo.dev" class="inline-block mt-4 text-blue-600 hover:text-blue-800 font-semibold">
+                        <i class="fas fa-external-link-alt mr-1"></i>expo.dev
+                    </a>
+                </div>
+
+                <!-- TypeScript -->
+                <div class="bg-white rounded-xl shadow-lg p-6 card-hover">
+                    <div class="tech-badge text-white px-3 py-1 rounded-full text-sm font-semibold mb-4 inline-block">
+                        ESSENTIEL
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">
+                        <i class="fas fa-code text-blue-600 mr-2"></i>TypeScript
+                    </h3>
+                    <p class="text-gray-600 mb-4">Détection d'erreurs automatique par le compilateur et IDE. Améliore significativement la DX.</p>
+                    <div class="space-y-2">
+                        <div class="text-sm"><strong>Bénéfices:</strong> Moins de bugs, meilleure maintenance</div>
+                        <div class="text-sm"><strong>Réalité:</strong> Types complexes rares en pratique</div>
+                    </div>
+                    <a href="https://www.typescriptlang.org" class="inline-block mt-4 text-blue-600 hover:text-blue-800 font-semibold">
+                        <i class="fas fa-external-link-alt mr-1"></i>typescriptlang.org
+                    </a>
+                </div>
+
+                <!-- Navigation -->
+                <div class="bg-white rounded-xl shadow-lg p-6 card-hover">
+                    <div class="tech-badge text-white px-3 py-1 rounded-full text-sm font-semibold mb-4 inline-block">
+                        RECOMMANDÉ
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">
+                        <i class="fas fa-route text-blue-600 mr-2"></i>Expo Router
+                    </h3>
+                    <p class="text-gray-600 mb-4">Routing basé fichiers, API routes, support RSC. Alternative moderne à React Navigation.</p>
+                    <div class="space-y-2">
+                        <div class="text-sm"><strong>Avantages:</strong> Cross-platform, file-based routing</div>
+                        <div class="text-sm"><strong>Alternative:</strong> React Navigation pour apps natives pures</div>
+                    </div>
+                    <a href="https://docs.expo.dev/router/introduction/" class="inline-block mt-4 text-blue-600 hover:text-blue-800 font-semibold">
+                        <i class="fas fa-external-link-alt mr-1"></i>Expo Router Docs
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- UI & Styling -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold mb-8 text-gray-800">
+                <i class="fas fa-palette text-purple-600 mr-3"></i>Interface Utilisateur & Styling
+            </h2>
+            
+            <div class="grid md:grid-cols-2 gap-6 mb-8">
+                
+                <!-- Solutions de Styling -->
+                <div class="bg-white rounded-xl shadow-lg p-6">
+                    <h3 class="text-2xl font-bold mb-4 text-indigo-600">Solutions de Styling</h3>
+                    
+                    <div class="space-y-4">
+                        <div class="border-l-4 border-green-400 pl-4">
+                            <h4 class="font-bold text-green-700">NativeWind (Recommandé)</h4>
+                            <p class="text-sm text-gray-600">Tailwind CSS pour React Native. Excellent support IA.</p>
+                            <a href="https://www.nativewind.dev" class="text-blue-600 text-sm">nativewind.dev</a>
+                        </div>
+                        
+                        <div class="border-l-4 border-blue-400 pl-4">
+                            <h4 class="font-bold text-blue-700">Unistyles</h4>
+                            <p class="text-sm text-gray-600">Drop-in replacement StyleSheet avec bindings C++.</p>
+                            <a href="https://github.com/jpudysz/react-native-unistyles" class="text-blue-600 text-sm">GitHub Unistyles</a>
+                        </div>
+                        
+                        <div class="border-l-4 border-purple-400 pl-4">
+                            <h4 class="font-bold text-purple-700">React Native Reusables</h4>
+                            <p class="text-sm text-gray-600">Concept Shadcn/UI adapté à React Native.</p>
+                            <a href="https://github.com/mrzachnugent/react-native-reusables" class="text-blue-600 text-sm">GitHub Reusables</a>
+                        </div>
+                        
+                        <div class="border-l-4 border-orange-400 pl-4">
+                            <h4 class="font-bold text-orange-700">Tamagui</h4>
+                            <p class="text-sm text-gray-600">Solution cross-platform avec compilateur optimisé.</p>
+                            <a href="https://tamagui.dev" class="text-blue-600 text-sm">tamagui.dev</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Animations -->
+                <div class="bg-white rounded-xl shadow-lg p-6">
+                    <h3 class="text-2xl font-bold mb-4 text-indigo-600">Animations</h3>
+                    
+                    <div class="space-y-4">
+                        <div class="bg-gradient-to-r from-green-100 to-green-200 p-4 rounded-lg">
+                            <h4 class="font-bold text-green-800 mb-2">
+                                <i class="fas fa-star text-yellow-500 mr-1"></i>React Native Reanimated
+                            </h4>
+                            <p class="text-sm text-green-700 mb-2">Standard de facto pour animations performantes</p>
+                            <div class="text-xs text-green-600">
+                                <strong>Cas d'usage:</strong> Animations complexes, gestures, transitions
+                            </div>
+                            <a href="https://docs.swmansion.com/react-native-reanimated/" class="text-blue-600 text-sm block mt-2">Documentation officielle</a>
+                        </div>
+                        
+                        <div class="bg-gradient-to-r from-blue-100 to-blue-200 p-4 rounded-lg">
+                            <h4 class="font-bold text-blue-800 mb-2">Moti</h4>
+                            <p class="text-sm text-blue-700 mb-2">Animations simples et déclaratives</p>
+                            <div class="text-xs text-blue-600">
+                                <strong>Cas d'usage:</strong> Animations rapides, prototypage, débutants
+                            </div>
+                            <a href="https://moti.fyi" class="text-blue-600 text-sm block mt-2">moti.fyi</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gestion d'État -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold mb-8 text-gray-800">
+                <i class="fas fa-database text-purple-600 mr-3"></i>Gestion d'État
+            </h2>
+            
+            <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-6">
+                <div class="flex">
+                    <i class="fas fa-exclamation-triangle text-yellow-400 mr-3 mt-1"></i>
+                    <div>
+                        <h3 class="font-bold text-yellow-800">Distinction Cruciale</h3>
+                        <p class="text-yellow-700">Séparer l'état serveur (API calls) de l'état application (settings locaux)</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6">
+                
+                <!-- État Serveur -->
+                <div class="bg-white rounded-xl shadow-lg p-6">
+                    <h3 class="text-2xl font-bold mb-4 text-blue-600">
+                        <i class="fas fa-server mr-2"></i>État Serveur
+                    </h3>
+                    
+                    <div class="bg-gradient-to-r from-blue-500 to-purple-600 text-white p-4 rounded-lg mb-4">
+                        <h4 class="font-bold text-lg mb-2">
+                            <i class="fas fa-crown mr-2"></i>TanStack Query
+                        </h4>
+                        <p class="text-sm mb-2">Champion incontesté pour la gestion d'état serveur</p>
+                        <div class="text-xs opacity-90">Cache intelligent, synchronisation, optimizations</div>
+                    </div>
+                    
+                    <div class="space-y-2 text-sm">
+                        <div><strong>Fonctionnalités:</strong> Mise en cache, revalidation, optimistic updates</div>
+                        <div><strong>Cas d'usage:</strong> API calls, données distantes, synchronisation</div>
+                        <a href="https://tanstack.com/query/latest" class="text-blue-600 font-semibold block mt-3">
+                            <i class="fas fa-external-link-alt mr-1"></i>tanstack.com/query
+                        </a>
+                    </div>
+                </div>
+
+                <!-- État Application -->
+                <div class="bg-white rounded-xl shadow-lg p-6">
+                    <h3 class="text-2xl font-bold mb-4 text-green-600">
+                        <i class="fas fa-mobile-alt mr-2"></i>État Application
+                    </h3>
+                    
+                    <div class="space-y-3">
+                        <div class="bg-gradient-to-r from-green-400 to-blue-500 text-white p-3 rounded-lg">
+                            <h4 class="font-bold">Zustand (Leader)</h4>
+                            <p class="text-xs opacity-90">Gagnant JavaScript Rising Stars, concept store + actions</p>
+                            <a href="https://github.com/pmndrs/zustand" class="text-white underline text-sm block mt-1">GitHub Zustand</a>
+                        </div>
+                        
+                        <div class="bg-gradient-to-r from-purple-400 to-pink-500 text-white p-3 rounded-lg">
+                            <h4 class="font-bold">Legend State</h4>
+                            <p class="text-xs opacity-90">Local-first, synchronisation Supabase intégrée</p>
+                            <a href="https://legendapp.com/open-source/state/" class="text-white underline text-sm block mt-1">Legend State Docs</a>
+                        </div>
+                        
+                        <div class="bg-gray-200 text-gray-700 p-3 rounded-lg">
+                            <h4 class="font-bold">Context API</h4>
+                            <p class="text-xs">Solution native React suffisante pour apps simples</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Outillage Essentiel -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold mb-8 text-gray-800">
+                <i class="fas fa-toolbox text-purple-600 mr-3"></i>Outillage de Développement
+            </h2>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                
+                <div class="bg-white rounded-xl shadow-lg p-6 card-hover">
+                    <h3 class="font-bold text-lg mb-3">
+                        <i class="fas fa-edit text-purple-600 mr-2"></i>Éditeurs IA
+                    </h3>
+                    <div class="space-y-2">
+                        <div class="bg-purple-100 p-3 rounded">
+                            <strong class="text-purple-800">Cursor (Recommandé)</strong>
+                            <p class="text-sm text-purple-600">Génération code multi-fichiers, IA native</p>
+                        </div>
+                        <div class="text-sm text-gray-600">Alternatives: WindSurf, VS Code + Copilot</div>
+                    </div>
+                    <a href="https://cursor.sh" class="text-blue-600 text-sm mt-2 block">cursor.sh</a>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-lg p-6 card-hover">
+                    <h3 class="font-bold text-lg mb-3">
+                        <i class="fas fa-vial text-green-600 mr-2"></i>Tests
+                    </h3>
+                    <div class="space-y-2">
+                        <div class="bg-green-100 p-3 rounded">
+                            <strong class="text-green-800">Maestro</strong>
+                            <p class="text-sm text-green-600">Tests UI faciles, excellente DX</p>
+                        </div>
+                        <div class="bg-blue-100 p-3 rounded">
+                            <strong class="text-blue-800">RN Testing Library</strong>
+                            <p class="text-sm text-blue-600">Tests unitaires, cookbook complet</p>
+                        </div>
+                    </div>
+                    <div class="text-xs mt-2">
+                        <a href="https://maestro.mobile.dev" class="text-blue-600 block">maestro.mobile.dev</a>
+                        <a href="https://callstack.github.io/react-native-testing-library/" class="text-blue-600 block">RN Testing Library</a>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-lg p-6 card-hover">
+                    <h3 class="font-bold text-lg mb-3">
+                        <i class="fas fa-chart-line text-red-600 mr-2"></i>Monitoring
+                    </h3>
+                    <div class="space-y-2">
+                        <div class="bg-red-100 p-3 rounded">
+                            <strong class="text-red-800">Sentry</strong>
+                            <p class="text-sm text-red-600">Bugs et performance temps réel</p>
+                        </div>
+                        <div class="text-sm text-gray-600">Capture erreurs, analytics performance, alertes</div>
+                    </div>
+                    <a href="https://sentry.io" class="text-blue-600 text-sm mt-2 block">sentry.io</a>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-lg p-6 card-hover">
+                    <h3 class="font-bold text-lg mb-3">
+                        <i class="fas fa-cloud text-blue-600 mr-2"></i>CI/CD
+                    </h3>
+                    <div class="space-y-2">
+                        <div class="bg-blue-100 p-3 rounded">
+                            <strong class="text-blue-800">Expo EAS</strong>
+                            <p class="text-sm text-blue-600">Builds cloud, soumission automatique stores</p>
+                        </div>
+                        <div class="text-sm text-gray-600">Workflows, EAS Updates, pipelines automatisées</div>
+                    </div>
+                    <a href="https://expo.dev/eas" class="text-blue-600 text-sm mt-2 block">expo.dev/eas</a>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-lg p-6 card-hover">
+                    <h3 class="font-bold text-lg mb-3">
+                        <i class="fas fa-bug text-orange-600 mr-2"></i>Debugging
+                    </h3>
+                    <div class="space-y-2">
+                        <div class="bg-orange-100 p-3 rounded">
+                            <strong class="text-orange-800">React DevTools</strong>
+                            <p class="text-sm text-orange-600">Outils officiels React Native</p>
+                        </div>
+                        <div class="bg-gray-100 p-3 rounded">
+                            <strong class="text-gray-800">Reactotron</strong>
+                            <p class="text-sm text-gray-600">Old-school mais fonctionnel (Infinite Red)</p>
+                        </div>
+                    </div>
+                    <a href="https://github.com/infinitered/reactotron" class="text-blue-600 text-sm mt-2 block">Reactotron GitHub</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Packages Incontournables -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold mb-8 text-gray-800">
+                <i class="fas fa-gem text-purple-600 mr-3"></i>Packages Incontournables
+            </h2>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                
+                <!-- Stockage -->
+                <div class="bg-white rounded-xl shadow-lg p-6 card-hover">
+                    <div class="bg-yellow-500 text-white px-2 py-1 rounded text-xs font-bold mb-3 inline-block">MUST-HAVE</div>
+                    <h3 class="font-bold text-lg mb-3">
+                        <i class="fas fa-database text-blue-600 mr-2"></i>React Native MMKV
+                    </h3>
+                    <p class="text-sm text-gray-600 mb-3">Stockage clé-valeur le plus rapide, remplace AsyncStorage</p>
+                    <div class="text-xs space-y-1">
+                        <div><strong>Performance:</strong> 30x plus rapide qu'AsyncStorage</div>
+                        <div><strong>Cas d'usage:</strong> Settings, cache, données locales</div>
+                        <div><strong>Auteur:</strong> Marc Rousavy (Margelo)</div>
+                    </div>
+                    <a href="https://github.com/mrousavy/react-native-mmkv" class="text-blue-600 text-sm mt-3 block">GitHub MMKV</a>
+                </div>
+
+                <!-- Formulaires -->
+                <div class="bg-white rounded-xl shadow-lg p-6 card-hover">
+                    <div class="bg-green-500 text-white px-2 py-1 rounded text-xs font-bold mb-3 inline-block">PRODUCTION</div>
+                    <h3 class="font-bold text-lg mb-3">
+                        <i class="fas fa-wpforms text-green-600 mr-2"></i>React Hook Form + Zod
+                    </h3>
+                    <p class="text-sm text-gray-600 mb-3">Gestion formulaires type-safe impeccable</p>
+                    <div class="text-xs space-y-1">
+                        <div><strong>Validation:</strong> Schémas Zod pour type safety</div>
+                        <div><strong>Performance:</strong> Rendu minimal, validation optimisée</div>
+                        <div><strong>DX:</strong> API déclarative, excellent support TS</div>
+                    </div>
+                    <div class="text-xs mt-3 space-y-1">
+                        <a href="https://react-hook-form.com" class="text-blue-600 block">react-hook-form.com</a>
+                        <a href="https://zod.dev" class="text-blue-600 block">zod.dev</a>
+                    </div>
+                </div>
+
+                <!-- Listes -->
+                <div class="bg-white rounded-xl shadow-lg p-6 card-hover">
+                    <div class="bg-red-500 text-white px-2 py-1 rounded text-xs font-bold mb-3 inline-block">REMPLACEMENT</div>
+                    <h3 class="font-bold text-lg mb-3">
+                        <i class="fas fa-list text-purple-600 mr-2"></i>FlashList
+                    </h3>
+                    <p class="text-sm text-gray-600 mb-3">Remplace FlatList - même API, performances supérieures</p>
+                    <div class="text-xs space-y-1">
+                        <div><strong>Migration:</strong> Drop-in replacement de FlatList</div>
+                        <div><strong>Performance:</strong> Rendu optimisé, moins de blanks</div>
+                        <div><strong>Futur:</strong> Legend List en développement</div>
+                    </div>
+                    <a href="https://shopify.github.io/flash-list/" class="text-blue-600 text-sm mt-3 block">Shopify FlashList</a>
+                </div>
+
+                <!-- Images -->
+                <div class="bg-white rounded-xl shadow-lg p-6 card-hover">
+                    <div class="bg-blue-500 text-white px-2 py-1 rounded text-xs font-bold mb-3 inline-block">OPTIMISÉ</div>
+                    <h3 class="font-bold text-lg mb-3">
+                        <i class="fas fa-image text-indigo-600 mr-2"></i>Expo Image
+                    </h3>
+                    <p class="text-sm text-gray-600 mb-3">Package images optimisé vitesse avec cache intégré</p>
+                    <div class="text-xs space-y-1">
+                        <div><strong>Cache:</strong> Mémoire et disque automatiques</div>
+                        <div><strong>Formats:</strong> WebP, AVIF, formats modernes</div>
+                        <div><strong>Performance:</strong> Chargement progressif, placeholders</div>
+                    </div>
+                    <a href="https://docs.expo.dev/versions/latest/sdk/image/" class="text-blue-600 text-sm mt-3 block">Expo Image Docs</a>
+                </div>
+
+                <!-- Menus Natifs -->
+                <div class="bg-white rounded-xl shadow-lg p-6 card-hover">
+                    <div class="bg-purple-500 text-white px-2 py-1 rounded text-xs font-bold mb-3 inline-block">NATIF</div>
+                    <h3 class="font-bold text-lg mb-3">
+                        <i class="fas fa-bars text-orange-600 mr-2"></i>Zeego
+                    </h3>
+                    <p class="text-sm text-gray-600 mb-3">Menus dropdown et contextuels natifs iOS/Android</p>
+                    <div class="text-xs space-y-1">
+                        <div><strong>iOS:</strong> UIMenu, force touch support</div>
+                        <div><strong>Android:</strong> PopupMenu natif</div>
+                        <div><strong>UX:</strong> Comportement platform-specific</div>
+                    </div>
+                    <a href="https://zeego.dev" class="text-blue-600 text-sm mt-3 block">zeego.dev</a>
+                </div>
+
+                <!-- Authentification -->
+                <div class="bg-white rounded-xl shadow-lg p-6 card-hover">
+                    <div class="bg-indigo-500 text-white px-2 py-1 rounded text-xs font-bold mb-3 inline-block">PLATFORM</div>
+                    <h3 class="font-bold text-lg mb-3">
+                        <i class="fas fa-shield-alt text-blue-600 mr-2"></i>Clerk
+                    </h3>
+                    <p class="text-sm text-gray-600 mb-3">Plateforme complète gestion utilisateurs et authentification</p>
+                    <div class="text-xs space-y-1">
+                        <div><strong>Providers:</strong> Social login, OAuth, magic links</div>
+                        <div><strong>Sécurité:</strong> JWT management, session handling</div>
+                        <div><strong>Admin:</strong> Dashboard utilisateurs complet</div>
+                    </div>
+                    <a href="https://clerk.com" class="text-blue-600 text-sm mt-3 block">clerk.com</a>
+                </div>
+
+                <!-- Monétisation -->
+                <div class="bg-white rounded-xl shadow-lg p-6 card-hover">
+                    <div class="bg-green-600 text-white px-2 py-1 rounded text-xs font-bold mb-3 inline-block">REVENUE</div>
+                    <h3 class="font-bold text-lg mb-3">
+                        <i class="fas fa-credit-card text-green-600 mr-2"></i>RevenueCat
+                    </h3>
+                    <p class="text-sm text-gray-600 mb-3">Intégration simplifiée Apple/Google Store pour achats in-app</p>
+                    <div class="text-xs space-y-1">
+                        <div><strong>Stores:</strong> iOS App Store, Google Play unifié</div>
+                        <div><strong>Analytics:</strong> Revenue tracking, cohorts</div>
+                        <div><strong>A/B Testing:</strong> Pricing experiments</div>
+                    </div>
+                    <a href="https://www.revenuecat.com" class="text-blue-600 text-sm mt-3 block">revenuecat.com</a>
+                </div>
+
+                <!-- Caméra -->
+                <div class="bg-white rounded-xl shadow-lg p-6 card-hover">
+                    <div class="bg-red-600 text-white px-2 py-1 rounded text-xs font-bold mb-3 inline-block">PERFORMANCE</div>
+                    <h3 class="font-bold text-lg mb-3">
+                        <i class="fas fa-camera text-red-600 mr-2"></i>RN Vision Camera
+                    </h3>
+                    <p class="text-sm text-gray-600 mb-3">Caméra haute performance - photos, vidéos, QR codes</p>
+                    <div class="text-xs space-y-1">
+                        <div><strong>Performance:</strong> C++ natif, Nitro modules</div>
+                        <div><strong>Features:</strong> Frame processors, ML intégration</div>
+                        <div><strong>Auteur:</strong> Marc Rousavy expertise C++</div>
+                    </div>
+                    <a href="https://react-native-vision-camera.com" class="text-blue-600 text-sm mt-3 block">Vision Camera Docs</a>
+                </div>
+
+                <!-- Gestes -->
+                <div class="bg-white rounded-xl shadow-lg p-6 card-hover">
+                    <div class="bg-orange-500 text-white px-2 py-1 rounded text-xs font-bold mb-3 inline-block">GESTURES</div>
+                    <h3 class="font-bold text-lg mb-3">
+                        <i class="fas fa-hand-paper text-yellow-600 mr-2"></i>RN Gesture Handler
+                    </h3>
+                    <p class="text-sm text-gray-600 mb-3">Capture gestes natifs - pan, rotation, long press, fling</p>
+                    <div class="text-xs space-y-1">
+                        <div><strong>Gestes:</strong> Pan, pinch, rotation, tap complexes</div>
+                        <div><strong>Performance:</strong> Thread natif, pas de bridge</div>
+                        <div><strong>Intégration:</strong> Inclus par défaut Expo</div>
+                    </div>
+                    <a href="https://docs.swmansion.com/react-native-gesture-handler/" class="text-blue-600 text-sm mt-3 block">Gesture Handler Docs</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pourquoi c'est Important -->
+        <section class="mb-12">
+            <div class="importance-gradient text-white rounded-xl p-8">
+                <h2 class="text-3xl font-bold mb-6">
+                    <i class="fas fa-lightbulb mr-3"></i>Pourquoi Maîtriser ce Stack est Crucial
+                </h2>
+                
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div>
+                        <h3 class="text-xl font-bold mb-4">Impact Business</h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-start">
+                                <i class="fas fa-rocket text-yellow-300 mr-3 mt-1"></i>
+                                <div>
+                                    <strong>Time-to-Market Accéléré:</strong>
+                                    <p class="text-sm opacity-90">Stack standardisé réduit décisions techniques de 70%</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-dollar-sign text-yellow-300 mr-3 mt-1"></i>
+                                <div>
+                                    <strong>ROI Développement:</strong>
+                                    <p class="text-sm opacity-90">Code partagé iOS/Android/Web = -60% coûts développement</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-users text-yellow-300 mr-3 mt-1"></i>
+                                <div>
+                                    <strong>Écosystème Talenteux:</strong>
+                                    <p class="text-sm opacity-90">Pool développeurs web peut contribuer mobile directement</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-xl font-bold mb-4">Impact Technique</h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-start">
+                                <i class="fas fa-shield-alt text-yellow-300 mr-3 mt-1"></i>
+                                <div>
+                                    <strong>Production-Ready:</strong>
+                                    <p class="text-sm opacity-90">Stack éprouvé par Meta, Expo, grandes entreprises</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-chart-line text-yellow-300 mr-3 mt-1"></i>
+                                <div>
+                                    <strong>Performance Native:</strong>
+                                    <p class="text-sm opacity-90">Nouvelle architecture Fabric + TurboModules = performances natives</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-code-branch text-yellow-300 mr-3 mt-1"></i>
+                                <div>
+                                    <strong>Maintenabilité:</strong>
+                                    <p class="text-sm opacity-90">TypeScript + outils standardisés = bugs -80%, refactoring simplifié</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Cas d'Usage -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold mb-8 text-gray-800">
+                <i class="fas fa-briefcase text-purple-600 mr-3"></i>Cas d'Usage par Secteur
+            </h2>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                
+                <div class="bg-white rounded-xl shadow-lg p-6 card-hover">
+                    <div class="bg-blue-500 text-white w-12 h-12 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-shopping-cart text-xl"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-3">E-Commerce</h3>
+                    <ul class="text-sm space-y-2 text-gray-600">
+                        <li><strong>Stack:</strong> Expo + RevenueCat + Stripe</li>
+                        <li><strong>Features:</strong> Paiements, push notifications, analytics</li>
+                        <li><strong>Exemples:</strong> Shopify mobile, marketplace apps</li>
+                        <li><strong>Avantages:</strong> Déploiement rapide, MAJ OTA</li>
+                    </ul>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-lg p-6 card-hover">
+                    <div class="bg-green-500 text-white w-12 h-12 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-heartbeat text-xl"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-3">HealthTech</h3>
+                    <ul class="text-sm space-y-2 text-gray-600">
+                        <li><strong>Stack:</strong> MMKV + Sentry + Vision Camera</li>
+                        <li><strong>Features:</strong> Données sensibles, compliance, QR médicaux</li>
+                        <li><strong>Réglementation:</strong> HIPAA, RGPD compatible</li>
+                        <li><strong>Performance:</strong> Données offline-first critiques</li>
+                    </ul>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-lg p-6 card-hover">
+                    <div class="bg-purple-500 text-white w-12 h-12 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-graduation-cap text-xl"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-3">EdTech</h3>
+                    <ul class="text-sm space-y-2 text-gray-600">
+                        <li><strong>Stack:</strong> Reanimated + TanStack Query + Clerk</li>
+                        <li><strong>Features:</strong> Animations pédagogiques, sync multi-device</li>
+                        <li><strong>Exemples:</strong> Duolingo, Khan Academy approches</li>
+                        <li><strong>UX:</strong> Gamification, progress tracking</li>
+                    </ul>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-lg p-6 card-hover">
+                    <div class="bg-red-500 text-white w-12 h-12 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-chart-bar text-xl"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-3">FinTech</h3>
+                    <ul class="text-sm space-y-2 text-gray-600">
+                        <li><strong>Stack:</strong> Expo Secure Store + Sentry + Biométrie</li>
+                        <li><strong>Sécurité:</strong> Cryptage, authentification forte</li>
+                        <li><strong>Compliance:</strong> PCI DSS, réglementations bancaires</li>
+                        <li><strong>Performance:</strong> Transactions temps réel critiques</li>
+                    </ul>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-lg p-6 card-hover">
+                    <div class="bg-yellow-500 text-white w-12 h-12 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-map-marked-alt text-xl"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-3">Location Services</h3>
+                    <ul class="text-sm space-y-2 text-gray-600">
+                        <li><strong>Stack:</strong> Expo Location + Maps + Background Tasks</li>
+                        <li><strong>Features:</strong> Géolocalisation, cartes, tracking</li>
+                        <li><strong>Exemples:</strong> Uber, Airbnb, livraison apps</li>
+                        <li><strong>Défis:</strong> Battery optimization, permissions</li>
+                    </ul>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-lg p-6 card-hover">
+                    <div class="bg-indigo-500 text-white w-12 h-12 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-comments text-xl"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-3">Social Media</h3>
+                    <ul class="text-sm space-y-2 text-gray-600">
+                        <li><strong>Stack:</strong> FlashList + Vision Camera + Gesture Handler</li>
+                        <li><strong>Features:</strong> Feeds optimisés, caméra, interactions</li>
+                        <li><strong>Performance:</strong> Scroll infini, cache intelligent</li>
+                        <li><strong>Engagement:</strong> Animations, gestures naturels</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Défis d'Apprentissage -->
+        <section class="mb-12">
+            <div class="challenge-gradient text-white rounded-xl p-8">
+                <h2 class="text-3xl font-bold mb-6">
+                    <i class="fas fa-trophy mr-3"></i>Défis d'Apprentissage Progressifs
+                </h2>
+                
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    
+                    <!-- Niveau Débutant -->
+                    <div class="bg-white bg-opacity-20 rounded-lg p-6">
+                        <div class="bg-green-500 text-white px-3 py-1 rounded-full text-sm font-bold mb-4 inline-block">
+                            DÉBUTANT
+                        </div>
+                        <h3 class="font-bold text-xl mb-4">Fondations Solides</h3>
+                        
+                        <div class="space-y-3 text-sm">
+                            <div class="bg-white bg-opacity-20 p-3 rounded">
+                                <strong>🎯 Défi 1: Setup Perfect</strong>
+                                <p class="opacity-90">Créer un projet Expo + TypeScript + NativeWind configuré</p>
+                                <p class="opacity-75 text-xs mt-1">Durée: 2-3 heures</p>
+                            </div>
+                            
+                            <div class="bg-white bg-opacity-20 p-3 rounded">
+                                <strong>🎯 Défi 2: Navigation Multi-écrans</strong>
+                                <p class="opacity-90">App avec tabs + stack navigation + paramètres</p>
+                                <p class="opacity-75 text-xs mt-1">Durée: 4-6 heures</p>
+                            </div>
+                            
+                            <div class="bg-white bg-opacity-20 p-3 rounded">
+                                <strong>🎯 Défi 3: Formulaire Complet</strong>
+                                <p class="opacity-90">React Hook Form + Zod validation + styling</p>
+                                <p class="opacity-75 text-xs mt-1">Durée: 3-4 heures</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Niveau Intermédiaire -->
+                    <div class="bg-white bg-opacity-20 rounded-lg p-6">
+                        <div class="bg-yellow-500 text-white px-3 py-1 rounded-full text-sm font-bold mb-4 inline-block">
+                            INTERMÉDIAIRE
+                        </div>
+                        <h3 class="font-bold text-xl mb-4">Features Avancées</h3>
+                        
+                        <div class="space-y-3 text-sm">
+                            <div class="bg-white bg-opacity-20 p-3 rounded">
+                                <strong>🚀 Défi 4: État Global</strong>
+                                <p class="opacity-90">Zustand + TanStack Query + authentification</p>
+                                <p class="opacity-75 text-xs mt-1">Durée: 6-8 heures</p>
+                            </div>
+                            
+                            <div class="bg-white bg-opacity-20 p-3 rounded">
+                                <strong>🚀 Défi 5: Animations Complexes</strong>
+                                <p class="opacity-90">Reanimated + Gesture Handler + micro-interactions</p>
+                                <p class="opacity-75 text-xs mt-1">Durée: 8-10 heures</p>
+                            </div>
+                            
+                            <div class="bg-white bg-opacity-20 p-3 rounded">
+                                <strong>🚀 Défi 6: Performance Lists</strong>
+                                <p class="opacity-90">FlashList + virtualization + lazy loading</p>
+                                <p class="opacity-75 text-xs mt-1">Durée: 4-6 heures</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Niveau Expert -->
+                    <div class="bg-white bg-opacity-20 rounded-lg p-6">
+                        <div class="bg-red-500 text-white px-3 py-1 rounded-full text-sm font-bold mb-4 inline-block">
+                            EXPERT
+                        </div>
+                        <h3 class="font-bold text-xl mb-4">Production Ready</h3>
+                        
+                        <div class="space-y-3 text-sm">
+                            <div class="bg-white bg-opacity-20 p-3 rounded">
+                                <strong>⚡ Défi 7: App Complète</strong>
+                                <p class="opacity-90">Architecture complète + tests + monitoring</p>
+                                <p class="opacity-75 text-xs mt-1">Durée: 20-30 heures</p>
+                            </div>
+                            
+                            <div class="bg-white bg-opacity-20 p-3 rounded">
+                                <strong>⚡ Défi 8: Optimisations</strong>
+                                <p class="opacity-90">Bundle analysis + performance profiling + CI/CD</p>
+                                <p class="opacity-75 text-xs mt-1">Durée: 10-15 heures</p>
+                            </div>
+                            
+                            <div class="bg-white bg-opacity-20 p-3 rounded">
+                                <strong>⚡ Défi 9: Monétisation</strong>
+                                <p class="opacity-90">RevenueCat + analytics + store submission</p>
+                                <p class="opacity-75 text-xs mt-1">Durée: 15-20 heures</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Ressources d'Apprentissage -->
+        <section class="mb-12">
+            <div class="resource-gradient text-white rounded-xl p-8">
+                <h2 class="text-3xl font-bold mb-6">
+                    <i class="fas fa-graduation-cap mr-3"></i>Ressources d'Apprentissage Recommandées
+                </h2>
+                
+                <div class="grid md:grid-cols-2 gap-8">
+                    
+                    <!-- Cours & Formations -->
+                    <div>
+                        <h3 class="text-xl font-bold mb-4">
+                            <i class="fas fa-play-circle mr-2"></i>Cours & Formations
+                        </h3>
+                        
+                        <div class="space-y-4">
+                            <div class="bg-white bg-opacity-20 rounded-lg p-4">
+                                <h4 class="font-bold text-lg mb-2">
+                                    <i class="fas fa-star text-yellow-300 mr-2"></i>React Native Zero to Hero
+                                </h4>
+                                <p class="text-sm opacity-90 mb-2">Cours complet par Simon Grimm - Du setup à la publication stores</p>
+                                <div class="text-xs opacity-80">
+                                    <strong>Durée:</strong> 40+ heures | <strong>Niveau:</strong> Débutant à Expert
+                                </div>
+                                <a href="https://galaxies.dev/missions/zero-to-hero" class="inline-block mt-2 bg-white text-blue-600 px-3 py-1 rounded text-sm font-semibold">
+                                    Accéder au cours
+                                </a>
+                            </div>
+                            
+                            <div class="bg-white bg-opacity-20 rounded-lg p-4">
+                                <h4 class="font-bold">Documentation Officielle</h4>
+                                <ul class="text-sm space-y-1 mt-2 opacity-90">
+                                    <li>• <a href="https://reactnative.dev" class="underline">React Native Docs</a> - Référence complète</li>
+                                    <li>• <a href="https://docs.expo.dev" class="underline">Expo Documentation</a> - Guides détaillés</li>
+                                    <li>• <a href="https://tanstack.com/query/latest/docs/react/overview" class="underline">TanStack Query</a> - State management</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Communauté & Veille -->
+                    <div>
+                        <h3 class="text-xl font-bold mb-4">
+                            <i class="fas fa-users mr-2"></i>Communauté & Veille
+                        </h3>
+                        
+                        <div class="space-y-4">
+                            <div class="bg-white bg-opacity-20 rounded-lg p-4">
+                                <h4 class="font-bold text-lg mb-2">Communautés Actives</h4>
+                                <ul class="text-sm space-y-1 opacity-90">
+                                    <li>• <strong>Discord Reactiflux:</strong> #react-native channel</li>
+                                    <li>• <strong>Reddit:</strong> r/reactnative discussions</li>
+                                    <li>• <strong>Twitter:</strong> @reactnative, @expo, @swmansion</li>
+                                    <li>• <strong>Stack Overflow:</strong> react-native tag</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-white bg-opacity-20 rounded-lg p-4">
+                                <h4 class="font-bold text-lg mb-2">Podcasts & Newsletters</h4>
+                                <ul class="text-sm space-y-1 opacity-90">
+                                    <li>• <strong>React Native Radio:</strong> Podcast hebdomadaire</li>
+                                    <li>• <strong>This Week in React:</strong> Newsletter Sébastien Lorber</li>
+                                    <li>• <strong>Expo Blog:</strong> Annonces et tutorials officiels</li>
+                                    <li>• <strong>Chain React:</strong> Conférence annuelle RN</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Projets Pratiques -->
+                <div class="mt-8">
+                    <h3 class="text-xl font-bold mb-4">
+                        <i class="fas fa-code mr-2"></i>Projets Pratiques Suggérés
+                    </h3>
+                    
+                    <div class="grid md:grid-cols-3 gap-4">
+                        <div class="bg-white bg-opacity-20 rounded-lg p-4">
+                            <h4 class="font-bold mb-2">📱 Todo App Avancée</h4>
+                            <p class="text-sm opacity-90">Zustand + animations + persistance + sync</p>
+                            <div class="text-xs opacity-75 mt-2">Stack: Expo + MMKV + Reanimated</div>
+                        </div>
+                        
+                        <div class="bg-white bg-opacity-20 rounded-lg p-4">
+                            <h4 class="font-bold mb-2">📸 Photo Gallery</h4>
+                            <p class="text-sm opacity-90">Vision Camera + galerie + filtres + partage</p>
+                            <div class="text-xs opacity-75 mt-2">Stack: Vision Camera + Expo Image + Skia</div>
+                        </div>
+                        
+                        <div class="bg-white bg-opacity-20 rounded-lg p-4">
+                            <h4 class="font-bold mb-2">💰 Expense Tracker</h4>
+                            <p class="text-sm opacity-90">Charts + authentification + export data</p>
+                            <div class="text-xs opacity-75 mt-2">Stack: Clerk + TanStack + Victory Charts</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Roadmap 2025 -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold mb-8 text-gray-800">
+                <i class="fas fa-road text-purple-600 mr-3"></i>Roadmap React Native 2025
+            </h2>
+            
+            <div class="bg-gradient-to-r from-purple-100 to-pink-100 rounded-xl p-8">
+                <div class="grid md:grid-cols-3 gap-6">
+                    
+                    <div class="bg-white rounded-lg p-6 shadow-md">
+                        <div class="text-center mb-4">
+                            <div class="bg-green-500 text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-3">
+                                <i class="fas fa-check text-2xl"></i>
+                            </div>
+                            <h3 class="font-bold text-lg">Q1 2025 - Stable</h3>
+                        </div>
+                        <ul class="text-sm space-y-2">
+                            <li><strong>✅ Nouvelle Architecture:</strong> Fabric + TurboModules production</li>
+                            <li><strong>✅ Expo SDK 53:</strong> Components natifs intégrés</li>
+                            <li><strong>✅ Unistyles 3.0:</strong> Performance accrue</li>
+                            <li><strong>✅ React 19:</strong> Support complet concurrent features</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-white rounded-lg p-6 shadow-md">
+                        <div class="text-center mb-4">
+                            <div class="bg-orange-500 text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-3">
+                                <i class="fas fa-clock text-2xl"></i>
+                            </div>
+                            <h3 class="font-bold text-lg">Q2-Q3 2025 - En cours</h3>
+                        </div>
+                        <ul class="text-sm space-y-2">
+                            <li><strong>🔄 Legend List:</strong> Alternative FlashList performance</li>
+                            <li><strong>🔄 Swift UI Components:</strong> Intégration native iOS</li>
+                            <li><strong>🔄 Expo Workflows:</strong> Remplacement GitHub Actions</li>
+                            <li><strong>🔄 Web Support:</strong> Amélioration cross-platform</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-white rounded-lg p-6 shadow-md">
+                        <div class="text-center mb-4">
+                            <div class="bg-blue-500 text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-3">
+                                <i class="fas fa-telescope text-2xl"></i>
+                            </div>
+                            <h3 class="font-bold text-lg">Q4 2025 - Vision</h3>
+                        </div>
+                        <ul class="text-sm space-y-2">
+                            <li><strong>🔮 React Server Components:</strong> SSR mobile natif</li>
+                            <li><strong>🔮 AI Integration:</strong> Copilot natif apps mobiles</li>
+                            <li><strong>🔮 Performance++:</strong> Optimizations compilateur</li>
+                            <li><strong>🔮 Dev Tools 2.0:</strong> Debug experience révolutionnaire</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Action Plan -->
+        <section class="mb-12">
+            <div class="bg-gray-900 text-white rounded-xl p-8">
+                <h2 class="text-3xl font-bold mb-6 text-center">
+                    <i class="fas fa-rocket mr-3"></i>Plan d'Action Immédiat
+                </h2>
+                
+                <div class="grid md:grid-cols-2 gap-8">
+                    
+                    <!-- Cette Semaine -->
+                    <div class="bg-gradient-to-br from-green-600 to-green-700 rounded-lg p-6">
+                        <h3 class="text-xl font-bold mb-4">
+                            <i class="fas fa-calendar-week mr-2"></i>Cette Semaine
+                        </h3>
+                        
+                        <div class="space-y-3">
+                            <div class="flex items-center">
+                                <input type="checkbox" class="mr-3 w-4 h-4">
+                                <span class="text-sm">Installer Expo CLI + créer premier projet TypeScript</span>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="checkbox" class="mr-3 w-4 h-4">
+                                <span class="text-sm">Configurer Cursor avec extensions React Native</span>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="checkbox" class="mr-3 w-4 h-4">
+                                <span class="text-sm">Créer navigation simple avec Expo Router</span>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="checkbox" class="mr-3 w-4 h-4">
+                                <span class="text-sm">Tester NativeWind sur composants de base</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Ce Mois -->
+                    <div class="bg-gradient-to-br from-blue-600 to-blue-700 rounded-lg p-6">
+                        <h3 class="text-xl font-bold mb-4">
+                            <i class="fas fa-calendar-alt mr-2"></i>Ce Mois
+                        </h3>
+                        
+                        <div class="space-y-3">
+                            <div class="flex items-center">
+                                <input type="checkbox" class="mr-3 w-4 h-4">
+                                <span class="text-sm">Maîtriser Zustand + TanStack Query combo</span>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="checkbox" class="mr-3 w-4 h-4">
+                                <span class="text-sm">Implémenter authentification avec Clerk</span>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="checkbox" class="mr-3 w-4 h-4">
+                                <span class="text-sm">Créer animations complexes avec Reanimated</span>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="checkbox" class="mr-3 w-4 h-4">
+                                <span class="text-sm">Déployer première app sur Expo EAS</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Objectif 6 Mois -->
+                <div class="mt-8 bg-gradient-to-r from-purple-600 to-pink-600 rounded-lg p-6 text-center">
+                    <h3 class="text-2xl font-bold mb-4">🎯 Objectif 6 Mois</h3>
+                    <p class="text-lg mb-4">Développer et publier une application React Native complète sur les stores</p>
+                    <div class="grid md:grid-cols-4 gap-4 text-sm">
+                        <div class="bg-white bg-opacity-20 rounded p-3">
+                            <strong>Mois 1-2</strong><br>
+                            Maîtrise stack de base
+                        </div>
+                        <div class="bg-white bg-opacity-20 rounded p-3">
+                            <strong>Mois 3-4</strong><br>
+                            App fonctionnelle complète
+                        </div>
+                        <div class="bg-white bg-opacity-20 rounded p-3">
+                            <strong>Mois 5</strong><br>
+                            Tests + optimisations
+                        </div>
+                        <div class="bg-white bg-opacity-20 rounded p-3">
+                            <strong>Mois 6</strong><br>
+                            Publication stores
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="bg-gray-800 text-white py-8 rounded-xl">
+            <div class="text-center">
+                <h3 class="text-2xl font-bold mb-4">Commencez Votre Parcours React Native Dès Aujourd'hui</h3>
+                <p class="text-gray-300 mb-6">2025 est l'année parfaite pour maîtriser React Native. L'écosystème n'a jamais été aussi mature.</p>
+                
+                <div class="flex justify-center space-x-4 mb-6">
+                    <a href="https://galaxies.dev/missions/zero-to-hero" class="bg-blue-600 hover:bg-blue-700 px-6 py-3 rounded-lg font-semibold transition">
+                        <i class="fas fa-graduation-cap mr-2"></i>Cours Zero to Hero
+                    </a>
+                    <a href="https://galaxies.dev/article/react-native-tech-stack-2025" class="bg-purple-600 hover:bg-purple-700 px-6 py-3 rounded-lg font-semibold transition">
+                        <i class="fas fa-list mr-2"></i>Liste Complète Outils
+                    </a>
+                    <a href="https://dub.sh/nwui" class="bg-green-600 hover:bg-green-700 px-6 py-3 rounded-lg font-semibold transition">
+                        <i class="fas fa-paint-brush mr-2"></i>NativeWindUI
+                    </a>
+                </div>
+                
+                <div class="text-sm text-gray-400">
+                    <p>Guide basé sur la vidéo de Simon Grimm - Galaxies.dev | Mis à jour janvier 2025</p>
+                    <p class="mt-2">
+                        <i class="fas fa-heart text-red-400 mr-1"></i>
+                        Créé pour la communauté React Native francophone
+                    </p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- JavaScript pour interactivité -->
+    <script>
+        // Animation au scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Appliquer l'animation aux cartes
+        document.addEventListener('DOMContentLoaded', () => {
+            const cards = document.querySelectorAll('.card-hover');
+            cards.forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(card);
+            });
+
+            // Gestion des checkboxes dans le plan d'action
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            checkboxes.forEach(checkbox => {
+                checkbox.addEventListener('change', (e) => {
+                    const parent = e.target.parentElement;
+                    if (e.target.checked) {
+                        parent.style.opacity = '0.6';
+                        parent.style.textDecoration = 'line-through';
+                    } else {
+                        parent.style.opacity = '1';
+                        parent.style.textDecoration = 'none';
+                    }
+                });
+            });
+        });
+
+        // Progress tracking pour les défis
+        function updateProgress() {
+            const completed = document.querySelectorAll('input[type="checkbox"]:checked').length;
+            const total = document.querySelectorAll('input[type="checkbox"]').length;
+            const percentage = Math.round((completed / total) * 100);
+            
+            console.log(`Progression: ${percentage}% (${completed}/${total} tâches complétées)`);
+        }
+
+        // Smooth scroll pour les liens internes
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

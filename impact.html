@@ -27,57 +27,7 @@
     </script>
   </head>
   <body class="font-sans bg-white">
-    <header id="header" class="fixed w-full top-0 z-50 bg-white shadow-sm">
-      <nav
-        class="container mx-auto px-4 py-4 flex justify-between items-center"
-      >
-        <a href="index.html"
-          ><img src="assets/logo.svg" alt="TARMAQ" class="h-10"
-        /></a>
-        <div class="hidden lg:flex items-center space-x-8">
-          <a href="index.html" class="nav-link hover:text-primary">Accueil</a>
-          <a href="projet.html" class="nav-link hover:text-primary"
-            >Le projet</a
-          >
-          <a href="activites.html" class="nav-link hover:text-primary"
-            >Activités</a
-          >
-          <a href="impact.html" class="nav-link text-primary font-semibold"
-            >Impact</a
-          >
-          <a
-            href="soutenir.html"
-            class="nav-link hover:text-primary"
-            data-i18n="nav.support"
-            >Nous soutenir</a
-          >
-          <a href="contact.html" class="nav-link hover:text-primary">Contact</a>
-          <a
-            href="charte.html"
-            class="nav-link hover:text-primary"
-            data-i18n="nav.charter"
-            >Charte</a
-          >
-        </div>
-        <div class="hidden lg:flex space-x-2">
-          <button onclick="changeLanguage('fr')" class="lang-btn">
-            <span class="text-xl">🇫🇷</span>
-          </button>
-          <button onclick="changeLanguage('en')" class="lang-btn">
-            <span class="text-xl">🇬🇧</span>
-          </button>
-          <button onclick="changeLanguage('de')" class="lang-btn">
-            <span class="text-xl">🇩🇪</span>
-          </button>
-          <button onclick="changeLanguage('it')" class="lang-btn">
-            <span class="text-xl">🇮🇹</span>
-          </button>
-        </div>
-        <button id="mobile-menu-btn" class="lg:hidden text-2xl">
-          <i class="fas fa-bars"></i>
-        </button>
-      </nav>
-    </header>
+    <!-- Header will be loaded by header.js -->
 
     <section
       class="pt-32 pb-16 bg-gradient-to-br from-secondary to-gray-800 text-white"
@@ -350,15 +300,21 @@
               </li>
             </ul>
           </div>
+          <!-- Newsletter -->
           <div>
-            <h4 class="font-bold mb-4">Suivez-nous</h4>
-            <div class="flex space-x-4">
-              <a
-                href="#"
-                class="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center hover:bg-primary"
-                ><i class="fab fa-linkedin-in"></i
-              ></a>
-            </div>
+            <h4 class="font-bold mb-4" data-i18n="footer.newsletter">
+              Restez Informé
+            </h4>
+            <p class="text-gray-400 text-sm mb-4" data-i18n="footer.newsletter.description">
+              Recevez nos dernières actualités et opportunités.
+            </p>
+            <a
+              href="contact.html"
+              class="bg-primary hover:bg-red-700 text-white px-4 py-2 rounded-full text-sm transition inline-flex items-center"
+              data-i18n="footer.newsletter.cta"
+            >
+              Nous Contacter
+            </a>
           </div>
         </div>
         <div
@@ -369,6 +325,7 @@
       </div>
     </footer>
 
+    <script src="js/header.js"></script>
     <script src="js/i18n.js"></script>
     <script src="js/main.js"></script>
   </body>

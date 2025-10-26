@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Course: Gestion du risque en investissement</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" />
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+      body { font-family: 'Inter', sans-serif; background:#fcfcfd; color:#161616; }
+      .gradient-bg { background: linear-gradient(135deg, #E30007 0%, #CC0006 100%); }
+      .btn-primary { background:#E30007; color:#fff; border:none; padding:12px 18px; border-radius:14px; font-weight:700; display:inline-block; text-decoration:none; transition:background .2s ease; }
+      .btn-primary:hover { background:#CC0006; }
+      .btn-secondary { background:rgba(255,255,255,.92); color:#111827; padding:12px 18px; border-radius:14px; font-weight:700; border:1px solid #e5e7eb; }
+
+      /* Header styles */
+      .btn-secondary {
+        background: rgba(255, 255, 255, 0.9);
+        color: #2a2a2a;
+        padding: 14px 24px;
+        border-radius: 16px;
+        font-weight: 700;
+        transition: all 0.3s ease;
+        border: 1px solid #e8e8ec;
+        cursor: pointer;
+      }
+
+      .btn-secondary:hover {
+        background: white;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      .btn-gradient {
+        background: linear-gradient(140deg, #F4999C, #E30007);
+        color: white;
+        padding: 14px 24px;
+        border-radius: 16px;
+        font-weight: 700;
+        transition: all 0.3s ease;
+        border: none;
+        cursor: pointer;
+      }
+
+      .btn-gradient:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(227, 0, 7, 0.25);
+      }
+
+      /* Navigation styles */
+      .nav-item {
+        position: relative;
+      }
+
+      .nav-dropdown {
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-10px);
+        transition: all 0.3s ease;
+      }
+
+      .nav-item:hover .nav-dropdown {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+      }
+      .card { background:#fff; border:1px solid #e8e8ec; border-radius:22px; box-shadow:0 6px 24px rgba(2,132,199,.08); }
+      .tool-card { transition: transform .3s ease, box-shadow .3s ease; }
+      .tool-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(2,132,199,.12); border-color:#0EA5E9; }
+      .feature-item { border-left:4px solid #0EA5E9; }
+      .section-title { color:#111827; }
+      .section-subtitle { color:#6b7280; }
+      .shadow-soft { box-shadow: 0 6px 24px rgba(0,0,0,.06); }
+      .badge { background:#E0F2FE; color:#075985; font-weight:700; padding:2px 10px; border-radius:9999px; font-size:.75rem; }
+      .kbd { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; background:#111827; color:#fff; padding:2px 6px; border-radius:6px; font-size:.75rem; }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="sticky top-0 z-50 backdrop-blur-xl bg-white/80 border-b border-stroke/50">
+        <div class="max-w-7xl mx-auto px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <div class="flex items-center gap-4">
+                    <img src="../src/assets/logo.png" alt="tarmaq" class="h-12 w-auto" />
+                </div>
+
+                <!-- Desktop Navigation -->
+                <nav class="hidden lg:flex items-center gap-8">
+                    <a href="../index.html" class="font-semibold text-ink-2 hover:text-brand transition-colors">Accueil</a>
+                    <a href="index.html" class="font-semibold text-brand">Cours Libre</a>
+                    <a href="../tarmaq_version_html_fondateur.html" class="font-semibold text-ink-2 hover:text-brand transition-colors">Projet</a>
+                    <a href="../Budget.html" class="font-semibold text-ink-2 hover:text-brand transition-colors">Budget</a>
+                    <a href="../tarmaq_interactive_mindmap.html" class="font-semibold text-ink-2 hover:text-brand transition-colors">Mindmap</a>
+                </nav>
+
+                <!-- CTA Buttons -->
+                <div class="hidden lg:flex items-center gap-4">
+                    <button class="btn-secondary">Appel à soutien</button>
+                    <button class="btn-gradient">Faire un don</button>
+                </div>
+
+                <!-- View Switcher and Mobile Menu Button -->
+                <div class="flex items-center gap-2">
+                    <!-- View Switcher Button -->
+                    <button id="viewSwitcher" class="p-2 hover:bg-gray-100 rounded-lg transition-colors text-ink-2" title="Passer à la vue mobile">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                        </svg>
+                    </button>
+                    <!-- Mobile Menu Button -->
+                    <button class="lg:hidden p-2" onclick="toggleMobileMenu()">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="lg:hidden bg-white border-t border-stroke hidden">
+            <div class="max-w-7xl mx-auto px-8 py-4">
+                <nav class="flex flex-col space-y-4">
+                    <a href="../index.html" class="font-semibold text-ink-2 hover:text-brand transition-colors py-2">Accueil</a>
+                    <a href="index.html" class="font-semibold text-brand py-2">Cours Libre</a>
+                    <a href="../tarmaq_version_html_fondateur.html" class="font-semibold text-ink-2 hover:text-brand transition-colors py-2">Projet</a>
+                    <a href="../Budget.html" class="font-semibold text-ink-2 hover:text-brand transition-colors py-2">Budget</a>
+                    <a href="../tarmaq_interactive_mindmap.html" class="font-semibold text-ink-2 hover:text-brand transition-colors py-2">Mindmap</a>
+                    <div class="flex flex-col space-y-2 pt-4 border-t border-stroke">
+                        <button class="btn-secondary w-full text-center">Appel à soutien</button>
+                        <button class="btn-gradient w-full text-center">Faire un don</button>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="gradient-bg text-white py-12">
+      <div class="max-w-7xl mx-auto px-6 text-center">
+        <h1 class="text-4xl md:text-5xl font-extrabold mb-3">Gestion du risque en investissement</h1>
+        <p class="text-xl opacity-95 mb-6">Un mini‑cours pratique basé sur l’article eToro (FR) et des ressources vidéo de référence.</p>
+        <div class="flex flex-wrap justify-center items-center gap-6 text-sm">
+          <div class="flex items-center gap-2"><i class="fas fa-signal"></i><span>Niveau: Débutant → Intermédiaire</span></div>
+          <div class="flex items-center gap-2"><i class="fas fa-clock"></i><span>Durée: 60–90 min</span></div>
+          <div class="flex items-center gap-2"><i class="fas fa-calendar-check"></i><span>Mis à jour: 25 août 2025</span></div>
+          <div class="flex items-center gap-2"><i class="fas fa-language"></i><span>FR + vidéos EN</span></div>
+        </div>
+        <div class="mt-6 flex flex-wrap justify-center gap-3">
+          <a href="#modules" class="btn-primary"><i class="fas fa-play mr-2"></i>Commencer le cours</a>
+          <a href="https://www.etoro.com/fr/investing/risk-management/" target="_blank" class="btn-secondary"><i class="fas fa-external-link-alt mr-2"></i>Lire l’article eToro</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Executive summary -->
+    <section class="py-12 bg-white">
+      <div class="max-w-5xl mx-auto px-6">
+        <h2 class="text-3xl font-bold section-title text-center mb-4">Résumé exécutif</h2>
+        <p class="text-lg text-gray-700 text-center max-w-3xl mx-auto">
+          La gestion du risque consiste à <strong>équilibrer rendement potentiel et niveau de risque</strong>, en planifiant à l’avance les pertes acceptables,
+          en dimensionnant ses positions, et en diversifiant son portefeuille. Elle s’applique autant à l’investisseur long terme qu’au trader de court terme.
+        </p>
+        <div class="mt-6 grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div class="card p-5 text-center">
+            <div class="text-2xl font-extrabold text-blue-700">1–2%</div>
+            <div class="text-sm text-gray-500">Risque max par trade (règle pratique)</div>
+          </div>
+          <div class="card p-5 text-center">
+            <div class="text-2xl font-extrabold text-blue-700">3:1</div>
+            <div class="text-sm text-gray-500">Ratio risque/rendement visé</div>
+          </div>
+          <div class="card p-5 text-center">
+            <div class="text-2xl font-extrabold text-blue-700">Diversifier</div>
+            <div class="text-sm text-gray-500">Actions, obligations, cash, divers actifs</div>
+          </div>
+          <div class="card p-5 text-center">
+            <div class="text-2xl font-extrabold text-blue-700">Discipline</div>
+            <div class="text-sm text-gray-500">Plans d’entrée, de sortie, de taille</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Modules -->
+    <section id="modules" class="py-12">
+      <div class="max-w-7xl mx-auto px-6">
+        <h2 class="text-3xl font-bold text-center mb-10">Plan du cours</h2>
+
+        <!-- Module 1 -->
+        <div class="tool-card card mb-8 overflow-hidden">
+          <div class="bg-blue-600 text-white p-6">
+            <h3 class="text-2xl font-bold"><i class="fas fa-compass mr-2"></i>Module 1 — Fondamentaux du risque & du plan d’investissement</h3>
+            <p class="opacity-90">Risque vs rendement, tolérance au risque, objectifs, horizon.</p>
+          </div>
+          <div class="p-6 grid md:grid-cols-2 gap-6">
+            <div>
+              <h4 class="font-semibold mb-2 text-blue-700">Objectifs</h4>
+              <ul class="space-y-2">
+                <li class="feature-item pl-4 py-2">Définir <em>risque</em>, <em>volatilité</em>, <em>drawdown</em></li>
+                <li class="feature-item pl-4 py-2">Fixer des objectifs mesurables (rendement, horizon, drawdown max)</li>
+                <li class="feature-item pl-4 py-2">Rédiger un <span class="kbd">Risk Plan</span> simple</li>
+              </ul>
+            </div>
+            <div>
+              <h4 class="font-semibold mb-2 text-blue-700">À faire</h4>
+              <ol class="list-decimal ml-4 space-y-2 text-gray-700">
+                <li>Notez votre perte max acceptable sur une position et sur le portefeuille (mensuelle).</li>
+                <li>Écrivez vos règles d’entrée/sortie, avant de prendre un trade.</li>
+              </ol>
+              <div class="mt-3 text-sm">
+                <span class="badge">À regarder</span>
+                <a class="underline ml-2" target="_blank" href="https://www.khanacademy.org/economics-finance-domain/core-finance/investment-vehicles-tutorial/investment-consumption/v/risk-and-reward-introduction">Khan Academy – Risk & reward (EN)</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Module 2 -->
+        <div class="tool-card card mb-8 overflow-hidden">
+          <div class="bg-indigo-600 text-white p-6">
+            <h3 class="text-2xl font-bold"><i class="fas fa-layer-group mr-2"></i>Module 2 — Diversification & allocation d’actifs</h3>
+            <p class="opacity-90">Pourquoi diversifier et comment construire une allocation simple.</p>
+          </div>
+          <div class="p-6 grid md:grid-cols-2 gap-6">
+            <div>
+              <h4 class="font-semibold mb-2 text-indigo-100 md:text-indigo-700">Objectifs</h4>
+              <ul class="space-y-2">
+                <li class="feature-item pl-4 py-2">Comprendre corrélation & risque de portefeuille</li>
+                <li class="feature-item pl-4 py-2">Choisir une allocation type (ex. 60/40, Core-Satellite)</li>
+                <li class="feature-item pl-4 py-2">Planifier le <em>rebalancing</em></li>
+              </ul>
+            </div>
+            <div>
+              <h4 class="font-semibold mb-2 text-indigo-700">À faire</h4>
+              <ol class="list-decimal ml-4 space-y-2 text-gray-700">
+                <li>Backtestez 2 allocations dans <a class="underline" target="_blank" href="https://www.portfoliovisualizer.com/backtest-asset-class-allocation">Portfolio Visualizer</a>.</li>
+                <li>Comparez volatilité, Sharpe, drawdown. Choisissez votre préférence.</li>
+              </ol>
+              <div class="mt-3 text-sm">
+                <span class="badge">À regarder</span>
+                <a class="underline ml-2" target="_blank" href="https://www.youtube.com/watch?v=DLKhsZvcD-c">CFA L1 – Portfolio Risk & Return (EN)</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Module 3 -->
+        <div class="tool-card card mb-8 overflow-hidden">
+          <div class="bg-teal-600 text-white p-6">
+            <h3 class="text-2xl font-bold"><i class="fas fa-calculator mr-2"></i>Module 3 — Taille de position & ratio risque/rendement</h3>
+            <p class="opacity-90">Dimensionner pour survivre : 1–2% de risque, RRR ≥ 2–3.</p>
+          </div>
+          <div class="p-6 grid md:grid-cols-2 gap-6">
+            <div>
+              <h4 class="font-semibold mb-2 text-teal-700">Objectifs</h4>
+              <ul class="space-y-2">
+                <li class="feature-item pl-4 py-2">Calculer la taille de position à partir d’un stop</li>
+                <li class="feature-item pl-4 py-2">Évaluer le ratio risque/rendement (RRR)</li>
+                <li class="feature-item pl-4 py-2">Standardiser votre risque par trade</li>
+              </ul>
+            </div>
+            <div>
+              <h4 class="font-semibold mb-2 text-teal-700">À faire</h4>
+              <ol class="list-decimal ml-4 space-y-2 text-gray-700">
+                <li>Utilisez l’indicateur <a class="underline" target="_blank" href="https://www.tradingview.com/script/3U7H8gbf-Risk-Reward-Position-Size-Calculator/">Risk‑Reward Position Size (TradingView)</a>.</li>
+                <li>Renseignez capital, % risque, entrée, stop, objectif → obtenez la taille.</li>
+              </ol>
+              <div class="mt-3 text-sm">
+                <span class="badge">À regarder</span>
+                <a class="underline ml-2" target="_blank" href="https://www.youtube.com/watch?v=56wXmLSxNOg">Position sizing vs stop loss (EN)</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Module 4 -->
+        <div class="tool-card card mb-8 overflow-hidden">
+          <div class="bg-amber-600 text-white p-6">
+            <h3 class="text-2xl font-bold"><i class="fas fa-stop-circle mr-2"></i>Module 4 — Stop‑loss, take‑profit & gestion des sorties</h3>
+            <p class="opacity-90">Où sortir si ça tourne mal ? où prendre les gains ?</p>
+          </div>
+          <div class="p-6 grid md:grid-cols-2 gap-6">
+            <div>
+              <h4 class="font-semibold mb-2 text-amber-700">Objectifs</h4>
+              <ul class="space-y-2">
+                <li class="feature-item pl-4 py-2">Placer un stop technique (ATR, support/résistance)</li>
+                <li class="feature-item pl-4 py-2">Définir des objectifs multiples (prendre 1/2, 1/3)</li>
+                <li class="feature-item pl-4 py-2">Éviter le déplacement du stop sans raison</li>
+              </ul>
+            </div>
+            <div>
+              <h4 class="font-semibold mb-2 text-amber-700">À faire</h4>
+              <ol class="list-decimal ml-4 space-y-2 text-gray-700">
+                <li>Tracez entrée/stop/targets sur un graphique TradingView.</li>
+                <li>Notez le RRR et la perte € si stop touché.</li>
+              </ol>
+              <div class="mt-3 text-sm">
+                <span class="badge">À regarder</span>
+                <a class="underline ml-2" target="_blank" href="https://www.youtube.com/watch?v=1SQ2vxy08Ow">Stop‑loss & risk‑to‑reward (EN)</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Module 5 -->
+        <div class="tool-card card mb-8 overflow-hidden">
+          <div class="bg-rose-600 text-white p-6">
+            <h3 class="text-2xl font-bold"><i class="fas fa-umbrella mr-2"></i>Module 5 — Couverture (hedging) & corrélations</h3>
+            <p class="opacity-90">Quand et comment couvrir un risque (indices, options, actifs défensifs).</p>
+          </div>
+          <div class="p-6 grid md:grid-cols-2 gap-6">
+            <div>
+              <h4 class="font-semibold mb-2 text-rose-700">Objectifs</h4>
+              <ul class="space-y-2">
+                <li class="feature-item pl-4 py-2">Comprendre la logique du hedging</li>
+                <li class="feature-item pl-4 py-2">Utiliser corrélations pour diversifier/couvrir</li>
+                <li class="feature-item pl-4 py-2">Évaluer le coût/benefice d’une couverture</li>
+              </ul>
+            </div>
+            <div>
+              <h4 class="font-semibold mb-2 text-rose-700">À faire</h4>
+              <ol class="list-decimal ml-4 space-y-2 text-gray-700">
+                <li>Lisez le <a class="underline" target="_blank" href="https://www.etoro.com/fr/investing/hedging-guide/">guide Hedging eToro</a>.</li>
+                <li>Vérifiez la matrice de corrélation de votre portefeuille (Portfolio Visualizer).</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+
+        <!-- Module 6 -->
+        <div class="tool-card card mb-8 overflow-hidden">
+          <div class="bg-slate-700 text-white p-6">
+            <h3 class="text-2xl font-bold"><i class="fas fa-rotate mr-2"></i>Module 6 — Suivi, rebalancing & discipline comportementale</h3>
+            <p class="opacity-90">Mesurer, consigner, rééquilibrer, rester fidèle au plan.</p>
+          </div>
+          <div class="p-6 grid md:grid-cols-2 gap-6">
+            <div>
+              <h4 class="font-semibold mb-2 text-white md:text-slate-200">Objectifs</h4>
+              <ul class="space-y-2">
+                <li class="feature-item pl-4 py-2">Tenir un journal de trades/décisions</li>
+                <li class="feature-item pl-4 py-2">Programmer un rebalancing trimestriel/semestriel</li>
+                <li class="feature-item pl-4 py-2">Identifier les biais (aversion à la perte, FOMO)</li>
+              </ul>
+            </div>
+            <div>
+              <h4 class="font-semibold mb-2 text-white md:text-slate-200">À faire</h4>
+              <ol class="list-decimal ml-4 space-y-2 text-gray-100">
+                <li>Backtestez l’impact du rebalancing sur votre allocation.</li>
+                <li>Rédigez 3 règles anti‑biais (ex: pas de revenge trade).</li>
+              </ol>
+              <div class="mt-3 text-sm">
+                <span class="badge">À regarder</span>
+                <a class="underline ml-2" target="_blank" href="https://www.youtube.com/@BenFelixCSI/videos">Ben Felix – Risk & evidence‑based investing (EN)</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quiz / Checklist -->
+        <div class="card p-6">
+          <h3 class="text-2xl font-bold mb-2">Checklist express</h3>
+          <p class="text-gray-700 mb-4">Cochez avant d’entrer en position :</p>
+          <ul class="grid md:grid-cols-2 gap-2">
+            <li class="flex items-start gap-3"><input type="checkbox" class="mt-1"/><span>Risque par trade ≤ <strong>2%</strong> du capital</span></li>
+            <li class="flex items-start gap-3"><input type="checkbox" class="mt-1"/><span>Stop défini et noté (technique, non arbitraire)</span></li>
+            <li class="flex items-start gap-3"><input type="checkbox" class="mt-1"/><span>Ratio risque/rendement visé ≥ <strong>2</strong></span></li>
+            <li class="flex items-start gap-3"><input type="checkbox" class="mt-1"/><span>Taille de position calculée</span></li>
+            <li class="flex items-start gap-3"><input type="checkbox" class="mt-1"/><span>Corrélation de la position avec le portefeuille comprise</span></li>
+            <li class="flex items-start gap-3"><input type="checkbox" class="mt-1"/><span>Plan de sortie partielle ou totale défini</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tools & Resources -->
+    <section id="tools" class="py-12 bg-white">
+      <div class="max-w-7xl mx-auto px-6">
+        <h2 class="text-3xl font-bold text-center mb-10">Outils recommandés</h2>
+        <div class="grid md:grid-cols-2 gap-8">
+          <div class="card p-6">
+            <h3 class="text-xl font-bold mb-2 text-blue-700"><i class="fas fa-chart-area mr-2"></i>Portfolio Visualizer</h3>
+            <p class="text-gray-700 mb-3">Backtests d’allocations, corrélations, ratios Sharpe/Sortino, optimisation.</p>
+            <a class="btn-primary" target="_blank" href="https://www.portfoliovisualizer.com/backtest-portfolio">Backtester un portefeuille</a>
+            <a class="ml-3 underline text-sm" target="_blank" href="https://www.portfoliovisualizer.com/faq">Documentation</a>
+          </div>
+          <div class="card p-6">
+            <h3 class="text-xl font-bold mb-2 text-blue-700"><i class="fas fa-ruler-combined mr-2"></i>TradingView — Position Size</h3>
+            <p class="text-gray-700 mb-3">Calcul de la taille et RRR directement sur le graphique.</p>
+            <a class="btn-primary" target="_blank" href="https://www.tradingview.com/script/3U7H8gbf-Risk-Reward-Position-Size-Calculator/">Ouvrir l’indicateur</a>
+            <a class="ml-3 underline text-sm" target="_blank" href="https://www.tradingview.com/script/ygBHsPqE-Position-Size-Calculator/">Alternative</a>
+          </div>
+          <div class="card p-6">
+            <h3 class="text-xl font-bold mb-2 text-blue-700"><i class="fas fa-graduation-cap mr-2"></i>Khan Academy – Finance</h3>
+            <p class="text-gray-700 mb-3">Concepts fondamentaux : risque, rendement, diversification.</p>
+            <a class="btn-primary" target="_blank" href="https://www.khanacademy.org/economics-finance-domain/core-finance/investment-vehicles-tutorial/investment-consumption/v/risk-and-reward-introduction">Voir la vidéo</a>
+            <a class="ml-3 underline text-sm" target="_blank" href="https://www.khanacademy.org/college-careers-more/financial-literacy/xa6995ea67a8e9fdd%3Ainvestments-retirement/xa6995ea67a8e9fdd%3Arisk-and-return/v/what-is-risk-and-return">Variante</a>
+          </div>
+          <div class="card p-6">
+            <h3 class="text-xl font-bold mb-2 text-blue-700"><i class="fas fa-book-open mr-2"></i>CFA Institute – Intro to Risk Management</h3>
+            <p class="text-gray-700 mb-3">Référentiel professionnel : cadre et processus de risk management.</p>
+            <a class="btn-primary" target="_blank" href="https://www.cfainstitute.org/insights/professional-learning/refresher-readings/2025/introduction-risk-management">Lire</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Resource links -->
+    <section id="resources" class="py-12">
+      <div class="max-w-7xl mx-auto px-6">
+        <h2 class="text-3xl font-bold text-center mb-10">Ressources & vidéos</h2>
+        <div class="grid md:grid-cols-2 gap-8">
+          <div class="card p-6">
+            <h3 class="text-xl font-bold mb-2"><i class="fab fa-youtube mr-2 text-red-600"></i>Vidéos</h3>
+            <ul class="space-y-2 text-blue-700">
+              <li><a class="underline" target="_blank" href="https://www.youtube.com/watch?v=56wXmLSxNOg">Position sizing vs stop loss (EN)</a></li>
+              <li><a class="underline" target="_blank" href="https://www.youtube.com/watch?v=1SQ2vxy08Ow">Stop‑loss & risk‑to‑reward (EN)</a></li>
+              <li><a class="underline" target="_blank" href="https://www.youtube.com/watch?v=DLKhsZvcD-c">CFA L1 – Portfolio Risk & Return (EN)</a></li>
+              <li><a class="underline" target="_blank" href="https://www.youtube.com/@BenFelixCSI/videos">Ben Felix – Evidence‑based investing (EN)</a></li>
+            </ul>
+          </div>
+          <div class="card p-6">
+            <h3 class="text-xl font-bold mb-2"><i class="fas fa-link mr-2 text-blue-600"></i>Lectures eToro</h3>
+            <ul class="space-y-2">
+              <li><a class="underline text-blue-700" target="_blank" href="https://www.etoro.com/fr/investing/risk-management/">Gestion des risques (FR)</a></li>
+              <li><a class="underline text-blue-700" target="_blank" href="https://www.etoro.com/en-us/investing/risk-management/">Risk management (EN)</a></li>
+              <li><a class="underline text-blue-700" target="_blank" href="https://www.etoro.com/fr/investing/hedging-guide/">Guide Hedging</a></li>
+              <li><a class="underline text-blue-700" target="_blank" href="https://www.etoro.com/fr/trading/technical-analysis-and-risk-management/">Analyse technique & gestion du risque</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="mt-10 text-xs text-gray-500">
+          <p><strong>Avertissement :</strong> Ce contenu est pédagogique et ne constitue pas un conseil en investissement. Les performances passées ne préjugent pas des performances futures. Votre capital est à risque.</p>
+          <p class="mt-2">Synthèse basée sur des sources publiques citées. © 2025</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="gradient-bg text-white py-8">
+      <div class="max-w-7xl mx-auto px-6 text-center">
+        <h3 class="text-xl font-bold mb-2">Prêt à pratiquer ?</h3>
+        <p class="text-sm opacity-90 mb-4">Testez une allocation dans Portfolio Visualizer et calculez votre prochaine taille de position.</p>
+        <div class="flex flex-wrap justify-center gap-3">
+          <a class="btn-secondary" target="_blank" href="https://www.portfoliovisualizer.com/backtest-asset-class-allocation">Tester une allocation</a>
+          <a class="btn-secondary" target="_blank" href="https://www.tradingview.com/script/3U7H8gbf-Risk-Reward-Position-Size-Calculator/">Calculer la taille</a>
+          <a class="btn-primary" href="#modules"><i class="fas fa-arrow-up mr-2"></i>Revenir au cours</a>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            mobileMenu.classList.toggle('hidden');
+        }
+    </script>
+  </body>
+</html>

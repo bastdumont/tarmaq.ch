@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Academdy - Learning Hub</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css"
+    />
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+      body {
+        font-family: 'Inter', sans-serif;
+      }
+      .gradient-bg {
+        background: linear-gradient(135deg, #E30007 0%, #CC0006 100%);
+      }
+      .card-hover {
+        transition: all 0.3s ease;
+      }
+      .card-hover:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+          0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      }
+      .category-icon {
+        transition: all 0.3s ease;
+      }
+      .card-hover:hover .category-icon {
+        transform: scale(1.1);
+      }
+
+      /* Header styles */
+      .btn-secondary {
+        background: rgba(255, 255, 255, 0.9);
+        color: #2a2a2a;
+        padding: 14px 24px;
+        border-radius: 16px;
+        font-weight: 700;
+        transition: all 0.3s ease;
+        border: 1px solid #e8e8ec;
+        cursor: pointer;
+      }
+
+      .btn-secondary:hover {
+        background: white;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      .btn-gradient {
+        background: linear-gradient(140deg, #F4999C, #E30007);
+        color: white;
+        padding: 14px 24px;
+        border-radius: 16px;
+        font-weight: 700;
+        transition: all 0.3s ease;
+        border: none;
+        cursor: pointer;
+      }
+
+      .btn-gradient:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(227, 0, 7, 0.25);
+      }
+
+      /* Navigation styles */
+      .nav-item {
+        position: relative;
+      }
+
+      .nav-dropdown {
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-10px);
+        transition: all 0.3s ease;
+      }
+
+      .nav-item:hover .nav-dropdown {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50">
+    <!-- Header -->
+    <header class="sticky top-0 z-50 backdrop-blur-xl bg-white/80 border-b border-stroke/50">
+        <div class="max-w-7xl mx-auto px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <div class="flex items-center gap-4">
+                    <img src="../src/assets/logo.png" alt="tarmaq" class="h-12 w-auto" />
+                </div>
+
+                <!-- Desktop Navigation -->
+                <nav class="hidden lg:flex items-center gap-8">
+                    <a href="../index.html" class="font-semibold text-ink-2 hover:text-brand transition-colors">Accueil</a>
+                    <a href="index.html" class="font-semibold text-brand">Cours Libre</a>
+                    <a href="../tarmaq_version_html_fondateur.html" class="font-semibold text-ink-2 hover:text-brand transition-colors">Projet</a>
+                    <a href="../Budget.html" class="font-semibold text-ink-2 hover:text-brand transition-colors">Budget</a>
+                    <a href="../tarmaq_interactive_mindmap.html" class="font-semibold text-ink-2 hover:text-brand transition-colors">Mindmap</a>
+                </nav>
+
+                <!-- CTA Buttons -->
+                <div class="hidden lg:flex items-center gap-4">
+                    <button class="btn-secondary">Appel à soutien</button>
+                    <button class="btn-gradient">Faire un don</button>
+                </div>
+
+                <!-- View Switcher and Mobile Menu Button -->
+                <div class="flex items-center gap-2">
+                    <!-- View Switcher Button -->
+                    <button id="viewSwitcher" class="p-2 hover:bg-gray-100 rounded-lg transition-colors text-ink-2" title="Passer à la vue mobile">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h16l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                        </svg>
+                    </button>
+                    <!-- Mobile Menu Button -->
+                    <button class="lg:hidden p-2" onclick="toggleMobileMenu()">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="lg:hidden bg-white border-t border-stroke hidden">
+            <div class="max-w-7xl mx-auto px-8 py-4">
+                <nav class="flex flex-col space-y-4">
+                    <a href="../index.html" class="font-semibold text-ink-2 hover:text-brand transition-colors py-2">Accueil</a>
+                    <a href="index.html" class="font-semibold text-brand py-2">Cours Libre</a>
+                    <a href="../tarmaq_version_html_fondateur.html" class="font-semibold text-ink-2 hover:text-brand transition-colors py-2">Projet</a>
+                    <a href="../Budget.html" class="font-semibold text-ink-2 hover:text-brand transition-colors py-2">Budget</a>
+                    <a href="../tarmaq_interactive_mindmap.html" class="font-semibold text-ink-2 hover:text-brand transition-colors py-2">Mindmap</a>
+                    <div class="flex flex-col space-y-2 pt-4 border-t border-stroke">
+                        <button class="btn-secondary w-full text-center">Appel à soutien</button>
+                        <button class="btn-gradient w-full text-center">Faire un don</button>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <!-- Header -->
+    <div class="gradient-bg text-white py-16">
+      <div class="max-w-6xl mx-auto px-6 text-center">
+        <i class="fas fa-graduation-cap text-6xl mb-6 opacity-90"></i>
+        <h1 class="text-5xl font-bold mb-6">Cours Libre</h1>
+        <p class="text-xl opacity-90 max-w-3xl mx-auto">
+          Votre hub d'apprentissage complet pour la Finance, l'IA, le Marketing, la Vente,
+          l'Éducation et les Études de Cas
+        </p>
+        <div class="mt-8 flex justify-center space-x-4 text-sm">
+          <span class="bg-white bg-opacity-20 px-4 py-2 rounded-full"
+            ><i class="fas fa-users mr-2"></i>Expert-Led Courses</span
+          >
+          <span class="bg-white bg-opacity-20 px-4 py-2 rounded-full"
+            ><i class="fas fa-certificate mr-2"></i>Professional Skills</span
+          >
+          <span class="bg-white bg-opacity-20 px-4 py-2 rounded-full"
+            ><i class="fas fa-rocket mr-2"></i>Career Growth</span
+          >
+        </div>
+      </div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-6 py-12">
+      <!-- Categories Grid -->
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Finance Category -->
+        <div class="bg-white rounded-xl shadow-lg p-8 card-hover">
+          <div class="text-center mb-6">
+            <div
+              class="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4"
+            >
+              <i
+                class="fas fa-chart-line text-2xl text-green-600 category-icon"
+              ></i>
+            </div>
+            <h2 class="text-2xl font-bold text-gray-800 mb-2">Finance</h2>
+            <p class="text-gray-600">
+              Master financial concepts, investment strategies, and economic
+              principles
+            </p>
+          </div>
+          <div class="space-y-3">
+            <div class="p-3 bg-green-50 rounded-lg">
+              <h3 class="font-semibold text-green-800 mb-1">Coming Soon</h3>
+              <p class="text-sm text-green-700">
+                Financial analysis, budgeting, and investment courses
+              </p>
+            </div>
+          </div>
+          <div class="mt-6 text-center">
+            <span
+              class="inline-flex items-center px-4 py-2 bg-green-100 text-green-800 text-sm font-medium rounded-full"
+            >
+              <i class="fas fa-clock mr-2"></i>Courses in Development
+            </span>
+          </div>
+        </div>
+
+        <!-- AI Category -->
+        <div class="bg-white rounded-xl shadow-lg p-8 card-hover">
+          <div class="text-center mb-6">
+            <div
+              class="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4"
+            >
+              <i class="fas fa-robot text-2xl text-blue-600 category-icon"></i>
+            </div>
+            <h2 class="text-2xl font-bold text-gray-800 mb-2">
+              AI & Technology
+            </h2>
+            <p class="text-gray-600">
+              Learn artificial intelligence, automation, and modern development
+            </p>
+          </div>
+          <div class="space-y-3">
+            <a
+              href="Guide-WordPress-IA.html"
+              class="block p-3 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors"
+            >
+              <h3 class="font-semibold text-blue-800 mb-1">
+                WordPress with AI Only
+              </h3>
+              <p class="text-sm text-blue-700">
+                Complete guide to building WordPress sites using AI automation
+              </p>
+              <div class="flex items-center mt-2 text-xs text-blue-600">
+                <i class="fas fa-play-circle mr-1"></i>
+                <span>French Guide</span>
+              </div>
+            </a>
+            <a
+              href="Guide Complet - 10 Nœuds Communautaires n8n Révolutionnaires.html"
+              class="block p-3 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors"
+            >
+              <h3 class="font-semibold text-blue-800 mb-1">
+                Guide Complet - 10 Nœuds Communautaires n8n Révolutionnaires
+              </h3>
+              <p class="text-sm text-blue-700">
+                Guide complet des 10 nœuds communautaires n8n révolutionnaires pour l'automatisation
+              </p>
+              <div class="flex items-center mt-2 text-xs text-blue-600">
+                <i class="fas fa-cogs mr-1"></i>
+                <span>n8n Automation</span>
+              </div>
+            </a>
+            <a
+              href="TardingAI.html"
+              class="block p-3 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors"
+            >
+              <h3 class="font-semibold text-blue-800 mb-1">
+                Créer une Stratégie de Trading IA Complète
+              </h3>
+              <p class="text-sm text-blue-700">
+                Guide étape par étape pour créer des stratégies de trading rentables avec l'IA
+              </p>
+              <div class="flex items-center mt-2 text-xs text-blue-600">
+                <i class="fas fa-chart-line mr-1"></i>
+                <span>Trading IA</span>
+              </div>
+            </a>
+            <a
+              href="Analyse Vidéo - Claude Code + Playwright MCP.html"
+              class="block p-3 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors"
+            >
+              <h3 class="font-semibold text-blue-800 mb-1">
+                Video Analysis with Claude
+              </h3>
+              <p class="text-sm text-blue-700">
+                Advanced video analysis using Claude Code and Playwright MCP
+              </p>
+              <div class="flex items-center mt-2 text-xs text-blue-600">
+                <i class="fas fa-video mr-1"></i>
+                <span>Video Analysis</span>
+              </div>
+            </a>
+            <a
+              href="claude-code-custom-workflows.html"
+              class="block p-3 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors"
+            >
+              <h3 class="font-semibold text-blue-800 mb-1">
+                Claude Code Custom Workflows
+              </h3>
+              <p class="text-sm text-blue-700">
+                Créer des workflows personnalisés avec Claude Code pour l'automatisation
+              </p>
+              <div class="flex items-center mt-2 text-xs text-blue-600">
+                <i class="fas fa-code mr-1"></i>
+                <span>Claude Code</span>
+              </div>
+            </a>
+            <a
+              href="Guide Complet _ Créer des Agents IA avec Claude + N8N + Docker.html"
+              class="block p-3 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors"
+            >
+              <h3 class="font-semibold text-blue-800 mb-1">
+                Guide Complet - Créer des Agents IA avec Claude + N8N + Docker
+              </h3>
+              <p class="text-sm text-blue-700">
+                Guide complet pour créer des agents IA avec Claude, N8N et Docker
+              </p>
+              <div class="flex items-center mt-2 text-xs text-blue-600">
+                <i class="fas fa-robot mr-1"></i>
+                <span>IA Agents</span>
+              </div>
+            </a>
+            <a
+              href="risk-management-course.html"
+              class="block p-3 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors"
+            >
+              <h3 class="font-semibold text-blue-800 mb-1">
+                Gestion du risque en investissement
+              </h3>
+              <p class="text-sm text-blue-700">
+                Mini-cours pratique basé sur l'article eToro et des ressources vidéo de référence
+              </p>
+              <div class="flex items-center mt-2 text-xs text-blue-600">
+                <i class="fas fa-shield-alt mr-1"></i>
+                <span>Finance</span>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Marketing Category -->
+        <div class="bg-white rounded-xl shadow-lg p-8 card-hover">
+          <div class="text-center mb-6">
+            <div
+              class="bg-purple-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4"
+            >
+              <i
+                class="fas fa-bullhorn text-2xl text-purple-600 category-icon"
+              ></i>
+            </div>
+            <h2 class="text-2xl font-bold text-gray-800 mb-2">Marketing</h2>
+            <p class="text-gray-600">
+              Digital marketing strategies, tools, and growth techniques
+            </p>
+          </div>
+          <div class="space-y-3">
+            <a
+              href="5 AI tools for marketing.html"
+              class="block p-3 bg-purple-50 rounded-lg hover:bg-purple-100 transition-colors"
+            >
+              <h3 class="font-semibold text-purple-800 mb-1">
+                5 AI Tools for Marketing
+              </h3>
+              <p class="text-sm text-purple-700">
+                Essential AI-powered marketing tools and strategies
+              </p>
+              <div class="flex items-center mt-2 text-xs text-purple-600">
+                <i class="fas fa-tools mr-1"></i>
+                <span>AI Marketing Tools</span>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Sales Category -->
+        <div class="bg-white rounded-xl shadow-lg p-8 card-hover">
+          <div class="text-center mb-6">
+            <div
+              class="bg-red-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4"
+            >
+              <i
+                class="fas fa-handshake text-2xl text-red-600 category-icon"
+              ></i>
+            </div>
+            <h2 class="text-2xl font-bold text-gray-800 mb-2">Sales</h2>
+            <p class="text-gray-600">
+              Sales techniques, customer relationship management, and closing
+              strategies
+            </p>
+          </div>
+          <div class="space-y-3">
+            <div class="p-3 bg-red-50 rounded-lg">
+              <h3 class="font-semibold text-red-800 mb-1">Coming Soon</h3>
+              <p class="text-sm text-red-700">
+                Sales psychology, negotiation, and CRM courses
+              </p>
+            </div>
+          </div>
+          <div class="mt-6 text-center">
+            <span
+              class="inline-flex items-center px-4 py-2 bg-red-100 text-red-800 text-sm font-medium rounded-full"
+            >
+              <i class="fas fa-clock mr-2"></i>Courses in Development
+            </span>
+          </div>
+        </div>
+
+        <!-- Education Category -->
+        <div class="bg-white rounded-xl shadow-lg p-8 card-hover">
+          <div class="text-center mb-6">
+            <div
+              class="bg-indigo-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4"
+            >
+              <i
+                class="fas fa-book-open text-2xl text-indigo-600 category-icon"
+              ></i>
+            </div>
+            <h2 class="text-2xl font-bold text-gray-800 mb-2">Education</h2>
+            <p class="text-gray-600">
+              Learning methodologies, teaching strategies, and educational
+              technology
+            </p>
+          </div>
+          <div class="space-y-3">
+            <div class="p-3 bg-indigo-50 rounded-lg">
+              <h3 class="font-semibold text-indigo-800 mb-1">Coming Soon</h3>
+              <p class="text-sm text-indigo-700">
+                Educational technology, online learning, and curriculum design
+              </p>
+            </div>
+          </div>
+          <div class="mt-6 text-center">
+            <span
+              class="inline-flex items-center px-4 py-2 bg-indigo-100 text-indigo-800 text-sm font-medium rounded-full"
+            >
+              <i class="fas fa-clock mr-2"></i>Courses in Development
+            </span>
+          </div>
+        </div>
+
+        <!-- Case Study Category -->
+        <div class="bg-white rounded-xl shadow-lg p-8 card-hover">
+          <div class="text-center mb-6">
+            <div
+              class="bg-orange-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4"
+            >
+              <i
+                class="fas fa-search text-2xl text-orange-600 category-icon"
+              ></i>
+            </div>
+            <h2 class="text-2xl font-bold text-gray-800 mb-2">Case Studies</h2>
+            <p class="text-gray-600">
+              Real-world examples, success stories, and practical applications
+            </p>
+          </div>
+          <div class="space-y-3">
+            <div class="p-3 bg-orange-50 rounded-lg">
+              <h3 class="font-semibold text-orange-800 mb-1">Coming Soon</h3>
+              <p class="text-sm text-orange-700">
+                Business case studies, success stories, and failure analysis
+              </p>
+            </div>
+          </div>
+          <div class="mt-6 text-center">
+            <span
+              class="inline-flex items-center px-4 py-2 bg-orange-100 text-orange-800 text-sm font-medium rounded-full"
+            >
+              <i class="fas fa-clock mr-2"></i>Courses in Development
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Featured Content Section -->
+      <div class="mt-16">
+        <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">
+          Featured Content
+        </h2>
+        <div class="grid md:grid-cols-2 gap-8">
+          <div
+            class="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl p-8"
+          >
+            <div class="flex items-start space-x-4">
+              <div
+                class="bg-blue-500 text-white rounded-full w-12 h-12 flex items-center justify-center"
+              >
+                <i class="fas fa-robot text-xl"></i>
+              </div>
+              <div class="flex-1">
+                <h3 class="text-xl font-bold text-gray-800 mb-2">
+                  WordPress AI Automation
+                </h3>
+                <p class="text-gray-700 mb-4">
+                  Learn how to build complete WordPress websites using only AI
+                  tools. This comprehensive French guide covers everything from
+                  data collection to automated deployment.
+                </p>
+                <a
+                  href="Guide-WordPress-IA.html"
+                  class="inline-flex items-center px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors"
+                >
+                  <i class="fas fa-external-link-alt mr-2"></i>
+                  View Guide
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="bg-gradient-to-br from-purple-50 to-pink-50 rounded-xl p-8"
+          >
+            <div class="flex items-start space-x-4">
+              <div
+                class="bg-purple-500 text-white rounded-full w-12 h-12 flex items-center justify-center"
+              >
+                <i class="fas fa-bullhorn text-xl"></i>
+              </div>
+              <div class="flex-1">
+                <h3 class="text-xl font-bold text-gray-800 mb-2">
+                  AI Marketing Tools
+                </h3>
+                <p class="text-gray-700 mb-4">
+                  Discover the top 5 AI-powered marketing tools that can
+                  revolutionize your marketing strategy and boost your business
+                  growth.
+                </p>
+                <a
+                  href="5 AI tools for marketing.html"
+                  class="inline-flex items-center px-4 py-2 bg-purple-500 text-white rounded-lg hover:bg-purple-600 transition-colors"
+                >
+                  <i class="fas fa-external-link-alt mr-2"></i>
+                  View Tools
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Stats -->
+      <div class="mt-16 bg-white rounded-xl shadow-lg p-8">
+        <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">
+          Learning Progress
+        </h2>
+        <div class="grid md:grid-cols-4 gap-6">
+          <div class="text-center">
+            <div
+              class="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4"
+            >
+              <i class="fas fa-check-circle text-2xl text-green-600"></i>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-800">9</h3>
+            <p class="text-gray-600">Active Courses</p>
+          </div>
+          <div class="text-center">
+            <div
+              class="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4"
+            >
+              <i class="fas fa-clock text-2xl text-blue-600"></i>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-800">3</h3>
+            <p class="text-gray-600">In Development</p>
+          </div>
+          <div class="text-center">
+            <div
+              class="bg-purple-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4"
+            >
+              <i class="fas fa-users text-2xl text-purple-600"></i>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-800">6</h3>
+            <p class="text-gray-600">Categories</p>
+          </div>
+          <div class="text-center">
+            <div
+              class="bg-orange-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4"
+            >
+              <i class="fas fa-star text-2xl text-orange-600"></i>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-800">100%</h3>
+            <p class="text-gray-600">Free Access</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Call to Action -->
+      <div
+        class="mt-16 bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl p-8 text-center text-white"
+      >
+        <h2 class="text-3xl font-bold mb-4">Ready to Start Learning?</h2>
+        <p class="text-xl opacity-90 mb-6">
+          Explore our courses and take your skills to the next level
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a
+            href="#categories"
+            class="inline-flex items-center px-6 py-3 bg-white text-blue-600 font-semibold rounded-lg hover:bg-gray-100 transition-colors"
+          >
+            <i class="fas fa-rocket mr-2"></i>
+            Browse Courses
+          </a>
+          <a
+            href="mailto:contact@academdy.com"
+            class="inline-flex items-center px-6 py-3 border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-blue-600 transition-colors"
+          >
+            <i class="fas fa-envelope mr-2"></i>
+            Contact Us
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12 mt-16">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="grid md:grid-cols-4 gap-8">
+          <div>
+            <h3 class="text-xl font-bold mb-4">Academdy</h3>
+            <p class="text-gray-400">
+              Your comprehensive learning hub for professional development and
+              skill enhancement.
+            </p>
+          </div>
+          <div>
+            <h4 class="font-semibold mb-4">Categories</h4>
+            <ul class="space-y-2 text-gray-400">
+              <li>
+                <a href="#" class="hover:text-white transition-colors"
+                  >Finance</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-white transition-colors"
+                  >AI & Technology</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-white transition-colors"
+                  >Marketing</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-white transition-colors">Sales</a>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-semibold mb-4">Resources</h4>
+            <ul class="space-y-2 text-gray-400">
+              <li>
+                <a href="#" class="hover:text-white transition-colors"
+                  >Education</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-white transition-colors"
+                  >Case Studies</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-white transition-colors">Blog</a>
+              </li>
+              <li>
+                <a href="#" class="hover:text-white transition-colors"
+                  >Help Center</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-semibold mb-4">Connect</h4>
+            <div class="flex space-x-4">
+              <a
+                href="#"
+                class="text-gray-400 hover:text-white transition-colors"
+              >
+                <i class="fab fa-twitter text-xl"></i>
+              </a>
+              <a
+                href="#"
+                class="text-gray-400 hover:text-white transition-colors"
+              >
+                <i class="fab fa-linkedin text-xl"></i>
+              </a>
+              <a
+                href="#"
+                class="text-gray-400 hover:text-white transition-colors"
+              >
+                <i class="fab fa-youtube text-xl"></i>
+              </a>
+              <a
+                href="#"
+                class="text-gray-400 hover:text-white transition-colors"
+              >
+                <i class="fab fa-github text-xl"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div
+          class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400"
+        >
+          <p>
+            &copy; 2024 Academdy. All rights reserved. | Built with ❤️ for
+            learners worldwide
+          </p>
+        </div>
+      </div>
+    </footer>
+    
+    <!-- Mobile menu toggle function -->
+    <script>
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            if (mobileMenu) {
+                mobileMenu.classList.toggle('hidden');
+            }
+        }
+    </script>
+  </body>
+</html>

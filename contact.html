@@ -39,131 +39,7 @@
     </script>
   </head>
   <body class="font-sans bg-white text-secondary">
-    <!-- Header -->
-    <header
-      id="header"
-      class="fixed w-full top-0 z-50 bg-white shadow-sm transition-all duration-300"
-    >
-      <nav
-        class="container mx-auto px-4 py-4 flex justify-between items-center"
-      >
-        <a href="index.html" class="flex items-center space-x-2">
-          <img src="assets/logo.svg" alt="TARMAQ Logo" class="h-10" />
-        </a>
-
-        <div class="hidden lg:flex items-center space-x-8">
-          <a href="index.html" class="nav-link hover:text-primary transition"
-            >Accueil</a
-          >
-          <a href="projet.html" class="nav-link hover:text-primary transition"
-            >Le projet</a
-          >
-          <a
-            href="activites.html"
-            class="nav-link hover:text-primary transition"
-            >Activités</a
-          >
-          <a href="impact.html" class="nav-link hover:text-primary transition"
-            >Impact</a
-          >
-          <a
-            href="soutenir.html"
-            class="nav-link hover:text-primary transition"
-            data-i18n="nav.support"
-            >Nous soutenir</a
-          >
-          <a href="contact.html" class="nav-link text-primary font-semibold"
-            >Contact</a
-          >
-          <a
-            href="charte.html"
-            class="nav-link hover:text-primary transition"
-            data-i18n="nav.charter"
-            >Charte</a
-          >
-        </div>
-
-        <div class="hidden lg:flex items-center space-x-2">
-          <button
-            onclick="changeLanguage('fr')"
-            class="lang-btn w-8 h-8 rounded-full overflow-hidden border-2 border-transparent hover:border-primary transition"
-          >
-            <span class="text-xl">🇫🇷</span>
-          </button>
-          <button
-            onclick="changeLanguage('en')"
-            class="lang-btn w-8 h-8 rounded-full overflow-hidden border-2 border-transparent hover:border-primary transition"
-          >
-            <span class="text-xl">🇬🇧</span>
-          </button>
-          <button
-            onclick="changeLanguage('de')"
-            class="lang-btn w-8 h-8 rounded-full overflow-hidden border-2 border-transparent hover:border-primary transition"
-          >
-            <span class="text-xl">🇩🇪</span>
-          </button>
-          <button
-            onclick="changeLanguage('it')"
-            class="lang-btn w-8 h-8 rounded-full overflow-hidden border-2 border-transparent hover:border-primary transition"
-          >
-            <span class="text-xl">🇮🇹</span>
-          </button>
-        </div>
-
-        <button id="mobile-menu-btn" class="lg:hidden text-2xl">
-          <i class="fas fa-bars"></i>
-        </button>
-      </nav>
-
-      <div id="mobile-menu" class="hidden lg:hidden bg-white border-t">
-        <div class="container mx-auto px-4 py-4 flex flex-col space-y-4">
-          <a href="index.html" class="nav-link hover:text-primary transition"
-            >Accueil</a
-          >
-          <a href="projet.html" class="nav-link hover:text-primary transition"
-            >Le projet</a
-          >
-          <a
-            href="activites.html"
-            class="nav-link hover:text-primary transition"
-            >Activités</a
-          >
-          <a href="impact.html" class="nav-link hover:text-primary transition"
-            >Impact</a
-          >
-          <a
-            href="soutenir.html"
-            class="nav-link hover:text-primary transition"
-            data-i18n="nav.support"
-            >Nous soutenir</a
-          >
-          <a href="contact.html" class="nav-link text-primary font-semibold"
-            >Contact</a
-          >
-          <a
-            href="charte.html"
-            class="nav-link hover:text-primary transition"
-            data-i18n="nav.charter"
-            >Charte</a
-          >
-
-          <div class="flex space-x-3 pt-2">
-            <button onclick="changeLanguage('fr')" class="lang-btn text-2xl">
-              🇫🇷
-            </button>
-            <button onclick="changeLanguage('en')" class="lang-btn text-2xl">
-              🇬🇧
-            </button>
-            <button onclick="changeLanguage('de')" class="lang-btn text-2xl">
-              🇩🇪
-            </button>
-            <button onclick="changeLanguage('it')" class="lang-btn text-2xl">
-              🇮🇹
-            </button>
-          </div>
-        </div>
-      </div>
-    </header>
+    <!-- Header will be loaded by header.js -->
 
     <!-- Page Header -->
     <section
@@ -344,33 +220,17 @@
             </div>
 
             <div class="bg-accent p-6 rounded-2xl">
-              <h3 class="font-bold text-xl mb-4">Suivez-nous</h3>
-              <div class="flex space-x-4">
-                <a
-                  href="#"
-                  class="w-12 h-12 bg-primary rounded-lg flex items-center justify-center hover:bg-red-700 transition text-white"
-                >
-                  <i class="fab fa-linkedin-in text-xl"></i>
-                </a>
-                <a
-                  href="#"
-                  class="w-12 h-12 bg-primary rounded-lg flex items-center justify-center hover:bg-red-700 transition text-white"
-                >
-                  <i class="fab fa-twitter text-xl"></i>
-                </a>
-                <a
-                  href="#"
-                  class="w-12 h-12 bg-primary rounded-lg flex items-center justify-center hover:bg-red-700 transition text-white"
-                >
-                  <i class="fab fa-instagram text-xl"></i>
-                </a>
-                <a
-                  href="#"
-                  class="w-12 h-12 bg-primary rounded-lg flex items-center justify-center hover:bg-red-700 transition text-white"
-                >
-                  <i class="fab fa-facebook-f text-xl"></i>
-                </a>
-              </div>
+              <h3 class="font-bold text-xl mb-4">Restez Informé</h3>
+              <p class="text-gray-600 mb-4">
+                Recevez nos dernières actualités et opportunités directement par email.
+              </p>
+              <a
+                href="mailto:bastien@bdi-solutions.com"
+                class="bg-primary hover:bg-red-700 text-white px-6 py-3 rounded-full font-semibold transition inline-flex items-center"
+              >
+                <i class="fas fa-envelope mr-2"></i>
+                Nous Contacter
+              </a>
             </div>
 
             <div
@@ -451,28 +311,21 @@
             </ul>
           </div>
 
+          <!-- Newsletter -->
           <div>
-            <h4 class="font-bold mb-4">Suivez-nous</h4>
-            <div class="flex space-x-4">
-              <a
-                href="#"
-                class="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center hover:bg-primary transition"
-              >
-                <i class="fab fa-linkedin-in"></i>
-              </a>
-              <a
-                href="#"
-                class="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center hover:bg-primary transition"
-              >
-                <i class="fab fa-twitter"></i>
-              </a>
-              <a
-                href="#"
-                class="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center hover:bg-primary transition"
-              >
-                <i class="fab fa-instagram"></i>
-              </a>
-            </div>
+            <h4 class="font-bold mb-4" data-i18n="footer.newsletter">
+              Restez Informé
+            </h4>
+            <p class="text-gray-400 text-sm mb-4" data-i18n="footer.newsletter.description">
+              Recevez nos dernières actualités et opportunités.
+            </p>
+            <a
+              href="mailto:bastien@bdi-solutions.com"
+              class="bg-primary hover:bg-red-700 text-white px-4 py-2 rounded-full text-sm transition inline-flex items-center"
+              data-i18n="footer.newsletter.cta"
+            >
+              Nous Contacter
+            </a>
           </div>
         </div>
 
@@ -484,6 +337,8 @@
       </div>
     </footer>
 
+    <script src="js/header.js"></script>
+    <script src="config.js"></script>
     <script src="js/i18n.js"></script>
     <script src="js/main.js"></script>
 
@@ -528,7 +383,7 @@ ${data.message}
           try {
             // Send email using FormSubmit (free service, no API key needed)
             const response = await fetch(
-              'https://formsubmit.co/ajax/bastien@balder-app.com',
+              `https://formsubmit.co/ajax/${window.CONFIG?.EMAIL?.CONTACT_FORM_EMAIL || 'bastien@balder-app.com'}`,
               {
                 method: 'POST',
                 headers: {

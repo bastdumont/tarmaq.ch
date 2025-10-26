@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maîtriser la Gestion de Projet IA avec Gemini CLI - Guide Complet</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+      body {
+        font-family: 'Inter', sans-serif;
+      }
+      .gradient-bg {
+        background: linear-gradient(135deg, #E30007 0%, #CC0006 100%);
+      }
+      .tool-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      .tool-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 40px rgba(227, 0, 7, 0.1);
+      }
+      .feature-item {
+        border-left: 4px solid #E30007;
+      }
+      .stats-card {
+        background: linear-gradient(135deg, #F4999C 0%, #E30007 100%);
+      }
+      .learning-card {
+        background: linear-gradient(135deg, #FCEE66 0%, #F4999C 100%);
+        color: #2a2a2a;
+      }
+      .learning-card h3 {
+        color: #E30007;
+      }
+      .learning-card p {
+        color: #6f6f78;
+      }
+      .btn-primary {
+        background: #E30007;
+        color: white;
+        border: none;
+        padding: 12px 18px;
+        border-radius: 14px;
+        font-weight: 700;
+        text-decoration: none;
+        display: inline-block;
+        transition: background 0.2s ease;
+      }
+      .btn-primary:hover {
+        background: #CC0006;
+      }
+      .card {
+        background: #ffffff;
+        border: 1px solid #e8e8ec;
+        border-radius: 22px;
+        box-shadow: 0 6px 24px rgba(227, 0, 7, 0.06);
+      }
+      .card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 16px 40px rgba(227, 0, 7, 0.1);
+        border-color: #E30007;
+      }
+      .section-title {
+        color: #2a2a2a;
+      }
+      .section-subtitle {
+        color: #6f6f78;
+      }
+      .text-brand {
+        color: #E30007;
+      }
+      .bg-brand-light {
+        background: #fff1f1;
+        border: 1px solid #F4999C;
+        color: #E30007;
+      }
+      .bg-surface {
+        background: #fcfcfd;
+      }
+      .text-muted {
+        color: #6f6f78;
+      }
+      .border-brand {
+        border-color: #E30007;
+      }
+      .shadow-soft {
+        box-shadow: 0 6px 24px rgba(227, 0, 7, 0.06);
+      }
+      .shadow-elev {
+        box-shadow: 0 16px 40px rgba(227, 0, 7, 0.1);
+      }
+      .btn-secondary {
+        background: rgba(255, 255, 255, 0.9);
+        color: #2a2a2a;
+        padding: 14px 24px;
+        border-radius: 16px;
+        font-weight: 700;
+        transition: all 0.3s ease;
+        border: 1px solid #e8e8ec;
+        cursor: pointer;
+      }
+      .btn-secondary:hover {
+        background: white;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      }
+      .btn-gradient {
+        background: linear-gradient(140deg, #ff9d9b, #da2f2c);
+        color: white;
+        padding: 14px 24px;
+        border-radius: 16px;
+        font-weight: 700;
+        transition: all 0.3s ease;
+        border: none;
+        cursor: pointer;
+      }
+      .btn-gradient:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(218, 47, 44, 0.25);
+      }
+      .timestamp-link {
+        color: #E30007;
+        text-decoration: none;
+        font-weight: 600;
+        padding: 2px 6px;
+        border-radius: 6px;
+        transition: all 0.2s ease;
+      }
+      .timestamp-link:hover {
+        background: #fff1f1;
+        text-decoration: underline;
+      }
+      .step-number {
+        background: linear-gradient(135deg, #E30007 0%, #CC0006 100%);
+        color: white;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        font-size: 1.1rem;
+      }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="gradient-bg text-white py-16">
+        <div class="container mx-auto px-6">
+            <div class="text-center">
+                <h1 class="text-4xl md:text-6xl font-bold mb-6">
+                    Maîtriser la Gestion de Projet IA <br>avec Gemini CLI
+                </h1>
+                <p class="text-xl md:text-2xl mb-8 opacity-90">
+                    Guide Complet : Transformez votre approche de la gestion de projet avec l'Intelligence Artificielle
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="#outils" class="btn-secondary inline-block">
+                        <i class="fas fa-tools mr-2"></i>
+                        Découvrir les Outils
+                    </a>
+                    <a href="#apprentissage" class="btn-gradient inline-block">
+                        <i class="fas fa-rocket mr-2"></i>
+                        Commencer l'Apprentissage
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation Timestamps -->
+    <section class="bg-white py-8 border-b">
+        <div class="container mx-auto px-6">
+            <h2 class="text-2xl font-bold section-title mb-6 text-center">
+                <i class="fas fa-clock text-brand mr-2"></i>
+                Navigation Vidéo par Horodatage
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                <a href="https://www.youtube.com/watch?v=3bteMMo2QnM&t=0s" class="timestamp-link block p-4 bg-gray-50 rounded-lg hover:bg-brand-light transition-all">
+                    <div class="font-semibold">00:00 - Introduction</div>
+                    <div class="text-sm text-muted">Vue d'ensemble du projet</div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=3bteMMo2QnM&t=109s" class="timestamp-link block p-4 bg-gray-50 rounded-lg hover:bg-brand-light transition-all">
+                    <div class="font-semibold">01:49 - Outils</div>
+                    <div class="text-sm text-muted">VS Code & Gemini CLI</div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=3bteMMo2QnM&t=150s" class="timestamp-link block p-4 bg-gray-50 rounded-lg hover:bg-brand-light transition-all">
+                    <div class="font-semibold">02:30 - Configuration</div>
+                    <div class="text-sm text-muted">Setup & Analyse Projet</div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=3bteMMo2QnM&t=425s" class="timestamp-link block p-4 bg-gray-50 rounded-lg hover:bg-brand-light transition-all">
+                    <div class="font-semibold">07:05 - Pré-Mortem</div>
+                    <div class="text-sm text-muted">Évaluation des Risques</div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=3bteMMo2QnM&t=502s" class="timestamp-link block p-4 bg-gray-50 rounded-lg hover:bg-brand-light transition-all">
+                    <div class="font-semibold">08:22 - Gantt Chart</div>
+                    <div class="text-sm text-muted">Création & Structure</div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=3bteMMo2QnM&t=746s" class="timestamp-link block p-4 bg-gray-50 rounded-lg hover:bg-brand-light transition-all">
+                    <div class="font-semibold">12:26 - Portail Client</div>
+                    <div class="text-sm text-muted">Interface Professionnelle</div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=3bteMMo2QnM&t=902s" class="timestamp-link block p-4 bg-gray-50 rounded-lg hover:bg-brand-light transition-all">
+                    <div class="font-semibold">15:02 - Adaptabilité</div>
+                    <div class="text-sm text-muted">Changements Projet</div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=3bteMMo2QnM&t=1048s" class="timestamp-link block p-4 bg-gray-50 rounded-lg hover:bg-brand-light transition-all">
+                    <div class="font-semibold">17:28 - Setup Complet</div>
+                    <div class="text-sm text-muted">Tutorial Installation</div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Points d'Apprentissage Clés -->
+    <section class="py-16 bg-surface">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold section-title mb-4">
+                    Points d'Apprentissage Clés
+                </h2>
+                <p class="text-xl section-subtitle">
+                    Maîtrisez les concepts fondamentaux de la gestion de projet IA
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="card p-8 tool-card">
+                    <div class="flex items-center mb-4">
+                        <div class="step-number mr-4">1</div>
+                        <h3 class="text-2xl font-bold text-brand">Ingénierie de Contexte</h3>
+                    </div>
+                    <div class="feature-item pl-6 ml-4">
+                        <p class="text-muted mb-4">
+                            Gestion stratégique du contexte fourni aux LLMs pour des résultats optimaux. 
+                            Le goulot d'étranglement n'est plus la puissance des IA, mais la façon dont nous gérons le contexte.
+                        </p>
+                        <ul class="space-y-2 text-sm text-muted">
+                            <li><i class="fas fa-check text-brand mr-2"></i>Création de bases de connaissances persistantes</li>
+                            <li><i class="fas fa-check text-brand mr-2"></i>Évolution intelligente avec chaque interaction</li>
+                            <li><i class="fas fa-check text-brand mr-2"></i>Optimisation des fenêtres de contexte</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card p-8 tool-card">
+                    <div class="flex items-center mb-4">
+                        <div class="step-number mr-4">2</div>
+                        <h3 class="text-2xl font-bold text-brand">Architecture de Fichiers</h3>
+                    </div>
+                    <div class="feature-item pl-6 ml-4">
+                        <p class="text-muted mb-4">
+                            Utilisation de VS Code comme environnement de gestion de projet centralisé 
+                            avec visibilité complète sur tous les fichiers générés.
+                        </p>
+                        <ul class="space-y-2 text-sm text-muted">
+                            <li><i class="fas fa-check text-brand mr-2"></i>Transition naturelle no-code vers développement</li>
+                            <li><i class="fas fa-check text-brand mr-2"></i>Contrôle de version intégré</li>
+                            <li><i class="fas fa-check text-brand mr-2"></i>Collaboration d'équipe facilitée</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card p-8 tool-card">
+                    <div class="flex items-center mb-4">
+                        <div class="step-number mr-4">3</div>
+                        <h3 class="text-2xl font-bold text-brand">Automatisation Documentation</h3>
+                    </div>
+                    <div class="feature-item pl-6 ml-4">
+                        <p class="text-muted mb-4">
+                            Génération instantanée de portails projet, rapports de statut, 
+                            et communications parties prenantes avec maintien automatique.
+                        </p>
+                        <ul class="space-y-2 text-sm text-muted">
+                            <li><i class="fas fa-check text-brand mr-2"></i>Portails HTML professionnels</li>
+                            <li><i class="fas fa-check text-brand mr-2"></i>Rapports de statut automatiques</li>
+                            <li><i class="fas fa-check text-brand mr-2"></i>Communication client streamlinée</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card p-8 tool-card">
+                    <div class="flex items-center mb-4">
+                        <div class="step-number mr-4">4</div>
+                        <h3 class="text-2xl font-bold text-brand">Gestion Proactive Risques</h3>
+                    </div>
+                    <div class="feature-item pl-6 ml-4">
+                        <p class="text-muted mb-4">
+                            Analyse pré-mortem pour identifier les échecs potentiels avant impact 
+                            avec reconnaissance de patterns pour détecter les risques invisibles.
+                        </p>
+                        <ul class="space-y-2 text-sm text-muted">
+                            <li><i class="fas fa-check text-brand mr-2"></i>Prévention plutôt que réaction</li>
+                            <li><i class="fas fa-check text-brand mr-2"></i>Identification automatique des patterns</li>
+                            <li><i class="fas fa-check text-brand mr-2"></i>Mitigation proactive des problèmes</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Outils et Ressources -->
+    <section id="outils" class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold section-title mb-4">
+                    <i class="fas fa-tools text-brand mr-3"></i>
+                    Outils et Ressources
+                </h2>
+                <p class="text-xl section-subtitle">
+                    Écosystème complet d'outils pour votre workflow IA
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+                <!-- Outils Principaux -->
+                <div class="card p-8 tool-card">
+                    <div class="text-center mb-6">
+                        <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-code text-white text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold section-title">Outils Principaux</h3>
+                    </div>
+                    <ul class="space-y-3">
+                        <li class="flex items-center">
+                            <i class="fas fa-external-link-alt text-brand mr-3"></i>
+                            <a href="https://code.visualstudio.com/" class="text-blue-600 hover:underline">VS Code</a>
+                            <span class="ml-2 text-sm text-muted">- IDE gratuit</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-external-link-alt text-brand mr-3"></i>
+                            <a href="https://nodejs.org/" class="text-blue-600 hover:underline">NodeJS</a>
+                            <span class="ml-2 text-sm text-muted">- Runtime requis</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-terminal text-brand mr-3"></i>
+                            <span class="font-semibold">Gemini CLI</span>
+                            <span class="ml-2 text-sm text-muted">- Interface IA</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Visualisation -->
+                <div class="card p-8 tool-card">
+                    <div class="text-center mb-6">
+                        <div class="w-16 h-16 bg-gradient-to-br from-green-500 to-green-600 rounded-xl flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-chart-gantt text-white text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold section-title">Visualisation</h3>
+                    </div>
+                    <ul class="space-y-3">
+                        <li class="flex items-center">
+                            <i class="fas fa-external-link-alt text-brand mr-3"></i>
+                            <a href="https://onlinegantt.com/" class="text-blue-600 hover:underline">OnlineGantt.com</a>
+                            <span class="ml-2 text-sm text-muted">- Diagrammes gratuits</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-external-link-alt text-brand mr-3"></i>
+                            <a href="https://static.run/" class="text-blue-600 hover:underline">Static.run</a>
+                            <span class="ml-2 text-sm text-muted">- Hébergement HTML</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-video text-brand mr-3"></i>
+                            <span class="font-semibold">Zoom Pro</span>
+                            <span class="ml-2 text-sm text-muted">- Transcriptions auto</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Collaboration -->
+                <div class="card p-8 tool-card">
+                    <div class="text-center mb-6">
+                        <div class="w-16 h-16 bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-users text-white text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold section-title">Collaboration</h3>
+                    </div>
+                    <ul class="space-y-3">
+                        <li class="flex items-center">
+                            <i class="fas fa-external-link-alt text-brand mr-3"></i>
+                            <a href="https://github.com/" class="text-blue-600 hover:underline">GitHub</a>
+                            <span class="ml-2 text-sm text-muted">- Contrôle version</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-external-link-alt text-brand mr-3"></i>
+                            <a href="https://vercel.com/" class="text-blue-600 hover:underline">Vercel</a>
+                            <span class="ml-2 text-sm text-muted">- Déploiement avancé</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-puzzle-piece text-brand mr-3"></i>
+                            <span class="font-semibold">Gemini CLI Companion</span>
+                            <span class="ml-2 text-sm text-muted">- Extension VS Code</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cas d'Usage -->
+    <section class="py-16 bg-surface">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold section-title mb-4">
+                    <i class="fas fa-lightbulb text-brand mr-3"></i>
+                    Cas d'Usage Pratiques
+                </h2>
+                <p class="text-xl section-subtitle">
+                    Applications concrètes dans différents contextes professionnels
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="card p-8">
+                    <h3 class="text-2xl font-bold text-brand mb-4">
+                        <i class="fas fa-rocket mr-3"></i>
+                        Gestion No-Code
+                    </h3>
+                    <ul class="space-y-3 text-muted">
+                        <li><i class="fas fa-arrow-right text-brand mr-2"></i>Automatisation de clients avec transcriptions d'appels</li>
+                        <li><i class="fas fa-arrow-right text-brand mr-2"></i>Création de stratégies de contenu web et email</li>
+                        <li><i class="fas fa-arrow-right text-brand mr-2"></i>Analyse de passerelles de paiement</li>
+                        <li><i class="fas fa-arrow-right text-brand mr-2"></i>Plans de formation et de passation</li>
+                    </ul>
+                </div>
+
+                <div class="card p-8">
+                    <h3 class="text-2xl font-bold text-brand mb-4">
+                        <i class="fas fa-sync-alt mr-3"></i>
+                        Planification Adaptative
+                    </h3>
+                    <ul class="space-y-3 text-muted">
+                        <li><i class="fas fa-arrow-right text-brand mr-2"></i>Diagrammes de Gantt interactifs avec dépendances</li>
+                        <li><i class="fas fa-arrow-right text-brand mr-2"></i>Mise à jour temps réel basée sur nouvelles informations</li>
+                        <li><i class="fas fa-arrow-right text-brand mr-2"></i>Élimination documentation statique traditionnelle</li>
+                    </ul>
+                </div>
+
+                <div class="card p-8">
+                    <h3 class="text-2xl font-bold text-brand mb-4">
+                        <i class="fas fa-handshake mr-3"></i>
+                        Communication Client
+                    </h3>
+                    <ul class="space-y-3 text-muted">
+                        <li><i class="fas fa-arrow-right text-brand mr-2"></i>Portails projet client-facing automatisés</li>
+                        <li><i class="fas fa-arrow-right text-brand mr-2"></i>Emails de mise à jour générés automatiquement</li>
+                        <li><i class="fas fa-arrow-right text-brand mr-2"></i>Rapports de statut cohérents et visuels</li>
+                    </ul>
+                </div>
+
+                <div class="card p-8">
+                    <h3 class="text-2xl font-bold text-brand mb-4">
+                        <i class="fas fa-chart-line mr-3"></i>
+                        Optimisation Ressources
+                    </h3>
+                    <ul class="space-y-3 text-muted">
+                        <li><i class="fas fa-arrow-right text-brand mr-2"></i>Analyse IA pour identifier les goulots d'étranglement</li>
+                        <li><i class="fas fa-arrow-right text-brand mr-2"></i>Optimisation d'allocation avec contexte complet</li>
+                        <li><i class="fas fa-arrow-right text-brand mr-2"></i>Priorisation intelligente des tâches</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact et Importance -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold section-title mb-4">
+                    <i class="fas fa-trophy text-brand mr-3"></i>
+                    Pourquoi C'est Important
+                </h2>
+                <p class="text-xl section-subtitle">
+                    L'impact transformateur sur votre business et carrière
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="stats-card text-white p-8 rounded-2xl text-center">
+                    <div class="text-4xl font-bold mb-2">3x</div>
+                    <div class="text-lg font-semibold mb-2">Plus de Projets</div>
+                    <div class="text-sm opacity-90">Avec équipes réduites</div>
+                </div>
+
+                <div class="stats-card text-white p-8 rounded-2xl text-center">
+                    <div class="text-4xl font-bold mb-2">50%</div>
+                    <div class="text-lg font-semibold mb-2">Temps Économisé</div>
+                    <div class="text-sm opacity-90">Sur documentation</div>
+                </div>
+
+                <div class="stats-card text-white p-8 rounded-2xl text-center">
+                    <div class="text-4xl font-bold mb-2">90%</div>
+                    <div class="text-lg font-semibold mb-2">Risques Identifiés</div>
+                    <div class="text-sm opacity-90">Avant impact négatif</div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+                <div class="card p-6">
+                    <h3 class="text-xl font-bold text-brand mb-3">
+                        <i class="fas fa-chart-line mr-2"></i>
+                        Transformation Business
+                    </h3>
+                    <ul class="space-y-2 text-muted text-sm">
+                        <li>• Scalabilité accrue des projets</li>
+                        <li>• Augmentation revenus et profits</li>
+                        <li>• Avantage concurrentiel durable</li>
+                    </ul>
+                </div>
+
+                <div class="card p-6">
+                    <h3 class="text-xl font-bold text-brand mb-3">
+                        <i class="fas fa-user-graduate mr-2"></i>
+                        Évolution Professionnelle
+                    </h3>
+                    <ul class="space-y-2 text-muted text-sm">
+                        <li>• Compétences futures essentielles</li>
+                        <li>• Multiplication capacités individuelles</li>
+                        <li>• Adaptabilité aux changements</li>
+                    </ul>
+                </div>
+
+                <div class="card p-6">
+                    <h3 class="text-xl font-bold text-brand mb-3">
+                        <i class="fas fa-building mr-2"></i>
+                        Impact Organisationnel
+                    </h3>
+                    <ul class="space-y-2 text-muted text-sm">
+                        <li>• Collaboration améliorée</li>
+                        <li>• Réduction significative des risques</li>
+                        <li>• Processus standardisés</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Défis d'Apprentissage -->
+    <section id="apprentissage" class="py-16 bg-surface">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold section-title mb-4">
+                    <i class="fas fa-graduation-cap text-brand mr-3"></i>
+                    Défis d'Apprentissage Recommandés
+                </h2>
+                <p class="text-xl section-subtitle">
+                    Parcours structuré pour maîtriser progressivement les compétences
+                </p>
+            </div>
+
+            <div class="space-y-8">
+                <!-- Niveau Débutant -->
+                <div class="learning-card p-8 rounded-2xl">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 bg-green-500 text-white rounded-full flex items-center justify-center font-bold mr-4">
+                            1
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold">Niveau Débutant (0-2 semaines)</h3>
+                            <p class="text-muted">Premiers pas avec l'écosystème Gemini CLI</p>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div class="bg-white p-6 rounded-lg">
+                            <h4 class="font-bold text-brand mb-2">🔧 Défi Setup</h4>
+                            <p class="text-sm text-muted">Installer et configurer l'environnement complet VS Code + Gemini CLI</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-lg">
+                            <h4 class="font-bold text-brand mb-2">📊 Défi Premier Projet</h4>
+                            <p class="text-sm text-muted">Créer un projet simple avec transcription, pré-mortem, et portail client</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-lg">
+                            <h4 class="font-bold text-brand mb-2">🎨 Défi Template</h4>
+                            <p class="text-sm text-muted">Personnaliser les templates fournis selon vos besoins spécifiques</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Niveau Intermédiaire -->
+                <div class="learning-card p-8 rounded-2xl">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 bg-orange-500 text-white rounded-full flex items-center justify-center font-bold mr-4">
+                            2
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold">Niveau Intermédiaire (2-8 semaines)</h3>
+                            <p class="text-muted">Intégration et automatisation avancées</p>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div class="bg-white p-6 rounded-lg">
+                            <h4 class="font-bold text-brand mb-2">🔗 Défi Intégration</h4>
+                            <p class="text-sm text-muted">Connecter avec GitHub pour collaboration équipe</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-lg">
+                            <h4 class="font-bold text-brand mb-2">⚡ Défi Automatisation</h4>
+                            <p class="text-sm text-muted">Créer des commandes slash personnalisées pour tâches répétitives</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-lg">
+                            <h4 class="font-bold text-brand mb-2">📈 Défi Multi-Projets</h4>
+                            <p class="text-sm text-muted">Gérer simultanément 3-5 projets différents avec le système</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Niveau Avancé -->
+                <div class="learning-card p-8 rounded-2xl">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 bg-red-500 text-white rounded-full flex items-center justify-center font-bold mr-4">
+                            3
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold">Niveau Avancé (2-6 mois)</h3>
+                            <p class="text-muted">Développement et intégrations personnalisées</p>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div class="bg-white p-6 rounded-lg">
+                            <h4 class="font-bold text-brand mb-2">💻 Défi Code Transition</h4>
+                            <p class="text-sm text-muted">Commencer à intégrer du code simple dans vos workflows</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-lg">
+                            <h4 class="font-bold text-brand mb-2">🔌 Défi API Integration</h4>
+                            <p class="text-sm text-muted">Connecter avec outils tiers (Slack, Trello, Asana)</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-lg">
+                            <h4 class="font-bold text-brand mb-2">🌐 Défi Custom Portal</h4>
+                            <p class="text-sm text-muted">Développer portails clients avec authentification et interactions</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ressources Complémentaires -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold section-title mb-4">
+                    <i class="fas fa-book-open text-brand mr-3"></i>
+                    Ressources d'Apprentissage Complémentaires
+                </h2>
+                <p class="text-xl section-subtitle">
+                    Continuez votre parcours avec ces ressources expertes
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Ressources Officielles -->
+                <div class="card p-6">
+                    <div class="text-center mb-4">
+                        <div class="w-12 h-12 bg-gradient-to-br from-red-500 to-red-600 rounded-lg flex items-center justify-center mx-auto">
+                            <i class="fas fa-star text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-brand mt-3">Ressources Officielles</h3>
+                    </div>
+                    <ul class="space-y-3 text-sm">
+                        <li class="flex items-start">
+                            <i class="fas fa-external-link-alt text-brand mr-2 mt-1"></i>
+                            <div>
+                                <a href="https://www.patreon.com/BlazingZebra" class="text-blue-600 hover:underline font-semibold">Patreon Blazing Zebra</a>
+                                <div class="text-muted">150+ cheat sheets et coaching personnel</div>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-external-link-alt text-brand mr-2 mt-1"></i>
+                            <div>
+                                <a href="https://ai.google.dev/gemini-api/docs/cli" class="text-blue-600 hover:underline font-semibold">Documentation Gemini CLI</a>
+                                <div class="text-muted">Guide officiel Google</div>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-external-link-alt text-brand mr-2 mt-1"></i>
+                            <div>
+                                <a href="https://code.visualstudio.com/docs" class="text-blue-600 hover:underline font-semibold">VS Code Documentation</a>
+                                <div class="text-muted">Maîtrise complète IDE</div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Apprentissage Connexe -->
+                <div class="card p-6">
+                    <div class="text-center mb-4">
+                        <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg flex items-center justify-center mx-auto">
+                            <i class="fas fa-brain text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-brand mt-3">Apprentissage Connexe</h3>
+                    </div>
+                    <ul class="space-y-3 text-sm">
+                        <li class="flex items-start">
+                            <i class="fas fa-chevron-right text-brand mr-2 mt-1"></i>
+                            <div>
+                                <div class="font-semibold">Context Engineering</div>
+                                <div class="text-muted">Techniques avancées de prompt engineering</div>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-chevron-right text-brand mr-2 mt-1"></i>
+                            <div>
+                                <div class="font-semibold">Project Management</div>
+                                <div class="text-muted">Certifications PMP ou Agile</div>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-chevron-right text-brand mr-2 mt-1"></i>
+                            <div>
+                                <div class="font-semibold">No-Code to Low-Code</div>
+                                <div class="text-muted">Transition vers JavaScript basics</div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Lectures Recommandées -->
+                <div class="card p-6">
+                    <div class="text-center mb-4">
+                        <div class="w-12 h-12 bg-gradient-to-br from-green-500 to-green-600 rounded-lg flex items-center justify-center mx-auto">
+                            <i class="fas fa-book text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-brand mt-3">Lectures Recommandées</h3>
+                    </div>
+                    <ul class="space-y-3 text-sm">
+                        <li class="flex items-start">
+                            <i class="fas fa-book-open text-brand mr-2 mt-1"></i>
+                            <div>
+                                <div class="font-semibold">"The Pragmatic Programmer"</div>
+                                <div class="text-muted">Philosophie développement moderne</div>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-book-open text-brand mr-2 mt-1"></i>
+                            <div>
+                                <div class="font-semibold">"PMBOK Guide"</div>
+                                <div class="text-muted">Standards industrie gestion projet</div>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-book-open text-brand mr-2 mt-1"></i>
+                            <div>
+                                <div class="font-semibold">"Building a Second Brain"</div>
+                                <div class="text-muted">Gestion connaissance personnelle</div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="gradient-bg text-white py-16">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6">
+                Prêt à Transformer Votre Gestion de Projet ?
+            </h2>
+            <p class="text-xl mb-8 opacity-90">
+                Rejoignez les professionnels qui révolutionnent leur approche avec l'IA
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="https://www.youtube.com/watch?v=3bteMMo2QnM" class="btn-secondary inline-block">
+                    <i class="fas fa-play mr-2"></i>
+                    Voir la Vidéo Complète
+                </a>
+                <a href="https://www.patreon.com/BlazingZebra" class="btn-gradient inline-block">
+                    <i class="fas fa-rocket mr-2"></i>
+                    Accéder aux Ressources Premium
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-300 py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold text-white mb-4">Gestion Projet IA</h3>
+                    <p class="text-sm">
+                        Transformez votre approche de la gestion de projet avec les outils d'intelligence artificielle les plus avancés.
+                    </p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold text-white mb-4">Liens Utiles</h3>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="https://www.youtube.com/@BlazingZebra" class="hover:text-white transition-colors">Chaîne YouTube</a></li>
+                        <li><a href="https://www.patreon.com/BlazingZebra" class="hover:text-white transition-colors">Ressources Patreon</a></li>
+                        <li><a href="https://blazingzebra.ai/" class="hover:text-white transition-colors">Newsletter AI</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold text-white mb-4">Outils Principaux</h3>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="https://code.visualstudio.com/" class="hover:text-white transition-colors">VS Code</a></li>
+                        <li><a href="https://onlinegantt.com/" class="hover:text-white transition-colors">OnlineGantt</a></li>
+                        <li><a href="https://static.run/" class="hover:text-white transition-colors">Static.run</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-sm">
+                <p>&copy; 2024 Guide Gestion Projet IA - Basé sur le travail de Blazing Zebra</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Add animation on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        });
+
+        document.querySelectorAll('.card, .stats-card, .learning-card').forEach((card) => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>

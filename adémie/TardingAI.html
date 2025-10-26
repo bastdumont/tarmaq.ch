@@ -1,0 +1,1257 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Créer une Stratégie de Trading IA Complète - Guide Étape par Étape</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css"
+    />
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+      body {
+        font-family: 'Inter', sans-serif;
+      }
+      .gradient-bg {
+        background: linear-gradient(135deg, #E30007 0%, #CC0006 100%);
+      }
+      .tool-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      .tool-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 40px rgba(227, 0, 7, 0.1);
+      }
+      .feature-item {
+        border-left: 4px solid #E30007;
+      }
+      .stats-card {
+        background: linear-gradient(135deg, #F4999C 0%, #E30007 100%);
+      }
+      .learning-card {
+        background: linear-gradient(135deg, #FCEE66 0%, #F4999C 100%);
+        color: #2a2a2a;
+      }
+      .learning-card h3 {
+        color: #E30007;
+      }
+      .learning-card p {
+        color: #6f6f78;
+      }
+      .btn-primary {
+        background: #E30007;
+        color: white;
+        border: none;
+        padding: 12px 18px;
+        border-radius: 14px;
+        font-weight: 700;
+        text-decoration: none;
+        display: inline-block;
+        transition: background 0.2s ease;
+      }
+      .btn-primary:hover {
+        background: #CC0006;
+      }
+      .card {
+        background: #ffffff;
+        border: 1px solid #e8e8ec;
+        border-radius: 22px;
+        box-shadow: 0 6px 24px rgba(227, 0, 7, 0.06);
+      }
+      .card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 16px 40px rgba(227, 0, 7, 0.1);
+        border-color: #E30007;
+      }
+      .section-title {
+        color: #2a2a2a;
+      }
+      .section-subtitle {
+        color: #6f6f78;
+      }
+      .text-brand {
+        color: #E30007;
+      }
+      .bg-brand-light {
+        background: #fff1f1;
+        border: 1px solid #F4999C;
+        color: #E30007;
+      }
+      .bg-surface {
+        background: #fcfcfd;
+      }
+      .text-muted {
+        color: #6f6f78;
+      }
+      .border-brand {
+        border-color: #E30007;
+      }
+      .shadow-soft {
+        box-shadow: 0 6px 24px rgba(227, 0, 7, 0.06);
+      }
+      .shadow-elev {
+        box-shadow: 0 16px 40px rgba(227, 0, 7, 0.1);
+      }
+
+      /* Header styles */
+      .btn-secondary {
+        background: rgba(255, 255, 255, 0.9);
+        color: #2a2a2a;
+        padding: 14px 24px;
+        border-radius: 16px;
+        font-weight: 700;
+        transition: all 0.3s ease;
+        border: 1px solid #e8e8ec;
+        cursor: pointer;
+      }
+
+      .btn-secondary:hover {
+        background: white;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      .btn-gradient {
+        background: linear-gradient(140deg, #ff9d9b, #da2f2c);
+        color: white;
+        padding: 14px 24px;
+        border-radius: 16px;
+        font-weight: 700;
+        transition: all 0.3s ease;
+        border: none;
+        cursor: pointer;
+      }
+
+      .btn-gradient:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(218, 47, 44, 0.25);
+      }
+
+      /* Navigation styles */
+      .nav-item {
+        position: relative;
+      }
+
+      .nav-dropdown {
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-10px);
+        transition: all 0.3s ease;
+      }
+
+      .nav-item:hover .nav-dropdown {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+      }
+
+      .timestamp-link {
+        color: #E30007;
+        text-decoration: none;
+        font-weight: 600;
+        padding: 2px 6px;
+        border-radius: 6px;
+        transition: all 0.2s ease;
+      }
+
+      .timestamp-link:hover {
+        background: #fff1f1;
+        text-decoration: underline;
+      }
+
+      .step-number {
+        background: linear-gradient(135deg, #E30007 0%, #CC0006 100%);
+        color: white;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        font-size: 1.1rem;
+      }
+    </style>
+  </head>
+  <body class="bg-surface text-ink" style="background: #fcfcfd; color: #161616">
+    <!-- Header -->
+    <header class="sticky top-0 z-50 backdrop-blur-xl bg-white/80 border-b border-stroke/50">
+        <div class="max-w-7xl mx-auto px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <div class="flex items-center gap-4">
+                    <img src="../src/assets/logo.png" alt="tarmaq" class="h-12 w-auto">
+                </div>
+                <!-- Desktop Navigation -->
+                <nav class="hidden lg:flex items-center gap-8">
+                    <a href="../index.html" class="font-semibold text-ink-2 hover:text-brand transition-colors">Accueil</a>
+                    <a href="index.html" class="font-semibold text-ink-2 hover:text-brand transition-colors">Cours Libre</a>
+                    <a href="../tarmaq_version_html_fondateur.html" class="font-semibold text-ink-2 hover:text-brand transition-colors">Projet</a>
+                    <a href="../Budget.html" class="font-semibold text-ink-2 hover:text-brand transition-colors">Budget</a>
+                    <a href="../tarmaq_interactive_mindmap.html" class="font-semibold text-ink-2 hover:text-brand transition-colors">Mindmap</a>
+                </nav>
+                <!-- CTA Buttons -->
+                <div class="hidden lg:flex items-center gap-4">
+                    <button class="btn-secondary">Appel à soutien</button>
+                    <button class="btn-gradient">Faire un don</button>
+                </div>
+                <!-- View Switcher and Mobile Menu Button -->
+                <div class="flex items-center gap-2">
+                    <!-- View Switcher Button -->
+                    <button id="viewSwitcher" class="p-2 hover:bg-gray-100 rounded-lg transition-colors text-ink-2" title="Passer à la vue mobile">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                        </svg>
+                    </button>
+                    <!-- Mobile Menu Button -->
+                    <button class="lg:hidden p-2" onclick="toggleMobileMenu()">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="lg:hidden hidden bg-white border-t border-stroke/50">
+            <div class="px-8 py-4 space-y-4">
+                <a href="../index.html" class="block font-semibold text-ink-2 hover:text-brand transition-colors">Accueil</a>
+                <a href="index.html" class="block font-semibold text-ink-2 hover:text-brand transition-colors">Cours Libre</a>
+                <a href="../tarmaq_version_html_fondateur.html" class="block font-semibold text-ink-2 hover:text-brand transition-colors">Projet</a>
+                <a href="../Budget.html" class="block font-semibold text-ink-2 hover:text-brand transition-colors">Budget</a>
+                <a href="../tarmaq_interactive_mindmap.html" class="block font-semibold text-ink-2 hover:text-brand transition-colors">Mindmap</a>
+                <div class="pt-4 space-y-2">
+                    <button class="btn-secondary w-full">Appel à soutien</button>
+                    <button class="btn-gradient w-full">Faire un don</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <header id="introduction" class="gradient-bg text-white py-12">
+      <div class="container mx-auto px-6 text-center">
+        <h1 class="text-4xl md:text-5xl font-bold mb-4">
+          Guide Complet : Créer une Stratégie de Trading IA
+        </h1>
+        <p class="text-xl mb-6">TradingView + PineScript + ChatGPT o3</p>
+        <div class="flex flex-wrap justify-center items-center gap-6 text-sm">
+          <div class="flex items-center gap-2">
+            <i class="fas fa-play-circle"></i>
+            <span>Durée: 29min 22s</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <i class="fas fa-eye"></i>
+            <span>117,729 vues</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <i class="fas fa-thumbs-up"></i>
+            <span>4,074 likes</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <i class="fas fa-user"></i>
+            <span>Michael Automates</span>
+          </div>
+        </div>
+        <div class="mt-6">
+          <a
+            href="https://www.youtube.com/watch?v=PIc8yzBm4yo"
+            target="_blank"
+            class="btn-primary"
+          >
+            <i class="fab fa-youtube mr-2"></i>Voir la vidéo originale
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Résumé Exécutif -->
+    <section class="py-12 bg-card" style="background: #ffffff">
+      <div class="container mx-auto px-6">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold mb-4">Résumé Exécutif</h2>
+          <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+            Ce tutoriel complet présente une méthodologie systématique pour créer des stratégies de trading rentables en utilisant l'intelligence artificielle. De la sélection d'indicateurs à l'automatisation complète, découvrez comment générer 22x de profit sur Bitcoin avec 42% de drawdown.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+          <div class="stats-card text-white p-6 rounded-lg text-center">
+            <i class="fas fa-robot text-3xl mb-4"></i>
+            <h3 class="text-2xl font-bold">IA Intégrée</h3>
+            <p class="mt-2">
+              ChatGPT o3 pour automatiser le développement PineScript
+            </p>
+          </div>
+          <div class="learning-card p-6 rounded-lg text-center">
+            <i class="fas fa-chart-line text-3xl mb-4 text-brand"></i>
+            <h3 class="text-2xl font-bold">Performance</h3>
+            <p class="mt-2">
+              Stratégie finale : 2,200% profit, 42% drawdown validé
+            </p>
+          </div>
+          <div
+            class="bg-gradient-to-br from-FFE3E2 to-FFD2D1 p-6 rounded-lg text-center"
+            style="
+              background: linear-gradient(135deg, #FCEE66 0%, #F4999C 100%);
+              color: #2a2a2a;
+            "
+          >
+            <i class="fas fa-cogs text-3xl mb-4 text-brand"></i>
+            <h3 class="text-2xl font-bold">Méthodologie</h3>
+            <p class="mt-2">Processus reproductible et systématique</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Les Étapes Détaillées -->
+    <section id="etapes" class="py-12 bg-surface" style="background: #fcfcfd">
+      <div class="container mx-auto px-6">
+        <h2 class="text-3xl font-bold text-center mb-12">
+          Les 11 Étapes Détaillées
+        </h2>
+
+        <!-- Étape 1: Marquer les Trades Optimaux -->
+        <div class="tool-card bg-white rounded-lg shadow-lg mb-8 overflow-hidden">
+          <div class="bg-gradient-to-r from-blue-600 to-indigo-600 text-white p-6">
+            <div class="flex items-center justify-between">
+              <div>
+                <h3 class="text-2xl font-bold flex items-center">
+                  <div class="step-number mr-3">1</div>
+                  Marquer les Trades Optimaux
+                </h3>
+                <p class="text-lg">Définir visuellement vos attentes sur le graphique</p>
+              </div>
+              <div class="text-right">
+                <a
+                  href="https://www.youtube.com/watch?v=PIc8yzBm4yo&t=70s"
+                  target="_blank"
+                  class="timestamp-link bg-white text-blue-600 px-4 py-2 rounded font-semibold hover:bg-gray-100 transition-colors"
+                >
+                  01:10 <i class="fas fa-external-link-alt ml-1"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="p-6">
+            <div class="grid md:grid-cols-2 gap-6">
+              <div>
+                <h4 class="text-lg font-semibold mb-3 text-blue-600">
+                  Méthode de Visualisation
+                </h4>
+                <ul class="space-y-2">
+                  <li class="feature-item pl-4 py-2">
+                    <strong>Cercles d'entrée :</strong> Marquer où vous souhaitez acheter
+                  </li>
+                  <li class="feature-item pl-4 py-2">
+                    <strong>Cercles de sortie :</strong> Identifier les zones de vente optimales
+                  </li>
+                  <li class="feature-item pl-4 py-2">
+                    <strong>Attentes réalistes :</strong> Pas d'achat au plus bas absolu
+                  </li>
+                  <li class="feature-item pl-4 py-2">
+                    <strong>Stratégie trend-following :</strong> Profiter des tendances haussières
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <h4 class="text-lg font-semibold mb-3 text-blue-600">
+                  Objectifs Stratégiques
+                </h4>
+                <div class="bg-gray-50 p-4 rounded-lg">
+                  <p class="mb-3">
+                    <strong>Philosophie :</strong> Suivre la tendance, éviter les pertes
+                  </p>
+                  <ul class="text-sm space-y-1">
+                    <li>✅ Participer aux tendances haussières</li>
+                    <li>✅ Sortir rapidement des tendances baissières</li>
+                    <li>✅ Ignorer la volatilité latérale</li>
+                    <li>✅ Maximiser les gains, minimiser les pertes</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Étape 2: Trouver l'Indicateur de Base -->
+        <div class="tool-card bg-white rounded-lg shadow-lg mb-8 overflow-hidden">
+          <div class="bg-gradient-to-r from-green-600 to-teal-600 text-white p-6">
+            <div class="flex items-center justify-between">
+              <div>
+                <h3 class="text-2xl font-bold flex items-center">
+                  <div class="step-number mr-3">2</div>
+                  Trouver l'Indicateur de Base
+                </h3>
+                <p class="text-lg">Sélectionner Williams Alligator comme fondation</p>
+              </div>
+              <div class="text-right">
+                <a
+                  href="https://www.youtube.com/watch?v=PIc8yzBm4yo&t=162s"
+                  target="_blank"
+                  class="timestamp-link bg-white text-green-600 px-4 py-2 rounded font-semibold hover:bg-gray-100 transition-colors"
+                >
+                  02:42 <i class="fas fa-external-link-alt ml-1"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="p-6">
+            <div class="grid md:grid-cols-2 gap-6">
+              <div>
+                <h4 class="text-lg font-semibold mb-3 text-green-600">
+                  Recherche Systématique
+                </h4>
+                <ul class="space-y-2">
+                  <li class="feature-item pl-4 py-2">
+                    <strong>Exploration TradingView :</strong> Tester plusieurs indicateurs
+                  </li>
+                  <li class="feature-item pl-4 py-2">
+                    <strong>Validation visuelle :</strong> Correspondance avec les cercles tracés
+                  </li>
+                  <li class="feature-item pl-4 py-2">
+                    <strong>Williams Alligator :</strong> 3 lignes (Jaw, Teeth, Lips)
+                  </li>
+                  <li class="feature-item pl-4 py-2">
+                    <strong>Recherche préalable :</strong> Temps d'analyse nécessaire
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <h4 class="text-lg font-semibold mb-3 text-green-600">
+                  Logique de l'Alligator
+                </h4>
+                <div class="bg-gray-50 p-4 rounded-lg">
+                  <p class="mb-3"><strong>Composition :</strong></p>
+                  <div class="space-y-2">
+                    <div class="flex items-center gap-2">
+                      <div class="w-4 h-4 bg-blue-500 rounded"></div>
+                      <span><strong>Jaw (Mâchoire) :</strong> Ligne bleue - Signal d'entrée</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                      <div class="w-4 h-4 bg-red-500 rounded"></div>
+                      <span><strong>Teeth (Dents) :</strong> Ligne rouge - Filtre intermédiaire</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                      <div class="w-4 h-4 bg-green-500 rounded"></div>
+                      <span><strong>Lips (Lèvres) :</strong> Ligne verte - Signal principal</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Étape 3: Conversion en Stratégie avec IA -->
+        <div class="tool-card bg-white rounded-lg shadow-lg mb-8 overflow-hidden">
+          <div class="bg-gradient-to-r from-purple-600 to-pink-600 text-white p-6">
+            <div class="flex items-center justify-between">
+              <div>
+                <h3 class="text-2xl font-bold flex items-center">
+                  <div class="step-number mr-3">3</div>
+                  Conversion en Stratégie avec IA
+                </h3>
+                <p class="text-lg">Utiliser ChatGPT o3 pour générer le code PineScript</p>
+              </div>
+              <div class="text-right">
+                <a
+                  href="https://www.youtube.com/watch?v=PIc8yzBm4yo&t=367s"
+                  target="_blank"
+                  class="timestamp-link bg-white text-purple-600 px-4 py-2 rounded font-semibold hover:bg-gray-100 transition-colors"
+                >
+                  06:07 <i class="fas fa-external-link-alt ml-1"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="p-6">
+            <div class="grid md:grid-cols-2 gap-6">
+              <div>
+                <h4 class="text-lg font-semibold mb-3 text-purple-600">
+                  Processus de Conversion
+                </h4>
+                <ul class="space-y-2">
+                  <li class="feature-item pl-4 py-2">
+                    <strong>Prompt structuré :</strong> Template testé et éprouvé
+                  </li>
+                  <li class="feature-item pl-4 py-2">
+                    <strong>Code source :</strong> Copier l'indicateur Williams Alligator
+                  </li>
+                  <li class="feature-item pl-4 py-2">
+                    <strong>Logique de trading :</strong> Définir entrées et sorties
+                  </li>
+                  <li class="feature-item pl-4 py-2">
+                    <strong>ChatGPT o3 :</strong> Modèle recommandé pour cette tâche
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <h4 class="text-lg font-semibold mb-3 text-purple-600">
+                  Règles de Trading Définies
+                </h4>
+                <div class="bg-gray-50 p-4 rounded-lg">
+                  <p class="mb-3"><strong>Conditions d'entrée :</strong></p>
+                  <ul class="text-sm space-y-1 mb-3">
+                    <li>🟢 Long quand Lips croise au-dessus de Jaw</li>
+                    <li>📅 Trading depuis 2018 uniquement</li>
+                  </ul>
+                  <p class="mb-2"><strong>Conditions de sortie :</strong></p>
+                  <ul class="text-sm space-y-1">
+                    <li>🔴 Fermer quand Lips croise sous Jaw OU Teeth</li>
+                    <li>⚡ Exécution à la clôture de la bougie</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Étape 4: Correction des Erreurs -->
+        <div class="tool-card bg-white rounded-lg shadow-lg mb-8 overflow-hidden">
+          <div class="bg-gradient-to-r from-orange-600 to-red-600 text-white p-6">
+            <div class="flex items-center justify-between">
+              <div>
+                <h3 class="text-2xl font-bold flex items-center">
+                  <div class="step-number mr-3">4</div>
+                  Correction des Erreurs avec IA
+                </h3>
+                <p class="text-lg">Débogage automatisé via screenshots</p>
+              </div>
+              <div class="text-right">
+                <a
+                  href="https://www.youtube.com/watch?v=PIc8yzBm4yo&t=693s"
+                  target="_blank"
+                  class="timestamp-link bg-white text-orange-600 px-4 py-2 rounded font-semibold hover:bg-gray-100 transition-colors"
+                >
+                  11:33 <i class="fas fa-external-link-alt ml-1"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="p-6">
+            <div class="grid md:grid-cols-2 gap-6">
+              <div>
+                <h4 class="text-lg font-semibold mb-3 text-orange-600">
+                  Méthode de Débogage
+                </h4>
+                <ul class="space-y-2">
+                  <li class="feature-item pl-4 py-2">
+                    <strong>Screenshot d'erreur :</strong> Capture de l'écran Pine Editor
+                  </li>
+                  <li class="feature-item pl-4 py-2">
+                    <strong>Prompt simple :</strong> "Fix this error please"
+                  </li>
+                  <li class="feature-item pl-4 py-2">
+                    <strong>Correction rapide :</strong> L'IA identifie et résout
+                  </li>
+                  <li class="feature-item pl-4 py-2">
+                    <strong>Test immédiat :</strong> Vérification du fonctionnement
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <h4 class="text-lg font-semibold mb-3 text-orange-600">
+                  Résultat de la Correction
+                </h4>
+                <div class="bg-gray-50 p-4 rounded-lg">
+                  <p class="mb-3"><strong>Stratégie fonctionnelle :</strong></p>
+                  <ul class="text-sm space-y-1">
+                    <li>✅ Code compilé sans erreur</li>
+                    <li>📊 Signaux d'achat et vente visibles</li>
+                    <li>📈 Performance initiale : 11x profit sur Bitcoin</li>
+                    <li>⚠️ Drawdown à améliorer : 50%</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Étape 5: Suppression des Trades Perdants -->
+        <div class="tool-card bg-white rounded-lg shadow-lg mb-8 overflow-hidden">
+          <div class="bg-gradient-to-r from-red-600 to-pink-700 text-white p-6">
+            <div class="flex items-center justify-between">
+              <div>
+                <h3 class="text-2xl font-bold flex items-center">
+                  <div class="step-number mr-3">5</div>
+                  Suppression des Trades Perdants
+                </h3>
+                <p class="text-lg">Ajout de stop-loss ATR pour protection</p>
+              </div>
+              <div class="text-right">
+                <a
+                  href="https://www.youtube.com/watch?v=PIc8yzBm4yo&t=878s"
+                  target="_blank"
+                  class="timestamp-link bg-white text-red-600 px-4 py-2 rounded font-semibold hover:bg-gray-100 transition-colors"
+                >
+                  14:38 <i class="fas fa-external-link-alt ml-1"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="p-6">
+            <div class="grid md:grid-cols-2 gap-6">
+              <div>
+                <h4 class="text-lg font-semibold mb-3 text-red-600">
+                  Processus d'Amélioration
+                </h4>
+                <ul class="space-y-2">
+                  <li class="feature-item pl-4 py-2">
+                    <strong>Identification :</strong> Plus gros trade perdant (-23%)
+                  </li>
+                  <li class="feature-item pl-4 py-2">
+                    <strong>Solution IA :</strong> "Add stop-loss to avoid large losing trades"
+                  </li>
+                  <li class="feature-item pl-4 py-2">
+                    <strong>ATR Stop-Loss :</strong> Protection dynamique basée sur volatilité
+                  </li>
+                  <li class="feature-item pl-4 py-2">
+                    <strong>Test immédiat :</strong> Validation des améliorations
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <h4 class="text-lg font-semibold mb-3 text-red-600">
+                  Résultats de l'Optimisation
+                </h4>
+                <div class="bg-gray-50 p-4 rounded-lg">
+                  <p class="mb-3"><strong>Améliorations mesurées :</strong></p>
+                  <div class="space-y-2">
+                    <div class="flex justify-between">
+                      <span>Profit :</span>
+                      <span class="font-bold text-green-600">11x → 14x</span>
+                    </div>
+                    <div class="flex justify-between">
+                      <span>Drawdown :</span>
+                      <span class="font-bold text-green-600">50% → 43.9%</span>
+                    </div>
+                    <div class="flex justify-between">
+                      <span>Plus grosse perte :</span>
+                      <span class="font-bold text-green-600">-23% → -5.78%</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Étape 6: Optimisation des Profits -->
+        <div class="tool-card bg-white rounded-lg shadow-lg mb-8 overflow-hidden">
+          <div class="bg-gradient-to-r from-indigo-600 to-purple-700 text-white p-6">
+            <div class="flex items-center justify-between">
+              <div>
+                <h3 class="text-2xl font-bold flex items-center">
+                  <div class="step-number mr-3">6</div>
+                  Ne Pas Manquer les Bons Trades
+                </h3>
+                <p class="text-lg">Équilibrage des conditions d'entrée et sortie</p>
+              </div>
+              <div class="text-right">
+                <a
+                  href="https://www.youtube.com/watch?v=PIc8yzBm4yo&t=1165s"
+                  target="_blank"
+                  class="timestamp-link bg-white text-indigo-600 px-4 py-2 rounded font-semibold hover:bg-gray-100 transition-colors"
+                >
+                  19:25 <i class="fas fa-external-link-alt ml-1"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="p-6">
+            <div class="grid md:grid-cols-2 gap-6">
+              <div>
+                <h4 class="text-lg font-semibold mb-3 text-indigo-600">
+                  Problème Identifié
+                </h4>
+                <ul class="space-y-2">
+                  <li class="feature-item pl-4 py-2">
+                    <strong>Opportunité manquée :</strong> 45% de profit perdu
+                  </li>
+                  <li class="feature-item pl-4 py-2">
+                    <strong>Cause :</strong> Sortie prématurée, pas de ré-entrée
+                  </li>
+                  <li class="feature-item pl-4 py-2">
+                    <strong>Déséquilibre :</strong> Conditions d'entrée vs sortie
+                  </li>
+                  <li class="feature-item pl-4 py-2">
+                    <strong>Analyse zoom :</strong> Comprendre le comportement des lignes
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <h4 class="text-lg font-semibold mb-3 text-indigo-600">
+                  Solution Appliquée
+                </h4>
+                <div class="bg-gray-50 p-4 rounded-lg">
+                  <p class="mb-3"><strong>Simplification de la logique :</strong></p>
+                  <ul class="text-sm space-y-1 mb-3">
+                    <li>🟢 Entrée : Lips croise au-dessus de Jaw</li>
+                    <li>🔴 Sortie : Lips croise sous Jaw UNIQUEMENT</li>
+                  </ul>
+                  <p class="mb-2"><strong>Résultat spectaculaire :</strong></p>
+                  <div class="text-2xl font-bold text-green-600">2,200% profit</div>
+                  <div class="text-sm text-gray-600">42% drawdown</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Étape 7: Test Anti-Overfitting -->
+        <div class="tool-card bg-white rounded-lg shadow-lg mb-8 overflow-hidden">
+          <div class="bg-gradient-to-r from-green-700 to-blue-600 text-white p-6">
+            <div class="flex items-center justify-between">
+              <div>
+                <h3 class="text-2xl font-bold flex items-center">
+                  <div class="step-number mr-3">7</div>
+                  Éviter le Surajustement (Overfitting)
+                </h3>
+                <p class="text-lg">Validation sur multiples cryptomonnaies</p>
+              </div>
+              <div class="text-right">
+                <a
+                  href="https://www.youtube.com/watch?v=PIc8yzBm4yo&t=1341s"
+                  target="_blank"
+                  class="timestamp-link bg-white text-green-600 px-4 py-2 rounded font-semibold hover:bg-gray-100 transition-colors"
+                >
+                  22:21 <i class="fas fa-external-link-alt ml-1"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="p-6">
+            <div class="grid md:grid-cols-2 gap-6">
+              <div>
+                <h4 class="text-lg font-semibold mb-3 text-green-600">
+                  Tests de Robustesse
+                </h4>
+                <ul class="space-y-2">
+                  <li class="feature-item pl-4 py-2">
+                    <strong>Ethereum :</strong> 1,800% profit, 48% drawdown ✅
+                  </li>
+                  <li class="feature-item pl-4 py-2">
+                    <strong>Solana :</strong> 28,000% profit, 52% drawdown ✅
+                  </li>
+                  <li class="feature-item pl-4 py-2">
+                    <strong>Cardano :</strong> Profit mais 93% drawdown ⚠️
+                  </li>
+                  <li class="feature-item pl-4 py-2">
+                    <strong>Autres actifs :</strong> Performances variables mais positives
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <h4 class="text-lg font-semibold mb-3 text-green-600">
+                  Validation de Robustesse
+                </h4>
+                <div class="bg-gray-50 p-4 rounded-lg">
+                  <p class="mb-3"><strong>Conclusion :</strong> Stratégie NON surajustée</p>
+                  <ul class="text-sm space-y-1">
+                    <li>✅ Fonctionne sur multiples actifs</li>
+                    <li>✅ Paramètres inchangés</li>
+                    <li>⚠️ Drawdowns élevés sur certains actifs</li>
+                    <li>🔧 Améliorations possibles via indicateurs additionnels</li>
+                  </ul>
+                  <div class="mt-3 p-2 bg-yellow-100 rounded text-xs">
+                    <strong>Note :</strong> Drawdown >50% nécessite optimisation
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Navigation Rapide -->
+        <div class="mt-12 bg-white p-6 rounded-lg shadow-soft">
+          <h3 class="text-xl font-bold mb-4 text-center">Navigation Rapide par Timestamps</h3>
+          <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-2 text-sm">
+            <a href="https://www.youtube.com/watch?v=PIc8yzBm4yo&t=0s" target="_blank" class="timestamp-link p-2 rounded text-center">00:00 Intro</a>
+            <a href="https://www.youtube.com/watch?v=PIc8yzBm4yo&t=70s" target="_blank" class="timestamp-link p-2 rounded text-center">01:10 Marquer</a>
+            <a href="https://www.youtube.com/watch?v=PIc8yzBm4yo&t=162s" target="_blank" class="timestamp-link p-2 rounded text-center">02:42 Indicateur</a>
+            <a href="https://www.youtube.com/watch?v=PIc8yzBm4yo&t=367s" target="_blank" class="timestamp-link p-2 rounded text-center">06:07 Conversion</a>
+            <a href="https://www.youtube.com/watch?v=PIc8yzBm4yo&t=693s" target="_blank" class="timestamp-link p-2 rounded text-center">11:33 Debug</a>
+            <a href="https://www.youtube.com/watch?v=PIc8yzBm4yo&t=878s" target="_blank" class="timestamp-link p-2 rounded text-center">14:38 Stop-Loss</a>
+            <a href="https://www.youtube.com/watch?v=PIc8yzBm4yo&t=1165s" target="_blank" class="timestamp-link p-2 rounded text-center">19:25 Optimiser</a>
+            <a href="https://www.youtube.com/watch?v=PIc8yzBm4yo&t=1341s" target="_blank" class="timestamp-link p-2 rounded text-center">22:21 Overfitting</a>
+            <a href="https://www.youtube.com/watch?v=PIc8yzBm4yo&t=1493s" target="_blank" class="timestamp-link p-2 rounded text-center">24:53 Repainting</a>
+            <a href="https://www.youtube.com/watch?v=PIc8yzBm4yo&t=1581s" target="_blank" class="timestamp-link p-2 rounded text-center">26:21 AutoTrading</a>
+            <a href="https://www.youtube.com/watch?v=PIc8yzBm4yo&t=1636s" target="_blank" class="timestamp-link p-2 rounded text-center">27:16 SIGNUM</a>
+            <a href="https://www.youtube.com/watch?v=PIc8yzBm4yo&t=1688s" target="_blank" class="timestamp-link p-2 rounded text-center">28:08 Bonus</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Apprentissages Clés -->
+    <section id="apprentissages" class="py-12 bg-card" style="background: #ffffff">
+      <div class="container mx-auto px-6">
+        <h2 class="text-3xl font-bold text-center mb-12">
+          Apprentissages Clés et Méthodologie
+        </h2>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+          <div
+            class="text-center p-6 rounded-lg"
+            style="
+              background: linear-gradient(135deg, #fff1f1 0%, #F4999C 100%);
+            "
+          >
+            <i class="fas fa-robot text-3xl mb-4" style="color: #E30007"></i>
+            <h3 class="font-bold text-lg mb-2" style="color: #2a2a2a">
+              IA comme Facilitateur
+            </h3>
+            <p class="text-sm" style="color: #6f6f78">
+              L'IA accélère le développement mais ne remplace pas l'expertise humaine et l'analyse visuelle.
+            </p>
+          </div>
+          <div
+            class="text-center p-6 rounded-lg"
+            style="
+              background: linear-gradient(135deg, #FCEE66 0%, #F4999C 100%);
+            "
+          >
+            <i class="fas fa-sync-alt text-3xl mb-4" style="color: #E30007"></i>
+            <h3 class="font-bold text-lg mb-2" style="color: #2a2a2a">
+              Processus Itératif
+            </h3>
+            <p class="text-sm" style="color: #6f6f78">
+              Amélioration continue : éliminer les pertes une par une, optimiser étape par étape.
+            </p>
+          </div>
+          <div
+            class="text-center p-6 rounded-lg"
+            style="
+              background: linear-gradient(135deg, #fff6f6 0%, #F4999C 100%);
+            "
+          >
+            <i class="fas fa-shield-alt text-3xl mb-4" style="color: #E30007"></i>
+            <h3 class="font-bold text-lg mb-2" style="color: #2a2a2a">
+              Validation Rigoureuse
+            </h3>
+            <p class="text-sm" style="color: #6f6f78">
+              Tests anti-overfitting et anti-repainting obligatoires pour éviter les fausses performances.
+            </p>
+          </div>
+          <div
+            class="text-center p-6 rounded-lg"
+            style="
+              background: linear-gradient(135deg, #fff1f1 0%, #FCEE66 100%);
+            "
+          >
+            <i
+              class="fas fa-balance-scale text-3xl mb-4"
+              style="color: #E30007"
+            ></i>
+            <h3 class="text-xl font-bold mb-2" style="color: #2a2a2a">
+              Équilibre Risk/Reward
+            </h3>
+            <p class="text-sm" style="color: #6f6f78">
+              Viser <50% drawdown tout en maximisant les profits. 2,200% profit avec 42% drawdown = optimal.
+            </p>
+          </div>
+        </div>
+
+        <div
+          class="p-8 rounded-lg mb-8"
+          style="
+            background: linear-gradient(135deg, #E30007 0%, #CC0006 100%);
+            color: white;
+          "
+        >
+          <h3 class="text-2xl font-bold mb-6 text-center">
+            Workflow Recommandé : De l'Idée à l'Automatisation
+          </h3>
+          <div class="grid md:grid-cols-6 gap-4 text-center text-sm">
+            <div class="flex flex-col items-center">
+              <div
+                class="w-12 h-12 rounded-full flex items-center justify-center font-bold mb-2"
+                style="background: white; color: #E30007"
+              >
+                1
+              </div>
+              <p>Visualiser les trades idéaux sur graphique</p>
+            </div>
+            <div class="flex flex-col items-center">
+              <div
+                class="w-12 h-12 rounded-full flex items-center justify-center font-bold mb-2"
+                style="background: white; color: #E30007"
+              >
+                2
+              </div>
+              <p>Rechercher indicateur correspondant</p>
+            </div>
+            <div class="flex flex-col items-center">
+              <div
+                class="w-12 h-12 rounded-full flex items-center justify-center font-bold mb-2"
+                style="background: white; color: #E30007"
+              >
+                3
+              </div>
+              <p>Convertir avec IA en stratégie PineScript</p>
+            </div>
+            <div class="flex flex-col items-center">
+              <div
+                class="w-12 h-12 rounded-full flex items-center justify-center font-bold mb-2"
+                style="background: white; color: #E30007"
+              >
+                4
+              </div>
+              <p>Éliminer trades perdants via stops</p>
+            </div>
+            <div class="flex flex-col items-center">
+              <div
+                class="w-12 h-12 rounded-full flex items-center justify-center font-bold mb-2"
+                style="background: white; color: #E30007"
+              >
+                5
+              </div>
+              <p>Tester robustesse multi-actifs</p>
+            </div>
+            <div class="flex flex-col items-center">
+              <div
+                class="w-12 h-12 rounded-full flex items-center justify-center font-bold mb-2"
+                style="background: white; color: #E30007"
+              >
+                6
+              </div>
+              <p>Automatiser avec SIGNUM</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Performance de la Stratégie Finale -->
+        <div class="grid md:grid-cols-3 gap-6">
+          <div class="stats-card text-white p-6 rounded-lg text-center">
+            <i class="fas fa-chart-line text-3xl mb-4"></i>
+            <h3 class="text-2xl font-bold">Performance Bitcoin</h3>
+            <div class="text-3xl font-bold mt-2">2,200%</div>
+            <p class="mt-2">Profit depuis 2018</p>
+          </div>
+          <div class="learning-card p-6 rounded-lg text-center">
+            <i class="fas fa-shield-alt text-3xl mb-4 text-brand"></i>
+            <h3 class="text-2xl font-bold">Drawdown Contrôlé</h3>
+            <div class="text-3xl font-bold mt-2" style="color: #E30007">42%</div>
+            <p class="mt-2">Maximum observé</p>
+          </div>
+          <div
+            class="bg-gradient-to-br from-FFE3E2 to-FFD2D1 p-6 rounded-lg text-center"
+            style="
+              background: linear-gradient(135deg, #FCEE66 0%, #F4999C 100%);
+              color: #2a2a2a;
+            "
+          >
+            <i class="fas fa-coins text-3xl mb-4 text-brand"></i>
+            <h3 class="text-2xl font-bold">Multi-Actifs</h3>
+            <div class="text-3xl font-bold mt-2" style="color: #E30007">8+</div>
+            <p class="mt-2">Cryptos testées</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Ressources et Outils -->
+    <section id="ressources" class="py-12 bg-surface" style="background: #fcfcfd">
+      <div class="container mx-auto px-6">
+        <h2 class="text-3xl font-bold text-center mb-12">
+          Ressources et Outils Essentiels
+        </h2>
+
+        <div class="grid md:grid-cols-2 gap-8 mb-8">
+          <div
+            class="bg-card p-6 rounded-lg shadow-soft"
+            style="
+              background: #ffffff;
+              box-shadow: 0 6px 24px rgba(0, 0, 0, 0.06);
+            "
+          >
+            <h3
+              class="text-xl font-bold mb-4 flex items-center text-brand"
+              style="color: #da2f2c"
+            >
+              <i class="fas fa-tools mr-2"></i>Outils de Développement
+            </h3>
+            <div class="space-y-3">
+              <a
+                href="https://www.tradingview.com/gopro?share_your_love=michaelionita"
+                target="_blank"
+                class="flex items-center justify-between p-3 bg-blue-50 rounded hover:bg-blue-100 transition-colors"
+              >
+                <span><strong>TradingView Pro</strong> - Plateforme de charting et backtesting</span>
+                <i class="fas fa-external-link-alt text-blue-600"></i>
+              </a>
+              <a
+                href="https://docs.google.com/document/d/1tMPQoYqsPax7PncShmiXNoEerMpKPcHmO_5zK-YBd1c/edit?usp=sharing"
+                target="_blank"
+                class="flex items-center justify-between p-3 bg-green-50 rounded hover:bg-green-100 transition-colors"
+              >
+                <span><strong>Code Final</strong> - Stratégie Williams Alligator complète</span>
+                <i class="fas fa-external-link-alt text-green-600"></i>
+              </a>
+              <div class="p-3 bg-purple-50 rounded">
+                <div class="flex items-center justify-between mb-2">
+                  <span><strong>ChatGPT o3</strong> - Conversion automatisée PineScript</span>
+                  <i class="fas fa-robot text-purple-600"></i>
+                </div>
+                <p class="text-xs text-gray-600">Prompt template disponible dans la vidéo</p>
+              </div>
+              <a
+                href="https://signum.money/"
+                target="_blank"
+                class="flex items-center justify-between p-3 bg-orange-50 rounded hover:bg-orange-100 transition-colors"
+              >
+                <span><strong>SIGNUM</strong> - Automatisation des signaux trading</span>
+                <i class="fas fa-external-link-alt text-orange-600"></i>
+              </a>
+            </div>
+          </div>
+
+          <div
+            class="bg-card p-6 rounded-lg shadow-soft"
+            style="
+              background: #ffffff;
+              box-shadow: 0 6px 24px rgba(0, 0, 0, 0.06);
+            "
+          >
+            <h3
+              class="text-xl font-bold mb-4 flex items-center text-brand"
+              style="color: #da2f2c"
+            >
+              <i class="fas fa-graduation-cap mr-2"></i>Formation et Communauté
+            </h3>
+            <div class="space-y-4">
+              <div
+                class="p-4 rounded-lg"
+                style="
+                  background: linear-gradient(135deg, #E30007 0%, #CC0006 100%);
+                  color: white;
+                "
+              >
+                <h4 class="font-bold mb-2">
+                  AutoTrading Masterclass
+                </h4>
+                <p class="text-sm mb-3">
+                  Stratégies avancées : 3,400% profit, 20% drawdown
+                </p>
+                <div class="flex items-center gap-2 text-sm mb-3">
+                  <i class="fas fa-tag"></i>
+                  <span>Code promo : <strong>WELCOME200K</strong> (-20%)</span>
+                </div>
+                <a
+                  href="https://autotrading.vip/"
+                  target="_blank"
+                  class="btn-primary"
+                  style="font-size: 0.875rem; padding: 8px 16px; background: white; color: #E30007"
+                >
+                  Accéder à la formation
+                </a>
+              </div>
+
+              <a
+                href="https://bit.ly/3OOp7oV"
+                target="_blank"
+                class="flex items-center justify-between p-3 bg-blue-50 rounded hover:bg-blue-100 transition-colors"
+              >
+                <div>
+                  <div class="font-semibold">Telegram Community</div>
+                  <div class="text-sm text-gray-600">15,000+ membres actifs</div>
+                </div>
+                <i class="fab fa-telegram text-blue-600 text-xl"></i>
+              </a>
+
+              <div class="grid grid-cols-2 gap-3">
+                <a
+                  href="https://twitter.com/mizi"
+                  target="_blank"
+                  class="flex flex-col items-center p-3 bg-gray-50 rounded hover:bg-gray-100 transition-colors"
+                >
+                  <i class="fab fa-twitter text-blue-400 text-xl mb-1"></i>
+                  <span class="text-sm font-semibold">Twitter</span>
+                </a>
+                <a
+                  href="https://linkedin.com/in/michaelionita"
+                  target="_blank"
+                  class="flex flex-col items-center p-3 bg-gray-50 rounded hover:bg-gray-100 transition-colors"
+                >
+                  <i class="fab fa-linkedin text-blue-600 text-xl mb-1"></i>
+                  <span class="text-sm font-semibold">LinkedIn</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Vidéos Complémentaires -->
+        <div
+          class="bg-card p-6 rounded-lg shadow-soft"
+          style="
+            background: #ffffff;
+            box-shadow: 0 6px 24px rgba(0, 0, 0, 0.06);
+          "
+        >
+          <h3 class="text-xl font-bold mb-4 text-center">
+            Vidéos Complémentaires Recommandées
+          </h3>
+          <div class="grid md:grid-cols-3 gap-4">
+            <a
+              href="https://www.youtube.com/watch?v=ETuIpsL_7Mc"
+              target="_blank"
+              class="p-4 border rounded-lg hover:shadow-lg transition-all"
+            >
+              <div class="flex items-center gap-2 mb-2">
+                <i class="fab fa-youtube text-red-600"></i>
+                <span class="font-semibold text-sm">21:49</span>
+              </div>
+              <h4 class="font-bold text-sm mb-1">Convert Indicators to Strategies</h4>
+              <p class="text-xs text-gray-600">Méthode détaillée de conversion</p>
+            </a>
+            <a
+              href="https://www.youtube.com/watch?v=BgZg3eqJeVE"
+              target="_blank"
+              class="p-4 border rounded-lg hover:shadow-lg transition-all"
+            >
+              <div class="flex items-center gap-2 mb-2">
+                <i class="fab fa-youtube text-red-600"></i>
+                <span class="font-semibold text-sm">18:20</span>
+              </div>
+              <h4 class="font-bold text-sm mb-1">Improve Strategies with AI</h4>
+              <p class="text-xs text-gray-600">Ajouter des indicateurs avec l'IA</p>
+            </a>
+            <a
+              href="https://www.youtube.com/watch?v=127aW0lPstY"
+              target="_blank"
+              class="p-4 border rounded-lg hover:shadow-lg transition-all"
+            >
+              <div class="flex items-center gap-2 mb-2">
+                <i class="fab fa-youtube text-red-600"></i>
+                <span class="font-semibold text-sm">21:47</span>
+              </div>
+              <h4 class="font-bold text-sm mb-1">Detect and Avoid Repainting</h4>
+              <p class="text-xs text-gray-600">Validation anti-repainting</p>
+            </a>
+          </div>
+        </div>
+
+        <!-- Statistiques de Performance -->
+        <div
+          class="mt-8 bg-card p-6 rounded-lg shadow-soft"
+          style="
+            background: #ffffff;
+            box-shadow: 0 6px 24px rgba(0, 0, 0, 0.06);
+          "
+        >
+          <h3 class="text-xl font-bold mb-4 text-center">
+            Statistiques de la Vidéo Originale
+          </h3>
+          <div class="grid grid-cols-2 md:grid-cols-5 gap-4 text-center">
+            <div class="p-3 rounded" style="background: #fff1f1">
+              <div class="text-2xl font-bold" style="color: #E30007">
+                117K
+              </div>
+              <div class="text-sm" style="color: #6f6f78">Vues</div>
+            </div>
+            <div class="p-3 rounded" style="background: #FCEE66">
+              <div class="text-2xl font-bold" style="color: #E30007">4,074</div>
+              <div class="text-sm" style="color: #6f6f78">Likes</div>
+            </div>
+            <div class="p-3 rounded" style="background: #fff6f6">
+              <div class="text-2xl font-bold" style="color: #E30007">197</div>
+              <div class="text-sm" style="color: #6f6f78">Commentaires</div>
+            </div>
+            <div class="p-3 rounded" style="background: #F4999C">
+              <div class="text-2xl font-bold" style="color: #E30007">29:22</div>
+              <div class="text-sm" style="color: #6f6f78">Durée</div>
+            </div>
+            <div class="p-3 rounded" style="background: #FCEE66">
+              <div class="text-2xl font-bold" style="color: #E30007">
+                02/07/25
+              </div>
+              <div class="text-sm" style="color: #6f6f78">Publication</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="gradient-bg text-white py-8" style="background: linear-gradient(135deg, #E30007 0%, #CC0006 100%);">
+      <div class="container mx-auto px-6 text-center">
+        <div class="mb-6">
+          <h3 class="text-xl font-bold mb-2">Prochaines Étapes</h3>
+          <p class="text-sm mb-4">
+            Commencez dès aujourd'hui votre transformation vers le trading automatisé avec l'IA
+          </p>
+          <div class="flex flex-wrap justify-center gap-4">
+            <a
+              href="https://www.youtube.com/watch?v=PIc8yzBm4yo"
+              target="_blank"
+              class="btn-primary"
+            >
+              <i class="fab fa-youtube mr-2"></i>Voir la vidéo complète
+            </a>
+            <a
+              href="https://www.youtube.com/@michaelionita"
+              target="_blank"
+              class="btn-secondary"
+            >
+              <i class="fas fa-bell mr-2"></i>S'abonner à Michael Automates
+            </a>
+          </div>
+        </div>
+
+        <div class="border-t border-white border-opacity-20 pt-6">
+          <p class="text-sm text-gray-200">
+            Guide créé à partir de la vidéo
+            <strong>"All Steps to Creating a GREAT Trading Strategy with AI"</strong>
+            par
+            <a
+              href="https://www.youtube.com/@michaelionita"
+              target="_blank"
+              class="underline hover:no-underline"
+              ><strong>Michael Automates</strong></a>
+          </p>
+          <p class="text-xs text-gray-300 mt-2">
+            Toutes les marques, outils et stratégies mentionnés appartiennent à leurs créateurs respectifs. 
+            Ce guide est à des fins éducatives uniquement et ne constitue pas un conseil financier.
+          </p>
+          <div class="flex justify-center items-center gap-4 mt-4 text-xs">
+            <span>⚠️ Trading comporte des risques</span>
+            <span>📚 Formation recommandée</span>
+            <span>🔍 Toujours tester avant investissement</span>
+          </div>
+        </div>
+      </div>
+    </footer>
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"rayId":"97474bb94a2dbe66","serverTiming":{"name":{"cfExtPri":true,"cfEdge":true,"cfOrigin":true,"cfL4":true,"cfSpeedBrain":true,"cfCacheStatus":true}},"version":"2025.8.0","token":"4edd5f8ec12a48cfa682ab8261b80a79"}' crossorigin="anonymous"></script>
+  
+  <!-- Mobile Menu Toggle Function -->
+  <script>
+      function toggleMobileMenu() {
+          const mobileMenu = document.getElementById('mobileMenu');
+          if (mobileMenu.classList.contains('hidden')) {
+              mobileMenu.classList.remove('hidden');
+          } else {
+              mobileMenu.classList.add('hidden');
+          }
+      }
+  </script>
+  
+</body>
+</html>
+    <script id="html_badge_script1">
+        window.__genspark_remove_badge_link = "https://www.genspark.ai/api/html_badge/" +
+            "remove_badge?token=To%2FBnjzloZ3UfQdcSaYfDl8jzkPYKhIe2qCRGbeJlpXU89gw7UDCQQ%2BMBsnX8ZJh2zCu0UrHfL0xrSIxsFt2UKIkFfLInbMv1Di%2BlrXx%2B5prH3zTfwe7zphs1KL%2BcnoCZ3x%2BhzdsQ5si30KusbLtrWMbwKuxgIRDGmGY4Tnzzd3kADuQ6oojBwnJJbByKGfN9Jt8zIoR%2FNY3ZrsKM7Uy33aFoW%2F6xtmDgt5x58vJ3L6a8cRDX8FlTzK0lEEMx68wanDGn2JZoiKxIbBOeA1jiXWAM1SLU6m2UUOgYMQ%2FBIT7%2FWykW4Uj2vKhh%2Bx3LCGq5CLUEmx1AgawOFuHtL5QM3xpIDbQjqaL9%2Bl%2FaXVr96Qp6n%2B7xa5VZ1HiKo9YzXpClDKQggzJ5%2FPdE25G8ehOErFHx12JynQB2PFiu2f3QTRb1oJ5tsfCZdzUpx0R3TU7JiGk2SNpusPNAbXe4rL%2BtLh8dABcLGLXUCFiV56UuHXEEdriEW4bcClod6iuJnikPUE7mnqx0GcQ3ehUTDwiw%2F%2B7uJamOFoxdRQu%2BMn3OiM%3D";
+        window.__genspark_locale = "fr-FR";
+        window.__genspark_token = "To/BnjzloZ3UfQdcSaYfDl8jzkPYKhIe2qCRGbeJlpXU89gw7UDCQQ+MBsnX8ZJh2zCu0UrHfL0xrSIxsFt2UKIkFfLInbMv1Di+lrXx+5prH3zTfwe7zphs1KL+cnoCZ3x+hzdsQ5si30KusbLtrWMbwKuxgIRDGmGY4Tnzzd3kADuQ6oojBwnJJbByKGfN9Jt8zIoR/NY3ZrsKM7Uy33aFoW/6xtmDgt5x58vJ3L6a8cRDX8FlTzK0lEEMx68wanDGn2JZoiKxIbBOeA1jiXWAM1SLU6m2UUOgYMQ/BIT7/WykW4Uj2vKhh+x3LCGq5CLUEmx1AgawOFuHtL5QM3xpIDbQjqaL9+l/aXVr96Qp6n+7xa5VZ1HiKo9YzXpClDKQggzJ5/PdE25G8ehOErFHx12JynQB2PFiu2f3QTRb1oJ5tsfCZdzUpx0R3TU7JiGk2SNpusPNAbXe4rL+tLh8dABcLGLXUCFiV56UuHXEEdriEW4bcClod6iuJnikPUE7mnqx0GcQ3ehUTDwiw/+7uJamOFoxdRQu+Mn3OiM=";
+    </script>
+    
+    <script id="html_notice_dialog_script" src="https://www.genspark.ai/notice_dialog.js"></script>
+    

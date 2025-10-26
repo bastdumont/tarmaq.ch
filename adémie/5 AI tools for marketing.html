@@ -1,0 +1,1037 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>5 Outils IA Incontournables pour Entreprises et Marketeurs</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css"
+    />
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+      body {
+        font-family: 'Inter', sans-serif;
+      }
+      .gradient-bg {
+        background: linear-gradient(135deg, #E30007 0%, #CC0006 100%);
+      }
+      .tool-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      .tool-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 40px rgba(227, 0, 7, 0.1);
+      }
+      .feature-item {
+        border-left: 4px solid #E30007;
+      }
+      .stats-card {
+        background: linear-gradient(135deg, #F4999C 0%, #E30007 100%);
+      }
+      .learning-card {
+        background: linear-gradient(135deg, #FCEE66 0%, #F4999C 100%);
+        color: #2a2a2a;
+      }
+      .learning-card h3 {
+        color: #E30007;
+      }
+      .learning-card p {
+        color: #6f6f78;
+      }
+      .btn-primary {
+        background: #E30007;
+        color: white;
+        border: none;
+        padding: 12px 18px;
+        border-radius: 14px;
+        font-weight: 700;
+        text-decoration: none;
+        display: inline-block;
+        transition: background 0.2s ease;
+      }
+      .btn-primary:hover {
+        background: #CC0006;
+      }
+      .card {
+        background: #ffffff;
+        border: 1px solid #e8e8ec;
+        border-radius: 22px;
+        box-shadow: 0 6px 24px rgba(227, 0, 7, 0.06);
+      }
+      .card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 16px 40px rgba(227, 0, 7, 0.1);
+        border-color: #E30007;
+      }
+      .section-title {
+        color: #2a2a2a;
+      }
+      .section-subtitle {
+        color: #6f6f78;
+      }
+      .text-brand {
+        color: #E30007;
+      }
+      .bg-brand-light {
+        background: #fff1f1;
+        border: 1px solid #F4999C;
+        color: #E30007;
+      }
+      .bg-surface {
+        background: #fcfcfd;
+      }
+      .text-muted {
+        color: #6f6f78;
+      }
+      .border-brand {
+        border-color: #E30007;
+      }
+      .shadow-soft {
+        box-shadow: 0 6px 24px rgba(227, 0, 7, 0.06);
+      }
+      .shadow-elev {
+        box-shadow: 0 16px 40px rgba(227, 0, 7, 0.1);
+      }
+
+      /* Header styles */
+      .btn-secondary {
+        background: rgba(255, 255, 255, 0.9);
+        color: #2a2a2a;
+        padding: 14px 24px;
+        border-radius: 16px;
+        font-weight: 700;
+        transition: all 0.3s ease;
+        border: 1px solid #e8e8ec;
+        cursor: pointer;
+      }
+
+      .btn-secondary:hover {
+        background: white;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      .btn-gradient {
+        background: linear-gradient(140deg, #F4999C, #E30007);
+        color: white;
+        padding: 14px 24px;
+        border-radius: 16px;
+        font-weight: 700;
+        transition: all 0.3s ease;
+        border: none;
+        cursor: pointer;
+      }
+
+      .btn-gradient:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(227, 0, 7, 0.25);
+      }
+
+      /* Navigation styles */
+      .nav-item {
+        position: relative;
+      }
+
+      .nav-dropdown {
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-10px);
+        transition: all 0.3s ease;
+      }
+
+      .nav-item:hover .nav-dropdown {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+      }
+    </style>
+  </head>
+  <body class="bg-surface text-ink" style="background: #fcfcfd; color: #161616">
+    <!-- Header -->
+    <header class="sticky top-0 z-50 backdrop-blur-xl bg-white/80 border-b border-stroke/50">
+        <div class="max-w-7xl mx-auto px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <div class="flex items-center gap-4">
+                    <img src="../src/assets/logo.png" alt="tarmaq" class="h-12 w-auto" />
+                </div>
+
+                <!-- Desktop Navigation -->
+                <nav class="hidden lg:flex items-center gap-8">
+                    <a href="../index.html" class="font-semibold text-ink-2 hover:text-brand transition-colors">Accueil</a>
+                    <a href="index.html" class="font-semibold text-brand">Cours Libre</a>
+                    <a href="../tarmaq_version_html_fondateur.html" class="font-semibold text-ink-2 hover:text-brand transition-colors">Projet</a>
+                    <a href="../Budget.html" class="font-semibold text-ink-2 hover:text-brand transition-colors">Budget</a>
+                    <a href="../tarmaq_interactive_mindmap.html" class="font-semibold text-ink-2 hover:text-brand transition-colors">Mindmap</a>
+                </nav>
+
+                <!-- CTA Buttons -->
+                <div class="hidden lg:flex items-center gap-4">
+                    <button class="btn-secondary">Appel à soutien</button>
+                    <button class="btn-gradient">Faire un don</button>
+                </div>
+
+                <!-- View Switcher and Mobile Menu Button -->
+                <div class="flex items-center gap-2">
+                    <!-- View Switcher Button -->
+                    <button id="viewSwitcher" class="p-2 hover:bg-gray-100 rounded-lg transition-colors text-ink-2" title="Passer à la vue mobile">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h16l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                        </svg>
+                    </button>
+                    <!-- Mobile Menu Button -->
+                    <button class="lg:hidden p-2" onclick="toggleMobileMenu()">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="lg:hidden bg-white border-t border-stroke hidden">
+            <div class="max-w-7xl mx-auto px-8 py-4">
+                <nav class="flex flex-col space-y-4">
+                    <a href="../index.html" class="font-semibold text-ink-2 hover:text-brand transition-colors py-2">Accueil</a>
+                    <a href="index.html" class="font-semibold text-ink-2 hover:text-brand transition-colors py-2">Cours Libre</a>
+                    <a href="../tarmaq_version_html_fondateur.html" class="font-semibold text-ink-2 hover:text-brand transition-colors py-2">Projet</a>
+                    <a href="../Budget.html" class="font-semibold text-ink-2 hover:text-brand transition-colors py-2">Budget</a>
+                    <a href="../tarmaq_interactive_mindmap.html" class="font-semibold text-ink-2 hover:text-brand transition-colors py-2">Mindmap</a>
+                    <div class="flex flex-col space-y-2 pt-4 border-t border-stroke">
+                        <button class="btn-secondary w-full text-center">Appel à soutien</button>
+                        <button class="btn-gradient w-full text-center">Faire un don</button>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <header class="gradient-bg text-white py-12">
+      <div class="container mx-auto px-6 text-center">
+        <h1 class="text-4xl md:text-5xl font-bold mb-4">
+          5 Outils IA Incontournables
+        </h1>
+        <p class="text-xl mb-6">Pour Entreprises et Marketeurs</p>
+        <div class="flex flex-wrap justify-center items-center gap-6 text-sm">
+          <div class="flex items-center gap-2">
+            <i class="fas fa-play-circle"></i>
+            <span>Durée: 14min 10s</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <i class="fas fa-eye"></i>
+            <span>54,598 vues</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <i class="fas fa-thumbs-up"></i>
+            <span>1,258 likes</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <i class="fas fa-user"></i>
+            <span>Skill Leap AI</span>
+          </div>
+        </div>
+        <div class="mt-6">
+          <a
+            href="https://www.youtube.com/watch?v=J1qBYAXHTpU"
+            target="_blank"
+            class="btn-primary"
+          >
+            <i class="fab fa-youtube mr-2"></i>Voir la vidéo originale
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Résumé Exécutif -->
+    <section class="py-12 bg-card" style="background: #ffffff">
+      <div class="container mx-auto px-6">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold mb-4">Résumé Exécutif</h2>
+          <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+            Cette vidéo présente 5 outils IA révolutionnaires pour automatiser
+            et optimiser les processus business, du marketing sur réseaux
+            sociaux à la création de sites web, en passant par l'extraction de
+            données et la production de contenu.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+          <div class="stats-card text-white p-6 rounded-lg text-center">
+            <i class="fas fa-rocket text-3xl mb-4"></i>
+            <h3 class="text-2xl font-bold">Automatisation</h3>
+            <p class="mt-2">
+              Réduisez de 80% le temps consacré aux tâches répétitives
+            </p>
+          </div>
+          <div class="learning-card p-6 rounded-lg text-center">
+            <i class="fas fa-chart-line text-3xl mb-4 text-brand"></i>
+            <h3 class="text-2xl font-bold">Productivité</h3>
+            <p class="mt-2">
+              Multipliez par 10 votre capacité de création de contenu
+            </p>
+          </div>
+          <div
+            class="bg-gradient-to-br from-FFE3E2 to-FFD2D1 p-6 rounded-lg text-center"
+            style="
+              background: linear-gradient(135deg, #FCEE66 0%, #F4999C 100%);
+              color: #2a2a2a;
+            "
+          >
+            <i class="fas fa-dollar-sign text-3xl mb-4 text-brand"></i>
+            <h3 class="text-2xl font-bold">ROI</h3>
+            <p class="mt-2">Économisez des milliers d'euros en outsourcing</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Les 5 Outils -->
+    <section class="py-12 bg-surface" style="background: #fcfcfd">
+      <div class="container mx-auto px-6">
+        <h2 class="text-3xl font-bold text-center mb-12">
+          Les 5 Outils IA Présentés
+        </h2>
+
+        <!-- Flick AI -->
+        <div
+          class="tool-card bg-white rounded-lg shadow-lg mb-8 overflow-hidden"
+        >
+          <div
+            class="bg-gradient-to-r from-purple-600 to-blue-600 text-white p-6"
+          >
+            <div class="flex items-center justify-between">
+              <div>
+                <h3 class="text-2xl font-bold flex items-center">
+                  <i class="fas fa-share-alt mr-3"></i>1. Flick AI
+                </h3>
+                <p class="text-lg">
+                  Automatisation du Marketing sur Réseaux Sociaux
+                </p>
+              </div>
+              <div class="text-right">
+                <a
+                  href="https://www.flick.social/"
+                  target="_blank"
+                  class="bg-white text-purple-600 px-4 py-2 rounded font-semibold hover:bg-gray-100 transition-colors"
+                >
+                  Découvrir <i class="fas fa-external-link-alt ml-1"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="p-6">
+            <div class="grid md:grid-cols-2 gap-6">
+              <div>
+                <h4 class="text-lg font-semibold mb-3 text-purple-600">
+                  Fonctionnalités Clés
+                </h4>
+                <ul class="space-y-2">
+                  <li class="feature-item pl-4 py-2">
+                    <strong>Iris AI:</strong> Outil d'automatisation de contenu
+                    social media
+                  </li>
+                  <li class="feature-item pl-4 py-2">
+                    <strong>Stratégie personnalisée:</strong> Configuration de
+                    fréquence et types de contenu
+                  </li>
+                  <li class="feature-item pl-4 py-2">
+                    <strong>Brand Hub:</strong> Définition de la voix de marque
+                  </li>
+                  <li class="feature-item pl-4 py-2">
+                    <strong>Multi-plateformes:</strong> Instagram, Facebook,
+                    TikTok, LinkedIn
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <h4 class="text-lg font-semibold mb-3 text-purple-600">
+                  Cas d'Usage Démontré
+                </h4>
+                <div class="bg-gray-50 p-4 rounded-lg">
+                  <p class="mb-3">
+                    <strong>Exemple:</strong> Clinique de bien-être locale
+                  </p>
+                  <ul class="text-sm space-y-1">
+                    <li>• Configuration: 4 posts/semaine</li>
+                    <li>• Contenu: Informatif, Business, Promotionnel</li>
+                    <li>• Résultat: 8 posts générés pour 2 semaines</li>
+                    <li>• Temps économisé: 90% vs création manuelle</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Browse AI -->
+        <div
+          class="tool-card bg-white rounded-lg shadow-lg mb-8 overflow-hidden"
+        >
+          <div
+            class="bg-gradient-to-r from-green-600 to-teal-600 text-white p-6"
+          >
+            <div class="flex items-center justify-between">
+              <div>
+                <h3 class="text-2xl font-bold flex items-center">
+                  <i class="fas fa-robot mr-3"></i>2. Browse AI
+                </h3>
+                <p class="text-lg">Extraction et Surveillance de Données Web</p>
+              </div>
+              <div class="text-right">
+                <a
+                  href="https://www.browse.ai/"
+                  target="_blank"
+                  class="bg-white text-green-600 px-4 py-2 rounded font-semibold hover:bg-gray-100 transition-colors"
+                >
+                  Découvrir <i class="fas fa-external-link-alt ml-1"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="p-6">
+            <div class="grid md:grid-cols-2 gap-6">
+              <div>
+                <h4 class="text-lg font-semibold mb-3 text-green-600">
+                  Bots Pré-construits
+                </h4>
+                <ul class="space-y-2">
+                  <li class="feature-item pl-4 py-2">
+                    <strong>LinkedIn:</strong> Extraction d'offres d'emploi
+                  </li>
+                  <li class="feature-item pl-4 py-2">
+                    <strong>Zapier:</strong> Liste des applications disponibles
+                  </li>
+                  <li class="feature-item pl-4 py-2">
+                    <strong>Redfin:</strong> Propriétés immobilières
+                  </li>
+                  <li class="feature-item pl-4 py-2">
+                    <strong>YouTube:</strong> Métadonnées de chaînes
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <h4 class="text-lg font-semibold mb-3 text-green-600">
+                  Performance Démontrée
+                </h4>
+                <div class="bg-gray-50 p-4 rounded-lg">
+                  <p class="mb-3"><strong>Résultat testé:</strong></p>
+                  <div class="text-2xl font-bold text-green-600 mb-2">
+                    6,000+ vidéos
+                  </div>
+                  <ul class="text-sm space-y-1">
+                    <li>• Extraites de plusieurs chaînes YouTube</li>
+                    <li>• Avec métadonnées complètes</li>
+                    <li>• En quelques minutes seulement</li>
+                    <li>• Export CSV pour analyse</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Durable -->
+        <div
+          class="tool-card bg-white rounded-lg shadow-lg mb-8 overflow-hidden"
+        >
+          <div
+            class="bg-gradient-to-r from-blue-600 to-indigo-600 text-white p-6"
+          >
+            <div class="flex items-center justify-between">
+              <div>
+                <h3 class="text-2xl font-bold flex items-center">
+                  <i class="fas fa-globe mr-3"></i>3. Durable
+                </h3>
+                <p class="text-lg">Création de Sites Web IA en 30 Secondes</p>
+              </div>
+              <div class="text-right">
+                <a
+                  href="https://durable.co/skillleapai"
+                  target="_blank"
+                  class="bg-white text-blue-600 px-4 py-2 rounded font-semibold hover:bg-gray-100 transition-colors"
+                >
+                  Découvrir <i class="fas fa-external-link-alt ml-1"></i>
+                </a>
+                <div class="mt-2 text-sm">
+                  Code: <strong>SKILLLEAP30</strong> (-30%)
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="p-6">
+            <div class="grid md:grid-cols-2 gap-6">
+              <div>
+                <h4 class="text-lg font-semibold mb-3 text-blue-600">
+                  Fonctionnalités Avancées
+                </h4>
+                <ul class="space-y-2">
+                  <li class="feature-item pl-4 py-2">
+                    <strong>Génération instantanée:</strong> Site complet en
+                    20-30 secondes
+                  </li>
+                  <li class="feature-item pl-4 py-2">
+                    <strong>Templates multiples:</strong> Personnalisation
+                    complète
+                  </li>
+                  <li class="feature-item pl-4 py-2">
+                    <strong>Images Getty:</strong> Banque d'images intégrée
+                  </li>
+                  <li class="feature-item pl-4 py-2">
+                    <strong>Version gratuite:</strong> Sans carte de crédit
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <h4 class="text-lg font-semibold mb-3 text-blue-600">
+                  Exemple Créé
+                </h4>
+                <div class="bg-gray-50 p-4 rounded-lg">
+                  <p class="mb-3">
+                    <strong>Site généré:</strong> "Skill Leap AI"
+                  </p>
+                  <ul class="text-sm space-y-1">
+                    <li>• Plateforme d'éducation IA</li>
+                    <li>• Avec logo et bannière automatiques</li>
+                    <li>• Section prix générée automatiquement</li>
+                    <li>• FAQ complète incluse</li>
+                    <li>• Personnalisation immédiate possible</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Guidde -->
+        <div
+          class="tool-card bg-white rounded-lg shadow-lg mb-8 overflow-hidden"
+        >
+          <div
+            class="bg-gradient-to-r from-orange-600 to-red-600 text-white p-6"
+          >
+            <div class="flex items-center justify-between">
+              <div>
+                <h3 class="text-2xl font-bold flex items-center">
+                  <i class="fas fa-video mr-3"></i>4. Guidde
+                </h3>
+                <p class="text-lg">Création de Tutoriels Vidéo IA</p>
+              </div>
+              <div class="text-right">
+                <a
+                  href="https://www.guidde.com/"
+                  target="_blank"
+                  class="bg-white text-orange-600 px-4 py-2 rounded font-semibold hover:bg-gray-100 transition-colors"
+                >
+                  Découvrir <i class="fas fa-external-link-alt ml-1"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="p-6">
+            <div class="grid md:grid-cols-2 gap-6">
+              <div>
+                <h4 class="text-lg font-semibold mb-3 text-orange-600">
+                  Processus Automatisé
+                </h4>
+                <ul class="space-y-2">
+                  <li class="feature-item pl-4 py-2">
+                    <strong>Capture intelligente:</strong> Screenshots
+                    automatiques des étapes
+                  </li>
+                  <li class="feature-item pl-4 py-2">
+                    <strong>Sans narration:</strong> Juste effectuer les actions
+                  </li>
+                  <li class="feature-item pl-4 py-2">
+                    <strong>Génération complète:</strong> Vidéo + guide écrit
+                  </li>
+                  <li class="feature-item pl-4 py-2">
+                    <strong>Multi-formats:</strong> Plusieurs options de sortie
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <h4 class="text-lg font-semibold mb-3 text-orange-600">
+                  Options Avancées
+                </h4>
+                <div class="bg-gray-50 p-4 rounded-lg space-y-3">
+                  <div>
+                    <strong>Voix-off IA:</strong> Choix de locuteurs par pays
+                  </div>
+                  <div>
+                    <strong>Traduction:</strong> Multilingue automatique
+                  </div>
+                  <div>
+                    <strong>Branding:</strong> Ajout de logos et identité
+                  </div>
+                  <div>
+                    <strong>Cas d'usage:</strong> Formation, onboarding, support
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Adobe Express -->
+        <div
+          class="tool-card bg-white rounded-lg shadow-lg mb-8 overflow-hidden"
+        >
+          <div class="bg-gradient-to-r from-red-600 to-pink-600 text-white p-6">
+            <div class="flex items-center justify-between">
+              <div>
+                <h3 class="text-2xl font-bold flex items-center">
+                  <i class="fas fa-palette mr-3"></i>5. Adobe Express
+                </h3>
+                <p class="text-lg">Design Graphique IA - Alternative à Canva</p>
+              </div>
+              <div class="text-right">
+                <a
+                  href="https://www.adobe.com/express/"
+                  target="_blank"
+                  class="bg-white text-red-600 px-4 py-2 rounded font-semibold hover:bg-gray-100 transition-colors"
+                >
+                  Découvrir <i class="fas fa-external-link-alt ml-1"></i>
+                </a>
+                <div class="mt-2 text-sm">Essai 30 jours gratuit</div>
+              </div>
+            </div>
+          </div>
+          <div class="p-6">
+            <div class="grid md:grid-cols-2 gap-6">
+              <div>
+                <h4 class="text-lg font-semibold mb-3 text-red-600">
+                  Outils IA Intégrés
+                </h4>
+                <ul class="space-y-2">
+                  <li class="feature-item pl-4 py-2">
+                    <strong>Adobe Firefly:</strong> Génération d'images
+                    texte-vers-image
+                  </li>
+                  <li class="feature-item pl-4 py-2">
+                    <strong>Suppression arrière-plan:</strong> Technologie
+                    Photoshop
+                  </li>
+                  <li class="feature-item pl-4 py-2">
+                    <strong>Templates IA:</strong> Génération depuis prompts
+                    texte
+                  </li>
+                  <li class="feature-item pl-4 py-2">
+                    <strong>Branding intégré:</strong> Logos et éléments de
+                    marque
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <h4 class="text-lg font-semibold mb-3 text-red-600">
+                  Exemple Généré
+                </h4>
+                <div class="bg-gray-50 p-4 rounded-lg">
+                  <p class="mb-3">
+                    <strong>Prompt testé:</strong> "Annonce nouveau studio yoga"
+                  </p>
+                  <ul class="text-sm space-y-1">
+                    <li>• Multiples templates générés</li>
+                    <li>• Qualité professionnelle instantanée</li>
+                    <li>• Édition complète possible</li>
+                    <li>• Export PNG direct</li>
+                    <li>• Intégration avec Flick AI possible</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Apprentissages Clés -->
+    <section class="py-12 bg-card" style="background: #ffffff">
+      <div class="container mx-auto px-6">
+        <h2 class="text-3xl font-bold text-center mb-12">
+          Apprentissages Clés
+        </h2>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+          <div
+            class="text-center p-6 rounded-lg"
+            style="
+              background: linear-gradient(135deg, #fff1f1 0%, #F4999C 100%);
+            "
+          >
+            <i class="fas fa-link text-3xl mb-4" style="color: #E30007"></i>
+            <h3 class="font-bold text-lg mb-2" style="color: #2a2a2a">
+              Écosystème Intégré
+            </h3>
+            <p class="text-sm" style="color: #6f6f78">
+              Ces outils peuvent être combinés pour créer un workflow complet
+              d'automatisation business.
+            </p>
+          </div>
+          <div
+            class="text-center p-6 rounded-lg"
+            style="
+              background: linear-gradient(135deg, #FCEE66 0%, #F4999C 100%);
+            "
+          >
+            <i class="fas fa-clock text-3xl mb-4" style="color: #E30007"></i>
+            <h3 class="font-bold text-lg mb-2" style="color: #2a2a2a">
+              Gain de Temps
+            </h3>
+            <p class="text-sm" style="color: #6f6f78">
+              Réduction de 80-90% du temps consacré aux tâches répétitives comme
+              le social media et la création de contenu.
+            </p>
+          </div>
+          <div
+            class="text-center p-6 rounded-lg"
+            style="
+              background: linear-gradient(135deg, #fff6f6 0%, #F4999C 100%);
+            "
+          >
+            <i class="fas fa-cogs text-3xl mb-4" style="color: #E30007"></i>
+            <h3 class="font-bold text-lg mb-2" style="color: #2a2a2a">
+              Automatisation Intelligente
+            </h3>
+            <p class="text-sm" style="color: #6f6f78">
+              L'IA ne remplace pas la créativité mais automatise les processus
+              répétitifs pour libérer du temps créatif.
+            </p>
+          </div>
+          <div
+            class="text-center p-6 rounded-lg"
+            style="
+              background: linear-gradient(135deg, #fff1f1 0%, #FCEE66 100%);
+            "
+          >
+            <i
+              class="fas fa-graduation-cap text-3xl mb-4"
+              style="color: #E30007"
+            ></i>
+            <h3 class="text-xl font-bold mb-2" style="color: #2a2a2a">
+              Courbe d'Apprentissage
+            </h3>
+            <p class="text-sm" style="color: #6f6f78">
+              La plupart de ces outils sont accessibles aux non-techniciens avec
+              des interfaces intuitives.
+            </p>
+          </div>
+        </div>
+
+        <div
+          class="p-8 rounded-lg"
+          style="
+            background: linear-gradient(135deg, #E30007 0%, #CC0006 100%);
+            color: white;
+          "
+        >
+          <h3 class="text-2xl font-bold mb-4 text-center">
+            Workflow Recommandé
+          </h3>
+          <div class="grid md:grid-cols-5 gap-4 text-center">
+            <div class="flex flex-col items-center">
+              <div
+                class="w-12 h-12 rounded-full flex items-center justify-center font-bold mb-2"
+                style="background: white; color: #E30007"
+              >
+                1
+              </div>
+              <p class="text-sm">
+                Créer site web avec <strong>Durable</strong>
+              </p>
+            </div>
+            <div class="flex flex-col items-center">
+              <div
+                class="w-12 h-12 rounded-full flex items-center justify-center font-bold mb-2"
+                style="background: white; color: #E30007"
+              >
+                2
+              </div>
+              <p class="text-sm">
+                Designer visuels avec <strong>Adobe Express</strong>
+              </p>
+            </div>
+            <div class="flex flex-col items-center">
+              <div
+                class="w-12 h-12 rounded-full flex items-center justify-center font-bold mb-2"
+                style="background: white; color: #E30007"
+              >
+                3
+              </div>
+              <p class="text-sm">
+                Automatiser social media avec <strong>Flick AI</strong>
+              </p>
+            </div>
+            <div class="flex flex-col items-center">
+              <div
+                class="w-12 h-12 rounded-full flex items-center justify-center font-bold mb-2"
+                style="background: white; color: #E30007"
+              >
+                4
+              </div>
+              <p class="text-sm">
+                Créer tutoriels avec <strong>Guidde</strong>
+              </p>
+            </div>
+            <div class="flex flex-col items-center">
+              <div
+                class="w-12 h-12 rounded-full flex items-center justify-center font-bold mb-2"
+                style="background: white; color: #E30007"
+              >
+                5
+              </div>
+              <p class="text-sm">
+                Analyser data avec <strong>Browse AI</strong>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Ressources Additionnelles -->
+    <section class="py-12 bg-surface" style="background: #fcfcfd">
+      <div class="container mx-auto px-6">
+        <h2 class="text-3xl font-bold text-center mb-12">
+          Ressources et Liens Utiles
+        </h2>
+
+        <div class="grid md:grid-cols-2 gap-8">
+          <div
+            class="bg-card p-6 rounded-lg shadow-soft"
+            style="
+              background: #ffffff;
+              box-shadow: 0 6px 24px rgba(0, 0, 0, 0.06);
+            "
+          >
+            <h3
+              class="text-xl font-bold mb-4 flex items-center text-brand"
+              style="color: #da2f2c"
+            >
+              <i class="fas fa-link mr-2"></i>Liens Directs des Outils
+            </h3>
+            <div class="space-y-3">
+              <a
+                href="https://www.flick.social/"
+                target="_blank"
+                class="flex items-center justify-between p-3 bg-purple-50 rounded hover:bg-purple-100 transition-colors"
+              >
+                <span><strong>Flick AI</strong> - Social Media Automation</span>
+                <i class="fas fa-external-link-alt text-purple-600"></i>
+              </a>
+              <a
+                href="https://www.browse.ai/"
+                target="_blank"
+                class="flex items-center justify-between p-3 bg-green-50 rounded hover:bg-green-100 transition-colors"
+              >
+                <span><strong>Browse AI</strong> - Web Data Extraction</span>
+                <i class="fas fa-external-link-alt text-green-600"></i>
+              </a>
+              <a
+                href="https://durable.co/skillleapai"
+                target="_blank"
+                class="flex items-center justify-between p-3 bg-blue-50 rounded hover:bg-blue-100 transition-colors"
+              >
+                <span
+                  ><strong>Durable</strong> - AI Website Builder (Code:
+                  SKILLLEAP30)</span
+                >
+                <i class="fas fa-external-link-alt text-blue-600"></i>
+              </a>
+              <a
+                href="https://www.guidde.com/"
+                target="_blank"
+                class="flex items-center justify-between p-3 bg-orange-50 rounded hover:bg-orange-100 transition-colors"
+              >
+                <span><strong>Guidde</strong> - AI Video Tutorials</span>
+                <i class="fas fa-external-link-alt text-orange-600"></i>
+              </a>
+              <a
+                href="https://www.adobe.com/express/"
+                target="_blank"
+                class="flex items-center justify-between p-3 bg-red-50 rounded hover:bg-red-100 transition-colors"
+              >
+                <span><strong>Adobe Express</strong> - AI Graphic Design</span>
+                <i class="fas fa-external-link-alt text-red-600"></i>
+              </a>
+            </div>
+          </div>
+
+          <div
+            class="bg-card p-6 rounded-lg shadow-soft"
+            style="
+              background: #ffffff;
+              box-shadow: 0 6px 24px rgba(0, 0, 0, 0.06);
+            "
+          >
+            <h3
+              class="text-xl font-bold mb-4 flex items-center text-brand"
+              style="color: #da2f2c"
+            >
+              <i class="fas fa-graduation-cap mr-2"></i>Formations et
+              Apprentissage
+            </h3>
+            <div class="space-y-4">
+              <div
+                class="p-4 rounded-lg"
+                style="
+                  background: linear-gradient(135deg, #E30007 0%, #CC0006 100%);
+                  color: white;
+                "
+              >
+                <h4 class="font-bold mb-2">
+                  Skill Leap AI - Plateforme de Formation
+                </h4>
+                <p class="text-sm mb-3">
+                  Accès à plus de 20 cours sur l'IA avec essai gratuit
+                </p>
+                <a
+                  href="https://bit.ly/skill-leap"
+                  target="_blank"
+                  class="btn-primary"
+                  style="font-size: 0.875rem; padding: 8px 16px"
+                >
+                  Commencer l'essai gratuit
+                </a>
+              </div>
+
+              <div
+                class="border-2 border-dashed border-gray-300 p-4 rounded-lg text-center"
+              >
+                <i class="fas fa-lightbulb text-2xl text-yellow-500 mb-2"></i>
+                <p class="text-sm text-gray-600">
+                  <strong>Conseil:</strong> Commencez par tester la version
+                  gratuite de chaque outil avant de vous engager dans un
+                  abonnement payant.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Métriques de la Vidéo -->
+        <div
+          class="mt-12 bg-card p-6 rounded-lg shadow-soft"
+          style="
+            background: #ffffff;
+            box-shadow: 0 6px 24px rgba(0, 0, 0, 0.06);
+          "
+        >
+          <h3 class="text-xl font-bold mb-4 text-center">
+            Statistiques de la Vidéo
+          </h3>
+          <div class="grid grid-cols-2 md:grid-cols-5 gap-4 text-center">
+            <div class="p-3 rounded" style="background: #fff1f1">
+              <div class="text-2xl font-bold" style="color: #E30007">
+                54,598
+              </div>
+              <div class="text-sm" style="color: #6f6f78">Vues</div>
+            </div>
+            <div class="p-3 rounded" style="background: #FCEE66">
+              <div class="text-2xl font-bold" style="color: #E30007">1,258</div>
+              <div class="text-sm" style="color: #6f6f78">Likes</div>
+            </div>
+            <div class="p-3 rounded" style="background: #fff6f6">
+              <div class="text-2xl font-bold" style="color: #E30007">33</div>
+              <div class="text-sm" style="color: #6f6f78">Commentaires</div>
+            </div>
+            <div class="p-3 rounded" style="background: #F4999C">
+              <div class="text-2xl font-bold" style="color: #E30007">14:10</div>
+              <div class="text-sm" style="color: #6f6f78">Durée</div>
+            </div>
+            <div class="p-3 rounded" style="background: #FCEE66">
+              <div class="text-2xl font-bold" style="color: #E30007">
+                21/11/24
+              </div>
+              <div class="text-sm" style="color: #6f6f78">Publication</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="gradient-bg text-white py-8" style="background: linear-gradient(135deg, #E30007 0%, #CC0006 100%);">
+      <div class="container mx-auto px-6 text-center">
+        <div class="mb-6">
+          <h3 class="text-xl font-bold mb-2">Prochaines Étapes</h3>
+          <p class="text-sm mb-4">
+            Commencez dès aujourd'hui votre transformation digitale avec ces
+            outils IA
+          </p>
+          <div class="flex flex-wrap justify-center gap-4">
+            <a
+              href="https://www.youtube.com/watch?v=J1qBYAXHTpU"
+              target="_blank"
+              class="btn-primary"
+            >
+              <i class="fab fa-youtube mr-2"></i>Voir la vidéo
+            </a>
+            <a
+              href="https://www.youtube.com/@SkillLeapAI"
+              target="_blank"
+              class="btn-secondary"
+            >
+              <i class="fas fa-bell mr-2"></i>S'abonner à la chaîne
+            </a>
+          </div>
+        </div>
+
+        <div class="border-t border-white border-opacity-20 pt-6">
+          <p class="text-sm text-gray-200">
+            Résumé créé à partir de la vidéo
+            <strong>"5 Must-Have AI Tools for Businesses and Marketers"</strong>
+            par
+            <a
+              href="https://www.youtube.com/@SkillLeapAI"
+              target="_blank"
+              class="underline hover:no-underline"
+              ><strong>Skill Leap AI</strong></a
+            >
+          </p>
+          <p class="text-xs text-gray-300 mt-2">
+            Toutes les marques et noms de produits mentionnés appartiennent à
+            leurs propriétaires respectifs.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Mobile menu toggle function -->
+    <script>
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            if (mobileMenu) {
+                mobileMenu.classList.toggle('hidden');
+            }
+        }
+    </script>
+    
+    <script
+      defer
+      src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015"
+      integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ=="
+      data-cf-beacon='{"rayId":"9714f8150a1f3dba","serverTiming":{"name":{"cfExtPri":true,"cfEdge":true,"cfOrigin":true,"cfL4":true,"cfSpeedBrain":true,"cfCacheStatus":true}},"version":"2025.8.0","token":"4edd5f8ec12a48cfa682ab8261b80a79"}'
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
+<script id="html_badge_script1">
+  window.__genspark_remove_badge_link =
+    'https://www.genspark.ai/api/html_badge/' +
+    'remove_badge?token=To%2FBnjzloZ3UfQdcSaYfDvfivHwnb2UOjcSRw%2BFjtXSX6506ZiMz8SYMRyFnecYVrcvNMvd1JbCtd2gn2DqA39CHPfxjo2T7SMR1H9wEzRVgpqt1Dkj8CFCtUZm6pOC%2BkGmA9UUzx1EnnPRDsXdgOxWozRnDtvmwWeXz%2BtS8wcfmBxuwWpy8q%2FzQSwz%2BoIyO%2B5mJxuToshGFP29UVBjLy3VP%2Fjk9INuMnJU9DryyDLbtjt4yc9blchsKGguMchMv3fEymLTrFby2pAXIkVY6wYbb1izTTdotKnR8gyhKHsyUHSnQq6EDKlizicoJuLTGPyPKyY4wPzcYqZaj8lNC4Io5gexVsAGpqO3XtVhsAgjbItCRrb6hQpFayPFsae%2BXcEW%2F2Oa%2FO6DWy6F3pnTU8uYLd6aas0lgDIXeGjxKeonBF77C4%2B6VPtlEY8VXjGxYdEgKkQB3adKJgYcY2y%2BJYrY2d3PHmfG9G1MLL7xpfAwCovEnZ%2BwhKdQWRdfFo2DBdupV5jNiaqro7sxZDLGWwy1VsSuvlxtuwU3YNFyic9o%3D';
+  window.__genspark_locale = 'fr-FR';
+  window.__genspark_token =
+    'To/BnjzloZ3UfQdcSaYfDvfivHwnb2UOjcSRw+FjtXSX6506ZiMz8SYMRyFnecYVrcvNMvd1JbCtd2gn2DqA39CHPfxjo2T7SMR1H9wEzRVgpqt1Dkj8CFCtUZm6pOC+kGmA9UUzx1EnnPRDsXdgOxWozRnDtvmwWeXz+tS8wcfmBxuwWpy8q/zQSwz+oIyO+5mJxuToshGFP29UVBjLy3VP/jk9INuMnJU9DryyDLbtjt4yc9blchsKGguMchMv3fEymLTrFby2pAXIkVY6wYbb1izTTdotKnR8gyhKHsyUHSnQq6EDKlizicoJuLTGPyPKyY4wPzcYqZaj8lNC4Io5gexVsAGpqO3XtVhsAgjbItCRrb6hQpFayPFsae+XcEW/2Oa/O6DWy6F3pnTU8uYLd6aas0lgDIXeGjxKeonBF77C4+6VPtlEY8VXjGxYdEgKkQB3adKJgYcY2y+JYrY2d3PHmfG9G1MLL7xpfAwCovEnZ+whKdQWRdfFo2DBdupV5jNiaqro7sxZDLGWwy1VsSuvlxtuwU3YNFyic9o=';
+</script>
+
+<script
+  id="html_notice_dialog_script"
+  src="https://www.genspark.ai/notice_dialog.js"
+></script>

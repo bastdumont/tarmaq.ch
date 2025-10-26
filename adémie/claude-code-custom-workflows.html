@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Custom Claude Codes — Résumé, cas d’usage et ressources</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css"
+    />
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+      body { font-family: 'Inter', sans-serif; background:#fcfcfd; color:#161616; }
+      .gradient-bg { background: linear-gradient(135deg, #E30007 0%, #CC0006 100%); }
+      .btn-primary {
+        background: #E30007; color: #fff; border: none; padding: 12px 18px;
+        border-radius: 14px; font-weight: 700; text-decoration: none; display: inline-block;
+        transition: all .2s ease;
+      }
+      .btn-primary:hover { filter: brightness(1.1); transform: translateY(-1px); }
+      .btn-secondary {
+        background: white; color: #111827; padding: 12px 18px; border-radius: 14px;
+        font-weight: 700; border: 1px solid #e5e7eb;
+      }
+      
+      /* Header button styles */
+      .btn-gradient {
+        background: linear-gradient(140deg, #F4999C, #E30007);
+        color: white;
+        padding: 14px 24px;
+        border-radius: 16px;
+        font-weight: 700;
+        transition: all 0.3s ease;
+        border: none;
+        cursor: pointer;
+      }
+
+      .btn-gradient:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(227, 0, 7, 0.25);
+      }
+      
+      /* CSS variables for consistent theming */
+      :root {
+        --brand: #E30007;
+        --brand-600: #CC0006;
+        --ink-2: #2a2a2a;
+        --stroke: #e8e8ec;
+      }
+      .card {
+        background:#fff; border:1px solid #e8e8ec; border-radius:22px; box-shadow: 0 6px 24px rgba(0,0,0,.06);
+        transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+      }
+      .card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,.08); border-color:#111827; }
+      .feature-item { border-left: 4px solid #111827; }
+      .badge { display:inline-block; padding:4px 10px; border-radius:999px; font-size:.75rem; border:1px solid #e5e7eb; }
+      .shadow-soft { box-shadow: 0 6px 24px rgba(0, 0, 0, 0.06); }
+      .kpi { background:#f3f4f6; border-radius:12px; padding:12px; text-align:center; }
+      .tag { background:#eef2ff; color:#4338ca; border:1px solid #c7d2fe; padding:6px 10px; border-radius:999px; font-weight:600; font-size:.8rem; }
+      .section-title { color:#111827; }
+      .section-subtitle { color:#6b7280; }
+      .divider { height:1px; background:#e5e7eb; }
+      .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace; }
+      .pill-step { background:white; border:1px dashed #e5e7eb; border-radius:14px; padding:10px 12px; }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="sticky top-0 z-50 backdrop-blur-xl bg-white/80 border-b border-gray-200">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="flex items-center justify-between h-16">
+          <div class="flex items-center gap-3">
+            <i class="fa-solid fa-code text-xl"></i>
+            <span class="font-bold">Custom Claude Codes</span>
+          </div>
+          <nav class="hidden md:flex items-center gap-5 text-sm">
+            <a href="#resume" class="hover:underline">Résumé</a>
+            <a href="#workflow" class="hover:underline">Workflow</a>
+            <a href="#usecases" class="hover:underline">Cas d’usage</a>
+            <a href="#ressources" class="hover:underline">Ressources</a>
+            <a href="#exos" class="hover:underline">Défis</a>
+          </nav>
+          <div class="hidden md:flex gap-3">
+            <a href="https://www.youtube.com/watch?v=g9StRbgcOIM" target="_blank" class="btn-primary"><i class="fab fa-youtube mr-2"></i>Voir la vidéo</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="gradient-bg text-white py-12">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="grid md:grid-cols-2 gap-10 items-center">
+          <div>
+            <h1 class="text-4xl md:text-5xl font-extrabold leading-tight mb-4">
+              Build ANYTHING With Custom Claude Codes
+            </h1>
+            <p class="text-lg opacity-90 mb-6">
+              Comment transformer <span class="font-semibold">Claude Code</span> en employé IA spécialisé via un dossier <span class="mono">claude.md</span> préconfiguré, des scripts Python et des workflows prêts à déployer.
+            </p>
+            <div class="flex flex-wrap gap-3 text-sm">
+              <span class="badge"><i class="fa-regular fa-clock mr-1"></i> 11:19</span>
+              <span class="badge"><i class="fa-regular fa-calendar mr-1"></i> 24 août 2025</span>
+              <span class="badge"><i class="fa-regular fa-eye mr-1"></i> 2 531 vues</span>
+              <span class="badge"><i class="fa-regular fa-thumbs-up mr-1"></i> 83 likes</span>
+              <span class="badge"><i class="fa-regular fa-comment mr-1"></i> 8 commentaires</span>
+              <span class="badge"><i class="fa-solid fa-user mr-1"></i> Income Stream Surfers</span>
+            </div>
+            <div class="mt-6 flex gap-3">
+              <a href="https://www.youtube.com/watch?v=g9StRbgcOIM" target="_blank" class="btn-primary"><i class="fab fa-youtube mr-2"></i>Regarder</a>
+              <a href="https://www.youtube.com/channel/UCctL30i8tVgSS9A37Q532eg" target="_blank" class="btn-secondary">Chaîne</a>
+            </div>
+          </div>
+          <div class="card p-6">
+            <h3 class="font-bold text-xl mb-3">Tags</h3>
+            <div class="flex flex-wrap gap-2">
+              <span class="tag">claude code</span>
+              <span class="tag">opus 4.1</span>
+              <span class="tag">opus 4</span>
+              <span class="tag">claude opus</span>
+              <span class="tag">claude code anthropic</span>
+              <span class="tag">claude code sonnet</span>
+              <span class="tag">sonnet 4</span>
+              <span class="tag">claude sonnet 4</span>
+            </div>
+            <div class="divider my-5"></div>
+            <h3 class="font-bold text-xl mb-2">Idée clé</h3>
+            <p class="text-gray-700">
+              Packager Claude Code en “<em>agent spécialisé</em>” : le dépôt Git inclut <span class="mono">claude.md</span> rempli (mémoire, règles, prompts), scripts utilitaires (ex. <span class="mono">create_droplet.py</span>), et modèles prêts à exécuter.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Résumé exécutif -->
+    <section id="resume" class="py-12">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-10">
+          <h2 class="section-title text-3xl font-bold mb-3">Résumé exécutif</h2>
+          <p class="section-subtitle max-w-3xl mx-auto">
+            La vidéo introduit les <strong>Custom Claude Codes</strong> : une méthode pour “programmer” Claude Code afin d’exécuter des <strong>workflows ciblés</strong> (création de sites WordPress, déploiement sur DigitalOcean, prospection 24/7, etc.).
+            L’approche repose sur un dépôt Git réutilisable qui embarque la mémoire de projet et les scripts requis.
+          </p>
+        </div>
+        <div class="grid md:grid-cols-3 gap-6">
+          <div class="kpi">
+            <div class="text-2xl font-extrabold">Spécialisation</div>
+            <div class="text-sm text-gray-600">Transformer Claude Code en expert d’un métier précis</div>
+          </div>
+          <div class="kpi">
+            <div class="text-2xl font-extrabold">Réplicabilité</div>
+            <div class="text-sm text-gray-600">Cloner, lancer, itérer sur n’importe quelle machine</div>
+          </div>
+          <div class="kpi">
+            <div class="text-2xl font-extrabold">Automatisation</div>
+            <div class="text-sm text-gray-600">Exécuter des tâches end‑to‑end via scripts + MCP</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Workflow présenté -->
+    <section id="workflow" class="py-12 bg-white">
+      <div class="max-w-7xl mx-auto px-6">
+        <h2 class="section-title text-3xl font-bold mb-6">Workflow démontré : “WordPress Directory Builder”</h2>
+        <div class="grid md:grid-cols-2 gap-8">
+          <div class="card p-6">
+            <h3 class="font-semibold text-xl mb-3"><i class="fa-solid fa-list-check mr-2"></i>Étapes observées</h3>
+            <ol class="space-y-3 text-gray-800 list-decimal pl-6">
+              <li>Initialiser un dépôt “Custom Claude” avec <span class="mono">claude.md</span> prérempli (mémoire de projet, consignes SEO, métadonnées).</li>
+              <li>Inclure des <strong>scripts Python</strong> utilitaires (ex.: <span class="mono">create_droplet.py</span>) référencés par la mémoire.</li>
+              <li>Générer en local un site WordPress (Docker) avec thème + CPT (directory), puis <strong>remplir contenu</strong> (ex. annuaire “therapists in California”).</li>
+              <li>Gérer le <strong>déploiement</strong> (ex. DigitalOcean via MCP / API) en une commande (“Push to DigitalOcean”).</li>
+              <li>Commit/push des ajustements mémoire (ex.: consignes “meta title = Best X in Y”) pour qu’ils se répliquent sur toute nouvelle machine.</li>
+            </ol>
+          </div>
+          <div class="card p-6">
+            <h3 class="font-semibold text-xl mb-3"><i class="fa-solid fa-lightbulb mr-2"></i>Points d’apprentissage</h3>
+            <ul class="space-y-3 text-gray-800">
+              <li class="feature-item pl-4 py-2"><strong>Le fichier <span class="mono">claude.md</span></strong> sert de <em>mémoire système</em> du projet (règles, checklist, secrets .env à renseigner, scripts disponibles).</li>
+              <li class="feature-item pl-4 py-2"><strong>GitHub = packaging</strong> : cloner le repo suffit pour retrouver le workflow opérationnel.</li>
+              <li class="feature-item pl-4 py-2"><strong>MCP / Scripts</strong> étendent les capacités (déploiement, emails, scraping, etc.).</li>
+              <li class="feature-item pl-4 py-2"><strong>Itération rapide</strong> : on corrige la “mémoire” (ex. SEO) puis on re‑push pour versionner le comportement.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="mt-8 grid md:grid-cols-3 gap-6">
+          <div class="card p-6">
+            <h4 class="font-bold mb-2"><i class="fa-solid fa-screwdriver-wrench mr-2"></i>Stack type</h4>
+            <ul class="text-sm space-y-1 text-gray-700">
+              <li>• Claude Code + <span class="mono">claude.md</span></li>
+              <li>• Docker WordPress (thème + CPT)</li>
+              <li>• Scripts Python (ex. DigitalOcean)</li>
+              <li>• GitHub pour la diffusion</li>
+            </ul>
+          </div>
+          <div class="card p-6">
+            <h4 class="font-bold mb-2"><i class="fa-solid fa-magnifying-glass-chart mr-2"></i>Résultat</h4>
+            <p class="text-sm text-gray-700">Un site annuaire SEO (catégories par spécialités et par localisations) généré quasi automatiquement, prêt à être déployé et amélioré.</p>
+          </div>
+          <div class="card p-6">
+            <h4 class="font-bold mb-2"><i class="fa-solid fa-triangle-exclamation mr-2"></i>Limites / précautions</h4>
+            <p class="text-sm text-gray-700">Certaines mentions de la vidéo (ex. “Gina API”, détails MCP) sont ambiguës dans le transcript — à valider dans la doc/outils avant mise en prod.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Cas d’usage -->
+    <section id="usecases" class="py-12">
+      <div class="max-w-7xl mx-auto px-6">
+        <h2 class="section-title text-3xl font-bold mb-8">Cas d’usage mis en avant</h2>
+        <div class="grid md:grid-cols-2 gap-8">
+          <div class="card p-6">
+            <h3 class="font-semibold text-xl mb-3"><i class="fa-solid fa-globe mr-2"></i>1) Générateur de sites (rank & rent)</h3>
+            <ul class="text-gray-800 space-y-2">
+              <li>• Créer des <strong>annuaires thématiques</strong> (ex. thérapeutes par État) avec SEO intégré.</li>
+              <li>• Déployer automatiquement (ex. DigitalOcean), puis <strong>monétiser</strong> (vente/rental de pages locales).</li>
+            </ul>
+          </div>
+          <div class="card p-6">
+            <h3 class="font-semibold text-xl mb-3"><i class="fa-solid fa-envelope-open-text mr-2"></i>2) Agent de prospection 24/7</h3>
+            <ul class="text-gray-800 space-y-2">
+              <li>• Rechercher des leads (ex. Shopify), <strong>auditer SEO</strong> (API tierce), rédiger et <strong>envoyer emails</strong>.</li>
+              <li>• S’appuyer sur scripts/MCP pour orchestrer scraping → scoring → outreach.</li>
+            </ul>
+          </div>
+          <div class="card p-6">
+            <h3 class="font-semibold text-xl mb-3"><i class="fa-solid fa-cloud-arrow-up mr-2"></i>3) Déploiement & infra as‑code</h3>
+            <ul class="text-gray-800 space-y-2">
+              <li>• Scripts pour créer des droplets/VM, config DNS, lancer containers.</li>
+              <li>• Un seul prompt (“push live”) déclenche toute la <strong>chaîne CI/CD</strong> simplifiée.</li>
+            </ul>
+          </div>
+          <div class="card p-6">
+            <h3 class="font-semibold text-xl mb-3"><i class="fa-solid fa-diagram-project mr-2"></i>4) Pipelines métiers</h3>
+            <ul class="text-gray-800 space-y-2">
+              <li>• Enrichissement de listings (ex. YouTube, LinkedIn), génération de contenus, publication multi‑canal.</li>
+              <li>• Versionner le comportement de l’agent via <span class="mono">claude.md</span> et Git.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pourquoi c’est important -->
+    <section class="py-12 bg-white">
+      <div class="max-w-7xl mx-auto px-6">
+        <h2 class="section-title text-3xl font-bold mb-6">Pourquoi c’est important</h2>
+        <div class="grid md:grid-cols-3 gap-6">
+          <div class="card p-6">
+            <h4 class="font-bold mb-2"><i class="fa-solid fa-bolt mr-2"></i>Accélération</h4>
+            <p class="text-gray-700 text-sm">Industrialiser la création de produits/sites et de campagnes en limitant la dette opérationnelle.</p>
+          </div>
+          <div class="card p-6">
+            <h4 class="font-bold mb-2"><i class="fa-solid fa-repeat mr-2"></i>Répétabilité</h4>
+            <p class="text-gray-700 text-sm">Répliquer un agent “clé en main” sur toute nouvelle machine en quelques commandes.</p>
+          </div>
+          <div class="card p-6">
+            <h4 class="font-bold mb-2"><i class="fa-solid fa-scale-balanced mr-2"></i>Scalabilité</h4>
+            <p class="text-gray-700 text-sm">Empiler des workflows spécialisés (SEO, outreach, déploiement) sans complexité excessive.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Ressources & Liens -->
+    <section id="ressources" class="py-12">
+      <div class="max-w-7xl mx-auto px-6">
+        <h2 class="section-title text-3xl font-bold mb-8">Ressources et URLs mentionnées</h2>
+        <div class="grid md:grid-cols-2 gap-8">
+          <div class="card p-6">
+            <h3 class="font-semibold text-lg mb-3"><i class="fa-solid fa-link mr-2"></i>Liens directs (vidéo & auteur)</h3>
+            <div class="space-y-3 text-sm">
+              <a class="flex justify-between items-center p-3 rounded border hover:bg-gray-50" target="_blank" href="https://www.youtube.com/watch?v=g9StRbgcOIM">
+                <span><strong>Vidéo</strong> — Build ANYTHING With Custom Claude Codes</span><i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </a>
+              <a class="flex justify-between items-center p-3 rounded border hover:bg-gray-50" target="_blank" href="https://www.youtube.com/channel/UCctL30i8tVgSS9A37Q532eg">
+                <span><strong>Chaîne</strong> — Income Stream Surfers</span><i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </a>
+              <a class="flex justify-between items-center p-3 rounded border hover:bg-gray-50" target="_blank" href="https://github.com/IncomeStreamSurfer/wordpress-claude-code-wizard">
+                <span><strong>GitHub</strong> — wordpress-claude-code-wizard</span><i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </a>
+            </div>
+          </div>
+          <div class="card p-6">
+            <h3 class="font-semibold text-lg mb-3"><i class="fa-solid fa-toolbox mr-2"></i>Outils/services cités</h3>
+            <div class="space-y-3 text-sm">
+              <a class="flex justify-between items-center p-3 rounded border hover:bg-gray-50" target="_blank" href="https://www.skool.com/iss-ai-automation-school-6342/about">
+                <span>Skool — ISS AI Automation School</span><i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </a>
+              <a class="flex justify-between items-center p-3 rounded border hover:bg-gray-50" target="_blank" href="https://seogrove.ai/pre-registration">
+                <span>Grove — SEO (pré‑inscription)</span><i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </a>
+              <a class="flex justify-between items-center p-3 rounded border hover:bg-gray-50" target="_blank" href="https://brightdata.com/?promo=incomestreamsurfers">
+                <span>Bright Data — Proxy & scraping</span><i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </a>
+              <a class="flex justify-between items-center p-3 rounded border hover:bg-gray-50" target="_blank" href="https://www.digitalocean.com/">
+                <span>DigitalOcean — Déploiement (droplets)</span><i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </a>
+            </div>
+            <p class="text-xs text-gray-500 mt-3">Remarque : certaines références exactes (ex. “Gina API”) ne sont pas clairement identifiées dans le transcript et doivent être vérifiées.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Défis & apprentissage -->
+    <section id="exos" class="py-12 bg-white">
+      <div class="max-w-7xl mx-auto px-6">
+        <h2 class="section-title text-3xl font-bold mb-8">Défis de pratique (pas-à-pas)</h2>
+        <div class="grid md:grid-cols-2 gap-8">
+          <div class="card p-6">
+            <h3 class="font-semibold text-xl mb-3">A. “WordPress Directory Builder”</h3>
+            <ol class="list-decimal pl-6 space-y-2 text-gray-800">
+              <li>Forker puis cloner le repo <a class="underline" target="_blank" href="https://github.com/IncomeStreamSurfer/wordpress-claude-code-wizard">wordpress-claude-code-wizard</a>.</li>
+              <li>Ouvrir avec Claude Code et lire <span class="mono">claude.md</span> (règles, variables, scripts).</li>
+              <li>Créer un <span class="mono">.env</span> local (clés nécessaires), lancer Docker WordPress, générer le thème + CPT.</li>
+              <li>Insérer un dataset de test (ex. catégories/spécialités), vérifier le SEO (titres “Best X in Y”).</li>
+              <li>Déployer via script (ex. DigitalOcean). Documenter le run dans <span class="mono">README.md</span>.</li>
+            </ol>
+          </div>
+          <div class="card p-6">
+            <h3 class="font-semibold text-xl mb-3">B. “Agent de prospection 24/7”</h3>
+            <ol class="list-decimal pl-6 space-y-2 text-gray-800">
+              <li>Ajouter à <span class="mono">claude.md</span> une section <em>workflow</em> : “trouve boutiques Shopify & audite SEO”.</li>
+              <li>Écrire un script <span class="mono">audit_seo.py</span> (API SEO de votre choix) + <span class="mono">send_email.py</span> (SMTP/SendGrid).</li>
+              <li>Configurer MCP/outils pour orchestrer recherche → scoring → email.</li>
+              <li>Tracer les outputs (CSV/Notion/Sheet) et ajouter une <em>checklist de qualité</em> dans la mémoire.</li>
+            </ol>
+          </div>
+          <div class="card p-6">
+            <h3 class="font-semibold text-xl mb-3">C. “Push to Cloud” bout‑en‑bout</h3>
+            <ol class="list-decimal pl-6 space-y-2 text-gray-800">
+              <li>Créer <span class="mono">create_droplet.py</span> et <span class="mono">deploy_wp.py</span> (build, env, migrate DB).</li>
+              <li>Ajouter une commande mémoire “Push to DigitalOcean”.</li>
+              <li>Tester <strong>idempotence</strong> (reruns) et journaliser le déploiement.</li>
+            </ol>
+          </div>
+          <div class="card p-6">
+            <h3 class="font-semibold text-xl mb-3">D. Industrialiser la mémoire</h3>
+            <ol class="list-decimal pl-6 space-y-2 text-gray-800">
+              <li>Structurer <span class="mono">claude.md</span> en sections : <em>Règles</em>, <em>Workflows</em>, <em>Scripts</em>, <em>Qualité</em>, <em>Secrets</em>.</li>
+              <li>Mettre en place une <strong>revue de prompts</strong> (PR Git) et versionner les changements.</li>
+              <li>Créer des <strong>templates</strong> de nouvelles spécialisations (SEO, scraping, support, etc.).</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Notes & fiabilité -->
+    <section class="py-12">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="card p-6">
+          <h3 class="font-semibold text-xl mb-3"><i class="fa-solid fa-circle-info mr-2"></i>Notes de fiabilité</h3>
+          <ul class="list-disc pl-6 text-sm text-gray-700 space-y-2">
+            <li>Cette page résume la vidéo et son descriptif. <strong>Aucune navigation web complémentaire</strong> n’a été effectuée. Les URLs listées proviennent de la description/voix off.</li>
+            <li>Termes ambigus dans le transcript (p. ex. “Gina API”, “MTP/MCP”) : à <strong>vérifier</strong> dans la documentation officielle avant usage en production.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="gradient-bg text-white py-10">
+      <div class="max-w-7xl mx-auto px-6 text-center">
+        <h3 class="text-xl font-bold mb-2">Aller plus loin</h3>
+        <p class="opacity-90 mb-5">Packager vos propres “Custom Claude Codes” pour vos offres Balder App : SEO, génération de sites, prospection, déploiement cloud.</p>
+        <div class="flex flex-wrap gap-3 justify-center">
+          <a href="https://www.youtube.com/watch?v=g9StRbgcOIM" target="_blank" class="btn-primary"><i class="fab fa-youtube mr-2"></i>Voir la vidéo</a>
+          <a href="https://github.com/IncomeStreamSurfer/wordpress-claude-code-wizard" target="_blank" class="btn-secondary">Exemple GitHub</a>
+        </div>
+        <p class="text-xs opacity-70 mt-6">© 2025 — Résumé pédagogique basé sur la vidéo d’Income Stream Surfers. Marques et services appartiennent à leurs propriétaires respectifs.</p>
+      </div>
+    </footer>
+    
+    <!-- Mobile menu toggle function -->
+    <script>
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            if (mobileMenu) {
+                mobileMenu.classList.toggle('hidden');
+            }
+        }
+    </script>
+  </body>
+</html>
