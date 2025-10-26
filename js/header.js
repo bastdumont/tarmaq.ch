@@ -6,6 +6,7 @@
 class TarmaqHeader {
   constructor(currentPage = '') {
     this.currentPage = currentPage;
+    this.isAcademie = window.location.pathname.includes('adémie');
     this.init();
   }
 
@@ -31,44 +32,44 @@ class TarmaqHeader {
         class="container mx-auto px-4 py-4 flex justify-between items-center"
       >
         <!-- Logo -->
-        <a href="index.html" class="flex items-center space-x-2">
-          <img src="assets/logo.png" alt="TARMAQ Logo" class="h-12" />
+        <a href="${this.isAcademie ? '../index.html' : 'index.html'}" class="flex items-center space-x-2">
+          <img src="${this.isAcademie ? '../assets/logo.png' : 'assets/logo.png'}" alt="TARMAQ Logo" class="h-12" />
         </a>
 
         <!-- Desktop Menu -->
         <div class="hidden lg:flex items-center space-x-8">
           <a
-            href="index.html"
+            href="${this.isAcademie ? '../index.html' : 'index.html'}"
             class="nav-link ${this.currentPage === 'index' ? 'text-primary font-semibold' : 'hover:text-primary transition'}"
             data-i18n="nav.home"
             >On décolle</a
           >
           <a
-            href="about.html"
+            href="${this.isAcademie ? '../about.html' : 'about.html'}"
             class="nav-link ${this.currentPage === 'about' ? 'text-primary font-semibold' : 'hover:text-primary transition'}"
             data-i18n="nav.about"
             >Mission</a
           >
           <a
-            href="activites.html"
+            href="${this.isAcademie ? '../activites.html' : 'activites.html'}"
             class="nav-link ${this.currentPage === 'activites' ? 'text-primary font-semibold' : 'hover:text-primary transition'}"
             data-i18n="nav.activities"
             >Activités</a
           >
           <a
-            href="projet.html"
+            href="${this.isAcademie ? '../projet.html' : 'projet.html'}"
             class="nav-link ${this.currentPage === 'projet' ? 'text-primary font-semibold' : 'hover:text-primary transition'}"
             data-i18n="nav.project"
             >Projet</a
           >
           <a
-            href="charte.html"
+            href="${this.isAcademie ? '../charte.html' : 'charte.html'}"
             class="nav-link ${this.currentPage === 'charte' ? 'text-primary font-semibold' : 'hover:text-primary transition'}"
             data-i18n="nav.charter"
             >Charte</a
           >
           <a
-            href="contact.html"
+            href="${this.isAcademie ? '../contact.html' : 'contact.html'}"
             class="nav-link ${this.currentPage === 'contact' ? 'text-primary font-semibold' : 'hover:text-primary transition'}"
             data-i18n="nav.contact"
             >Contact</a
@@ -117,37 +118,37 @@ class TarmaqHeader {
       <div id="mobile-menu" class="hidden lg:hidden bg-white border-t">
         <div class="container mx-auto px-4 py-4 flex flex-col space-y-4">
           <a
-            href="index.html"
+            href="${this.isAcademie ? '../index.html' : 'index.html'}"
             class="nav-link ${this.currentPage === 'index' ? 'text-primary font-semibold' : 'hover:text-primary transition'}"
             data-i18n="nav.home"
             >On décolle</a
           >
           <a
-            href="about.html"
+            href="${this.isAcademie ? '../about.html' : 'about.html'}"
             class="nav-link ${this.currentPage === 'about' ? 'text-primary font-semibold' : 'hover:text-primary transition'}"
             data-i18n="nav.about"
             >Mission</a
           >
           <a
-            href="activites.html"
+            href="${this.isAcademie ? '../activites.html' : 'activites.html'}"
             class="nav-link ${this.currentPage === 'activites' ? 'text-primary font-semibold' : 'hover:text-primary transition'}"
             data-i18n="nav.activities"
             >Activités</a
           >
           <a
-            href="projet.html"
+            href="${this.isAcademie ? '../projet.html' : 'projet.html'}"
             class="nav-link ${this.currentPage === 'projet' ? 'text-primary font-semibold' : 'hover:text-primary transition'}"
             data-i18n="nav.project"
             >Projet</a
           >
           <a
-            href="charte.html"
+            href="${this.isAcademie ? '../charte.html' : 'charte.html'}"
             class="nav-link ${this.currentPage === 'charte' ? 'text-primary font-semibold' : 'hover:text-primary transition'}"
             data-i18n="nav.charter"
             >Charte</a
           >
           <a
-            href="contact.html"
+            href="${this.isAcademie ? '../contact.html' : 'contact.html'}"
             class="nav-link ${this.currentPage === 'contact' ? 'text-primary font-semibold' : 'hover:text-primary transition'}"
             data-i18n="nav.contact"
             >Contact</a
