@@ -1,0 +1,55 @@
+# Task ID: 5
+# Title: Phase 7: Travel Abroad Portal
+# Status: pending
+# Dependencies: 1
+# Priority: high
+# Description: Create dynamic portal for posting and managing international opportunities with application processing and meeting booking.
+# Details:
+Build opportunities management system, application processing forms, HubSpot meeting integration, status tracking, and admin dashboard. Support for multiple countries, programs, and application filtering.
+
+# Test Strategy:
+Test opportunity posting, application form validation, file uploads, meeting booking integration, status tracking, and search/filter functionality. Verify multilingual support.
+
+# Subtasks:
+## 5. Design opportunities management system [pending]
+### Dependencies: None
+### Description: Create interface for posting and managing opportunities
+### Details:
+
+
+## 5. Build application form with validation [pending]
+### Dependencies: None
+### Description: Create comprehensive application form with required fields
+### Details:
+
+
+## 5. Implement file upload functionality [pending]
+### Dependencies: 5.5.2
+### Description: Add support for CV and portfolio uploads
+### Details:
+
+
+## 5. Integrate HubSpot meeting booking [pending]
+### Dependencies: 5.5.3
+### Description: Connect application system with HubSpot scheduling
+### Details:
+
+
+## 5. Create application status tracking [pending]
+### Dependencies: 5.5.4
+### Description: Build status management for submitted, reviewed, accepted, rejected
+### Details:
+
+
+## 5. Build search and filter system [pending]
+### Dependencies: 5.5.5
+### Description: Enable filtering by country, program, status, and dates
+### Details:
+
+
+## 5. Create admin dashboard [pending]
+### Dependencies: 5.5.6
+### Description: Build interface for managing applications and opportunities
+### Details:
+
+

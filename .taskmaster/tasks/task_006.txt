@@ -1,0 +1,37 @@
+# Task ID: 6
+# Title: Multilingual Support for New Features
+# Status: pending
+# Dependencies: 2, 3, 4, 5
+# Priority: high
+# Description: Ensure all new dynamic features support FR/EN/DE/IT languages.
+# Details:
+Add translations for all new interface elements, forms, error messages, and dashboard content in all four languages. Integrate with existing i18n system.
+
+# Test Strategy:
+Test language switching, translation completeness, and cultural appropriateness for each language.
+
+# Subtasks:
+## 6. Add dashboard translations [pending]
+### Dependencies: None
+### Description: Translate all KPI dashboard text
+### Details:
+
+
+## 6. Add funding platform translations [pending]
+### Dependencies: None
+### Description: Translate donation forms and messages
+### Details:
+
+
+## 6. Add automation notifications translations [pending]
+### Dependencies: None
+### Description: Translate course generation and approval messages
+### Details:
+
+
+## 6. Add travel portal translations [pending]
+### Dependencies: None
+### Description: Translate opportunities and application content
+### Details:
+
+

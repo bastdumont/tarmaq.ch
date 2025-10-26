@@ -1,0 +1,456 @@
+{
+  "master": {
+    "tasks": [
+      {
+        "id": 1,
+        "title": "Phase 3: Airtable Backend Setup & Integration",
+        "description": "Set up Airtable as the backend database and integrate it with the existing static website. This is the foundation for all dynamic features.",
+        "status": "in-progress",
+        "priority": "high",
+        "dependencies": [],
+        "details": "Create Airtable base with proper schema design including tables for courses, opportunities, donations, KPIs, and applications. Implement secure API authentication and create JavaScript functions for CRUD operations. This is the critical foundation for all subsequent dynamic features.",
+        "testStrategy": "Test API connectivity, data retrieval, error handling, and security measures. Verify that no API keys are exposed in frontend code.",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Design Airtable schema and table structure",
+            "description": "Design complete database schema for all required tables",
+            "status": "done",
+            "details": "<info added on 2025-10-26T20:39:54.719Z>\n✅ Completed Airtable schema design\n\nCreated comprehensive database schema documentation:\n- 7 tables designed: Courses, Opportunities, Applications, Donations, KPIs, Program Participants, Mentors\n- Defined all fields, types, and relationships\n- Planned automation triggers for YouTube course generation\n- Outlined security and API access strategy\n- Documented data migration approach\n\nSchema document saved to: .taskmaster/docs/airtable-schema.md\n\nNext steps:\n1. Create Airtable base and implement the schema\n2. Set up API authentication\n3. Build JavaScript integration functions\n\nThe schema supports all required features:\n- Dynamic course display from YouTube automation\n- Travel abroad opportunities and applications\n- Donation tracking and leaderboard\n- Real-time KPI dashboard\n- Community and mentor management\n</info added on 2025-10-26T20:39:54.719Z>"
+          },
+          {
+            "id": 1,
+            "title": "Create Airtable base and tables",
+            "description": "Set up base in Airtable and create all required tables",
+            "status": "pending",
+            "dependencies": [
+              1.1
+            ]
+          },
+          {
+            "id": 1,
+            "title": "Implement secure API authentication",
+            "description": "Set up environment variables and secure API key management",
+            "status": "pending"
+          },
+          {
+            "id": 1,
+            "title": "Create JavaScript API integration functions",
+            "description": "Build CRUD operations for Airtable API calls",
+            "status": "pending",
+            "dependencies": [
+              1.3
+            ]
+          },
+          {
+            "id": 1,
+            "title": "Implement caching strategy",
+            "description": "Add caching to reduce API calls and improve performance",
+            "status": "pending",
+            "dependencies": [
+              1.4
+            ]
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "title": "Phase 4: KPI Dashboard Development",
+        "description": "Build real-time metrics dashboard displaying project impact, community growth, and program performance.",
+        "status": "pending",
+        "priority": "high",
+        "dependencies": [
+          1
+        ],
+        "details": "Create interactive dashboard with charts and visualizations showing key metrics like community growth, program success rates, engagement statistics, and funding progress. Use Chart.js for data visualization with real-time updates from Airtable.",
+        "testStrategy": "Test chart rendering, data accuracy, responsive design, and export functionality. Verify real-time updates and performance metrics.",
+        "subtasks": [
+          {
+            "id": 2,
+            "title": "Design dashboard UI/UX layout",
+            "description": "Create responsive dashboard design with metric cards and charts",
+            "status": "pending"
+          },
+          {
+            "id": 2,
+            "title": "Integrate Chart.js library",
+            "description": "Set up data visualization library for charts and graphs",
+            "status": "pending",
+            "dependencies": [
+              2.1
+            ]
+          },
+          {
+            "id": 2,
+            "title": "Build data visualization components",
+            "description": "Create charts for trends, distributions, and progress tracking",
+            "status": "pending",
+            "dependencies": [
+              2.2
+            ]
+          },
+          {
+            "id": 2,
+            "title": "Implement real-time data updates",
+            "description": "Set up automatic data refresh from Airtable",
+            "status": "pending",
+            "dependencies": [
+              2.3
+            ]
+          },
+          {
+            "id": 2,
+            "title": "Add export functionality",
+            "description": "Enable PDF/CSV export for dashboard data",
+            "status": "pending",
+            "dependencies": [
+              2.4
+            ]
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "title": "Phase 5: Funding Platform Implementation",
+        "description": "Enable secure donation processing with progress tracking, donor leaderboard, and transparent reporting.",
+        "status": "pending",
+        "priority": "high",
+        "dependencies": [
+          1
+        ],
+        "details": "Integrate Stripe payment processing, create donation forms, implement progress visualization, build donor leaderboard, and ensure PCI-DSS compliance. Support multiple currencies (CHF, EUR, USD).",
+        "testStrategy": "Test payment processing, progress calculation, leaderboard updates, email receipts, and multi-currency handling. Verify security and compliance.",
+        "subtasks": [
+          {
+            "id": 3,
+            "title": "Set up Stripe account and API integration",
+            "description": "Configure Stripe and implement secure payment processing",
+            "status": "pending"
+          },
+          {
+            "id": 3,
+            "title": "Create donation form UI",
+            "description": "Build donation form with amount selection and donor information",
+            "status": "pending"
+          },
+          {
+            "id": 3,
+            "title": "Implement funding progress visualization",
+            "description": "Create progress bars and funding goal displays",
+            "status": "pending",
+            "dependencies": [
+              3.2
+            ]
+          },
+          {
+            "id": 3,
+            "title": "Build donor leaderboard system",
+            "description": "Display top contributors with recognition options",
+            "status": "pending",
+            "dependencies": [
+              3.3
+            ]
+          },
+          {
+            "id": 3,
+            "title": "Add multi-currency support",
+            "description": "Implement currency conversion and display",
+            "status": "pending",
+            "dependencies": [
+              3.4
+            ]
+          },
+          {
+            "id": 3,
+            "title": "Create financial reporting page",
+            "description": "Build transparent reporting with utilization breakdown",
+            "status": "pending",
+            "dependencies": [
+              3.5
+            ]
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "title": "Phase 6: AI-Powered Course Automation",
+        "description": "Automatically generate academy courses when YouTube videos are added to playlists.",
+        "status": "pending",
+        "priority": "medium",
+        "dependencies": [
+          1
+        ],
+        "details": "Integrate YouTube API to monitor playlists, extract video metadata, and automatically create course entries in Airtable. Implement quality assurance workflow with manual approval process.",
+        "testStrategy": "Test YouTube API integration, course generation accuracy, metadata extraction, approval workflow, and email notifications. Verify automation triggers work correctly.",
+        "subtasks": [
+          {
+            "id": 4,
+            "title": "Set up YouTube Data API integration",
+            "description": "Configure YouTube API authentication and permissions",
+            "status": "pending"
+          },
+          {
+            "id": 4,
+            "title": "Create playlist monitoring automation",
+            "description": "Set up automation to detect new videos in playlists",
+            "status": "pending",
+            "dependencies": [
+              4.1
+            ]
+          },
+          {
+            "id": 4,
+            "title": "Implement metadata extraction",
+            "description": "Extract video title, description, and thumbnail",
+            "status": "pending",
+            "dependencies": [
+              4.2
+            ]
+          },
+          {
+            "id": 4,
+            "title": "Build automated course creation workflow",
+            "description": "Generate course entries in Airtable from video metadata",
+            "status": "pending",
+            "dependencies": [
+              4.3
+            ]
+          },
+          {
+            "id": 4,
+            "title": "Implement approval workflow",
+            "description": "Create pending status and manual review process",
+            "status": "pending",
+            "dependencies": [
+              4.4
+            ]
+          },
+          {
+            "id": 4,
+            "title": "Add notification system",
+            "description": "Send email alerts for new pending courses",
+            "status": "pending",
+            "dependencies": [
+              4.5
+            ]
+          }
+        ]
+      },
+      {
+        "id": 5,
+        "title": "Phase 7: Travel Abroad Portal",
+        "description": "Create dynamic portal for posting and managing international opportunities with application processing and meeting booking.",
+        "status": "pending",
+        "priority": "high",
+        "dependencies": [
+          1
+        ],
+        "details": "Build opportunities management system, application processing forms, HubSpot meeting integration, status tracking, and admin dashboard. Support for multiple countries, programs, and application filtering.",
+        "testStrategy": "Test opportunity posting, application form validation, file uploads, meeting booking integration, status tracking, and search/filter functionality. Verify multilingual support.",
+        "subtasks": [
+          {
+            "id": 5,
+            "title": "Design opportunities management system",
+            "description": "Create interface for posting and managing opportunities",
+            "status": "pending"
+          },
+          {
+            "id": 5,
+            "title": "Build application form with validation",
+            "description": "Create comprehensive application form with required fields",
+            "status": "pending"
+          },
+          {
+            "id": 5,
+            "title": "Implement file upload functionality",
+            "description": "Add support for CV and portfolio uploads",
+            "status": "pending",
+            "dependencies": [
+              5.2
+            ]
+          },
+          {
+            "id": 5,
+            "title": "Integrate HubSpot meeting booking",
+            "description": "Connect application system with HubSpot scheduling",
+            "status": "pending",
+            "dependencies": [
+              5.3
+            ]
+          },
+          {
+            "id": 5,
+            "title": "Create application status tracking",
+            "description": "Build status management for submitted, reviewed, accepted, rejected",
+            "status": "pending",
+            "dependencies": [
+              5.4
+            ]
+          },
+          {
+            "id": 5,
+            "title": "Build search and filter system",
+            "description": "Enable filtering by country, program, status, and dates",
+            "status": "pending",
+            "dependencies": [
+              5.5
+            ]
+          },
+          {
+            "id": 5,
+            "title": "Create admin dashboard",
+            "description": "Build interface for managing applications and opportunities",
+            "status": "pending",
+            "dependencies": [
+              5.6
+            ]
+          }
+        ]
+      },
+      {
+        "id": 6,
+        "title": "Multilingual Support for New Features",
+        "description": "Ensure all new dynamic features support FR/EN/DE/IT languages.",
+        "status": "pending",
+        "priority": "high",
+        "dependencies": [
+          2,
+          3,
+          4,
+          5
+        ],
+        "details": "Add translations for all new interface elements, forms, error messages, and dashboard content in all four languages. Integrate with existing i18n system.",
+        "testStrategy": "Test language switching, translation completeness, and cultural appropriateness for each language.",
+        "subtasks": [
+          {
+            "id": 6,
+            "title": "Add dashboard translations",
+            "description": "Translate all KPI dashboard text",
+            "status": "pending"
+          },
+          {
+            "id": 6,
+            "title": "Add funding platform translations",
+            "description": "Translate donation forms and messages",
+            "status": "pending"
+          },
+          {
+            "id": 6,
+            "title": "Add automation notifications translations",
+            "description": "Translate course generation and approval messages",
+            "status": "pending"
+          },
+          {
+            "id": 6,
+            "title": "Add travel portal translations",
+            "description": "Translate opportunities and application content",
+            "status": "pending"
+          }
+        ]
+      },
+      {
+        "id": 7,
+        "title": "Security Audit & Compliance",
+        "description": "Ensure all new features meet security standards and regulatory compliance.",
+        "status": "pending",
+        "priority": "high",
+        "dependencies": [
+          2,
+          3,
+          4,
+          5
+        ],
+        "details": "Conduct security audit for API key management, payment processing, data handling, GDPR compliance, and file upload security. Address any vulnerabilities.",
+        "testStrategy": "Penetration testing, security scanning, compliance verification, and code review.",
+        "subtasks": [
+          {
+            "id": 7,
+            "title": "Audit API key security",
+            "description": "Ensure no API keys exposed in frontend code",
+            "status": "pending"
+          },
+          {
+            "id": 7,
+            "title": "Verify PCI-DSS compliance",
+            "description": "Ensure payment processing meets compliance standards",
+            "status": "pending"
+          },
+          {
+            "id": 7,
+            "title": "Review GDPR compliance",
+            "description": "Verify data privacy and consent management",
+            "status": "pending"
+          },
+          {
+            "id": 7,
+            "title": "Test file upload security",
+            "description": "Validate file type restrictions and size limits",
+            "status": "pending"
+          },
+          {
+            "id": 7,
+            "title": "Implement rate limiting",
+            "description": "Add protection against API abuse",
+            "status": "pending"
+          }
+        ]
+      },
+      {
+        "id": 8,
+        "title": "Performance Optimization & Testing",
+        "description": "Optimize performance and conduct comprehensive testing across all new features.",
+        "status": "pending",
+        "priority": "high",
+        "dependencies": [
+          2,
+          3,
+          4,
+          5
+        ],
+        "details": "Ensure all features meet performance targets (<3s load time), optimize API calls, implement caching, and conduct end-to-end testing on all browsers and devices.",
+        "testStrategy": "Performance testing, load testing, cross-browser testing, mobile device testing, and accessibility testing.",
+        "subtasks": [
+          {
+            "id": 8,
+            "title": "Optimize API call frequency",
+            "description": "Implement efficient caching and batching",
+            "status": "pending"
+          },
+          {
+            "id": 8,
+            "title": "Test load times and performance",
+            "description": "Ensure all features load under 3 seconds",
+            "status": "pending"
+          },
+          {
+            "id": 8,
+            "title": "Conduct cross-browser testing",
+            "description": "Test Chrome, Firefox, Safari, Edge",
+            "status": "pending"
+          },
+          {
+            "id": 8,
+            "title": "Test mobile responsiveness",
+            "description": "Verify all features work on mobile devices",
+            "status": "pending"
+          },
+          {
+            "id": 8,
+            "title": "Verify accessibility compliance",
+            "description": "Ensure WCAG 2.1 AA compliance",
+            "status": "pending"
+          }
+        ]
+      }
+    ],
+    "metadata": {
+      "projectName": "TARMAQ Website Enhancement",
+      "version": "1.0.0",
+      "lastUpdated": "2025-01-23",
+      "created": "2025-01-23",
+      "tag": "master",
+      "description": "Phase 3-7: Transform TARMAQ website from static to dynamic with Airtable backend, KPI dashboard, funding platform, AI automation, and travel abroad portal",
+      "updated": "2025-10-26T20:39:57.700Z"
+    }
+  }
+}

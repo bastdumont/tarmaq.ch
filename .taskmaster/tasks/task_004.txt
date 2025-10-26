@@ -1,0 +1,49 @@
+# Task ID: 4
+# Title: Phase 6: AI-Powered Course Automation
+# Status: pending
+# Dependencies: 1
+# Priority: medium
+# Description: Automatically generate academy courses when YouTube videos are added to playlists.
+# Details:
+Integrate YouTube API to monitor playlists, extract video metadata, and automatically create course entries in Airtable. Implement quality assurance workflow with manual approval process.
+
+# Test Strategy:
+Test YouTube API integration, course generation accuracy, metadata extraction, approval workflow, and email notifications. Verify automation triggers work correctly.
+
+# Subtasks:
+## 4. Set up YouTube Data API integration [pending]
+### Dependencies: None
+### Description: Configure YouTube API authentication and permissions
+### Details:
+
+
+## 4. Create playlist monitoring automation [pending]
+### Dependencies: 4.4.1
+### Description: Set up automation to detect new videos in playlists
+### Details:
+
+
+## 4. Implement metadata extraction [pending]
+### Dependencies: 4.4.2
+### Description: Extract video title, description, and thumbnail
+### Details:
+
+
+## 4. Build automated course creation workflow [pending]
+### Dependencies: 4.4.3
+### Description: Generate course entries in Airtable from video metadata
+### Details:
+
+
+## 4. Implement approval workflow [pending]
+### Dependencies: 4.4.4
+### Description: Create pending status and manual review process
+### Details:
+
+
+## 4. Add notification system [pending]
+### Dependencies: 4.4.5
+### Description: Send email alerts for new pending courses
+### Details:
+
+

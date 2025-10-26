@@ -120,6 +120,9 @@ config.js
 config-secret.js
 secrets.json
 
+# Airtable configuration (contains API keys)
+js/airtable-config.js
+
 # Database files
 *.db
 *.sqlite
@@ -133,3 +136,18 @@ secrets.json
 # Documentation builds
 docs/_build/
 site/
+
+dev-debug.log
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+# OS specific
+
+# Task files
+# tasks.json
+# tasks/ 

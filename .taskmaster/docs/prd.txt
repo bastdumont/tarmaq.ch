@@ -1,0 +1,419 @@
+# Product Requirements Document - TARMAQ Website Enhancement
+## Phase 3-7: Dynamic Features with Airtable Backend
+
+### Project Overview
+Enhance the TARMAQ website (currently v3.1 - static HTML site) with dynamic backend functionality using Airtable. Transform the site from a static multilingual website into a comprehensive platform with data-driven features, automated content management, and interactive capabilities.
+
+### Mission
+Transform TARMAQ's static website into a dynamic, data-driven platform that enables real-time impact measurement, transparent funding, automated content delivery, and international opportunity management.
+
+---
+
+## 1. PROJECT OBJECTIVES
+
+### Primary Goals
+1. **Implement Airtable Backend**: Create a hybrid architecture where the static frontend pulls dynamic data from Airtable
+2. **Build KPI Dashboard**: Display real-time project metrics, community growth, and impact statistics
+3. **Create Funding Platform**: Enable secure donations with progress tracking and donor recognition
+4. **Automate Course Generation**: Automatically create academy courses when YouTube videos are added to playlists
+5. **Launch Travel Abroad Portal**: Manage international opportunities with application processing and booking
+
+### Success Metrics
+- Sub-3 second page load times maintained
+- 100% content translated (FR/EN/DE/IT) for all new features
+- Real-time data synchronization with Airtable
+- Secure payment processing (PCI-DSS compliant)
+- 20+ automated courses generated monthly
+- 100+ applications processed through travel portal
+
+---
+
+## 2. USER PERSONAS
+
+### Primary Persona: Young Tech Talent (18-25)
+- Needs hands-on training and mentorship
+- Values accessibility and community
+- Mobile-first browsing habits
+- Seeks international opportunities
+
+### Secondary Persona: Professional Mentor (30-45)
+- Wants to give back to community
+- Needs efficient, structured opportunities
+- Desktop browsing preference
+- Values impact measurement
+
+### Tertiary Persona: Institutional Partner (40-60)
+- Needs clear ROI and metrics
+- Requires professional presentation
+- Compliance-focused
+- Corporate CSR objectives
+
+### Supporting Persona: Donor/Collaborator
+- Wants transparent financial reporting
+- Values recognition for contributions
+- Seeks impact visibility
+- Needs easy donation process
+
+---
+
+## 3. FEATURE REQUIREMENTS
+
+### FEATURE 1: Airtable Backend Integration
+
+**Description**: Replace static content with dynamic data from Airtable database
+
+**Requirements**:
+- Set up Airtable base with proper schema design
+- Tables needed:
+  - Courses (title, description, video URL, thumbnail, category, date)
+  - Opportunities (country, program, dates, description, requirements)
+  - Donations (amount, donor name, date, anonymous flag)
+  - KPIs (metric name, value, category, date)
+  - Applications (name, email, opportunity, status, date)
+- Implement Airtable API authentication with secure key management
+- Create JavaScript fetch functions for CRUD operations
+- Add loading states and error handling
+- Implement caching strategy to reduce API calls
+
+**Acceptance Criteria**:
+- ✅ Airtable base is configured with all required tables
+- ✅ API calls are secure (keys not exposed in frontend)
+- ✅ Data loads in under 2 seconds
+- ✅ Error states display user-friendly messages
+- ✅ All content remains multilingual
+
+### FEATURE 2: KPI Dashboard
+
+**Description**: Real-time metrics display showing project impact and performance
+
+**Requirements**:
+- Display key metrics:
+  - Community growth (participants, mentors, projects)
+  - Program success rates
+  - Engagement statistics
+  - Funding progress
+- Use Chart.js or similar for data visualization
+- Real-time updates from Airtable (pull every 5 minutes)
+- Responsive design (mobile, tablet, desktop)
+- Dark/light mode support
+- Export functionality (PDF/CSV)
+
+**UI Components**:
+- Large metric cards (key numbers)
+- Line charts (trends over time)
+- Pie/bar charts (program distribution)
+- Progress bars (goal completion)
+- Animated number counters
+
+**Acceptance Criteria**:
+- ✅ Dashboard loads in under 3 seconds
+- ✅ Data is accurate and up-to-date
+- ✅ Charts are responsive and accessible
+- ✅ Export functionality works for all formats
+- ✅ Mobile experience is optimized
+
+### FEATURE 3: Funding Platform
+
+**Description**: Transparent donation system with progress tracking and donor recognition
+
+**Requirements**:
+- Payment integration (Stripe for primary, PayPal as backup)
+- Donation form with:
+  - Amount selection (preset + custom)
+  - Donor name and email
+  - Anonymous option
+  - Optional message field
+- Progress visualization:
+  - Current funding goal display
+  - Progress bar with percentage
+  - Days remaining or completion date
+- Donor leaderboard (top contributors):
+  - Name display (or "Anonymous")
+  - Donation amount
+  - Date of contribution
+  - Optional public message
+- Multi-currency support (CHF, EUR, USD)
+- Transparent reporting page with:
+  - Total raised
+  - Transaction count
+  - Average donation amount
+  - Fund utilization breakdown
+
+**Acceptance Criteria**:
+- ✅ PCI-DSS compliant payment processing
+- ✅ Donations recorded in Airtable automatically
+- ✅ Progress bar updates in real-time
+- ✅ Leaderboard updates dynamically
+- ✅ All currencies converted correctly
+- ✅ Email receipts sent automatically
+- ✅ Anonymous donors not shown on leaderboard
+
+### FEATURE 4: AI-Powered Course Automation
+
+**Description**: Automatically create academy courses when YouTube videos are saved to playlists
+
+**Requirements**:
+- YouTube API integration:
+  - Monitor specific playlist for new videos
+  - Webhook/automation triggers for playlist updates
+- Automated course creation workflow:
+  - Extract video metadata (title, description, thumbnail)
+  - Generate course entry in Airtable
+  - Add to academy catalog automatically
+  - Default categorization based on playlist name
+- Quality assurance workflow:
+  - Pending approval status for new courses
+  - Manual review before publishing
+  - Admin interface for course management
+- Course display improvements:
+  - Dynamic video embedding
+  - Related courses recommendations
+  - Category filtering
+
+**Technical Implementation**:
+- Use Airtable Automation or Zapier/Make for triggers
+- YouTube Data API v3 for video retrieval
+- Structured data extraction from video metadata
+- Automated email notifications for pending approvals
+
+**Acceptance Criteria**:
+- ✅ New YouTube videos trigger course creation within 5 minutes
+- ✅ Video metadata is accurately extracted
+- ✅ Courses appear in "pending" state requiring approval
+- ✅ Admin can approve/reject/modify courses
+- ✅ Published courses integrate seamlessly with existing academy
+
+### FEATURE 5: Travel Abroad Portal
+
+**Description**: Dynamic portal for posting and managing international opportunities
+
+**Requirements**:
+- Opportunity listing system:
+  - Country and program selection
+  - Program dates and duration
+  - Eligibility requirements
+  - Program description
+  - Application deadline
+  - Status (open, closed, in-progress)
+- Application system:
+  - Free application form
+  - Required fields: name, email, motivation, CV upload
+  - Optional: portfolio, references
+  - Application confirmation email
+- Meeting booking integration:
+  - Link to HubSpot scheduling for interviews
+  - Date/time selection
+  - Meeting reminder emails
+- Application management:
+  - Status tracking (submitted, reviewed, accepted, rejected)
+  - Search and filter by:
+    - Country
+    - Program type
+    - Application status
+    - Date range
+- Admin dashboard:
+  - Post new opportunities
+  - Manage applications
+  - Update application status
+  - Send communication to applicants
+
+**Acceptance Criteria**:
+- ✅ All opportunities displayed dynamically from Airtable
+- ✅ Application form validates all required fields
+- ✅ File uploads work correctly (CV, portfolio)
+- ✅ Meeting booking integrates with HubSpot
+- ✅ Admin can manage applications efficiently
+- ✅ Multilingual support for all application content
+
+---
+
+## 4. TECHNICAL REQUIREMENTS
+
+### Architecture
+- **Frontend**: Static HTML/CSS/JS (current v3.1) enhanced with dynamic features
+- **Backend**: Airtable (database layer)
+- **Integrations**: Airtable API, Stripe API, YouTube API, HubSpot API
+- **Hosting**: Netlify or Vercel (static hosting)
+- **Performance**: Maintain <3 second load times
+
+### Security Requirements
+- API keys stored in environment variables
+- HTTPS for all communications
+- PCI-DSS compliance for payment processing
+- GDPR compliance for data handling
+- Secure file upload validation
+- Rate limiting for API calls
+
+### Browser Support
+- Chrome (latest)
+- Firefox (latest)
+- Safari (latest)
+- Edge (latest)
+- Mobile browsers (iOS Safari, Chrome Mobile)
+
+### Accessibility
+- WCAG 2.1 AA compliance
+- Keyboard navigation support
+- Screen reader compatibility
+- Color contrast compliance
+- Reduced motion support
+
+### Performance Targets
+- First Contentful Paint: <1.5s
+- Time to Interactive: <3s
+- Lighthouse score: >90
+- Mobile-friendly test: Pass
+- PageSpeed Insights: >85
+
+---
+
+## 5. IMPLEMENTATION PHASES
+
+### Phase 3: Airtable Backend Integration (Q2 2025)
+**Duration**: 8 weeks
+**Deliverables**:
+- Airtable base design and setup
+- API integration implementation
+- Data migration from static content
+- Frontend-backend connection
+- Testing and deployment
+
+### Phase 4: KPI Dashboard Development (Q2 2025)
+**Duration**: 6 weeks
+**Deliverables**:
+- Dashboard UI/UX design
+- Chart integration (Chart.js)
+- Real-time data updates
+- Mobile responsive design
+- Export functionality
+
+### Phase 5: Funding Platform (Q3 2025)
+**Duration**: 8 weeks
+**Deliverables**:
+- Payment processing integration
+- Donation form and workflows
+- Progress tracking visualization
+- Donor leaderboard
+- Admin reporting interface
+
+### Phase 6: AI Course Automation (Q3 2025)
+**Duration**: 6 weeks
+**Deliverables**:
+- YouTube API integration
+- Automation workflow setup
+- Course generation system
+- QA/approval workflow
+- Admin management interface
+
+### Phase 7: Travel Abroad Portal (Q4 2025)
+**Duration**: 8 weeks
+**Deliverables**:
+- Opportunities management system
+- Application processing
+- Meeting booking integration
+- Admin dashboard
+- User communication workflows
+
+---
+
+## 6. RISK MITIGATION
+
+### Technical Risks
+- **Airtable Rate Limits**: Implement caching and batch operations
+- **API Changes**: Monitor YouTube API updates and implement versioning
+- **Payment Security**: PCI-DSS compliance and security audits
+- **Data Migration**: Backup strategies and rollback plans
+
+### Business Risks
+- **Budget Overruns**: Phased implementation allows for adjustments
+- **Vendor Lock-in**: Document API usage for future migration
+- **Scalability**: Design for growth from day one
+
+### Legal/Compliance Risks
+- **GDPR**: Data privacy notices and consent management
+- **Payment Regulations**: Swiss and EU financial compliance
+- **International Data Transfer**: Clear policies for cross-border data
+
+---
+
+## 7. SUCCESS CRITERIA
+
+### Technical
+- ✅ All features deployed and functional
+- ✅ Performance targets met (<3s load time)
+- ✅ Zero critical security vulnerabilities
+- ✅ 100% browser compatibility
+- ✅ Accessibility standards maintained
+
+### Business
+- ✅ KPI dashboard operational
+- ✅ First donation processed successfully
+- ✅ First automated course created
+- ✅ First travel application processed
+- ✅ All content translated (4 languages)
+
+### User Experience
+- ✅ Intuitive navigation for all new features
+- ✅ Mobile-first responsive design
+- ✅ Clear CTAs and user journeys
+- ✅ Error handling and user feedback
+- ✅ Professional design consistency
+
+---
+
+## 8. OUT OF SCOPE
+
+- User authentication (public user accounts)
+- Social network features
+- Real-time chat
+- Mobile app development
+- Video hosting (using YouTube)
+- Advanced AI features beyond automation
+- E-commerce platform
+
+---
+
+## 9. CONSTRAINTS
+
+### Technical
+- Must maintain static frontend architecture
+- No server infrastructure
+- API rate limits consideration
+- Limited budget for third-party services
+
+### Business
+- Multilingual requirement (FR/EN/DE/IT)
+- Brand consistency (#DA2F2C color)
+- Swiss institutional aesthetic
+- Professional communication style
+
+### Legal
+- GDPR compliance (European users)
+- PCI-DSS compliance for payments
+- International data transfer regulations
+- Swiss/EU financial regulations
+
+---
+
+## APPENDICES
+
+### A. Airtable Schema
+[Tables and fields to be defined during Phase 3]
+
+### B. API Documentation
+[Integration guides for each third-party service]
+
+### C. Translation Keys
+[Multilingual content structure for new features]
+
+### D. Testing Strategy
+[Unit, integration, and user acceptance testing plans]
+
+---
+
+**Document Version**: 1.0
+**Last Updated**: 2025-01-23
+**Status**: Approved for Implementation
+**Next Review**: After Phase 3 completion
+
+
