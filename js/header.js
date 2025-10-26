@@ -70,8 +70,8 @@ class TarmaqHeader {
           <a
             href="charte.html"
             class="nav-link ${this.currentPage === 'charte' ? 'text-primary font-semibold' : 'hover:text-primary transition'}"
-            data-i18n="nav.manifeste"
-            >Manifeste</a
+            data-i18n="nav.charter"
+            >Charte</a
           >
           <a
             href="contact.html"
@@ -155,8 +155,8 @@ class TarmaqHeader {
           <a
             href="charte.html"
             class="nav-link ${this.currentPage === 'charte' ? 'text-primary font-semibold' : 'hover:text-primary transition'}"
-            data-i18n="nav.manifeste"
-            >Manifeste</a
+            data-i18n="nav.charter"
+            >Charte</a
           >
           <a
             href="contact.html"
