@@ -77,7 +77,7 @@ document.addEventListener('DOMContentLoaded', function() {
             console.error('Error loading signatories from localStorage:', error);
         }
         // Return default signatories if localStorage is empty or error occurs
-        return ['Marie Dubois', 'Jean Dupont', 'Alex Martin'];
+        return ['Bastien Dumont'];
     }
 
     // Save signatories to localStorage
