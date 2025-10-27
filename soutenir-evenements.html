@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Partenaires Événements - TARMAQ</title>
+    <link rel="icon" href="assets/favicon.png" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: { primary: '#DA2F2C', secondary: '#111827', accent: '#F3F4F6' }
+          }
+        }
+      };
+    </script>
+  </head>
+  <body class="font-sans bg-white text-secondary">
+    <section class="relative bg-gradient-to-br from-orange-600 to-orange-800 text-white pt-32 pb-20">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto text-center">
+          <div class="inline-block bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full mb-6">
+            <span class="text-sm font-semibold">🎉 Créons ensemble</span>
+          </div>
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">Partenaires Événements</h1>
+          <p class="text-xl md:text-2xl mb-8 text-white/90">Collaborons pour créer des événements mémorables</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-20 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-secondary">Types d'événements</h2>
+          <div class="grid md:grid-cols-2 gap-8">
+            <div class="bg-accent p-8 rounded-2xl">
+              <i class="fas fa-code text-orange-600 text-5xl mb-4"></i>
+              <h3 class="text-2xl font-bold mb-3">Hackathons</h3>
+              <p class="text-gray-600 mb-4">Défis intensifs de 24-48h pour créer des solutions innovantes</p>
+              <ul class="space-y-2 text-gray-600">
+                <li><i class="fas fa-check text-orange-600 mr-2"></i>Sponsoring</li>
+                <li><i class="fas fa-check text-orange-600 mr-2"></i>Jurys experts</li>
+                <li><i class="fas fa-check text-orange-600 mr-2"></i>Prix et récompenses</li>
+              </ul>
+            </div>
+            <div class="bg-accent p-8 rounded-2xl">
+              <i class="fas fa-microphone text-orange-600 text-5xl mb-4"></i>
+              <h3 class="text-2xl font-bold mb-3">Conférences Tech</h3>
+              <p class="text-gray-600 mb-4">Presentations et échanges sur les technologies émergentes</p>
+              <ul class="space-y-2 text-gray-600">
+                <li><i class="fas fa-check text-orange-600 mr-2"></i>Interventions</li>
+                <li><i class="fas fa-check text-orange-600 mr-2"></i>Sponsoring</li>
+                <li><i class="fas fa-check text-orange-600 mr-2"></i>Networking</li>
+              </ul>
+            </div>
+            <div class="bg-accent p-8 rounded-2xl">
+              <i class="fas fa-users text-orange-600 text-5xl mb-4"></i>
+              <h3 class="text-2xl font-bold mb-3">Meetups</h3>
+              <p class="text-gray-600 mb-4">Rencontres régulières de la communauté tech</p>
+              <ul class="space-y-2 text-gray-600">
+                <li><i class="fas fa-check text-orange-600 mr-2"></i>Organisation</li>
+                <li><i class="fas fa-check text-orange-600 mr-2"></i>Hébergement</li>
+                <li><i class="fas fa-check text-orange-600 mr-2"></i>Animations</li>
+              </ul>
+            </div>
+            <div class="bg-accent p-8 rounded-2xl">
+              <i class="fas fa-trophy text-orange-600 text-5xl mb-4"></i>
+              <h3 class="text-2xl font-bold mb-3">Compétitions</h3>
+              <p class="text-gray-600 mb-4">Tournois et challenges technologiques</p>
+              <ul class="space-y-2 text-gray-600">
+                <li><i class="fas fa-check text-orange-600 mr-2"></i>Co-organisation</li>
+                <li><i class="fas fa-check text-orange-600 mr-2"></i>Sponsoring</li>
+                <li><i class="fas fa-check text-orange-600 mr-2"></i>Récompenses</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-20 bg-accent">
+      <div class="container mx-auto px-4">
+        <div class="max-w-3xl mx-auto">
+          <div class="bg-gradient-to-br from-orange-600 to-orange-800 p-8 md:p-12 rounded-2xl text-white">
+            <h2 class="text-3xl font-bold mb-6 text-center">Devenir partenaire événementiel</h2>
+            <form id="event-form" class="space-y-6">
+              <div class="grid md:grid-cols-2 gap-6">
+                <input type="text" placeholder="Prénom *" required class="w-full px-4 py-3 bg-white/10 border border-white/30 rounded-lg text-white placeholder-white/70">
+                <input type="text" placeholder="Nom *" required class="w-full px-4 py-3 bg-white/10 border border-white/30 rounded-lg text-white placeholder-white/70">
+              </div>
+              <input type="email" placeholder="Email *" required class="w-full px-4 py-3 bg-white/10 border border-white/30 rounded-lg text-white placeholder-white/70">
+              <input type="text" placeholder="Organisation" class="w-full px-4 py-3 bg-white/10 border border-white/30 rounded-lg text-white placeholder-white/70">
+              <select required class="w-full px-4 py-3 bg-white/10 border border-white/30 rounded-lg text-white">
+                <option value="">Type de partenariat *</option>
+                <option value="sponsor" class="text-secondary">Sponsoring</option>
+                <option value="organization" class="text-secondary">Co-organisation</option>
+                <option value="speaker" class="text-secondary">Intervention/Speaker</option>
+                <option value="host" class="text-secondary">Hébergement</option>
+              </select>
+              <select class="w-full px-4 py-3 bg-white/10 border border-white/30 rounded-lg text-white">
+                <option value="">Type d'événement</option>
+                <option value="hackathon" class="text-secondary">Hackathon</option>
+                <option value="conference" class="text-secondary">Conférence</option>
+                <option value="meetup" class="text-secondary">Meetup</option>
+                <option value="competition" class="text-secondary">Compétition</option>
+              </select>
+              <textarea rows="4" placeholder="Votre proposition *" required class="w-full px-4 py-3 bg-white/10 border border-white/30 rounded-lg text-white placeholder-white/70"></textarea>
+              <button type="submit" class="w-full bg-white text-orange-600 hover:bg-gray-100 font-bold py-4 px-8 rounded-lg transition">
+                Envoyer ma candidature <i class="fas fa-arrow-right ml-2"></i>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="bg-secondary text-white py-12">
+      <div class="container mx-auto px-4 text-center">
+        <p class="text-gray-400">&copy; 2025 TARMAQ. Tous droits réservés.</p>
+      </div>
+    </footer>
+
+    <script src="js/header.js"></script>
+    <script src="js/i18n.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+      document.getElementById('event-form').addEventListener('submit', (e) => {
+        e.preventDefault();
+        alert('Merci! Nous vous contacterons pour discuter de ce partenariat.');
+        e.target.reset();
+      });
+    </script>
+  </body>
+</html>

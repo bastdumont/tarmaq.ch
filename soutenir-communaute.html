@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rejoindre la Communauté - TARMAQ</title>
+    <link rel="icon" href="assets/favicon.png" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: { primary: '#DA2F2C', secondary: '#111827', accent: '#F3F4F6' }
+          }
+        }
+      };
+    </script>
+  </head>
+  <body class="font-sans bg-white text-secondary">
+    <section class="relative bg-gradient-to-br from-pink-600 to-pink-800 text-white pt-32 pb-20">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto text-center">
+          <div class="inline-block bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full mb-6">
+            <span class="text-sm font-semibold">🌟 Changez des vies</span>
+          </div>
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">Rejoignez Notre Communauté</h1>
+          <p class="text-xl md:text-2xl mb-8 text-white/90">Ensemble, transformons l'avenir des jeunes talents</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-20 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-5xl mx-auto">
+          <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-secondary">Comment contribuer ?</h2>
+          <div class="grid md:grid-cols-3 gap-8">
+            <div class="bg-accent p-6 rounded-2xl text-center">
+              <div class="text-6xl mb-4">📱</div>
+              <h3 class="text-xl font-bold mb-3">Partagez sur les réseaux</h3>
+              <p class="text-gray-600 text-sm">Suivez-nous et partagez nos contenus pour faire connaître TARMAQ</p>
+              <div class="mt-6 space-y-2">
+                <a href="#" class="block bg-blue-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-blue-700 transition">
+                  <i class="fab fa-linkedin mr-2"></i> LinkedIn
+                </a>
+                <a href="#" class="block bg-pink-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-pink-700 transition">
+                  <i class="fab fa-instagram mr-2"></i> Instagram
+                </a>
+                <a href="#" class="block bg-gray-800 text-white px-4 py-2 rounded-lg text-sm hover:bg-gray-900 transition">
+                  <i class="fab fa-github mr-2"></i> GitHub
+                </a>
+              </div>
+            </div>
+            <div class="bg-accent p-6 rounded-2xl text-center">
+              <div class="text-6xl mb-4">🗣️</div>
+              <h3 class="text-xl font-bold mb-3">Parlez de nous</h3>
+              <p class="text-gray-600 text-sm">Bouche-à-oreille, recommandations à vos réseaux professionnels</p>
+              <div class="mt-6">
+                <p class="text-sm text-gray-600 mb-3">Actions :</p>
+                <ul class="text-sm text-gray-600 space-y-2">
+                  <li><i class="fas fa-check text-pink-600 mr-2"></i>Parlez à vos amis</li>
+                  <li><i class="fas fa-check text-pink-600 mr-2"></i>Recommandez des jeunes</li>
+                  <li><i class="fas fa-check text-pink-600 mr-2"></i>Partagez notre mission</li>
+                </ul>
+              </div>
+            </div>
+            <div class="bg-accent p-6 rounded-2xl text-center">
+              <div class="text-6xl mb-4">🤲</div>
+              <h3 class="text-xl font-bold mb-3">Bénévolat</h3>
+              <p class="text-gray-600 text-sm">Aidez-nous ponctuellement lors d'événements ou sur des projets</p>
+              <div class="mt-6">
+                <p class="text-sm text-gray-600 mb-3">Opportunités :</p>
+                <ul class="text-sm text-gray-600 space-y-2">
+                  <li><i class="fas fa-check text-pink-600 mr-2"></i>Support événements</li>
+                  <li><i class="fas fa-check text-pink-600 mr-2"></i>Aide projets</li>
+                  <li><i class="fas fa-check text-pink-600 mr-2"></i>Communication</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-20 bg-accent">
+      <div class="container mx-auto px-4">
+        <div class="max-w-3xl mx-auto">
+          <div class="bg-gradient-to-br from-pink-600 to-pink-800 p-8 md:p-12 rounded-2xl text-white">
+            <h2 class="text-3xl font-bold mb-6 text-center">Rejoignez la communauté</h2>
+            <form id="community-form" class="space-y-6">
+              <div class="grid md:grid-cols-2 gap-6">
+                <input type="text" placeholder="Prénom" class="w-full px-4 py-3 bg-white/10 border border-white/30 rounded-lg text-white placeholder-white/70">
+                <input type="text" placeholder="Nom" class="w-full px-4 py-3 bg-white/10 border border-white/30 rounded-lg text-white placeholder-white/70">
+              </div>
+              <input type="email" placeholder="Email" class="w-full px-4 py-3 bg-white/10 border border-white/30 rounded-lg text-white placeholder-white/70">
+              <select class="w-full px-4 py-3 bg-white/10 border border-white/30 rounded-lg text-white">
+                <option value="">Comment souhaitez-vous aider ?</option>
+                <option value="social" class="text-secondary">Partage sur réseaux sociaux</option>
+                <option value="share" class="text-secondary">Parler de nous</option>
+                <option value="volunteer" class="text-secondary">Bénévolat</option>
+                <option value="all" class="text-secondary">Tout ce qui précède</option>
+              </select>
+              <textarea rows="4" placeholder="Message (optionnel)" class="w-full px-4 py-3 bg-white/10 border border-white/30 rounded-lg text-white placeholder-white/70"></textarea>
+              <button type="submit" class="w-full bg-white text-pink-600 hover:bg-gray-100 font-bold py-4 px-8 rounded-lg transition">
+                Rejoindre la communauté <i class="fas fa-heart ml-2"></i>
+              </button>
+              <p class="text-sm text-center opacity-75">
+                En rejoignant, vous acceptez de recevoir nos actualités
+              </p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="bg-secondary text-white py-12">
+      <div class="container mx-auto px-4 text-center">
+        <p class="text-gray-400">&copy; 2025 TARMAQ. Tous droits réservés.</p>
+      </div>
+    </footer>
+
+    <script src="js/header.js"></script>
+    <script src="js/i18n.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+      document.getElementById('community-form').addEventListener('submit', (e) => {
+        e.preventDefault();
+        alert('Merci de rejoindre notre communauté! 🌟');
+        e.target.reset();
+      });
+    </script>
+  </body>
+</html>
