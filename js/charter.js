@@ -166,17 +166,29 @@ Message automatique de TARMAQ`
     // Save signature to Airtable
     async function saveSignatureToAirtable(signatureData) {
         try {
+            console.log('🔍 Debugging Airtable integration...');
+            
             // Check if Airtable API is available
             if (!window.AirtableAPI) {
-                console.log('Airtable API not loaded, skipping database save');
+                console.error('❌ Airtable API not loaded');
                 return;
             }
+            console.log('✅ Airtable API loaded');
 
             // Check if Airtable is configured
-            if (!window.AirtableConfig || !window.AirtableConfig.isValid()) {
-                console.log('Airtable not configured, skipping database save');
+            if (!window.AirtableConfig) {
+                console.error('❌ AirtableConfig not found');
                 return;
             }
+            console.log('✅ AirtableConfig found');
+
+            if (!window.AirtableConfig.isValid()) {
+                console.error('❌ Airtable not configured properly');
+                console.log('API Key:', window.AirtableConfig.apiKey ? 'Set' : 'Missing');
+                console.log('Base ID:', window.AirtableConfig.baseId ? 'Set' : 'Missing');
+                return;
+            }
+            console.log('✅ Airtable configuration is valid');
 
             const airtableData = {
                 "Name": signatureData.fullName,
@@ -185,12 +197,15 @@ Message automatique de TARMAQ`
                 "Signature_Date": signatureData.dateTime
             };
 
+            console.log('📤 Sending data to Airtable:', airtableData);
+
             // Use the AirtableAPI object
             const result = await window.AirtableAPI.createRecord('Charter Signatures', airtableData);
-            console.log('Signature saved to Airtable successfully:', result);
+            console.log('✅ Signature saved to Airtable successfully:', result);
 
         } catch (error) {
-            console.error('Error saving signature to Airtable:', error);
+            console.error('❌ Error saving signature to Airtable:', error);
+            console.error('Error details:', error.message);
         }
     }
 
