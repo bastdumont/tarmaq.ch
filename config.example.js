@@ -1,50 +1,27 @@
-# TARMAQ Website - Configuration Template
-# Copy this file to config.js and fill in your actual values
+// Global Configuration Template for TARMAQ Website
+// Copy this file to config.js and update with your actual credentials
 
-// TARMAQ Website Configuration
-// This file contains sensitive information - DO NOT commit to git
-
-const CONFIG = {
+window.CONFIG = {
     // EmailJS Configuration
     EMAILJS: {
-        PUBLIC_KEY: 'your_public_key_here',
-        SERVICE_ID: 'service_tarmaq',
-        TEMPLATE_ID: 'template_charter_signature'
+        PUBLIC_KEY: 'your_emailjs_public_key_here',
+        SERVICE_ID: 'service_15n2y6q',
+        TEMPLATE_ID: 'template_tzrwo6d'
     },
     
     // Email Configuration
     EMAIL: {
-        NOTIFICATION_EMAIL: 'bastien@balder-app.com',
-        CONTACT_FORM_EMAIL: 'bastien@balder-app.com'
+        NOTIFICATION_EMAIL: 'bastien@balder-app.com'
     },
     
-    // Webhook Configuration (Alternative to EmailJS)
+    // Webhook Configuration
     WEBHOOK: {
         URL: 'https://webhook.site/your-unique-webhook-url'
     },
     
-    // HubSpot Integration (if used)
-    HUBSPOT: {
-        PORTAL_ID: 'your_hubspot_portal_id',
-        FORM_GUID: 'your_hubspot_form_guid'
-    },
-    
-    // Analytics (if added later)
-    ANALYTICS: {
-        GOOGLE_ANALYTICS_ID: 'your_ga_id',
-        GOOGLE_TAG_MANAGER_ID: 'your_gtm_id'
-    },
-    
-    // Development
-    DEVELOPMENT: {
-        NODE_ENV: 'development',
-        DEBUG: false
+    // Airtable Configuration (for backward compatibility)
+    AIRTABLE: {
+        API_KEY: 'your_airtable_api_key_here',
+        BASE_ID: 'your_airtable_base_id_here'
     }
 };
-
-// Export for use in other files
-if (typeof module !== 'undefined' && module.exports) {
-    module.exports = CONFIG;
-} else if (typeof window !== 'undefined') {
-    window.CONFIG = CONFIG;
-}

@@ -166,6 +166,12 @@ Message automatique de TARMAQ`
     // Save signature to Airtable
     async function saveSignatureToAirtable(signatureData) {
         try {
+            // Check if Airtable API is available
+            if (!window.AirtableAPI) {
+                console.log('Airtable API not loaded, skipping database save');
+                return;
+            }
+
             // Check if Airtable is configured
             if (!window.AirtableConfig || !window.AirtableConfig.isValid()) {
                 console.log('Airtable not configured, skipping database save');
@@ -173,26 +179,16 @@ Message automatique de TARMAQ`
             }
 
             const airtableData = {
-                fields: {
-                    "Name": signatureData.fullName,
-                    "Email": signatureData.email || '',
-                    "Timestamp": signatureData.timestamp,
-                    "Signature_Date": signatureData.dateTime
-                }
+                "Name": signatureData.fullName,
+                "Email": signatureData.email || '',
+                "Timestamp": signatureData.timestamp,
+                "Signature_Date": signatureData.dateTime
             };
 
-            const response = await fetch(window.AirtableConfig.getApiUrl('Charter%20Signatures'), {
-                method: 'POST',
-                headers: window.AirtableConfig.getHeaders(),
-                body: JSON.stringify(airtableData)
-            });
+            // Use the AirtableAPI object
+            const result = await window.AirtableAPI.createRecord('Charter Signatures', airtableData);
+            console.log('Signature saved to Airtable successfully:', result);
 
-            if (response.ok) {
-                console.log('Signature saved to Airtable successfully');
-            } else {
-                const errorData = await response.json();
-                console.error('Airtable API error:', errorData);
-            }
         } catch (error) {
             console.error('Error saving signature to Airtable:', error);
         }
