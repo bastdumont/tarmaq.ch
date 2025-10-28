@@ -45,32 +45,45 @@ Create the following tables with all specified fields:
 5. Set access to your **"TARMAQ Website Backend"** base
 6. Copy the token (starts with `pat...`)
 
-## Step 4: Configure the Website
+## Step 4: Configure Environment Variables
 
-### Option A: Using Config Variables in HTML (Recommended for Static Sites)
+### Option A: Local Development (.env file)
+
+1. Copy `env-template.txt` to `.env` in your project root
+2. Update with your actual credentials:
+   ```
+   AIRTABLE_API_KEY=pat_your_token_here
+   AIRTABLE_BASE_ID=app_your_base_id_here
+   ```
+
+### Option B: Hosting Platform Environment Variables
+
+**For Netlify:**
+1. Go to Site Settings → Environment Variables
+2. Add:
+   - `AIRTABLE_API_KEY` = `pat...your_token`
+   - `AIRTABLE_BASE_ID` = `app...your_base_id`
+
+**For Vercel:**
+1. Go to Project Settings → Environment Variables
+2. Add:
+   - `AIRTABLE_API_KEY` = `pat...your_token`
+   - `AIRTABLE_BASE_ID` = `app...your_base_id`
+
+### Option C: Manual Configuration
 
 Add this script **before** loading `airtable-config.js` in your HTML files:
 
 ```html
 <script>
-    // Inject Airtable credentials from hosting platform environment variables
-    // This should be done server-side or via environment variable injection
-    window.AIRTABLE_API_KEY = 'YOUR_API_KEY_HERE';
-    window.AIRTABLE_BASE_ID = 'YOUR_BASE_ID_HERE';
-    window.ENVIRONMENT = 'production'; // or 'development'
+    // Manual configuration (not recommended for production)
+    window.AIRTABLE_API_KEY = 'pat_your_token_here';
+    window.AIRTABLE_BASE_ID = 'app_your_base_id_here';
+    window.ENVIRONMENT = 'production';
 </script>
+<script src="js/env-config.js"></script>
 <script src="js/airtable-config.js"></script>
-<script src="js/airtable-api.js"></script>
 ```
-
-### Option B: Netlify/Vercel Environment Variables
-
-1. Go to your hosting platform's environment variables settings
-2. Add:
-   - `AIRTABLE_API_KEY` = `pat...your_token`
-   - `AIRTABLE_BASE_ID` = `app...your_base_id`
-
-Then use build-time injection or serverless functions to pass these to the frontend.
 
 ## Step 5: Update HTML Files
 
