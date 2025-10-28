@@ -6,10 +6,5 @@
 AIRTABLE_API_KEY=your_airtable_api_key_here
 AIRTABLE_BASE_ID=your_airtable_base_id_here
 
-# EmailJS Configuration
-EMAILJS_PUBLIC_KEY=your_emailjs_public_key_here
-EMAILJS_SERVICE_ID=your_emailjs_service_id_here
-EMAILJS_TEMPLATE_ID=your_emailjs_template_id_here
-
 # General
 NODE_ENV=development

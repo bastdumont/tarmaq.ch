@@ -5,11 +5,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const signatureCount = document.getElementById('signature-count');
     const notification = document.getElementById('notification');
     
-    // Initialize EmailJS
-    if (typeof emailjs !== 'undefined') {
-        const publicKey = window.CONFIG?.EMAILJS?.PUBLIC_KEY || 'your_public_key_here';
-        emailjs.init(publicKey);
-    }
     
     // Load signatories from localStorage or use defaults
     let signatories = loadSignatories();
@@ -55,9 +50,6 @@ document.addEventListener('DOMContentLoaded', function() {
         // Save to Airtable
         await saveSignatureToAirtable(signatureData);
 
-        // Send email notification
-        await sendEmailNotification(signatureData, currentCount);
-
         // Update the display
         updateSignatoriesList();
         updateSignatureCount();
@@ -92,76 +84,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Send email notification using EmailJS
-    async function sendEmailNotification(signatureData, totalCount) {
-        try {
-            // Check if EmailJS is loaded
-            if (typeof emailjs === 'undefined') {
-                console.log('EmailJS not loaded, skipping email notification');
-                return;
-            }
-
-            // EmailJS configuration (you need to set these up in your EmailJS account)
-            const serviceId = window.CONFIG?.EMAILJS?.SERVICE_ID || 'service_15n2y6q';
-            const templateId = window.CONFIG?.EMAILJS?.TEMPLATE_ID || 'template_tzrwo6d';
-            const publicKey = window.CONFIG?.EMAILJS?.PUBLIC_KEY || 'your_public_key';
-
-            // Template parameters
-            const templateParams = {
-                to_email: window.CONFIG?.EMAIL?.NOTIFICATION_EMAIL || 'bastien@balder-app.com',
-                signatory_name: signatureData.fullName,
-                signatory_email: signatureData.email || 'Non fourni',
-                signature_date: signatureData.dateTime,
-                total_signatures: totalCount,
-                message: `Nouvelle signature de la charte TARMAQ !
-
-Signataire: ${signatureData.fullName}
-Email: ${signatureData.email || 'Non fourni'}
-Date et heure: ${signatureData.dateTime}
-Nombre total de signataires: ${totalCount}
-
----
-Message automatique de TARMAQ`
-            };
-
-            // Send email using EmailJS
-            await emailjs.send(serviceId, templateId, templateParams, publicKey);
-            console.log('Email notification sent successfully');
-
-        } catch (error) {
-            console.error('Error sending email notification:', error);
-            
-            // Fallback: Try to send via a simple webhook if EmailJS fails
-            try {
-                const webhookData = {
-                    to: window.CONFIG?.EMAIL?.NOTIFICATION_EMAIL || 'bastien@balder-app.com',
-                    subject: `Nouvelle signature de la charte TARMAQ - ${signatureData.fullName}`,
-                    body: `Nouvelle signature de la charte TARMAQ !
-
-Signataire: ${signatureData.fullName}
-Email: ${signatureData.email || 'Non fourni'}
-Date et heure: ${signatureData.dateTime}
-Nombre total de signataires: ${totalCount}
-
----
-Message automatique de TARMAQ`
-                };
-
-                // Using a webhook service as fallback
-                const webhookUrl = window.CONFIG?.WEBHOOK?.URL || 'https://webhook.site/your-unique-webhook-url';
-                await fetch(webhookUrl, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(webhookData)
-                });
-                console.log('Fallback email notification sent via webhook');
-            } catch (fallbackError) {
-                console.error('Fallback email notification also failed:', fallbackError);
-            }
-        }
-    }
 
     // Save signature to Airtable
     async function saveSignatureToAirtable(signatureData) {

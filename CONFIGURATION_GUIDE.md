@@ -28,17 +28,6 @@ This guide will help you set up all the necessary configurations for the TARMAQ 
    - Grant access to your base
    - Copy the token (starts with `pat...`)
 
-## 2. EmailJS Setup
-
-### Create EmailJS Account
-1. Go to [emailjs.com](https://emailjs.com/) and sign up
-2. Create a new service (Gmail, Outlook, etc.)
-3. Create an email template for charter notifications
-
-### Get EmailJS Credentials
-1. **Public Key**: Found in Account → API Keys
-2. **Service ID**: Found in Email Services
-3. **Template ID**: Found in Email Templates
 
 ## 3. Configuration Files
 
@@ -50,9 +39,6 @@ This guide will help you set up all the necessary configurations for the TARMAQ 
    ```
    AIRTABLE_API_KEY=pat_your_token_here
    AIRTABLE_BASE_ID=app_your_base_id_here
-   EMAILJS_PUBLIC_KEY=your_emailjs_public_key_here
-   EMAILJS_SERVICE_ID=your_service_id_here
-   EMAILJS_TEMPLATE_ID=your_template_id_here
    ```
 
 **For Vercel:**
@@ -64,14 +50,6 @@ This guide will help you set up all the necessary configurations for the TARMAQ 
 **Create `config.js` (copy from `config.example.js`):**
 ```javascript
 window.CONFIG = {
-    EMAILJS: {
-        PUBLIC_KEY: 'your_emailjs_public_key_here',
-        SERVICE_ID: 'your_service_id_here',
-        TEMPLATE_ID: 'your_template_id_here'
-    },
-    EMAIL: {
-        NOTIFICATION_EMAIL: 'bastien@balder-app.com'
-    },
     AIRTABLE: {
         API_KEY: 'pat_your_token_here',
         BASE_ID: 'app_your_base_id_here'
@@ -96,9 +74,7 @@ const AirtableConfig = {
 3. Fill out and submit the charter form
 4. Check console for messages:
    - ✅ "Signature saved to Airtable successfully"
-   - ✅ "Email notification sent successfully"
 5. Check your Airtable base for the new record
-6. Check your email for the notification
 
 ### Debug Common Issues
 
@@ -106,9 +82,6 @@ const AirtableConfig = {
 - Check that `js/airtable-config.js` exists and has valid credentials
 - Verify API key starts with `pat...` and Base ID starts with `app...`
 
-**"EmailJS not loaded"**
-- Check that `config.js` exists and has valid EmailJS credentials
-- Verify EmailJS service and template IDs are correct
 
 **"Airtable API not loaded"**
 - Check that `js/airtable-api.js` is loaded in the HTML
@@ -141,7 +114,6 @@ Make sure scripts are loaded in this order in `charte.html`:
 
 ### API Rate Limits
 - Airtable free tier: 5 requests/second
-- EmailJS free tier: 200 emails/month
 - Consider caching for high-traffic sites
 
 ### CORS Issues
@@ -155,7 +127,7 @@ If you encounter issues:
 1. Check browser console for error messages
 2. Verify all configuration files are correct
 3. Test API credentials independently
-4. Check Airtable and EmailJS documentation
+4. Check Airtable documentation
 
 ---
 
