@@ -52,6 +52,9 @@ document.addEventListener('DOMContentLoaded', function() {
         // Save to localStorage
         saveSignatories(signatories);
 
+        // Save to Airtable
+        await saveSignatureToAirtable(signatureData);
+
         // Send email notification
         await sendEmailNotification(signatureData, currentCount);
 
@@ -157,6 +160,41 @@ Message automatique de TARMAQ`
             } catch (fallbackError) {
                 console.error('Fallback email notification also failed:', fallbackError);
             }
+        }
+    }
+
+    // Save signature to Airtable
+    async function saveSignatureToAirtable(signatureData) {
+        try {
+            // Check if Airtable is configured
+            if (!window.AirtableConfig || !window.AirtableConfig.isValid()) {
+                console.log('Airtable not configured, skipping database save');
+                return;
+            }
+
+            const airtableData = {
+                fields: {
+                    "Name": signatureData.fullName,
+                    "Email": signatureData.email || '',
+                    "Timestamp": signatureData.timestamp,
+                    "Signature_Date": signatureData.dateTime
+                }
+            };
+
+            const response = await fetch(window.AirtableConfig.getApiUrl('Charter%20Signatures'), {
+                method: 'POST',
+                headers: window.AirtableConfig.getHeaders(),
+                body: JSON.stringify(airtableData)
+            });
+
+            if (response.ok) {
+                console.log('Signature saved to Airtable successfully');
+            } else {
+                const errorData = await response.json();
+                console.error('Airtable API error:', errorData);
+            }
+        } catch (error) {
+            console.error('Error saving signature to Airtable:', error);
         }
     }
 
