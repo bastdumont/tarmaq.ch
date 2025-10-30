@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Analyse Vidéo - Migration d'une App vers une Mini App Base</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css"
+    />
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+      body {
+        font-family: 'Inter', sans-serif;
+      }
+      .gradient-bg {
+        background: linear-gradient(135deg, #e30007 0%, #cc0006 100%);
+      }
+
+      /* Header styles */
+      .btn-secondary {
+        background: rgba(255, 255, 255, 0.9);
+        color: #2a2a2a;
+        padding: 14px 24px;
+        border-radius: 16px;
+        font-weight: 700;
+        transition: all 0.3s ease;
+        border: 1px solid #e8e8ec;
+        cursor: pointer;
+      }
+
+      .btn-secondary:hover {
+        background: white;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      .btn-gradient {
+        background: linear-gradient(140deg, #f4999c, #e30007);
+        color: white;
+        padding: 14px 24px;
+        border-radius: 16px;
+        font-weight: 700;
+        transition: all 0.3s ease;
+        border: none;
+        cursor: pointer;
+      }
+
+      .btn-gradient:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(227, 0, 7, 0.25);
+      }
+
+      /* Navigation styles */
+      .nav-item {
+        position: relative;
+      }
+
+      .nav-dropdown {
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-10px);
+        transition: all 0.3s ease;
+      }
+
+      .nav-item:hover .nav-dropdown {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+      }
+
+      .text-brand {
+        color: #e30007;
+      }
+
+      .card-hover {
+        transition: all 0.3s ease;
+      }
+      .card-hover:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+          0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      }
+
+      .key-points {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+        margin: 20px 0;
+      }
+
+      .point-card {
+        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        padding: 25px;
+        border-radius: 15px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+      }
+
+      .point-card:hover {
+        transform: translateY(-5px);
+      }
+
+      .point-card h4 {
+        color: #e30007;
+        margin-bottom: 10px;
+        font-size: 1.2em;
+      }
+
+      .steps {
+        counter-reset: step-counter;
+        list-style: none;
+      }
+
+      .steps li {
+        counter-increment: step-counter;
+        margin: 20px 0;
+        padding: 20px;
+        background: #f8f9fa;
+        border-left: 5px solid #e30007;
+        border-radius: 8px;
+        position: relative;
+      }
+
+      .steps li::before {
+        content: counter(step-counter);
+        position: absolute;
+        left: -15px;
+        top: 15px;
+        background: #e30007;
+        color: white;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+      }
+
+      .steps li strong {
+        color: #e30007;
+        font-size: 1.1em;
+        display: block;
+        margin-bottom: 8px;
+      }
+
+      .resource-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+        margin: 20px 0;
+      }
+
+      .resource-card {
+        background: white;
+        border: 2px solid #e30007;
+        padding: 20px;
+        border-radius: 12px;
+        text-align: center;
+        transition: all 0.3s ease;
+      }
+
+      .resource-card:hover {
+        background: #e30007;
+        color: white;
+        transform: scale(1.05);
+      }
+
+      .resource-card a {
+        color: inherit;
+        text-decoration: none;
+        font-weight: 600;
+      }
+
+      .resource-card .icon {
+        font-size: 2.5em;
+        margin-bottom: 10px;
+      }
+
+      .code-block {
+        background: #1e1e1e;
+        color: #d4d4d4;
+        padding: 20px;
+        border-radius: 8px;
+        overflow-x: auto;
+        margin: 15px 0;
+        font-family: 'Courier New', monospace;
+      }
+
+      .code-block code {
+        color: #ce9178;
+      }
+
+      .highlight-box {
+        background: linear-gradient(135deg, #fff5e1 0%, #ffe4b5 100%);
+        border-left: 5px solid #ffa500;
+        padding: 20px;
+        border-radius: 8px;
+        margin: 20px 0;
+      }
+
+      .highlight-box h4 {
+        color: #ff8c00;
+        margin-bottom: 10px;
+      }
+
+      .use-cases {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+        margin: 20px 0;
+      }
+
+      .use-case-tag {
+        background: #e30007;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 25px;
+        font-weight: 600;
+      }
+
+      .challenge-box {
+        background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+        border: 2px solid #4caf50;
+        padding: 25px;
+        border-radius: 12px;
+        margin: 15px 0;
+      }
+
+      .challenge-box h4 {
+        color: #2e7d32;
+        margin-bottom: 10px;
+        font-size: 1.2em;
+      }
+
+      .difficulty {
+        display: inline-block;
+        padding: 5px 15px;
+        border-radius: 15px;
+        font-size: 0.9em;
+        font-weight: 600;
+        margin-left: 10px;
+      }
+
+      .difficulty.easy {
+        background: #c8e6c9;
+        color: #2e7d32;
+      }
+
+      .difficulty.medium {
+        background: #ffe082;
+        color: #f57c00;
+      }
+
+      .difficulty.hard {
+        background: #ffcdd2;
+        color: #c62828;
+      }
+
+      @media (max-width: 768px) {
+        .key-points,
+        .resource-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50">
+    <!-- Navigation Bar -->
+    <nav class="bg-white shadow-lg border-b border-gray-200">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+          <div class="flex items-center">
+            <a
+              href="index.html"
+              class="font-semibold text-brand"
+              style="color: #e30007"
+              >Cours Libre</a
+            >
+          </div>
+          <div class="hidden md:block">
+            <div class="ml-10 flex items-baseline space-x-4">
+              <a
+                href="index.html"
+                class="text-gray-600 hover:text-brand px-3 py-2 rounded-md text-sm font-medium transition-colors"
+                >Accueil</a
+              >
+              <a
+                href="5 AI tools for marketing.html"
+                class="text-gray-600 hover:text-brand px-3 py-2 rounded-md text-sm font-medium transition-colors"
+                >Outils IA Marketing</a
+              >
+              <a
+                href="Guide Complet - 10 Nœuds Communautaires n8n Révolutionnaires.html"
+                class="text-gray-600 hover:text-brand px-3 py-2 rounded-md text-sm font-medium transition-colors"
+                >Guide n8n</a
+              >
+              <a
+                href="Guide-WordPress-IA.html"
+                class="text-gray-600 hover:text-brand px-3 py-2 rounded-md text-sm font-medium transition-colors"
+                >Guide WordPress IA</a
+              >
+              <a
+                href="analyse_video_base_miniapp.html"
+                class="text-brand px-3 py-2 rounded-md text-sm font-medium"
+                style="color: #e30007"
+                >Mini App Base</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="gradient-bg text-white py-16">
+      <div class="max-w-6xl mx-auto px-6 text-center">
+        <i class="fas fa-mobile-alt text-6xl mb-6 opacity-90"></i>
+        <h1 class="text-5xl font-bold mb-6">
+          🚀 Migration d'une App vers une Mini App Base
+        </h1>
+        <div
+          class="bg-white bg-opacity-20 backdrop-blur-sm rounded-xl p-6 max-w-4xl mx-auto"
+        >
+          <p><strong>Présentateur :</strong> Eric - Base Team</p>
+          <p><strong>Durée :</strong> 10:51</p>
+          <p><strong>Plateforme :</strong> Base (Coinbase L2 Blockchain)</p>
+          <p>
+            <strong>📹 Vidéo originale :</strong>
+            <a
+              href="https://www.youtube.com/watch?v=bChuIvqLiX0"
+              class="text-yellow-300 hover:text-yellow-100 underline"
+              >Voir sur YouTube</a
+            >
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-6 py-12">
+      <!-- Résumé Exécutif -->
+      <section class="mb-12">
+        <h2 class="text-3xl font-bold text-gray-800 mb-6">
+          📋 Résumé Exécutif
+        </h2>
+        <div class="highlight-box">
+          <h4>🎯 Objectif de la vidéo</h4>
+          <p>
+            Ce tutoriel démontre comment convertir une application web existante
+            en une <strong>mini app</strong> qui s'intègre directement dans
+            l'application Base. Le processus complet prend environ 10 minutes et
+            permet de rendre votre application découvrable et utilisable au sein
+            de l'écosystème Base.
+          </p>
+        </div>
+        <div class="bg-white rounded-xl p-6 shadow-lg">
+          <p>
+            <strong>Exemple utilisé :</strong> Une simple application "Hello
+            World" Next.js hébergée sur Vercel
+          </p>
+          <p><strong>Prérequis :</strong></p>
+          <ul class="list-disc ml-8 mt-2">
+            <li>Une application web existante</li>
+            <li>Un compte Base App</li>
+            <li>Connaissance de base en React/Next.js</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Points Clés d'Apprentissage -->
+      <section class="mb-12">
+        <h2 class="text-3xl font-bold text-gray-800 mb-6">
+          🎓 Points Clés d'Apprentissage
+        </h2>
+        <div class="key-points">
+          <div class="point-card">
+            <h4>1. SDK Mini App</h4>
+            <p>
+              Installation et utilisation du SDK Farcaster pour envelopper votre
+              application avec les fonctionnalités nécessaires aux mini apps.
+            </p>
+          </div>
+          <div class="point-card">
+            <h4>2. Cycle de Vie de l'App</h4>
+            <p>
+              Gestion du déclenchement d'affichage avec la fonction
+              <code>ready()</code> pour contrôler quand l'app est prête à être
+              affichée.
+            </p>
+          </div>
+          <div class="point-card">
+            <h4>3. Manifest File</h4>
+            <p>
+              Création et hébergement du fichier manifest pour identifier votre
+              app et fournir les métadonnées essentielles.
+            </p>
+          </div>
+          <div class="point-card">
+            <h4>4. Vérification d'Identité</h4>
+            <p>
+              Utilisation de credentials cryptographiques pour prouver la
+              propriété de l'application via signature.
+            </p>
+          </div>
+          <div class="point-card">
+            <h4>5. Embed Metadata</h4>
+            <p>
+              Configuration des métadonnées pour contrôler l'apparence de votre
+              app dans le feed Base.
+            </p>
+          </div>
+          <div class="point-card">
+            <h4>6. Workflow CI/CD</h4>
+            <p>
+              Intégration avec Vercel pour déploiement automatique et
+              prévisualisation avant publication.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Guide Étape par Étape -->
+      <section class="mb-12">
+        <h2 class="text-3xl font-bold text-gray-800 mb-6">
+          📝 Guide Étape par Étape
+        </h2>
+        <ol class="steps">
+          <li>
+            <strong>Installation du SDK Mini App</strong>
+            <p>
+              Installer le package qui enveloppe votre app avec les
+              fonctionnalités mini app.
+            </p>
+            <div class="code-block">
+              <code>npm install @farcaster/miniapp-sdk</code>
+            </div>
+          </li>
+          <li>
+            <strong>Déclenchement de l'affichage de l'app</strong>
+            <p>
+              Implémenter la logique pour signaler quand l'app est prête à être
+              affichée. Utiliser un hook React <code>useEffect</code> pour
+              éviter les rendus multiples.
+            </p>
+            <div class="code-block">
+              <code
+                >import { sdk } from '@farcaster/miniapp-sdk'; import {
+                useEffect } from 'react'; export default function Page() {
+                useEffect(() => { sdk.actions.ready(); }, []); return
+                &lt;div&gt;Hello World&lt;/div&gt;; }</code
+              >
+            </div>
+          </li>
+          <li>
+            <strong>Hébergement du fichier Manifest</strong>
+            <p>
+              Créer un fichier manifest accessible à
+              <code>votre-domaine.com/.well-known/farcaster.json</code>. Ce
+              fichier contient les informations sur votre mini app.
+            </p>
+            <p>
+              <em>Pour Next.js :</em> Créer un route handler dans
+              <code>app/.well-known/farcaster.json/route.ts</code>
+            </p>
+          </li>
+          <li>
+            <strong>Création des credentials d'association de compte</strong>
+            <p>
+              Utiliser l'outil Base Build (<code>basebuild.base.dev</code>) pour
+              :
+            </p>
+            <ul class="list-disc ml-6 mt-2">
+              <li>Se connecter avec votre compte Base</li>
+              <li>Soumettre l'URL de votre app</li>
+              <li>Signer le manifest avec votre passkey</li>
+              <li>Copier les credentials générés dans votre manifest</li>
+            </ul>
+          </li>
+          <li>
+            <strong>Ajout des métadonnées Embed</strong>
+            <p>
+              Configurer les métadonnées <code>fc:miniapp</code> pour contrôler
+              l'affichage dans le feed.
+            </p>
+            <div class="code-block">
+              <code
+                >export async function generateMetadata() { return { title:
+                "Hello World", description: "My mini app", other: {
+                "fc:miniapp": "true", "fc:miniapp:name": "Hello World",
+                "fc:miniapp:image": "https://...", "fc:miniapp:button": "Launch
+                Hello World", "fc:miniapp:url": "https://your-app.com" } };
+                }</code
+              >
+            </div>
+          </li>
+          <li>
+            <strong>Déploiement en production</strong>
+            <p>
+              Pousser tous les changements vers la production (automatique avec
+              Vercel).
+            </p>
+          </li>
+          <li>
+            <strong>Prévisualisation avec Base Build Console</strong>
+            <p>Utiliser l'outil de prévisualisation pour vérifier :</p>
+            <ul class="list-disc ml-6 mt-2">
+              <li>L'association de compte</li>
+              <li>Les métadonnées du manifest</li>
+              <li>L'affichage de l'embed dans le feed</li>
+              <li>Le fonctionnement de la mini app</li>
+            </ul>
+          </li>
+          <li>
+            <strong>Publication sur Base App</strong>
+            <p>
+              Poster l'URL de votre application sur Base App. Elle sera indexée
+              et deviendra découvrable dans le feed et la recherche.
+            </p>
+          </li>
+        </ol>
+      </section>
+
+      <!-- Outils et Ressources -->
+      <section class="mb-12">
+        <h2 class="text-3xl font-bold text-gray-800 mb-6">
+          🛠️ Outils et Ressources Mentionnés
+        </h2>
+        <div class="resource-grid">
+          <div class="resource-card">
+            <div class="icon">📚</div>
+            <h4>Documentation Base</h4>
+            <a
+              href="https://docs.base.org/mini-apps/quickstart/migrate-existing-apps"
+              target="_blank"
+              >Guide de Migration</a
+            >
+          </div>
+          <div class="resource-card">
+            <div class="icon">🔧</div>
+            <h4>Base Build Console</h4>
+            <a href="https://basebuild.base.dev" target="_blank"
+              >Outil de Développement</a
+            >
+          </div>
+          <div class="resource-card">
+            <div class="icon">💬</div>
+            <h4>Base Discord</h4>
+            <a href="https://discord.com/invite/buildonbase" target="_blank"
+              >Communauté des Builders</a
+            >
+          </div>
+          <div class="resource-card">
+            <div class="icon">📦</div>
+            <h4>Farcaster Mini App SDK</h4>
+            <a
+              href="https://www.npmjs.com/package/@farcaster/miniapp-sdk"
+              target="_blank"
+              >Package NPM</a
+            >
+          </div>
+          <div class="resource-card">
+            <div class="icon">🚀</div>
+            <h4>Vercel</h4>
+            <a href="https://vercel.com" target="_blank"
+              >Hébergement & Déploiement</a
+            >
+          </div>
+          <div class="resource-card">
+            <div class="icon">⚛️</div>
+            <h4>Next.js</h4>
+            <a href="https://nextjs.org" target="_blank">Framework React</a>
+          </div>
+        </div>
+
+        <h3 class="text-xl font-bold text-gray-800 mt-8 mb-4">
+          📖 Documentation Complémentaire
+        </h3>
+        <ul class="list-disc ml-8 space-y-2">
+          <li>
+            <a
+              href="https://docs.base.org/get-started/base"
+              target="_blank"
+              class="text-blue-600 hover:underline"
+              >Introduction à Base</a
+            >
+          </li>
+          <li>
+            <a
+              href="https://docs.base.org/mini-apps/"
+              target="_blank"
+              class="text-blue-600 hover:underline"
+              >Documentation complète Mini Apps</a
+            >
+          </li>
+          <li>
+            <a
+              href="https://docs.farcaster.xyz/"
+              target="_blank"
+              class="text-blue-600 hover:underline"
+              >Documentation Farcaster Protocol</a
+            >
+          </li>
+        </ul>
+      </section>
+
+      <!-- Cas d'Usage -->
+      <section class="mb-12">
+        <h2 class="text-3xl font-bold text-gray-800 mb-6">💡 Cas d'Usage</h2>
+        <div class="use-cases">
+          <div class="use-case-tag">🎮 Mini-jeux intégrés</div>
+          <div class="use-case-tag">🛒 E-commerce décentralisé</div>
+          <div class="use-case-tag">📊 Outils d'analyse DeFi</div>
+          <div class="use-case-tag">🎨 Galeries NFT</div>
+          <div class="use-case-tag">💰 Portefeuilles & Paiements</div>
+          <div class="use-case-tag">📝 Applications de productivité</div>
+          <div class="use-case-tag">🎵 Streaming de contenu</div>
+          <div class="use-case-tag">🤝 Réseaux sociaux décentralisés</div>
+        </div>
+
+        <div class="highlight-box">
+          <h4>🌟 Pourquoi c'est important ?</h4>
+          <ul class="list-disc ml-6 space-y-1">
+            <li>
+              <strong>Distribution :</strong> Accès direct à l'audience Base
+              sans téléchargement d'app
+            </li>
+            <li>
+              <strong>Découvrabilité :</strong> Votre app devient recherchable
+              et partageable dans l'écosystème
+            </li>
+            <li>
+              <strong>UX fluide :</strong> Intégration native dans l'interface
+              Base App
+            </li>
+            <li>
+              <strong>Web3 Ready :</strong> Connexion automatique au wallet de
+              l'utilisateur
+            </li>
+            <li>
+              <strong>Réduction des frictions :</strong> Pas besoin de quitter
+              l'application Base
+            </li>
+            <li>
+              <strong>Monétisation :</strong> Possibilité d'intégrer des
+              transactions gasless
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Défis d'Apprentissage -->
+      <section class="mb-12">
+        <h2 class="text-3xl font-bold text-gray-800 mb-6">
+          🎯 Défis d'Apprentissage Recommandés
+        </h2>
+
+        <div class="challenge-box">
+          <h4>
+            Défi 1 : Première Mini App
+            <span class="difficulty easy">Facile</span>
+          </h4>
+          <p>
+            <strong>Objectif :</strong> Créer une mini app "Todo List" simple et
+            la publier sur Base.
+          </p>
+          <p><strong>Compétences :</strong> React, Next.js, SDK Mini App</p>
+          <p><strong>Temps estimé :</strong> 2-3 heures</p>
+          <p><strong>Critères de succès :</strong></p>
+          <ul class="list-disc ml-6 mt-2">
+            <li>✅ App fonctionnelle avec ajout/suppression de tâches</li>
+            <li>✅ Manifest correctement configuré</li>
+            <li>✅ Verification réussie sur Base Build</li>
+            <li>✅ Publication dans le feed Base</li>
+          </ul>
+        </div>
+
+        <div class="challenge-box">
+          <h4>
+            Défi 2 : Intégration Wallet
+            <span class="difficulty medium">Intermédiaire</span>
+          </h4>
+          <p>
+            <strong>Objectif :</strong> Créer une mini app qui interagit avec le
+            wallet Coinbase de l'utilisateur.
+          </p>
+          <p>
+            <strong>Compétences :</strong> Web3.js/Ethers.js, Smart Contracts,
+            Account Abstraction
+          </p>
+          <p><strong>Temps estimé :</strong> 4-6 heures</p>
+          <p><strong>Critères de succès :</strong></p>
+          <ul class="list-disc ml-6 mt-2">
+            <li>✅ Connexion automatique au wallet</li>
+            <li>✅ Affichage du solde de l'utilisateur</li>
+            <li>✅ Transaction gasless via Coinbase Paymaster</li>
+            <li>✅ Gestion des erreurs et états de chargement</li>
+          </ul>
+        </div>
+
+        <div class="challenge-box">
+          <h4>
+            Défi 3 : Mini App Avancée
+            <span class="difficulty hard">Avancé</span>
+          </h4>
+          <p>
+            <strong>Objectif :</strong> Créer une mini app complète avec
+            backend, base de données, et interactions blockchain.
+          </p>
+          <p><strong>Exemple :</strong> Une place de marché NFT simplifiée</p>
+          <p>
+            <strong>Compétences :</strong> Full Stack, Smart Contracts, IPFS,
+            Analytics
+          </p>
+          <p><strong>Temps estimé :</strong> 2-3 semaines</p>
+          <p><strong>Critères de succès :</strong></p>
+          <ul class="list-disc ml-6 mt-2">
+            <li>✅ Architecture scalable (API + Database)</li>
+            <li>✅ Smart contract déployé sur Base</li>
+            <li>✅ Upload et stockage de médias (IPFS)</li>
+            <li>✅ Analytics via Coinbase Developer Platform</li>
+            <li>✅ Tests unitaires et d'intégration</li>
+            <li>✅ Performance optimisée (< 2s chargement)</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Call to Action -->
+      <div
+        class="bg-gradient-to-r from-red-600 to-red-700 rounded-xl p-8 text-center text-white"
+      >
+        <h2 class="text-3xl font-bold mb-4">🎯 Prêt à Construire ?</h2>
+        <p class="text-xl opacity-90 mb-6">
+          Transformez votre application en mini app Base dès aujourd'hui !
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a
+            href="https://docs.base.org/mini-apps/quickstart/migrate-existing-apps"
+            class="inline-flex items-center px-6 py-3 bg-white text-red-600 font-semibold rounded-lg hover:bg-gray-100 transition-colors"
+          >
+            📖 Lire la Documentation
+          </a>
+          <a
+            href="https://basebuild.base.dev"
+            class="inline-flex items-center px-6 py-3 border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-red-600 transition-colors"
+          >
+            🔧 Accéder à Base Build
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12 mt-16">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="grid md:grid-cols-4 gap-8">
+          <div>
+            <h3 class="text-xl font-bold mb-4">Cours Libre</h3>
+            <p class="text-gray-400">
+              Votre hub d'apprentissage complet pour le développement
+              professionnel et la montée en compétences.
+            </p>
+          </div>
+          <div>
+            <h4 class="font-semibold mb-4">Catégories</h4>
+            <ul class="space-y-2 text-gray-400">
+              <li>
+                <a href="index.html" class="hover:text-white transition-colors"
+                  >Accueil</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-white transition-colors"
+                  >IA & Technologie</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-white transition-colors"
+                  >Marketing</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-white transition-colors"
+                  >Finance</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-semibold mb-4">Ressources</h4>
+            <ul class="space-y-2 text-gray-400">
+              <li>
+                <a
+                  href="https://www.youtube.com/watch?v=bChuIvqLiX0"
+                  class="hover:text-white transition-colors"
+                  >Vidéo originale</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://docs.base.org/mini-apps/"
+                  class="hover:text-white transition-colors"
+                  >Documentation Base</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://discord.com/invite/buildonbase"
+                  class="hover:text-white transition-colors"
+                  >Communauté</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-semibold mb-4">Vidéo</h4>
+            <p class="text-gray-400 text-sm">
+              <strong>Chaîne :</strong> Base (@BuildonBase)<br />
+              <strong>Durée :</strong> 10:51<br />
+              <strong>Publié :</strong> 25 septembre 2025
+            </p>
+          </div>
+        </div>
+        <div
+          class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400"
+        >
+          <p>
+            &copy; 2024 Cours Libre. Analyse créée avec ❤️ pour les développeurs
+            Base
+          </p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

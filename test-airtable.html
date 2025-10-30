@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Airtable Integration</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        .test-section { margin: 20px 0; padding: 20px; border: 1px solid #ddd; border-radius: 8px; }
+        .success { background-color: #d4edda; border-color: #c3e6cb; }
+        .error { background-color: #f8d7da; border-color: #f5c6cb; }
+        .info { background-color: #d1ecf1; border-color: #bee5eb; }
+        button { padding: 10px 20px; margin: 10px 0; background: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer; }
+        button:hover { background: #0056b3; }
+        #console { background: #f8f9fa; padding: 15px; border-radius: 4px; font-family: monospace; white-space: pre-wrap; max-height: 400px; overflow-y: auto; }
+    </style>
+</head>
+<body>
+    <h1>🔧 Airtable Integration Test</h1>
+    
+    <div class="test-section info">
+        <h3>Step 1: Configuration Check</h3>
+        <button onclick="testConfig()">Test Configuration</button>
+        <div id="config-result"></div>
+    </div>
+
+    <div class="test-section info">
+        <h3>Step 2: API Connection Test</h3>
+        <button onclick="testConnection()">Test API Connection</button>
+        <div id="connection-result"></div>
+    </div>
+
+    <div class="test-section info">
+        <h3>Step 3: Create Test Record</h3>
+        <button onclick="testCreateRecord()">Create Test Signature</button>
+        <div id="create-result"></div>
+    </div>
+
+    <div class="test-section">
+        <h3>Console Output</h3>
+        <div id="console"></div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="config.js"></script>
+    <script src="js/env-config.js"></script>
+    <script src="js/airtable-config.js"></script>
+    <script src="js/airtable-api.js"></script>
+
+    <script>
+        // Capture console output
+        const originalLog = console.log;
+        const originalError = console.error;
+        const consoleDiv = document.getElementById('console');
+
+        function addToConsole(message, type = 'log') {
+            const timestamp = new Date().toLocaleTimeString();
+            const prefix = type === 'error' ? '❌' : type === 'warn' ? '⚠️' : '📝';
+            consoleDiv.textContent += `[${timestamp}] ${prefix} ${message}\n`;
+            consoleDiv.scrollTop = consoleDiv.scrollHeight;
+        }
+
+        console.log = function(...args) {
+            originalLog.apply(console, args);
+            addToConsole(args.join(' '), 'log');
+        };
+
+        console.error = function(...args) {
+            originalError.apply(console, args);
+            addToConsole(args.join(' '), 'error');
+        };
+
+        function testConfig() {
+            const resultDiv = document.getElementById('config-result');
+            
+            console.log('🔍 Testing Airtable configuration...');
+            
+            // Check if scripts loaded
+            if (!window.AirtableConfig) {
+                resultDiv.innerHTML = '<div class="error">❌ AirtableConfig not loaded</div>';
+                console.error('AirtableConfig not found');
+                return;
+            }
+
+            if (!window.AirtableAPI) {
+                resultDiv.innerHTML = '<div class="error">❌ AirtableAPI not loaded</div>';
+                console.error('AirtableAPI not found');
+                return;
+            }
+
+            // Check configuration
+            const isValid = window.AirtableConfig.isValid();
+            const apiKey = window.AirtableConfig.apiKey;
+            const baseId = window.AirtableConfig.baseId;
+
+            console.log('API Key:', apiKey ? `${apiKey.substring(0, 10)}...` : 'Missing');
+            console.log('Base ID:', baseId);
+            console.log('Configuration valid:', isValid);
+
+            if (isValid) {
+                resultDiv.innerHTML = `
+                    <div class="success">
+                        ✅ Configuration is valid<br>
+                        API Key: ${apiKey.substring(0, 10)}...<br>
+                        Base ID: ${baseId}
+                    </div>
+                `;
+            } else {
+                resultDiv.innerHTML = `
+                    <div class="error">
+                        ❌ Configuration invalid<br>
+                        API Key: ${apiKey}<br>
+                        Base ID: ${baseId}
+                    </div>
+                `;
+            }
+        }
+
+        async function testConnection() {
+            const resultDiv = document.getElementById('connection-result');
+            
+            if (!window.AirtableConfig.isValid()) {
+                resultDiv.innerHTML = '<div class="error">❌ Please fix configuration first</div>';
+                return;
+            }
+
+            console.log('🌐 Testing API connection...');
+            
+            try {
+                const url = window.AirtableConfig.getApiUrl('Charter Signatures');
+                console.log('Testing URL:', url);
+                
+                const response = await fetch(url, {
+                    method: 'GET',
+                    headers: window.AirtableConfig.getHeaders()
+                });
+
+                console.log('Response status:', response.status);
+                console.log('Response headers:', Object.fromEntries(response.headers.entries()));
+
+                if (response.ok) {
+                    const data = await response.json();
+                    console.log('Response data:', data);
+                    resultDiv.innerHTML = `
+                        <div class="success">
+                            ✅ API connection successful<br>
+                            Status: ${response.status}<br>
+                            Records found: ${data.records ? data.records.length : 0}
+                        </div>
+                    `;
+                } else {
+                    const errorData = await response.text();
+                    console.error('API Error:', errorData);
+                    resultDiv.innerHTML = `
+                        <div class="error">
+                            ❌ API connection failed<br>
+                            Status: ${response.status}<br>
+                            Error: ${errorData}
+                        </div>
+                    `;
+                }
+            } catch (error) {
+                console.error('Connection error:', error);
+                resultDiv.innerHTML = `
+                    <div class="error">
+                        ❌ Connection failed<br>
+                        Error: ${error.message}
+                    </div>
+                `;
+            }
+        }
+
+        async function testCreateRecord() {
+            const resultDiv = document.getElementById('create-result');
+            
+            if (!window.AirtableConfig.isValid()) {
+                resultDiv.innerHTML = '<div class="error">❌ Please fix configuration first</div>';
+                return;
+            }
+
+            console.log('📝 Testing record creation...');
+            
+            try {
+                const testData = {
+                    Name: 'Test User',
+                    Email: 'test@example.com',
+                    Timestamp: new Date().toISOString(),
+                    Signature_Date: new Date().toLocaleString('fr-FR')
+                };
+
+                console.log('Creating record with data:', testData);
+                
+                const result = await window.AirtableAPI.createRecord('Charter Signatures', testData);
+                
+                console.log('Record created successfully:', result);
+                resultDiv.innerHTML = `
+                    <div class="success">
+                        ✅ Test record created successfully!<br>
+                        Record ID: ${result.id}<br>
+                        Check your Airtable base
+                    </div>
+                `;
+            } catch (error) {
+                console.error('Create record error:', error);
+                resultDiv.innerHTML = `
+                    <div class="error">
+                        ❌ Failed to create record<br>
+                        Error: ${error.message}
+                    </div>
+                `;
+            }
+        }
+
+        // Auto-run config test on load
+        window.addEventListener('load', () => {
+            setTimeout(testConfig, 500);
+        });
+    </script>
+</body>
+</html>
+

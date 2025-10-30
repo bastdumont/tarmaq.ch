@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Guide Complet - Google Workspace Flows : Automatisation IA</title>
+    <meta name="description" content="Apprenez à automatiser vos workflows avec Google Workspace Flows et l'IA. Guide complet avec exemples pratiques et cas d'usage." />
+    
+    <!-- Required CDN Links -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" />
+    
+    <!-- Required Styles -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        :root {
+            --brand-primary: #E30007;
+            --brand-secondary: #CC0006;
+            --brand-light: #F4999C;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .gradient-bg {
+            background: linear-gradient(135deg, #E30007 0%, #CC0006 100%);
+        }
+
+        .text-brand {
+            color: #E30007;
+        }
+
+        /* Navigation Styles */
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.9);
+            color: #2a2a2a;
+            padding: 14px 24px;
+            border-radius: 16px;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            border: 1px solid #e8e8ec;
+            cursor: pointer;
+        }
+
+        .btn-gradient {
+            background: linear-gradient(140deg, #F4999C, #E30007);
+            color: white;
+            padding: 14px 24px;
+            border-radius: 16px;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* Card Hover Effects */
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+              0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        /* Content Styles */
+        .highlight-box {
+            background: linear-gradient(135deg, #FFF5E1 0%, #FFE4B5 100%);
+            border-left: 5px solid #FFA500;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .code-block {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+        }
+
+        .key-points {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .point-card {
+            background: white;
+            padding: 24px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            border-left: 4px solid #E30007;
+        }
+
+        .point-card h4 {
+            color: #E30007;
+            font-weight: 600;
+            margin-bottom: 12px;
+            font-size: 1.1rem;
+        }
+
+        .resource-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .resource-card {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .resource-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .resource-card .icon {
+            font-size: 2.5rem;
+            color: #E30007;
+            margin-bottom: 15px;
+        }
+
+        .use-cases {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin: 20px 0;
+        }
+
+        .use-case-tag {
+            background: linear-gradient(135deg, #E30007 0%, #CC0006 100%);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .challenge-box {
+            background: white;
+            border: 2px solid #E30007;
+            border-radius: 12px;
+            padding: 24px;
+            margin: 20px 0;
+        }
+
+        .challenge-box h4 {
+            color: #E30007;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .difficulty {
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-left: 10px;
+        }
+
+        .difficulty.easy {
+            background: #10B981;
+            color: white;
+        }
+
+        .difficulty.medium {
+            background: #F59E0B;
+            color: white;
+        }
+
+        .difficulty.hard {
+            background: #EF4444;
+            color: white;
+        }
+
+        .steps {
+            counter-reset: step-counter;
+            list-style: none;
+            padding: 0;
+        }
+
+        .steps li {
+            counter-increment: step-counter;
+            background: white;
+            margin: 20px 0;
+            padding: 24px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            position: relative;
+            padding-left: 60px;
+        }
+
+        .steps li::before {
+            content: counter(step-counter);
+            position: absolute;
+            left: 20px;
+            top: 24px;
+            background: #E30007;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .key-points,
+            .resource-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .use-cases {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <a href="index.html" class="font-semibold text-brand" style="color: #E30007;">Cours Libre</a>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="index.html" class="text-gray-600 hover:text-brand px-3 py-2 rounded-md text-sm font-medium transition-colors">Accueil</a>
+                        <a href="google-workspace-flows-guide.html" class="text-brand px-3 py-2 rounded-md text-sm font-medium" style="color: #E30007;">Google Workspace Flows</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="gradient-bg text-white py-16">
+        <div class="max-w-6xl mx-auto px-6 text-center">
+            <i class="fas fa-robot text-6xl mb-6 opacity-90"></i>
+            <h1 class="text-5xl font-bold mb-6">Guide Complet - Google Workspace Flows</h1>
+            <p class="text-xl mb-8 opacity-90">Automatisez vos workflows avec l'IA et gagnez du temps sur vos tâches répétitives</p>
+            <div class="bg-white bg-opacity-20 backdrop-blur-sm rounded-xl p-6 max-w-4xl mx-auto">
+                <div class="grid md:grid-cols-3 gap-4 text-left">
+                    <p><strong>Catégorie :</strong> IA & Technologie</p>
+                    <p><strong>Durée :</strong> 5 minutes 21 secondes</p>
+                    <p><strong>Niveau :</strong> Débutant à Intermédiaire</p>
+                </div>
+                <div class="mt-4 pt-4 border-t border-white border-opacity-30">
+                    <a href="https://www.youtube.com/watch?v=gmdMMVuyUHs" target="_blank" class="inline-flex items-center px-6 py-3 bg-white text-red-600 font-semibold rounded-lg hover:bg-gray-100 transition-colors">
+                        <i class="fab fa-youtube mr-2"></i>
+                        Voir la vidéo source
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="max-w-6xl mx-auto px-6 py-12">
+        
+        <!-- Executive Summary -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6">📋 Résumé Exécutif</h2>
+            <div class="highlight-box">
+                <h4>🎯 Objectif du cours</h4>
+                <p>Apprendre à utiliser Google Workspace Flows pour automatiser les workflows avec l'IA, créer des flux personnalisés et optimiser la productivité en entreprise.</p>
+            </div>
+            <div class="bg-white rounded-xl p-6 shadow-lg">
+                <p><strong>Ce que vous apprendrez :</strong></p>
+                <ul class="list-disc ml-8 mt-2 space-y-2">
+                    <li>Les composants fondamentaux de Workspace Flows (déclencheurs, étapes, variables)</li>
+                    <li>Comment créer des flux avec l'IA, utiliser des modèles et partir de zéro</li>
+                    <li>Automatiser la gestion d'emails, préparation de réunions et suivi client</li>
+                    <li>Intégrer Gemini pour la recherche, l'analyse et la génération de contenu</li>
+                    <li>Configurer des flux complexes avec des variables et des conditions</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Key Learning Points -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6">🎓 Points Clés d'Apprentissage</h2>
+            <div class="key-points">
+                <div class="point-card">
+                    <h4>1. Architecture des Flows</h4>
+                    <p>Comprendre les trois composants essentiels : <strong>Starters</strong> (déclencheurs), <strong>Steps</strong> (actions) et <strong>Variables</strong> (connexions de données) pour créer des automatisations robustes.</p>
+                </div>
+                
+                <div class="point-card">
+                    <h4>2. Création Assistée par IA</h4>
+                    <p>Utiliser l'IA pour générer automatiquement des flux personnalisés en décrivant simplement ce que vous voulez automatiser en langage naturel.</p>
+                </div>
+                
+                <div class="point-card">
+                    <h4>3. Modèles Prêts à l'Emploi</h4>
+                    <p>Exploiter la bibliothèque de modèles pré-construits pour des tâches courantes comme le tri d'emails, la préparation de réunions et le suivi client.</p>
+                </div>
+                
+                <div class="point-card">
+                    <h4>4. Intégration Gemini</h4>
+                    <p>Tirer parti des capacités de Gemini pour la recherche, l'analyse de contenu et la génération de réponses contextuelles dans vos flux.</p>
+                </div>
+                
+                <div class="point-card">
+                    <h4>5. Variables et Connexions</h4>
+                    <p>Maîtriser l'utilisation des variables pour connecter les données entre les étapes et créer des flux dynamiques et intelligents.</p>
+                </div>
+                
+                <div class="point-card">
+                    <h4>6. Test et Déploiement</h4>
+                    <p>Apprendre à tester, valider et déployer vos flux en production avec les bonnes pratiques de surveillance et de maintenance.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Step-by-Step Guide -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6">📝 Guide Étape par Étape</h2>
+            <ol class="steps">
+                <li>
+                    <strong>Accéder à Workspace Flows</strong>
+                    <p>Rendez-vous sur le builder Workspace Flows via l'URL directe ou l'icône flows dans Gmail. Assurez-vous d'avoir accès au programme Gemini Alpha.</p>
+                </li>
+                
+                <li>
+                    <strong>Créer un Flow avec l'IA</strong>
+                    <p>Décrivez votre besoin en langage naturel : "Quand je reçois un email de support client, l'étiqueter comme support et rédiger une réponse basée sur cette FAQ". L'IA génère automatiquement le flux correspondant.</p>
+                </li>
+                
+                <li>
+                    <strong>Utiliser un Modèle</strong>
+                    <p>Explorez la section "Discover" pour trouver des modèles pré-construits. Sélectionnez celui qui correspond à vos besoins et personnalisez-le selon vos exigences.</p>
+                </li>
+                
+                <li>
+                    <strong>Configurer les Déclencheurs (Starters)</strong>
+                    <p>Définissez quand votre flux doit se déclencher : réception d'email d'une personne spécifique, horaire programmé, ajout de fichier dans Drive, etc.</p>
+                </li>
+                
+                <li>
+                    <strong>Paramétrer les Actions (Steps)</strong>
+                    <p>Configurez les actions que le flux doit exécuter : répondre à un email, mettre à jour une feuille de calcul, demander à Gemini de rechercher un sujet, envoyer une notification.</p>
+                </li>
+                
+                <li>
+                    <strong>Gérer les Variables</strong>
+                    <p>Connectez les données entre les étapes en utilisant des variables. Par exemple, capturer l'adresse email de l'expéditeur et l'ajouter automatiquement à une feuille de calcul.</p>
+                </li>
+                
+                <li>
+                    <strong>Tester et Valider</strong>
+                    <p>Activez votre flux et testez-le avec un email ou événement réel. Surveillez l'activité dans le panneau dédié pour vérifier le bon fonctionnement.</p>
+                </li>
+                
+                <li>
+                    <strong>Optimiser et Maintenir</strong>
+                    <p>Analysez les performances, ajustez les paramètres si nécessaire et ajoutez de nouvelles étapes pour enrichir votre automatisation au fil du temps.</p>
+                </li>
+            </ol>
+        </section>
+
+        <!-- Tools and Resources -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6">🛠️ Outils et Ressources</h2>
+            <div class="resource-grid">
+                <div class="resource-card card-hover">
+                    <div class="icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h4>Google Workspace Flows</h4>
+                    <p>Plateforme principale pour créer et gérer vos automatisations IA</p>
+                    <a href="https://goo.gle/45oR91u" target="_blank" class="text-brand font-semibold">Accéder à Flows →</a>
+                </div>
+                
+                <div class="resource-card card-hover">
+                    <div class="icon">
+                        <i class="fas fa-gem"></i>
+                    </div>
+                    <h4>Gemini Alpha</h4>
+                    <p>Programme d'accès anticipé aux fonctionnalités IA avancées</p>
+                    <a href="https://support.google.com/a/answer/14170809" target="_blank" class="text-brand font-semibold">Guide d'activation →</a>
+                </div>
+                
+                <div class="resource-card card-hover">
+                    <div class="icon">
+                        <i class="fab fa-youtube"></i>
+                    </div>
+                    <h4>Vidéo Officielle</h4>
+                    <p>Tutoriel complet de Google Workspace Developers</p>
+                    <a href="https://www.youtube.com/watch?v=gmdMMVuyUHs" target="_blank" class="text-brand font-semibold">Voir la vidéo →</a>
+                </div>
+                
+                <div class="resource-card card-hover">
+                    <div class="icon">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <h4>Documentation</h4>
+                    <p>Ressources complètes et guides détaillés</p>
+                    <a href="https://developers.google.com/workspace" target="_blank" class="text-brand font-semibold">Consulter les docs →</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Use Cases -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6">💡 Cas d'Usage</h2>
+            <div class="use-cases">
+                <div class="use-case-tag">Tri automatique d'emails</div>
+                <div class="use-case-tag">Préparation de réunions</div>
+                <div class="use-case-tag">Suivi client automatisé</div>
+                <div class="use-case-tag">Génération de rapports</div>
+                <div class="use-case-tag">Notifications intelligentes</div>
+                <div class="use-case-tag">Analyse de documents</div>
+                <div class="use-case-tag">Gestion de projets</div>
+                <div class="use-case-tag">Support client</div>
+            </div>
+            
+            <div class="highlight-box">
+                <h4>🌟 Pourquoi c'est important ?</h4>
+                <ul class="list-disc ml-6 space-y-2">
+                    <li><strong>Gain de temps significatif :</strong> Automatisez jusqu'à 80% de vos tâches répétitives quotidiennes</li>
+                    <li><strong>Réduction des erreurs :</strong> L'IA traite les données de manière cohérente et fiable</li>
+                    <li><strong>Amélioration de la productivité :</strong> Concentrez-vous sur les tâches à haute valeur ajoutée</li>
+                    <li><strong>Intégration native :</strong> Fonctionne seamlessly avec tout l'écosystème Google Workspace</li>
+                    <li><strong>Évolutivité :</strong> Adaptez vos flux aux besoins croissants de votre organisation</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Learning Challenges -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6">🎯 Défis d'Apprentissage Recommandés</h2>
+            
+            <div class="challenge-box">
+                <h4>Défi 1 : Automatisation Email Support <span class="difficulty easy">Facile</span></h4>
+                <p><strong>Objectif :</strong> Créer un flux qui trie automatiquement les emails de support et génère des réponses personnalisées</p>
+                <p><strong>Compétences :</strong> Configuration de déclencheurs, utilisation de variables, intégration Gemini</p>
+                <p><strong>Temps estimé :</strong> 30-45 minutes</p>
+                <p><strong>Critères de succès :</strong></p>
+                <ul class="list-disc ml-6 mt-2">
+                    <li>✅ Le flux se déclenche automatiquement à la réception d'emails support</li>
+                    <li>✅ Les emails sont correctement étiquetés et classés</li>
+                    <li>✅ Une réponse personnalisée est générée et envoyée</li>
+                </ul>
+            </div>
+
+            <div class="challenge-box">
+                <h4>Défi 2 : Préparation Intelligente de Réunions <span class="difficulty medium">Moyen</span></h4>
+                <p><strong>Objectif :</strong> Automatiser la préparation de réunions avec recherche de contexte et génération d'agenda</p>
+                <p><strong>Compétences :</strong> Intégration Calendar, recherche IA, génération de contenu</p>
+                <p><strong>Temps estimé :</strong> 1-2 heures</p>
+                <p><strong>Critères de succès :</strong></p>
+                <ul class="list-disc ml-6 mt-2">
+                    <li>✅ Détection automatique des réunions importantes</li>
+                    <li>✅ Recherche et compilation d'informations contextuelles</li>
+                    <li>✅ Génération d'un agenda structuré et envoi aux participants</li>
+                </ul>
+            </div>
+
+            <div class="challenge-box">
+                <h4>Défi 3 : Système de Suivi Client Avancé <span class="difficulty hard">Difficile</span></h4>
+                <p><strong>Objectif :</strong> Créer un système complet de suivi client avec analyse de sentiment et actions automatisées</p>
+                <p><strong>Compétences :</strong> Flux complexes, analyse IA, intégrations multiples, logique conditionnelle</p>
+                <p><strong>Temps estimé :</strong> 3-4 heures</p>
+                <p><strong>Critères de succès :</strong></p>
+                <ul class="list-disc ml-6 mt-2">
+                    <li>✅ Analyse automatique du sentiment des communications client</li>
+                    <li>✅ Escalade automatique des cas urgents ou négatifs</li>
+                    <li>✅ Mise à jour du CRM avec historique et recommandations</li>
+                    <li>✅ Génération de rapports périodiques sur la satisfaction client</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Call to Action -->
+        <div class="bg-gradient-to-r from-red-600 to-red-700 rounded-xl p-8 text-center text-white">
+            <h2 class="text-3xl font-bold mb-4">🚀 Prêt à Automatiser vos Workflows ?</h2>
+            <p class="text-xl opacity-90 mb-6">Commencez dès maintenant avec Google Workspace Flows et transformez votre productivité</p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="https://goo.gle/45oR91u" target="_blank" class="inline-flex items-center px-6 py-3 bg-white text-red-600 font-semibold rounded-lg hover:bg-gray-100 transition-colors">
+                    <i class="fas fa-rocket mr-2"></i>
+                    Commencer avec Flows
+                </a>
+                <a href="https://www.youtube.com/watch?v=gmdMMVuyUHs" target="_blank" class="inline-flex items-center px-6 py-3 border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-red-600 transition-colors">
+                    <i class="fab fa-youtube mr-2"></i>
+                    Voir le Tutoriel
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12 mt-16">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Cours Libre</h3>
+                    <p class="text-gray-400">
+                        Votre hub d'apprentissage complet pour le développement professionnel et la montée en compétences.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Catégories</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="index.html#ia-technologie" class="hover:text-white transition-colors">IA & Technologie</a></li>
+                        <li><a href="index.html#marketing" class="hover:text-white transition-colors">Marketing</a></li>
+                        <li><a href="index.html#finance" class="hover:text-white transition-colors">Finance</a></li>
+                        <li><a href="index.html#vente" class="hover:text-white transition-colors">Vente</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Ressources</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white transition-colors">Guides Pratiques</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Études de Cas</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Outils Gratuits</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Communauté</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Contact</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white transition-colors">Support</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Partenariats</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">À Propos</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 Cours Libre. Contenu basé sur la vidéo officielle de Google Workspace Developers.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
