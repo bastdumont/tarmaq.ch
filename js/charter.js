@@ -123,7 +123,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             console.log('📤 Sending data to Airtable:', airtableData);
 
-            // Use the AirtableAPI object
+            // Use the AirtableAPI object with the correct table ID
             const result = await window.AirtableAPI.createRecord('tbl9jqKoSak8XjWcQ', airtableData);
             console.log('✅ Signature saved to Airtable successfully:', result);
 
