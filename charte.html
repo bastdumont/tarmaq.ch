@@ -566,11 +566,20 @@
     </div>
 
     <!-- Scripts -->
-    <script src="config.js"></script>
-    <script src="/api/env.js"></script>
+    <!-- Load config first (contains Airtable credentials) -->
+    <script src="config.js" onerror="console.warn('config.js not found, using environment variables')"></script>
+
+    <!-- Try to load Vercel environment variables (optional, may not exist in all deployments) -->
+    <script src="/api/env.js" onerror="console.log('Vercel API not available, using config.js')"></script>
+
+    <!-- Environment configuration -->
     <script src="js/env-config.js"></script>
+
+    <!-- Airtable integration -->
     <script src="js/airtable-config.js"></script>
     <script src="js/airtable-api.js"></script>
+
+    <!-- Core functionality -->
     <script src="js/i18n.js"></script>
     <script src="js/main.js"></script>
     <script src="js/charter.js"></script>

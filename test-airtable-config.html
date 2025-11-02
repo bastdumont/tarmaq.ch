@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Airtable Configuration - TARMAQ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 p-8">
+    <div class="max-w-4xl mx-auto bg-white rounded-lg shadow-lg p-8">
+        <h1 class="text-3xl font-bold mb-6 text-gray-900">Airtable Configuration Test</h1>
+
+        <div id="results" class="space-y-4">
+            <p class="text-gray-600">Loading configuration...</p>
+        </div>
+
+        <div class="mt-8">
+            <h2 class="text-xl font-bold mb-4">Test Actions</h2>
+            <button id="test-fetch" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 mr-2">
+                Test Fetch Records
+            </button>
+            <button id="test-create" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">
+                Test Create Record
+            </button>
+        </div>
+
+        <div id="test-results" class="mt-6 p-4 bg-gray-50 rounded-lg hidden">
+            <h3 class="font-bold mb-2">Test Results:</h3>
+            <pre id="test-output" class="text-sm overflow-auto"></pre>
+        </div>
+    </div>
+
+    <!-- Load scripts -->
+    <script src="config.js" onerror="console.warn('config.js not found')"></script>
+    <script src="/api/env.js" onerror="console.log('Vercel API not available')"></script>
+    <script src="js/env-config.js"></script>
+    <script src="js/airtable-config.js"></script>
+    <script src="js/airtable-api.js"></script>
+
+    <script>
+        function addResult(message, type = 'info') {
+            const results = document.getElementById('results');
+            const div = document.createElement('div');
+            div.className = `p-4 rounded ${
+                type === 'success' ? 'bg-green-100 text-green-800' :
+                type === 'error' ? 'bg-red-100 text-red-800' :
+                type === 'warning' ? 'bg-yellow-100 text-yellow-800' :
+                'bg-blue-100 text-blue-800'
+            }`;
+            div.innerHTML = message;
+            results.appendChild(div);
+        }
+
+        function showTestOutput(data) {
+            document.getElementById('test-results').classList.remove('hidden');
+            document.getElementById('test-output').textContent = JSON.stringify(data, null, 2);
+        }
+
+        // Wait for DOM to load
+        setTimeout(() => {
+            const results = document.getElementById('results');
+            results.innerHTML = '';
+
+            // Check if CONFIG is loaded
+            if (window.CONFIG) {
+                addResult('✅ window.CONFIG loaded', 'success');
+                addResult(`CONFIG.AIRTABLE.API_KEY: <code>${window.CONFIG.AIRTABLE.API_KEY ? window.CONFIG.AIRTABLE.API_KEY.substring(0, 10) + '...' : 'NOT SET'}</code>`, 'info');
+                addResult(`CONFIG.AIRTABLE.BASE_ID: <code>${window.CONFIG.AIRTABLE.BASE_ID || 'NOT SET'}</code>`, 'info');
+            } else {
+                addResult('❌ window.CONFIG not loaded', 'error');
+            }
+
+            // Check if ENV is loaded
+            if (window.ENV) {
+                addResult('✅ window.ENV loaded', 'success');
+                addResult(`ENV.AIRTABLE_API_KEY: <code>${window.ENV.AIRTABLE_API_KEY ? window.ENV.AIRTABLE_API_KEY.substring(0, 10) + '...' : 'NOT SET'}</code>`, 'info');
+                addResult(`ENV.AIRTABLE_BASE_ID: <code>${window.ENV.AIRTABLE_BASE_ID || 'NOT SET'}</code>`, 'info');
+            } else {
+                addResult('⚠️ window.ENV not loaded', 'warning');
+            }
+
+            // Check AirtableConfig
+            if (window.AirtableConfig) {
+                addResult('✅ AirtableConfig loaded', 'success');
+                addResult(`AirtableConfig.apiKey: <code>${window.AirtableConfig.apiKey ? window.AirtableConfig.apiKey.substring(0, 10) + '...' : 'NOT SET'}</code>`, 'info');
+                addResult(`AirtableConfig.baseId: <code>${window.AirtableConfig.baseId || 'NOT SET'}</code>`, 'info');
+
+                if (window.AirtableConfig.isValid()) {
+                    addResult('✅ Airtable configuration is VALID', 'success');
+                } else {
+                    addResult('❌ Airtable configuration is INVALID', 'error');
+                }
+            } else {
+                addResult('❌ AirtableConfig not loaded', 'error');
+            }
+
+            // Check AirtableAPI
+            if (window.AirtableAPI) {
+                addResult('✅ AirtableAPI loaded', 'success');
+            } else {
+                addResult('❌ AirtableAPI not loaded', 'error');
+            }
+
+        }, 500);
+
+        // Test fetch records
+        document.getElementById('test-fetch').addEventListener('click', async () => {
+            try {
+                addResult('🔍 Testing fetch records from tbl9jqKoSak8XjWcQ...', 'info');
+                const records = await window.AirtableAPI.getRecords('tbl9jqKoSak8XjWcQ', {
+                    maxRecords: 5
+                });
+                addResult(`✅ Successfully fetched ${records.length} records`, 'success');
+                showTestOutput(records);
+            } catch (error) {
+                addResult(`❌ Error fetching records: ${error.message}`, 'error');
+                showTestOutput({ error: error.message, stack: error.stack });
+            }
+        });
+
+        // Test create record
+        document.getElementById('test-create').addEventListener('click', async () => {
+            try {
+                addResult('📝 Testing create record in tbl9jqKoSak8XjWcQ...', 'info');
+                const testData = {
+                    "Name": "Test Signatory " + new Date().toISOString(),
+                    "Email": "test@example.com",
+                    "Timestamp": new Date().toISOString(),
+                    "Signature_Date": new Date().toLocaleString('fr-FR')
+                };
+                const result = await window.AirtableAPI.createRecord('tbl9jqKoSak8XjWcQ', testData);
+                addResult('✅ Successfully created test record', 'success');
+                showTestOutput(result);
+            } catch (error) {
+                addResult(`❌ Error creating record: ${error.message}`, 'error');
+                showTestOutput({ error: error.message, stack: error.stack });
+            }
+        });
+    </script>
+</body>
+</html>
