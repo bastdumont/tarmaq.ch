@@ -4,18 +4,48 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Stack Technologique React Native 2025 - Guide Complet</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <!-- Favicon -->
+    <link rel="icon" href="../assets/favicon.png" />
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="../css/style.css" />
+
+    <!-- Tailwind Config -->
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: '#DA2F2C',
+              secondary: '#111827',
+              accent: '#F3F4F6',
+            },
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+            },
+          },
+        },
+      };
+    </script>
+
     <style>
         body { font-family: 'Inter', sans-serif; }
-        .gradient-bg { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        .gradient-bg { background: linear-gradient(135deg, #DA2F2C 0%, #B91C1C 100%); }
         .card-hover { transition: transform 0.2s, box-shadow 0.2s; }
         .card-hover:hover { transform: translateY(-2px); box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
-        .tech-badge { background: linear-gradient(45deg, #4f46e5, #7c3aed); }
-        .importance-gradient { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
-        .challenge-gradient { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
-        .resource-gradient { background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); }
+        .tech-badge { background: linear-gradient(45deg, #DA2F2C, #B91C1C); }
+        .importance-gradient { background: linear-gradient(135deg, #FCA5A5 0%, #EF4444 100%); }
+        .challenge-gradient { background: linear-gradient(135deg, #FEE2E2 0%, #FECACA 100%); }
+        .resource-gradient { background: linear-gradient(135deg, #FEE2E2 0%, #FECACA 100%); }
         @media print {
             .no-print { display: none; }
             body { font-size: 12px; line-height: 1.4; }
@@ -46,14 +76,14 @@
         <section class="mb-12">
             <div class="bg-white rounded-xl shadow-lg p-8">
                 <h2 class="text-3xl font-bold mb-6 text-gray-800">
-                    <i class="fas fa-chart-line text-blue-600 mr-3"></i>Résumé Exécutif
+                    <i class="fas fa-chart-line text-primary mr-3"></i>Résumé Exécutif
                 </h2>
                 <div class="grid md:grid-cols-2 gap-6">
                     <div>
                         <h3 class="text-xl font-semibold mb-3 text-purple-600">Contexte 2025</h3>
                         <ul class="space-y-2 text-gray-700">
                             <li><i class="fas fa-rocket text-green-500 mr-2"></i>React Native plus performant et stable que jamais</li>
-                            <li><i class="fas fa-users text-blue-500 mr-2"></i>Écosystème mature avec communauté active</li>
+                            <li><i class="fas fa-users text-primary mr-2"></i>Écosystème mature avec communauté active</li>
                             <li><i class="fas fa-tools text-orange-500 mr-2"></i>Outils standardisés pour éviter la fragmentation</li>
                             <li><i class="fas fa-trending-up text-red-500 mr-2"></i>Adoption croissante par les grandes entreprises</li>
                         </ul>
@@ -62,7 +92,7 @@
                         <h3 class="text-xl font-semibold mb-3 text-purple-600">Objectifs du Guide</h3>
                         <ul class="space-y-2 text-gray-700">
                             <li><i class="fas fa-target text-green-500 mr-2"></i>Éviter la perte de temps avec des outils inadaptés</li>
-                            <li><i class="fas fa-filter text-blue-500 mr-2"></i>Recommandations éprouvées et testées</li>
+                            <li><i class="fas fa-filter text-primary mr-2"></i>Recommandations éprouvées et testées</li>
                             <li><i class="fas fa-route text-orange-500 mr-2"></i>Chemin clair du débutant à l'expert</li>
                             <li><i class="fas fa-shield-alt text-red-500 mr-2"></i>Stack production-ready sécurisé</li>
                         </ul>
@@ -85,14 +115,14 @@
                         OBLIGATOIRE
                     </div>
                     <h3 class="text-xl font-bold mb-3">
-                        <i class="fas fa-mobile-alt text-blue-600 mr-2"></i>Expo Framework
+                        <i class="fas fa-mobile-alt text-primary mr-2"></i>Expo Framework
                     </h3>
                     <p class="text-gray-600 mb-4">Framework officiel recommandé dans la documentation React Native. Remplace le CLI communautaire.</p>
                     <div class="space-y-2">
                         <div class="text-sm"><strong>Avantages:</strong> Outils intégrés, déploiement simplifié</div>
                         <div class="text-sm"><strong>Migration:</strong> Même projets legacy devraient migrer</div>
                     </div>
-                    <a href="https://expo.dev" class="inline-block mt-4 text-blue-600 hover:text-blue-800 font-semibold">
+                    <a href="https://expo.dev" class="inline-block mt-4 text-primary hover:text-red-800 font-semibold">
                         <i class="fas fa-external-link-alt mr-1"></i>expo.dev
                     </a>
                 </div>
@@ -103,14 +133,14 @@
                         ESSENTIEL
                     </div>
                     <h3 class="text-xl font-bold mb-3">
-                        <i class="fas fa-code text-blue-600 mr-2"></i>TypeScript
+                        <i class="fas fa-code text-primary mr-2"></i>TypeScript
                     </h3>
                     <p class="text-gray-600 mb-4">Détection d'erreurs automatique par le compilateur et IDE. Améliore significativement la DX.</p>
                     <div class="space-y-2">
                         <div class="text-sm"><strong>Bénéfices:</strong> Moins de bugs, meilleure maintenance</div>
                         <div class="text-sm"><strong>Réalité:</strong> Types complexes rares en pratique</div>
                     </div>
-                    <a href="https://www.typescriptlang.org" class="inline-block mt-4 text-blue-600 hover:text-blue-800 font-semibold">
+                    <a href="https://www.typescriptlang.org" class="inline-block mt-4 text-primary hover:text-red-800 font-semibold">
                         <i class="fas fa-external-link-alt mr-1"></i>typescriptlang.org
                     </a>
                 </div>
@@ -121,14 +151,14 @@
                         RECOMMANDÉ
                     </div>
                     <h3 class="text-xl font-bold mb-3">
-                        <i class="fas fa-route text-blue-600 mr-2"></i>Expo Router
+                        <i class="fas fa-route text-primary mr-2"></i>Expo Router
                     </h3>
                     <p class="text-gray-600 mb-4">Routing basé fichiers, API routes, support RSC. Alternative moderne à React Navigation.</p>
                     <div class="space-y-2">
                         <div class="text-sm"><strong>Avantages:</strong> Cross-platform, file-based routing</div>
                         <div class="text-sm"><strong>Alternative:</strong> React Navigation pour apps natives pures</div>
                     </div>
-                    <a href="https://docs.expo.dev/router/introduction/" class="inline-block mt-4 text-blue-600 hover:text-blue-800 font-semibold">
+                    <a href="https://docs.expo.dev/router/introduction/" class="inline-block mt-4 text-primary hover:text-red-800 font-semibold">
                         <i class="fas fa-external-link-alt mr-1"></i>Expo Router Docs
                     </a>
                 </div>
@@ -151,25 +181,25 @@
                         <div class="border-l-4 border-green-400 pl-4">
                             <h4 class="font-bold text-green-700">NativeWind (Recommandé)</h4>
                             <p class="text-sm text-gray-600">Tailwind CSS pour React Native. Excellent support IA.</p>
-                            <a href="https://www.nativewind.dev" class="text-blue-600 text-sm">nativewind.dev</a>
+                            <a href="https://www.nativewind.dev" class="text-primary text-sm">nativewind.dev</a>
                         </div>
                         
-                        <div class="border-l-4 border-blue-400 pl-4">
-                            <h4 class="font-bold text-blue-700">Unistyles</h4>
+                        <div class="border-l-4 border-primary pl-4">
+                            <h4 class="font-bold text-red-700">Unistyles</h4>
                             <p class="text-sm text-gray-600">Drop-in replacement StyleSheet avec bindings C++.</p>
-                            <a href="https://github.com/jpudysz/react-native-unistyles" class="text-blue-600 text-sm">GitHub Unistyles</a>
+                            <a href="https://github.com/jpudysz/react-native-unistyles" class="text-primary text-sm">GitHub Unistyles</a>
                         </div>
                         
                         <div class="border-l-4 border-purple-400 pl-4">
                             <h4 class="font-bold text-purple-700">React Native Reusables</h4>
                             <p class="text-sm text-gray-600">Concept Shadcn/UI adapté à React Native.</p>
-                            <a href="https://github.com/mrzachnugent/react-native-reusables" class="text-blue-600 text-sm">GitHub Reusables</a>
+                            <a href="https://github.com/mrzachnugent/react-native-reusables" class="text-primary text-sm">GitHub Reusables</a>
                         </div>
                         
                         <div class="border-l-4 border-orange-400 pl-4">
                             <h4 class="font-bold text-orange-700">Tamagui</h4>
                             <p class="text-sm text-gray-600">Solution cross-platform avec compilateur optimisé.</p>
-                            <a href="https://tamagui.dev" class="text-blue-600 text-sm">tamagui.dev</a>
+                            <a href="https://tamagui.dev" class="text-primary text-sm">tamagui.dev</a>
                         </div>
                     </div>
                 </div>
@@ -187,16 +217,16 @@
                             <div class="text-xs text-green-600">
                                 <strong>Cas d'usage:</strong> Animations complexes, gestures, transitions
                             </div>
-                            <a href="https://docs.swmansion.com/react-native-reanimated/" class="text-blue-600 text-sm block mt-2">Documentation officielle</a>
+                            <a href="https://docs.swmansion.com/react-native-reanimated/" class="text-primary text-sm block mt-2">Documentation officielle</a>
                         </div>
                         
-                        <div class="bg-gradient-to-r from-blue-100 to-blue-200 p-4 rounded-lg">
-                            <h4 class="font-bold text-blue-800 mb-2">Moti</h4>
-                            <p class="text-sm text-blue-700 mb-2">Animations simples et déclaratives</p>
-                            <div class="text-xs text-blue-600">
+                        <div class="bg-gradient-to-r from-red-100 to-red-200 p-4 rounded-lg">
+                            <h4 class="font-bold text-red-800 mb-2">Moti</h4>
+                            <p class="text-sm text-red-700 mb-2">Animations simples et déclaratives</p>
+                            <div class="text-xs text-primary">
                                 <strong>Cas d'usage:</strong> Animations rapides, prototypage, débutants
                             </div>
-                            <a href="https://moti.fyi" class="text-blue-600 text-sm block mt-2">moti.fyi</a>
+                            <a href="https://moti.fyi" class="text-primary text-sm block mt-2">moti.fyi</a>
                         </div>
                     </div>
                 </div>
@@ -223,11 +253,11 @@
                 
                 <!-- État Serveur -->
                 <div class="bg-white rounded-xl shadow-lg p-6">
-                    <h3 class="text-2xl font-bold mb-4 text-blue-600">
+                    <h3 class="text-2xl font-bold mb-4 text-primary">
                         <i class="fas fa-server mr-2"></i>État Serveur
                     </h3>
                     
-                    <div class="bg-gradient-to-r from-blue-500 to-purple-600 text-white p-4 rounded-lg mb-4">
+                    <div class="bg-gradient-to-r from-primary to-red-700 text-white p-4 rounded-lg mb-4">
                         <h4 class="font-bold text-lg mb-2">
                             <i class="fas fa-crown mr-2"></i>TanStack Query
                         </h4>
@@ -238,7 +268,7 @@
                     <div class="space-y-2 text-sm">
                         <div><strong>Fonctionnalités:</strong> Mise en cache, revalidation, optimistic updates</div>
                         <div><strong>Cas d'usage:</strong> API calls, données distantes, synchronisation</div>
-                        <a href="https://tanstack.com/query/latest" class="text-blue-600 font-semibold block mt-3">
+                        <a href="https://tanstack.com/query/latest" class="text-primary font-semibold block mt-3">
                             <i class="fas fa-external-link-alt mr-1"></i>tanstack.com/query
                         </a>
                     </div>
@@ -291,7 +321,7 @@
                         </div>
                         <div class="text-sm text-gray-600">Alternatives: WindSurf, VS Code + Copilot</div>
                     </div>
-                    <a href="https://cursor.sh" class="text-blue-600 text-sm mt-2 block">cursor.sh</a>
+                    <a href="https://cursor.sh" class="text-primary text-sm mt-2 block">cursor.sh</a>
                 </div>
 
                 <div class="bg-white rounded-xl shadow-lg p-6 card-hover">
@@ -303,14 +333,14 @@
                             <strong class="text-green-800">Maestro</strong>
                             <p class="text-sm text-green-600">Tests UI faciles, excellente DX</p>
                         </div>
-                        <div class="bg-blue-100 p-3 rounded">
-                            <strong class="text-blue-800">RN Testing Library</strong>
-                            <p class="text-sm text-blue-600">Tests unitaires, cookbook complet</p>
+                        <div class="bg-red-100 p-3 rounded">
+                            <strong class="text-red-800">RN Testing Library</strong>
+                            <p class="text-sm text-primary">Tests unitaires, cookbook complet</p>
                         </div>
                     </div>
                     <div class="text-xs mt-2">
-                        <a href="https://maestro.mobile.dev" class="text-blue-600 block">maestro.mobile.dev</a>
-                        <a href="https://callstack.github.io/react-native-testing-library/" class="text-blue-600 block">RN Testing Library</a>
+                        <a href="https://maestro.mobile.dev" class="text-primary block">maestro.mobile.dev</a>
+                        <a href="https://callstack.github.io/react-native-testing-library/" class="text-primary block">RN Testing Library</a>
                     </div>
                 </div>
 

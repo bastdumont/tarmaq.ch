@@ -1,0 +1,1285 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Analyse Vidéo - ERC20 Tokens Expliqués Simplement</title>
+    <!-- Favicon -->
+    <link rel="icon" href="../assets/favicon.png" />
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css"
+    />
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="../css/style.css" />
+
+    <!-- Tailwind Config -->
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: '#DA2F2C',
+              secondary: '#111827',
+              accent: '#F3F4F6',
+            },
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+            },
+          },
+        },
+      };
+    </script>
+
+    <style>
+      .gradient-bg {
+        background: linear-gradient(135deg, #DA2F2C 0%, #B91C1C 100%);
+      }
+
+      /* Header styles */
+      .btn-secondary {
+        background: rgba(255, 255, 255, 0.9);
+        color: #2a2a2a;
+        padding: 14px 24px;
+        border-radius: 16px;
+        font-weight: 700;
+        transition: all 0.3s ease;
+        border: 1px solid #e8e8ec;
+        cursor: pointer;
+      }
+
+      .btn-secondary:hover {
+        background: white;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      .btn-gradient {
+        background: linear-gradient(140deg, #DA2F2C, #B91C1C);
+        color: white;
+        padding: 14px 24px;
+        border-radius: 16px;
+        font-weight: 700;
+        transition: all 0.3s ease;
+        border: none;
+        cursor: pointer;
+      }
+
+      .btn-gradient:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(102, 126, 234, 0.25);
+      }
+
+      /* Navigation styles */
+      .nav-item {
+        position: relative;
+      }
+
+      .nav-dropdown {
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-10px);
+        transition: all 0.3s ease;
+      }
+
+      .nav-item:hover .nav-dropdown {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+      }
+
+      .text-brand {
+        color: #DA2F2C;
+      }
+
+      .card-hover {
+        transition: all 0.3s ease;
+      }
+      .card-hover:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+          0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      }
+
+      .key-points {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+        margin: 20px 0;
+      }
+
+      .point-card {
+        background: linear-gradient(135deg, #FEE2E2 0%, #FECACA 100%);
+        padding: 25px;
+        border-radius: 15px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+      }
+
+      .point-card:hover {
+        transform: translateY(-5px);
+      }
+
+      .point-card h4 {
+        color: #DA2F2C;
+        margin-bottom: 10px;
+        font-size: 1.2em;
+      }
+
+      .steps {
+        counter-reset: step-counter;
+        list-style: none;
+      }
+
+      .steps li {
+        counter-increment: step-counter;
+        margin: 20px 0;
+        padding: 20px;
+        background: #f8f9fa;
+        border-left: 5px solid #DA2F2C;
+        border-radius: 8px;
+        position: relative;
+      }
+
+      .steps li::before {
+        content: counter(step-counter);
+        position: absolute;
+        left: -15px;
+        top: 15px;
+        background: #DA2F2C;
+        color: white;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+      }
+
+      .steps li strong {
+        color: #DA2F2C;
+        font-size: 1.1em;
+        display: block;
+        margin-bottom: 8px;
+      }
+
+      .resource-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+        margin: 20px 0;
+      }
+
+      .resource-card {
+        background: white;
+        border: 2px solid #DA2F2C;
+        padding: 20px;
+        border-radius: 12px;
+        text-align: center;
+        transition: all 0.3s ease;
+      }
+
+      .resource-card:hover {
+        background: #DA2F2C;
+        color: white;
+        transform: scale(1.05);
+      }
+
+      .resource-card a {
+        color: inherit;
+        text-decoration: none;
+        font-weight: 600;
+      }
+
+      .resource-card .icon {
+        font-size: 2.5em;
+        margin-bottom: 10px;
+      }
+
+      .code-block {
+        background: #1e1e1e;
+        color: #d4d4d4;
+        padding: 20px;
+        border-radius: 8px;
+        overflow-x: auto;
+        margin: 15px 0;
+        font-family: 'Courier New', monospace;
+      }
+
+      .code-block code {
+        color: #ce9178;
+      }
+
+      .highlight-box {
+        background: linear-gradient(135deg, #fff5e1 0%, #ffe4b5 100%);
+        border-left: 5px solid #ffa500;
+        padding: 20px;
+        border-radius: 8px;
+        margin: 20px 0;
+      }
+
+      .highlight-box h4 {
+        color: #ff8c00;
+        margin-bottom: 10px;
+      }
+
+      .use-cases {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+        margin: 20px 0;
+      }
+
+      .use-case-tag {
+        background: #DA2F2C;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 25px;
+        font-weight: 600;
+      }
+
+      .challenge-box {
+        background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+        border: 2px solid #4caf50;
+        padding: 25px;
+        border-radius: 12px;
+        margin: 15px 0;
+      }
+
+      .challenge-box h4 {
+        color: #2e7d32;
+        margin-bottom: 10px;
+        font-size: 1.2em;
+      }
+
+      .difficulty {
+        display: inline-block;
+        padding: 5px 15px;
+        border-radius: 15px;
+        font-size: 0.9em;
+        font-weight: 600;
+        margin-left: 10px;
+      }
+
+      .difficulty.easy {
+        background: #c8e6c9;
+        color: #2e7d32;
+      }
+
+      .difficulty.medium {
+        background: #ffe082;
+        color: #f57c00;
+      }
+
+      .difficulty.hard {
+        background: #ffcdd2;
+        color: #c62828;
+      }
+
+      .warning-box {
+        background: linear-gradient(135deg, #ffebee 0%, #ffcdd2 100%);
+        border-left: 5px solid #f44336;
+        padding: 20px;
+        border-radius: 8px;
+        margin: 20px 0;
+      }
+
+      .warning-box h4 {
+        color: #c62828;
+        margin-bottom: 10px;
+      }
+
+      @media (max-width: 768px) {
+        .key-points,
+        .resource-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50">
+    <!-- Navigation Bar -->
+    <nav class="bg-white shadow-lg border-b border-gray-200">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+          <div class="flex items-center">
+            <a
+              href="../index.html"
+              class="font-semibold text-primary"
+              >TARMAQ</a
+            >
+          </div>
+          <div class="hidden md:block">
+            <div class="ml-10 flex items-baseline space-x-4">
+              <a
+                href="../index.html"
+                class="text-gray-600 hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-colors"
+                >Accueil</a
+              >
+              <a
+                href="#"
+                class="text-primary px-3 py-2 rounded-md text-sm font-medium"
+                >ERC20 Tokens</a
+              >
+              <a
+                href="#resources"
+                class="text-gray-600 hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-colors"
+                >Ressources</a
+              >
+              <a
+                href="#challenges"
+                class="text-gray-600 hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-colors"
+                >Défis</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="gradient-bg text-white py-16">
+      <div class="max-w-6xl mx-auto px-6 text-center">
+        <i class="fas fa-coins text-6xl mb-6 opacity-90"></i>
+        <h1 class="text-5xl font-bold mb-6">
+          🪙 ERC20 Tokens - Expliqués Simplement
+        </h1>
+        <div
+          class="bg-white bg-opacity-20 backdrop-blur-sm rounded-xl p-6 max-w-4xl mx-auto"
+        >
+          <p><strong>Chaîne :</strong> Simply Explained (Xavier Decuyper)</p>
+          <p><strong>Durée :</strong> 6:13</p>
+          <p><strong>Plateforme :</strong> Ethereum Blockchain</p>
+          <p><strong>Vues :</strong> 494K+ | <strong>Likes :</strong> 9.7K</p>
+          <p>
+            <strong>📹 Vidéo originale :</strong>
+            <a
+              href="https://www.youtube.com/watch?v=cqZhNzZoMh8"
+              class="text-yellow-300 hover:text-yellow-100 underline"
+              >Voir sur YouTube</a
+            >
+          </p>
+          <p class="mt-3">
+            <strong>📄 Transcription complète :</strong>
+            <a
+              href="https://gensparkstorageprodwest.blob.core.windows.net/projects/projects_v1/594bd471-a417-46d8-a52f-4903133fc611/cqZhNzZoMh8.md"
+              class="text-yellow-300 hover:text-yellow-100 underline"
+              >Télécharger (MD)</a
+            >
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-6 py-12">
+      <!-- Résumé Exécutif -->
+      <section class="mb-12">
+        <h2 class="text-3xl font-bold text-gray-800 mb-6">
+          📋 Résumé Exécutif
+        </h2>
+        <div class="highlight-box">
+          <h4>🎯 De quoi parle cette vidéo ?</h4>
+          <p>
+            Toutes les cryptomonnaies n'ont pas leur propre blockchain. Les
+            <strong>tokens ERC20</strong> fonctionnent au-dessus de la
+            plateforme Ethereum. Cette vidéo explique ce que sont ces tokens,
+            pourquoi le standard ERC20 a été créé, et comment il a révolutionné
+            l'écosystème des cryptomonnaies.
+          </p>
+        </div>
+        <div class="bg-white rounded-xl p-6 shadow-lg">
+          <h3 class="text-xl font-bold mb-3">📊 Chiffres clés mentionnés :</h3>
+          <ul class="list-disc ml-8 mt-2 space-y-1">
+            <li><strong>36 000+</strong> tokens ERC20 connus (sur Etherscan)</li>
+            <li>
+              <strong>4 milliards $</strong> levés via ICO en 2017
+            </li>
+            <li>
+              <strong>3 millions $</strong> perdus à cause de bugs de
+              compatibilité (décembre 2017)
+            </li>
+            <li>
+              <strong>6 fonctions obligatoires</strong> + 3 optionnelles dans le
+              standard
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Points Clés d'Apprentissage -->
+      <section class="mb-12">
+        <h2 class="text-3xl font-bold text-gray-800 mb-6">
+          🎓 Points Clés d'Apprentissage
+        </h2>
+        <div class="key-points">
+          <div class="point-card">
+            <h4>1. 🏗️ Tokens vs Blockchain</h4>
+            <p>
+              Les tokens ERC20 <strong>ne sont pas des blockchains</strong> mais
+              existent sur Ethereum. Ils bénéficient de sa sécurité et de sa
+              machine virtuelle pour exécuter des smart contracts.
+            </p>
+          </div>
+          <div class="point-card">
+            <h4>2. 📜 Smart Contracts</h4>
+            <p>
+              Un token est créé par un <strong>smart contract</strong> qui gère
+              la création, les transferts et le suivi des balances. Une fois
+              déployé, il ne peut plus être modifié.
+            </p>
+          </div>
+          <div class="point-card">
+            <h4>3. 🔄 Interopérabilité</h4>
+            <p>
+              Sans standard, chaque token serait différent. ERC20 permet aux
+              exchanges et wallets de supporter des milliers de tokens avec
+              <strong>un seul code</strong>.
+            </p>
+          </div>
+          <div class="point-card">
+            <h4>4. 📐 Standard ERC20</h4>
+            <p>
+              ERC = "Ethereum Request for Comments". C'est une
+              <strong>interface</strong> qui définit 6 méthodes obligatoires que
+              tout token doit implémenter.
+            </p>
+          </div>
+          <div class="point-card">
+            <h4>5. 🔐 Sécurité</h4>
+            <p>
+              Les bugs dans les smart contracts peuvent être
+              <strong>catastrophiques</strong> : perte de tokens, vols, ou
+              impossibilité de transfert.
+            </p>
+          </div>
+          <div class="point-card">
+            <h4>6. 🚀 Token Factory</h4>
+            <p>
+              Créer un token ERC20 est devenu <strong>extrêmement simple</strong>
+              grâce à des outils comme Token Factory qui génèrent le code
+              automatiquement.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Concepts Techniques -->
+      <section class="mb-12">
+        <h2 class="text-3xl font-bold text-gray-800 mb-6">
+          🔧 Concepts Techniques Expliqués
+        </h2>
+
+        <h3 class="text-2xl font-bold text-gray-700 mb-4">
+          Les 6 Fonctions Obligatoires ERC20
+        </h3>
+        <ol class="steps">
+          <li>
+            <strong>totalSupply()</strong>
+            <p>
+              Définit le nombre total de tokens. Quand cette limite est
+              atteinte, le smart contract refuse de créer de nouveaux tokens.
+            </p>
+            <div class="code-block">
+              <code>function totalSupply() public view returns (uint256)</code>
+            </div>
+          </li>
+          <li>
+            <strong>balanceOf(address)</strong>
+            <p>
+              Retourne combien de tokens une adresse donnée possède. Essentiel
+              pour afficher les balances dans les wallets.
+            </p>
+            <div class="code-block">
+              <code
+                >function balanceOf(address account) public view returns
+                (uint256)</code
+              >
+            </div>
+          </li>
+          <li>
+            <strong>transfer(address, uint256)</strong>
+            <p>
+              Prend un certain nombre de tokens de la réserve totale et les
+              donne à un utilisateur. Utilisé pour les distributions initiales.
+            </p>
+            <div class="code-block">
+              <code
+                >function transfer(address recipient, uint256 amount) public
+                returns (bool)</code
+              >
+            </div>
+          </li>
+          <li>
+            <strong>transferFrom(address, address, uint256)</strong>
+            <p>
+              Permet de transférer des tokens entre deux utilisateurs qui en
+              possèdent déjà. Base des échanges peer-to-peer.
+            </p>
+            <div class="code-block">
+              <code
+                >function transferFrom(address sender, address recipient,
+                uint256 amount) public returns (bool)</code
+              >
+            </div>
+          </li>
+          <li>
+            <strong>approve(address, uint256)</strong>
+            <p>
+              Vérifie que le contract peut donner un certain nombre de tokens à
+              un utilisateur, en tenant compte de la réserve totale.
+            </p>
+            <div class="code-block">
+              <code
+                >function approve(address spender, uint256 amount) public
+                returns (bool)</code
+              >
+            </div>
+          </li>
+          <li>
+            <strong>allowance(address, address)</strong>
+            <p>
+              Vérifie si un utilisateur a assez de balance pour envoyer un
+              certain montant à quelqu'un d'autre. Protection contre les
+              transferts invalides.
+            </p>
+            <div class="code-block">
+              <code
+                >function allowance(address owner, address spender) public view
+                returns (uint256)</code
+              >
+            </div>
+          </li>
+        </ol>
+
+        <h3 class="text-2xl font-bold text-gray-700 mb-4 mt-8">
+          Les 3 Propriétés Optionnelles
+        </h3>
+        <div class="bg-white rounded-xl p-6 shadow-lg">
+          <ul class="space-y-3">
+            <li>
+              <strong class="text-purple-600">name()</strong> - Le nom du token
+              (ex: "Chainlink", "Uniswap")
+            </li>
+            <li>
+              <strong class="text-purple-600">symbol()</strong> - Le symbole du
+              token (ex: "LINK", "UNI")
+            </li>
+            <li>
+              <strong class="text-purple-600">decimals()</strong> - Nombre de
+              décimales supportées (généralement 18, comme l'Ether)
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Problèmes et Solutions -->
+      <section class="mb-12">
+        <h2 class="text-3xl font-bold text-gray-800 mb-6">⚠️ Problèmes et Solutions</h2>
+
+        <div class="warning-box">
+          <h4>🐛 Problème principal du standard ERC20</h4>
+          <p>
+            Certaines personnes essayaient d'envoyer des tokens ERC20 à un
+            contract de token (au lieu d'envoyer de l'Ether). Si le contract
+            n'était pas conçu pour gérer cela, les tokens étaient
+            <strong>perdus définitivement</strong>.
+          </p>
+          <p class="mt-3">
+            <strong>Estimation :</strong> Plus de 3 millions $ perdus en
+            décembre 2017 à cause de cette faille.
+          </p>
+        </div>
+
+        <div class="highlight-box">
+          <h4>✅ Solution : ERC223</h4>
+          <p>
+            La communauté travaille sur une extension du standard appelée
+            <strong>ERC223</strong> qui :
+          </p>
+          <ul class="list-disc ml-6 mt-2">
+            <li>Avertit les créateurs de tokens sur ces risques</li>
+            <li>Offre des workarounds pour éviter les pertes</li>
+            <li>Permet aux contracts de rejeter les transferts invalides</li>
+          </ul>
+        </div>
+
+        <div class="bg-white rounded-xl p-6 shadow-lg mt-4">
+          <h3 class="text-xl font-bold mb-3">Autres risques mentionnés :</h3>
+          <ul class="list-disc ml-8 space-y-2">
+            <li>
+              <strong>Bugs dans le code :</strong> Impossibles à corriger après
+              déploiement
+            </li>
+            <li>
+              <strong>Vols de tokens :</strong> Si la fonction transfer() est mal
+              implémentée
+            </li>
+            <li>
+              <strong>Scams et ICO frauduleuses :</strong> Tokens survalorisés
+              ou sans valeur réelle
+            </li>
+            <li>
+              <strong>Tokens perdus :</strong> Envoyés à la mauvaise adresse ou
+              contract
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Outils et Ressources -->
+      <section class="mb-12" id="resources">
+        <h2 class="text-3xl font-bold text-gray-800 mb-6">
+          🛠️ Outils et Ressources Mentionnés
+        </h2>
+        <div class="resource-grid">
+          <div class="resource-card">
+            <div class="icon">🔍</div>
+            <h4>Etherscan</h4>
+            <a href="https://etherscan.io/tokens" target="_blank"
+              >Explorateur de tokens ERC20</a
+            >
+          </div>
+          <div class="resource-card">
+            <div class="icon">🏭</div>
+            <h4>Token Factory</h4>
+            <a href="https://tokenfactory.surge.sh" target="_blank"
+              >Créer votre token facilement</a
+            >
+          </div>
+          <div class="resource-card">
+            <div class="icon">💼</div>
+            <h4>MyEtherWallet</h4>
+            <a href="https://www.myetherwallet.com" target="_blank"
+              >Wallet supportant tous les ERC20</a
+            >
+          </div>
+          <div class="resource-card">
+            <div class="icon">📜</div>
+            <h4>ERC20 Standard</h4>
+            <a href="https://eips.ethereum.org/EIPS/eip-20" target="_blank"
+              >Documentation officielle</a
+            >
+          </div>
+          <div class="resource-card">
+            <div class="icon">🔗</div>
+            <h4>OpenZeppelin</h4>
+            <a
+              href="https://docs.openzeppelin.com/contracts/erc20"
+              target="_blank"
+              >Librairie de contracts sécurisés</a
+            >
+          </div>
+          <div class="resource-card">
+            <div class="icon">⚡</div>
+            <h4>Remix IDE</h4>
+            <a href="https://remix.ethereum.org" target="_blank"
+              >Éditeur en ligne pour Solidity</a
+            >
+          </div>
+        </div>
+
+        <h3 class="text-xl font-bold text-gray-800 mt-8 mb-4">
+          📖 Ressources Complémentaires Recommandées
+        </h3>
+        <ul class="list-disc ml-8 space-y-2">
+          <li>
+            <a
+              href="https://ethereum.org/en/developers/docs/standards/tokens/erc-20/"
+              target="_blank"
+              class="text-blue-600 hover:underline"
+              >Documentation Ethereum.org - ERC20 Tokens</a
+            >
+          </li>
+          <li>
+            <a
+              href="https://docs.openzeppelin.com/contracts/erc20"
+              target="_blank"
+              class="text-blue-600 hover:underline"
+              >OpenZeppelin ERC20 Implementation Guide</a
+            >
+          </li>
+          <li>
+            <a
+              href="https://github.com/ethereum/EIPs/blob/master/EIPS/eip-20.md"
+              target="_blank"
+              class="text-blue-600 hover:underline"
+              >EIP-20: Token Standard (GitHub)</a
+            >
+          </li>
+          <li>
+            <a
+              href="https://github.com/ethereum/EIPs/issues/223"
+              target="_blank"
+              class="text-blue-600 hover:underline"
+              >ERC223 Proposal (Solution aux problèmes ERC20)</a
+            >
+          </li>
+          <li>
+            <a
+              href="https://www.youtube.com/watch?v=ZE2HxTmxfrI"
+              target="_blank"
+              class="text-blue-600 hover:underline"
+              >Smart Contracts - Simply Explained (même chaîne)</a
+            >
+          </li>
+          <li>
+            <a
+              href="https://www.youtube.com/watch?v=SSo_EIwHSd4"
+              target="_blank"
+              class="text-blue-600 hover:underline"
+              >How Does a Blockchain Work - Simply Explained (même chaîne)</a
+            >
+          </li>
+          <li>
+            <a
+              href="https://www.savjee.be/videos/simply-explained/erc20-tokens/"
+              target="_blank"
+              class="text-blue-600 hover:underline"
+              >Sources et références complètes (site officiel)</a
+            >
+          </li>
+        </ul>
+      </section>
+
+      <!-- Cas d'Usage -->
+      <section class="mb-12">
+        <h2 class="text-3xl font-bold text-gray-800 mb-6">💡 Cas d'Usage des Tokens ERC20</h2>
+        <div class="use-cases">
+          <div class="use-case-tag">💰 Cryptomonnaies alternatives</div>
+          <div class="use-case-tag">🏢 Actions d'entreprise (tokenisées)</div>
+          <div class="use-case-tag">🎁 Points de fidélité</div>
+          <div class="use-case-tag">🥇 Certificats d'or digitaux</div>
+          <div class="use-case-tag">🎮 Monnaies de jeux vidéo</div>
+          <div class="use-case-tag">🎫 Billets d'événements</div>
+          <div class="use-case-tag">🏦 Stablecoins (USDT, USDC, DAI)</div>
+          <div class="use-case-tag">🔄 Tokens de gouvernance (UNI, COMP)</div>
+          <div class="use-case-tag">💎 Tokens DeFi (AAVE, LINK)</div>
+          <div class="use-case-tag">🎨 Fractions de NFTs</div>
+        </div>
+
+        <div class="highlight-box">
+          <h4>🌟 Pourquoi c'est important de connaître ERC20 ?</h4>
+          <ul class="list-disc ml-6 space-y-2">
+            <li>
+              <strong>Fondation de la DeFi :</strong> La majorité des protocoles
+              DeFi utilisent des tokens ERC20
+            </li>
+            <li>
+              <strong>Opportunités de carrière :</strong> Les développeurs
+              Solidity/ERC20 sont très demandés
+            </li>
+            <li>
+              <strong>Compréhension du marché :</strong> Savoir différencier un
+              token d'une blockchain native
+            </li>
+            <li>
+              <strong>Sécurité :</strong> Identifier les tokens dangereux et
+              éviter les scams
+            </li>
+            <li>
+              <strong>Innovation :</strong> Base pour créer vos propres
+              applications décentralisées
+            </li>
+            <li>
+              <strong>Investissement éclairé :</strong> Comprendre la
+              tokenomique avant d'investir
+            </li>
+          </ul>
+        </div>
+
+        <h3 class="text-2xl font-bold text-gray-700 mb-4 mt-8">
+          📊 Exemples de Tokens ERC20 Populaires
+        </h3>
+        <div class="bg-white rounded-xl p-6 shadow-lg">
+          <ul class="space-y-3">
+            <li>
+              <strong class="text-purple-600">USDT (Tether)</strong> - Stablecoin
+              lié au dollar américain (~$80B market cap)
+            </li>
+            <li>
+              <strong class="text-purple-600">USDC (USD Coin)</strong> - Stablecoin
+              réglementé par Coinbase et Circle
+            </li>
+            <li>
+              <strong class="text-purple-600">UNI (Uniswap)</strong> - Token de
+              gouvernance du plus grand DEX
+            </li>
+            <li>
+              <strong class="text-purple-600">LINK (Chainlink)</strong> - Oracles
+              décentralisés pour smart contracts
+            </li>
+            <li>
+              <strong class="text-purple-600">DAI (MakerDAO)</strong> - Stablecoin
+              décentralisé garanti par crypto
+            </li>
+            <li>
+              <strong class="text-purple-600">SHIB (Shiba Inu)</strong> - Meme
+              coin avec communauté massive
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Défis d'Apprentissage -->
+      <section class="mb-12" id="challenges">
+        <h2 class="text-3xl font-bold text-gray-800 mb-6">
+          🎯 Défis d'Apprentissage Recommandés
+        </h2>
+
+        <div class="challenge-box">
+          <h4>
+            Défi 1 : Créer votre premier Token ERC20
+            <span class="difficulty easy">Débutant</span>
+          </h4>
+          <p>
+            <strong>Objectif :</strong> Utiliser Token Factory ou Remix IDE pour
+            créer un token simple sans coder.
+          </p>
+          <p><strong>Compétences :</strong> Interface web, Metamask</p>
+          <p><strong>Temps estimé :</strong> 30 minutes</p>
+          <p><strong>Étapes :</strong></p>
+          <ul class="list-disc ml-6 mt-2">
+            <li>✅ Installer Metamask et obtenir des ETH de testnet (Sepolia)</li>
+            <li>✅ Aller sur Token Factory ou Remix</li>
+            <li>✅ Définir nom, symbole, supply et décimales</li>
+            <li>✅ Déployer le contract sur testnet</li>
+            <li>✅ Vérifier sur Etherscan</li>
+            <li>✅ Ajouter le token dans Metamask</li>
+          </ul>
+          <p class="mt-3">
+            <strong>📚 Ressource :</strong>
+            <a
+              href="https://tokenfactory.surge.sh"
+              class="text-blue-600 hover:underline"
+              >Token Factory</a
+            >
+          </p>
+        </div>
+
+        <div class="challenge-box">
+          <h4>
+            Défi 2 : Coder un Token ERC20 en Solidity
+            <span class="difficulty medium">Intermédiaire</span>
+          </h4>
+          <p>
+            <strong>Objectif :</strong> Écrire votre propre smart contract ERC20
+            avec OpenZeppelin.
+          </p>
+          <p>
+            <strong>Compétences :</strong> Solidity, Smart Contracts, Tests
+            unitaires
+          </p>
+          <p><strong>Temps estimé :</strong> 3-4 heures</p>
+          <p><strong>Critères de succès :</strong></p>
+          <ul class="list-disc ml-6 mt-2">
+            <li>✅ Utiliser OpenZeppelin ERC20 comme base</li>
+            <li>✅ Ajouter une fonctionnalité custom (burn, mint, pause)</li>
+            <li>✅ Écrire 5+ tests unitaires avec Hardhat/Foundry</li>
+            <li>✅ Déployer sur testnet et vérifier le code</li>
+            <li>✅ Documenter votre code avec NatSpec</li>
+          </ul>
+          <div class="code-block mt-3">
+            <code
+              >// Exemple de base import
+              "@openzeppelin/contracts/token/ERC20/ERC20.sol"; contract MyToken
+              is ERC20 { constructor() ERC20("MyToken", "MTK") {
+              _mint(msg.sender, 1000000 * 10 ** decimals()); } }</code
+            >
+          </div>
+          <p class="mt-3">
+            <strong>📚 Tutoriel recommandé :</strong>
+            <a
+              href="https://docs.openzeppelin.com/contracts/erc20"
+              class="text-blue-600 hover:underline"
+              >OpenZeppelin ERC20 Guide</a
+            >
+          </p>
+        </div>
+
+        <div class="challenge-box">
+          <h4>
+            Défi 3 : Créer un Token avec Fonctionnalités Avancées
+            <span class="difficulty hard">Avancé</span>
+          </h4>
+          <p>
+            <strong>Objectif :</strong> Développer un token ERC20 complet avec
+            governance, staking et vesting.
+          </p>
+          <p>
+            <strong>Exemple :</strong> Token de gouvernance pour une DAO avec
+            système de récompenses
+          </p>
+          <p>
+            <strong>Compétences :</strong> Solidity avancé, Architecture de
+            contracts, Sécurité, Gas optimization
+          </p>
+          <p><strong>Temps estimé :</strong> 2-3 semaines</p>
+          <p><strong>Critères de succès :</strong></p>
+          <ul class="list-disc ml-6 mt-2">
+            <li>
+              ✅ Token avec fonctions de gouvernance (vote, propositions)
+            </li>
+            <li>✅ Système de staking avec récompenses</li>
+            <li>✅ Vesting schedule pour équipe et investisseurs</li>
+            <li>✅ Audit de sécurité (Slither, MythX)</li>
+            <li>✅ Coverage de tests > 95%</li>
+            <li>✅ Gas optimization (< 50k gas par transfer)</li>
+            <li>✅ Frontend DApp avec Web3.js/Ethers.js</li>
+            <li>✅ Documentation complète et whitepaper</li>
+          </ul>
+          <p class="mt-3">
+            <strong>📚 Ressources :</strong>
+          </p>
+          <ul class="list-disc ml-6">
+            <li>
+              <a
+                href="https://docs.openzeppelin.com/contracts/governance"
+                class="text-blue-600 hover:underline"
+                >OpenZeppelin Governance</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://www.youtube.com/watch?v=gc7e90MHvl8"
+                class="text-blue-600 hover:underline"
+                >ERC20 Token Tutorial | Create Your Own Cryptocurrency</a
+              >
+            </li>
+          </ul>
+        </div>
+
+        <div class="challenge-box">
+          <h4>
+            Défi Bonus : Audit de Sécurité
+            <span class="difficulty hard">Expert</span>
+          </h4>
+          <p>
+            <strong>Objectif :</strong> Analyser des tokens ERC20 existants pour
+            identifier les vulnérabilités.
+          </p>
+          <p><strong>Compétences :</strong> Sécurité blockchain, Auditing</p>
+          <p><strong>Temps estimé :</strong> 1 semaine</p>
+          <p><strong>Tâches :</strong></p>
+          <ul class="list-disc ml-6 mt-2">
+            <li>
+              ✅ Analyser 5 tokens ERC20 populaires sur Etherscan
+            </li>
+            <li>✅ Utiliser Slither et Mythril pour détecter les bugs</li>
+            <li>
+              ✅ Identifier les patterns de vulnérabilités (reentrancy,
+              overflow, etc.)
+            </li>
+            <li>✅ Créer un rapport d'audit pour chaque token</li>
+            <li>✅ Proposer des corrections pour les bugs trouvés</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Timeline Vidéo -->
+      <section class="mb-12">
+        <h2 class="text-3xl font-bold text-gray-800 mb-6">⏱️ Timeline de la Vidéo</h2>
+        <div class="bg-white rounded-xl p-6 shadow-lg">
+          <ul class="space-y-3">
+            <li>
+              <strong class="text-purple-600">0:00 - 0:08</strong> - Introduction
+              : Qu'est-ce qu'un token ERC20 ?
+            </li>
+            <li>
+              <strong class="text-purple-600">0:09 - 0:48</strong> - Bases :
+              Tokens sur Ethereum vs blockchains indépendantes
+            </li>
+            <li>
+              <strong class="text-purple-600">0:49 - 1:40</strong> - Comment les
+              tokens sont créés via smart contracts
+            </li>
+            <li>
+              <strong class="text-purple-600">1:41 - 2:15</strong> - Problème
+              d'interopérabilité avant ERC20
+            </li>
+            <li>
+              <strong class="text-purple-600">2:16 - 3:10</strong> - Le standard
+              ERC20 et ses 6 fonctions obligatoires
+            </li>
+            <li>
+              <strong class="text-purple-600">3:11 - 4:13</strong> - Fonctions
+              approve() et allowance() expliquées
+            </li>
+            <li>
+              <strong class="text-purple-600">4:14 - 4:49</strong> - Facilité de
+              création avec Token Factory
+            </li>
+            <li>
+              <strong class="text-purple-600">4:50 - 5:40</strong> - Problèmes et
+              limitations du standard (pertes de tokens)
+            </li>
+            <li>
+              <strong class="text-purple-600">5:41 - 6:13</strong> - Solution
+              ERC223 et conclusion
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Glossaire -->
+      <section class="mb-12">
+        <h2 class="text-3xl font-bold text-gray-800 mb-6">📖 Glossaire</h2>
+        <div class="bg-white rounded-xl p-6 shadow-lg">
+          <dl class="space-y-4">
+            <div>
+              <dt class="font-bold text-purple-600">ERC20</dt>
+              <dd>
+                Ethereum Request for Comments 20 - Standard définissant les
+                règles pour les tokens sur Ethereum
+              </dd>
+            </div>
+            <div>
+              <dt class="font-bold text-purple-600">Smart Contract</dt>
+              <dd>
+                Programme auto-exécutable déployé sur la blockchain qui définit
+                les règles d'un token
+              </dd>
+            </div>
+            <div>
+              <dt class="font-bold text-purple-600">Gas</dt>
+              <dd>
+                Frais payés en ETH pour exécuter des opérations sur Ethereum
+              </dd>
+            </div>
+            <div>
+              <dt class="font-bold text-purple-600">Total Supply</dt>
+              <dd>
+                Nombre maximal de tokens pouvant exister (ex: 21M pour Bitcoin)
+              </dd>
+            </div>
+            <div>
+              <dt class="font-bold text-purple-600">Decimals</dt>
+              <dd>
+                Nombre de décimales pour diviser un token (18 = 1 token = 10^18
+                unités de base)
+              </dd>
+            </div>
+            <div>
+              <dt class="font-bold text-purple-600">Mint</dt>
+              <dd>
+                Créer de nouveaux tokens et les ajouter à la supply totale
+              </dd>
+            </div>
+            <div>
+              <dt class="font-bold text-purple-600">Burn</dt>
+              <dd>
+                Détruire des tokens pour réduire la supply totale
+              </dd>
+            </div>
+            <div>
+              <dt class="font-bold text-purple-600">ICO (Initial Coin Offering)</dt>
+              <dd>
+                Levée de fonds en vendant des tokens avant le lancement du
+                projet
+              </dd>
+            </div>
+            <div>
+              <dt class="font-bold text-purple-600">Wallet</dt>
+              <dd>
+                Application pour stocker, envoyer et recevoir des
+                cryptomonnaies et tokens
+              </dd>
+            </div>
+            <div>
+              <dt class="font-bold text-purple-600">Solidity</dt>
+              <dd>
+                Langage de programmation pour écrire des smart contracts
+                Ethereum
+              </dd>
+            </div>
+          </dl>
+        </div>
+      </section>
+
+      <!-- Call to Action -->
+      <div
+        class="bg-gradient-to-r from-primary to-red-700 rounded-xl p-8 text-center text-white"
+      >
+        <h2 class="text-3xl font-bold mb-4">🚀 Prêt à Créer Votre Token ?</h2>
+        <p class="text-xl opacity-90 mb-6">
+          Devenez un expert des tokens ERC20 et construisez l'avenir de la
+          finance décentralisée !
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a
+            href="https://remix.ethereum.org"
+            target="_blank"
+            class="inline-flex items-center px-6 py-3 bg-white text-primary font-semibold rounded-lg hover:bg-gray-100 transition-colors"
+          >
+            💻 Commencer avec Remix IDE
+          </a>
+          <a
+            href="https://docs.openzeppelin.com/contracts/erc20"
+            target="_blank"
+            class="inline-flex items-center px-6 py-3 border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-primary transition-colors"
+          >
+            📚 Lire la Documentation
+          </a>
+          <a
+            href="https://www.youtube.com/watch?v=cqZhNzZoMh8"
+            target="_blank"
+            class="inline-flex items-center px-6 py-3 bg-red-600 text-white font-semibold rounded-lg hover:bg-red-700 transition-colors"
+          >
+            📹 Revoir la Vidéo
+          </a>
+        </div>
+      </div>
+
+      <!-- Autres Vidéos Recommandées -->
+      <section class="mt-12 mb-12">
+        <h2 class="text-3xl font-bold text-gray-800 mb-6">
+          🎬 Vidéos Connexes Recommandées
+        </h2>
+        <div class="resource-grid">
+          <div class="resource-card">
+            <div class="icon">📜</div>
+            <h4>Smart Contracts</h4>
+            <p class="text-sm mb-2">Simply Explained - 4:17</p>
+            <a
+              href="https://www.youtube.com/watch?v=ZE2HxTmxfrI"
+              target="_blank"
+              >Voir la vidéo</a
+            >
+          </div>
+          <div class="resource-card">
+            <div class="icon">⛓️</div>
+            <h4>How Blockchain Works</h4>
+            <p class="text-sm mb-2">Simply Explained - 6:00</p>
+            <a
+              href="https://www.youtube.com/watch?v=SSo_EIwHSd4"
+              target="_blank"
+              >Voir la vidéo</a
+            >
+          </div>
+          <div class="resource-card">
+            <div class="icon">🎓</div>
+            <h4>ERC20 Tutorial</h4>
+            <p class="text-sm mb-2">Block Explorer - 1:13:56</p>
+            <a
+              href="https://www.youtube.com/watch?v=gc7e90MHvl8"
+              target="_blank"
+              >Voir la vidéo</a
+            >
+          </div>
+          <div class="resource-card">
+            <div class="icon">💰</div>
+            <h4>Coins vs Tokens</h4>
+            <p class="text-sm mb-2">CoinGecko - 3:02</p>
+            <a
+              href="https://www.youtube.com/watch?v=aLh8jlYYvZA"
+              target="_blank"
+              >Voir la vidéo</a
+            >
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12 mt-16">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="grid md:grid-cols-4 gap-8">
+          <div>
+            <h3 class="text-xl font-bold mb-4">📚 TARMAQ</h3>
+            <p class="text-gray-400">
+              Analyses détaillées de contenu éducatif pour accélérer votre
+              apprentissage en blockchain et technologies Web3.
+            </p>
+          </div>
+          <div>
+            <h4 class="font-semibold mb-4">Catégories</h4>
+            <ul class="space-y-2 text-gray-400">
+              <li>
+                <a href="#" class="hover:text-white transition-colors"
+                  >Blockchain</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-white transition-colors"
+                  >Smart Contracts</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-white transition-colors">DeFi</a>
+              </li>
+              <li>
+                <a href="#" class="hover:text-white transition-colors">NFTs</a>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-semibold mb-4">Ressources</h4>
+            <ul class="space-y-2 text-gray-400">
+              <li>
+                <a
+                  href="https://www.youtube.com/@simplyexplained"
+                  target="_blank"
+                  class="hover:text-white transition-colors"
+                  >Chaîne Simply Explained</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://ethereum.org"
+                  target="_blank"
+                  class="hover:text-white transition-colors"
+                  >Ethereum.org</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://docs.openzeppelin.com"
+                  target="_blank"
+                  class="hover:text-white transition-colors"
+                  >OpenZeppelin Docs</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-semibold mb-4">À propos de la Vidéo</h4>
+            <p class="text-gray-400 text-sm">
+              <strong>Créateur :</strong> Xavier Decuyper (Savjee)<br />
+              <strong>Chaîne :</strong> Simply Explained<br />
+              <strong>Publié :</strong> 13 février 2018<br />
+              <strong>Vues :</strong> 494K+
+            </p>
+          </div>
+        </div>
+        <div
+          class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400"
+        >
+          <p>
+            &copy; 2025 TARMAQ. Analyse créée pour faciliter
+            l'apprentissage des tokens ERC20.
+          </p>
+          <p class="mt-2 text-sm">
+            Contenu original :
+            <a
+              href="https://www.youtube.com/watch?v=cqZhNzZoMh8"
+              class="text-purple-400 hover:text-purple-300"
+              >ERC20 tokens - Simply Explained</a
+            >
+          </p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
