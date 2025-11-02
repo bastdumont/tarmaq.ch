@@ -1,15 +1,4 @@
 {
-  "functions": {
-    "api/env.js": {
-      "runtime": "nodejs18.x"
-    }
-  },
-  "rewrites": [
-    {
-      "source": "/api/env.js",
-      "destination": "/api/env.js"
-    }
-  ],
   "headers": [
     {
       "source": "/api/env.js",
