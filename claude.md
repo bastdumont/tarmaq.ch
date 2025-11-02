@@ -33,13 +33,43 @@ Then open `http://localhost:8000`
 
 ### File Structure
 ```
-├── index.html, projet.html, activites.html, impact.html,
-│   soutenir.html, contact.html, 404.html    # 7 pages total
-├── css/style.css                             # Custom CSS + animations
+├── Main Pages (10)
+│   ├── index.html              # Homepage
+│   ├── projet.html             # Project details
+│   ├── activites.html          # Activities overview
+│   ├── impact.html             # Impact metrics
+│   ├── soutenir.html           # Support hub
+│   ├── contact.html            # Contact form
+│   ├── charte.html             # Charter page
+│   ├── about.html              # About page
+│   ├── formation-residence.html # Residential training
+│   └── 404.html                # Error page
+│
+├── Support Detail Pages (6)
+│   ├── soutenir-donations.html
+│   ├── soutenir-mentorat.html
+│   ├── soutenir-locaux.html
+│   ├── soutenir-materiel.html
+│   ├── soutenir-evenements.html
+│   └── soutenir-communaute.html
+│
+├── adémie/                     # Educational content (saved HTML pages)
+│
+├── css/style.css               # Custom CSS + animations
+│
 ├── js/
-│   ├── i18n.js                               # Translation system (4 languages)
-│   └── main.js                               # UI interactions + scroll effects
-└── assets/                                   # SVG logos + favicon
+│   ├── i18n.js                 # Translation system (4 languages)
+│   ├── main.js                 # UI interactions + scroll effects
+│   ├── header.js               # Header component logic
+│   ├── charter.js              # Charter signature system
+│   ├── airtable-api.js         # Airtable API wrapper
+│   ├── airtable-config.js      # Airtable configuration
+│   └── env-config.js           # Environment config loader
+│
+├── config.js                   # Global configuration (gitignored)
+├── config.example.js           # Config template
+│
+└── assets/                     # Images, logos, favicon
 ```
 
 ### Multilingual System (js/i18n.js)
@@ -66,6 +96,46 @@ const translations = {
 <h1 data-i18n="hero.title">Default text</h1>
 <button onclick="changeLanguage('fr')">🇫🇷</button>
 ```
+
+### Airtable Integration System (js/airtable-api.js)
+
+**Purpose:** Backend data storage for charter signatures and potentially other dynamic content.
+
+**Architecture:**
+- `config.js` (gitignored) - Contains API keys and base ID
+- `config.example.js` - Template for configuration
+- `js/airtable-config.js` - Airtable-specific configuration wrapper
+- `js/airtable-api.js` - API wrapper with caching, CRUD operations
+- `js/charter.js` - Uses Airtable API to save charter signatures
+
+**Setup:**
+1. Copy `config.example.js` to `config.js`
+2. Add Airtable credentials (API key, Base ID)
+3. See `AIRTABLE_SETUP.md` for detailed setup instructions
+
+**Key Functions:**
+- `AirtableAPI.getRecords(tableName, options)` - Fetch records with caching
+- `AirtableAPI.createRecord(tableName, fields)` - Create new record
+- `AirtableAPI.updateRecord(tableName, recordId, fields)` - Update existing record
+- `AirtableAPI.deleteRecord(tableName, recordId)` - Delete record
+
+**Security Note:** The `config.js` file is gitignored to prevent API key exposure. Always use the template file for new setups.
+
+### Charter Signature System (js/charter.js)
+
+**Features:**
+- Collects signatures (name, email) on charte.html
+- Stores signatures in localStorage for immediate display
+- Persists to Airtable for permanent storage
+- Displays current signature count
+- Shows list of signatories
+
+**Workflow:**
+1. User fills form on charte.html
+2. JavaScript validates input
+3. Saves to localStorage (instant feedback)
+4. Sends to Airtable (permanent storage)
+5. Updates UI with new signature count
 
 ### UI System (js/main.js)
 
@@ -98,6 +168,39 @@ tailwind.config = {
 - 3D hover effects (lift, glow, zoom)
 - Animated gradients for text and backgrounds
 
+## Configuration & Environment Setup
+
+### Setting Up Airtable Integration
+
+If you need to work with the charter signature system or other Airtable-backed features:
+
+1. **Copy the config template:**
+   ```bash
+   cp config.example.js config.js
+   ```
+
+2. **Get Airtable credentials:**
+   - Create an Airtable account at airtable.com
+   - Create a new base or use existing "TARMAQ Website Backend"
+   - Generate a Personal Access Token with `data.records:read` and `data.records:write` scopes
+   - Copy your Base ID from the API documentation
+
+3. **Update config.js:**
+   ```javascript
+   window.CONFIG = {
+       AIRTABLE: {
+           API_KEY: 'patXXXXXXXXXXXXXX',  // Your token
+           BASE_ID: 'appXXXXXXXXXXXXXX'   // Your base ID
+       }
+   };
+   ```
+
+4. **Security:** Never commit `config.js` to git - it's already in `.gitignore`
+
+**Note:** The site will work without Airtable configuration, but charter signatures will only be stored in localStorage (browser-only, not persistent across devices).
+
+For detailed setup instructions, see [AIRTABLE_SETUP.md](AIRTABLE_SETUP.md).
+
 ## Common Development Tasks
 
 ### Adding/Editing Content
@@ -116,9 +219,12 @@ tailwind.config = {
 1. Create `nouvelle-page.html`
 2. Copy structure from existing page (header, footer, scripts)
 3. Update `<title>` and meta tags
-4. **Add navigation link in ALL 7 HTML files** (desktop + mobile menus)
-5. Add translations in `js/i18n.js` for nav link
-6. Test responsive design and all languages
+4. **CRITICAL: Add navigation link in ALL HTML files** (there are 16 pages total - update both desktop + mobile menus in each)
+5. Add translations in `js/i18n.js` for nav link (all 4 languages)
+6. Update this CLAUDE.md file to include the new page in the Pages Overview section
+7. Test responsive design and all languages
+
+**Important:** The site has 10 main pages + 6 support detail pages. When adding navigation, consider whether the page should appear in the main nav or just be linked from related pages.
 
 ### Adding Translations
 
@@ -186,13 +292,33 @@ Add `data-animate` attribute to trigger on scroll:
 
 ## Pages Overview
 
+### Main Pages (10)
+
 1. **index.html** - Homepage: hero, mission, stats, programs
 2. **projet.html** - Project details: vision, values, 2030 objectives
 3. **activites.html** - Activities: training, hackathons, educational trips
 4. **impact.html** - Impact: statistics, testimonials, success stories
-5. **soutenir.html** - Support page: 6 ways to help (donations, mentoring, spaces, equipment, events, community)
+5. **soutenir.html** - Support hub: overview of 6 ways to help with links to detail pages
 6. **contact.html** - Contact form, coordinates, HubSpot booking integration
-7. **404.html** - Custom error page
+7. **charte.html** - Charter page with signature form and Airtable integration
+8. **about.html** - About TARMAQ
+9. **formation-residence.html** - Residential training program details
+10. **404.html** - Custom error page
+
+### Support Detail Pages (6)
+
+Each provides detailed information about a specific way to support TARMAQ:
+
+1. **soutenir-donations.html** - Financial donations, scholarships, equipment funding
+2. **soutenir-mentorat.html** - Mentoring program (2-4h/month, in-person/online)
+3. **soutenir-locaux.html** - Space lending (training rooms, coworking, offices)
+4. **soutenir-materiel.html** - Equipment donations (computers, network, licenses)
+5. **soutenir-evenements.html** - Event partnerships (sponsoring, speakers, co-organization)
+6. **soutenir-communaute.html** - Community support (social sharing, word-of-mouth)
+
+### Special Folders
+
+**adémie/** - Contains archived/saved HTML pages for educational content. These are complete standalone HTML files (not part of the main site navigation).
 
 ## Important Information
 
@@ -229,6 +355,9 @@ No build step, no environment variables, no config files required.
 | Images not loading | Use relative paths (`assets/logo.svg` not `/assets/logo.svg`) |
 | Animations not triggering | Check IntersectionObserver support, verify `data-animate` attribute |
 | Mobile menu not working | Check `js/main.js` loaded, verify IDs match (`mobile-menu-btn`, `mobile-menu`) |
+| Charter signatures not saving | Verify `config.js` exists with valid Airtable credentials, check browser console for API errors |
+| Airtable API errors | Check API key has correct scopes (`data.records:read`, `data.records:write`), verify Base ID is correct |
+| Config file not loading | Ensure `config.js` exists (copy from `config.example.js`), check it's loaded before `airtable-api.js` in HTML |
 
 ## Critical Rules
 
@@ -252,13 +381,29 @@ No build step, no environment variables, no config files required.
 
 ## Additional Documentation
 
-- **README.md** - User-facing project documentation (French)
+- **README.md** - User-facing project documentation (French, comprehensive)
 - **CHANGELOG.md** - Version history and changes
+- **AIRTABLE_SETUP.md** - Detailed Airtable integration setup guide
+- **CONFIG_SETUP.md** / **CONFIGURATION_GUIDE.md** - Configuration instructions
 - **subagent-content-editor.md** - Detailed translation guide
 - **subagent-frontend-developer.md** - Frontend development guide
 
+## Testing Checklist
+
+Before deploying changes, verify:
+
+- [ ] All 4 languages work correctly (FR, EN, DE, IT)
+- [ ] Responsive design on mobile, tablet, desktop
+- [ ] Navigation works on all pages (main + mobile menu)
+- [ ] Animations trigger properly on scroll
+- [ ] Forms submit correctly (contact, charter)
+- [ ] Airtable integration works (if configured)
+- [ ] No console errors in browser DevTools
+- [ ] All images and assets load
+- [ ] Links work (internal and external)
+
 ---
 
-**Last Updated**: 2025-10-23
-**Version**: 3.1 (Static HTML with 4-language support)
+**Last Updated**: 2025-11-02
+**Version**: 3.1+ (Static HTML with 4-language support + Airtable integration)
 **Status**: Production ready

@@ -9,6 +9,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // Load signatories from localStorage or use defaults
     let signatories = loadSignatories();
     let currentCount = signatories.length;
+    
+    // Load signatories from Airtable on page load
+    loadSignatoriesFromAirtable();
 
     // Handle form submission
     form.addEventListener('submit', async function(e) {
@@ -50,9 +53,8 @@ document.addEventListener('DOMContentLoaded', function() {
         // Save to Airtable
         await saveSignatureToAirtable(signatureData);
 
-        // Update the display
-        updateSignatoriesList();
-        updateSignatureCount();
+        // Reload signatories from Airtable to get the latest data
+        await loadSignatoriesFromAirtable();
 
         // Reset form
         form.reset();
@@ -122,12 +124,66 @@ document.addEventListener('DOMContentLoaded', function() {
             console.log('📤 Sending data to Airtable:', airtableData);
 
             // Use the AirtableAPI object
-            const result = await window.AirtableAPI.createRecord('Charter Signatures', airtableData);
+            const result = await window.AirtableAPI.createRecord('tbl9jqKoSak8XjWcQ', airtableData);
             console.log('✅ Signature saved to Airtable successfully:', result);
 
         } catch (error) {
             console.error('❌ Error saving signature to Airtable:', error);
             console.error('Error details:', error.message);
+        }
+    }
+
+    // Load signatories from Airtable
+    async function loadSignatoriesFromAirtable() {
+        try {
+            console.log('🔍 Loading signatories from Airtable...');
+            
+            // Check if Airtable API is available
+            if (!window.AirtableAPI) {
+                console.warn('⚠️ Airtable API not loaded, using localStorage only');
+                return;
+            }
+
+            // Check if Airtable is configured
+            if (!window.AirtableConfig || !window.AirtableConfig.isValid()) {
+                console.warn('⚠️ Airtable not configured properly, using localStorage only');
+                return;
+            }
+
+            // Fetch records from Airtable
+            const records = await window.AirtableAPI.getRecords('tbl9jqKoSak8XjWcQ', {
+                sort: [{ field: 'Timestamp', direction: 'desc' }] // Most recent first
+            });
+
+            console.log('✅ Loaded records from Airtable:', records);
+
+            if (records && records.length > 0) {
+                // Extract names from Airtable records
+                const airtableSignatories = records
+                    .filter(record => record.fields && record.fields.Name) // Only records with names
+                    .map(record => record.fields.Name);
+
+                console.log('📋 Extracted signatories:', airtableSignatories);
+
+                // Update the signatories list with Airtable data
+                signatories = airtableSignatories;
+                currentCount = signatories.length;
+
+                // Update localStorage with fresh data
+                saveSignatories(signatories);
+
+                // Update the display
+                updateSignatoriesList();
+                updateSignatureCount();
+
+                console.log('✅ Signatories loaded and displayed successfully');
+            } else {
+                console.log('ℹ️ No signatories found in Airtable, using localStorage');
+            }
+
+        } catch (error) {
+            console.error('❌ Error loading signatories from Airtable:', error);
+            console.log('ℹ️ Falling back to localStorage data');
         }
     }
 
