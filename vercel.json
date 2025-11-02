@@ -1,5 +1,32 @@
 {
-  "name": "tarmaq-ch",
-  "cleanUrls": true,
-  "trailingSlash": false
+  "functions": {
+    "api/env.js": {
+      "runtime": "nodejs18.x"
+    }
+  },
+  "rewrites": [
+    {
+      "source": "/api/env.js",
+      "destination": "/api/env.js"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/api/env.js",
+      "headers": [
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
+        },
+        {
+          "key": "Access-Control-Allow-Methods",
+          "value": "GET, POST, PUT, DELETE, OPTIONS"
+        },
+        {
+          "key": "Access-Control-Allow-Headers",
+          "value": "X-Requested-With, Content-Type, Authorization"
+        }
+      ]
+    }
+  ]
 }
