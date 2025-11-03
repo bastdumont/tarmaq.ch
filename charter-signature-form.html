@@ -205,172 +205,130 @@
       </form>
     </div>
 
-    <!-- Load Vercel environment variables first (production) -->
-    <script
-      src="/api/env.js"
-      onerror="console.log('Vercel API not available, using config.js')"
-    ></script>
-
-    <!-- Load local configuration (development fallback) -->
-    <script src="config.js"></script>
-
     <script>
-      // Configuration loading - wait for environment variables in production
-      (function () {
-        const isProduction =
-          window.location.hostname !== 'localhost' &&
-          window.location.hostname !== '127.0.0.1' &&
-          !window.location.hostname.startsWith('192.168.');
+      (async function () {
+        // Load configuration from Vercel serverless function
+        let AIRTABLE_API_KEY = '';
+        let BASE_ID = 'appJ4MLPYJyuWWBG8';
+        const TABLE_NAME = 'Charter Signatures';
 
-        // In production, wait for Vercel environment variables to load
-        if (
-          isProduction &&
-          !window.AIRTABLE_API_KEY &&
-          !window.CONFIG?.AIRTABLE?.API_KEY
-        ) {
-          console.log('⏳ Waiting for Vercel environment variables...');
-          let attempts = 0;
-          const maxAttempts = 10;
-
-          const checkConfig = setInterval(() => {
-            attempts++;
-            if (
-              window.CONFIG?.AIRTABLE?.API_KEY ||
-              window.AIRTABLE_API_KEY ||
-              attempts >= maxAttempts
-            ) {
-              clearInterval(checkConfig);
-              if (window.CONFIG?.AIRTABLE?.API_KEY || window.AIRTABLE_API_KEY) {
-                console.log('✅ Environment variables loaded');
-              } else {
-                console.warn(
-                  '⚠️ Environment variables not loaded, using fallback'
-                );
-              }
-              initializeForm();
+        try {
+          const response = await fetch('/api/env.js');
+          if (response.ok) {
+            const config = await response.json();
+            AIRTABLE_API_KEY = config.AIRTABLE_API_KEY;
+            if (config.AIRTABLE_BASE_ID) {
+              BASE_ID = config.AIRTABLE_BASE_ID;
             }
-          }, 100);
-        } else {
-          // Local development or config already loaded
-          initializeForm();
+            console.log('✅ Configuration loaded from Vercel');
+          } else {
+            throw new Error('Failed to load config from /api/env.js');
+          }
+        } catch (error) {
+          console.error('❌ Failed to load configuration:', error);
+          document.getElementById('errorMessage').textContent =
+            'Configuration error: Unable to load API configuration.';
+          document.getElementById('errorMessage').style.display = 'block';
+          document.getElementById('submitButton').disabled = true;
+          return;
         }
 
-        function initializeForm() {
-          // Configuration - Load from centralized config or environment variables
-          const AIRTABLE_API_KEY =
-            window.CONFIG?.AIRTABLE?.API_KEY ||
-            window.AIRTABLE_API_KEY ||
-            window.ENV?.AIRTABLE_API_KEY;
-          const BASE_ID =
-            window.CONFIG?.AIRTABLE?.BASE_ID ||
-            window.AIRTABLE_BASE_ID ||
-            window.ENV?.AIRTABLE_BASE_ID ||
-            'appJ4MLPYJyuWWBG8';
-          const TABLE_NAME = 'Charter Signatures';
+        // Check if API key is configured
+        if (!AIRTABLE_API_KEY) {
+          console.error('❌ AIRTABLE_API_KEY is empty');
+          document.getElementById('errorMessage').textContent =
+            'Configuration error: API key not found. Please contact support.';
+          document.getElementById('errorMessage').style.display = 'block';
+          document.getElementById('submitButton').disabled = true;
+          return;
+        }
 
-          const form = document.getElementById('charterForm');
-          const submitButton = document.getElementById('submitButton');
-          const errorMessage = document.getElementById('errorMessage');
-          const successMessage = document.getElementById('successMessage');
+        const form = document.getElementById('charterForm');
+        const submitButton = document.getElementById('submitButton');
+        const errorMessage = document.getElementById('errorMessage');
+        const successMessage = document.getElementById('successMessage');
 
-          // Validate configuration is loaded
-          if (!AIRTABLE_API_KEY) {
-            console.error(
-              '❌ Airtable API key not found. Please ensure config.js or Vercel environment variables are properly configured.'
+        form.addEventListener('submit', async (e) => {
+          e.preventDefault();
+
+          // Réinitialiser les messages
+          errorMessage.style.display = 'none';
+          successMessage.style.display = 'none';
+
+          // Désactiver le bouton pendant l'envoi
+          submitButton.disabled = true;
+          submitButton.textContent = 'Envoi en cours...';
+
+          // Récupérer les données du formulaire
+          const name = document.getElementById('name').value;
+          const email = document.getElementById('email').value;
+          const acceptCharter =
+            document.getElementById('acceptCharter').checked;
+
+          if (!acceptCharter) {
+            showError(
+              'Vous devez accepter la charte et les conditions générales.'
             );
-            if (errorMessage) {
-              errorMessage.textContent =
-                'Configuration error: API key not found. Please contact support.';
-              errorMessage.style.display = 'block';
-            }
-            if (submitButton) {
-              submitButton.disabled = true;
-            }
+            submitButton.disabled = false;
+            submitButton.textContent = 'Signer la charte';
             return;
           }
 
-          form.addEventListener('submit', async (e) => {
-            e.preventDefault();
+          // Créer la date actuelle au format ISO
+          const now = new Date().toISOString();
+          const signatureDate = new Date().toLocaleDateString('fr-FR');
 
-            // Réinitialiser les messages
-            errorMessage.style.display = 'none';
-            successMessage.style.display = 'none';
-
-            // Désactiver le bouton pendant l'envoi
-            submitButton.disabled = true;
-            submitButton.textContent = 'Envoi en cours...';
-
-            // Récupérer les données du formulaire
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const acceptCharter =
-              document.getElementById('acceptCharter').checked;
-
-            if (!acceptCharter) {
-              showError(
-                'Vous devez accepter la charte et les conditions générales.'
-              );
-              submitButton.disabled = false;
-              submitButton.textContent = 'Signer la charte';
-              return;
-            }
-
-            // Créer la date actuelle au format ISO
-            const now = new Date().toISOString();
-            const signatureDate = new Date().toLocaleDateString('fr-FR');
-
-            try {
-              const response = await fetch(
-                `https://api.airtable.com/v0/${BASE_ID}/${encodeURIComponent(
-                  TABLE_NAME
-                )}`,
-                {
-                  method: 'POST',
-                  headers: {
-                    Authorization: `Bearer ${AIRTABLE_API_KEY}`,
-                    'Content-Type': 'application/json',
+          try {
+            const response = await fetch(
+              `https://api.airtable.com/v0/${BASE_ID}/${encodeURIComponent(
+                TABLE_NAME
+              )}`,
+              {
+                method: 'POST',
+                headers: {
+                  Authorization: `Bearer ${AIRTABLE_API_KEY}`,
+                  'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                  fields: {
+                    Name: name,
+                    Email: email,
+                    Timestamp: now,
+                    Signature_Date: signatureDate,
                   },
-                  body: JSON.stringify({
-                    fields: {
-                      Name: name,
-                      Email: email,
-                      Timestamp: now,
-                      Signature_Date: signatureDate,
-                    },
-                  }),
-                }
-              );
-
-              if (!response.ok) {
-                const errorData = await response.json();
-                throw new Error(
-                  errorData.error?.message || "Erreur lors de l'envoi"
-                );
+                }),
               }
+            );
 
-              // Succès
-              showSuccess(
-                '✅ Merci ! Votre signature a été enregistrée avec succès.'
+            if (!response.ok) {
+              const errorData = await response.json();
+              throw new Error(
+                errorData.error?.message || "Erreur lors de l'envoi"
               );
-              form.reset();
-            } catch (error) {
-              console.error('Erreur:', error);
-              showError(`Une erreur s'est produite : ${error.message}`);
-            } finally {
-              submitButton.disabled = false;
-              submitButton.textContent = 'Signer la charte';
             }
-          });
 
-          function showError(message) {
-            errorMessage.textContent = message;
-            errorMessage.style.display = 'block';
+            // Succès
+            showSuccess(
+              '✅ Merci ! Votre signature a été enregistrée avec succès.'
+            );
+            form.reset();
+          } catch (error) {
+            console.error('Erreur:', error);
+            showError(`Une erreur s'est produite : ${error.message}`);
+          } finally {
+            submitButton.disabled = false;
+            submitButton.textContent = 'Signer la charte';
           }
+        });
 
-          function showSuccess(message) {
-            successMessage.textContent = message;
-            successMessage.style.display = 'block';
-          }
+        function showError(message) {
+          errorMessage.textContent = message;
+          errorMessage.style.display = 'block';
+        }
+
+        function showSuccess(message) {
+          successMessage.textContent = message;
+          successMessage.style.display = 'block';
         }
       })();
     </script>
