@@ -40,9 +40,9 @@ Then open `http://localhost:8000`
 │   ├── impact.html             # Impact metrics
 │   ├── soutenir.html           # Support hub
 │   ├── contact.html            # Contact form
-│   ├── charte.html             # Charter page
 │   ├── about.html              # About page
 │   ├── formation-residence.html # Residential training
+│   ├── charter-signature-form.html # Standalone charter signature form
 │   └── 404.html                # Error page
 │
 ├── Support Detail Pages (6)
@@ -60,14 +60,10 @@ Then open `http://localhost:8000`
 ├── js/
 │   ├── i18n.js                 # Translation system (4 languages)
 │   ├── main.js                 # UI interactions + scroll effects
-│   ├── header.js               # Header component logic
-│   ├── charter.js              # Charter signature system
-│   ├── airtable-api.js         # Airtable API wrapper
-│   ├── airtable-config.js      # Airtable configuration
-│   └── env-config.js           # Environment config loader
+│   └── header.js               # Header component logic
 │
-├── config.js                   # Global configuration (gitignored)
-├── config.example.js           # Config template
+├── api/
+│   └── env.js                  # Vercel serverless function for environment variables
 │
 └── assets/                     # Images, logos, favicon
 ```
@@ -97,45 +93,33 @@ const translations = {
 <button onclick="changeLanguage('fr')">🇫🇷</button>
 ```
 
-### Airtable Integration System (js/airtable-api.js)
+### Charter Signature Form (charter-signature-form.html)
 
-**Purpose:** Backend data storage for charter signatures and potentially other dynamic content.
+**Purpose:** Standalone form for collecting charter signatures and storing them in Airtable.
 
 **Architecture:**
-- `config.js` (gitignored) - Contains API keys and base ID
-- `config.example.js` - Template for configuration
-- `js/airtable-config.js` - Airtable-specific configuration wrapper
-- `js/airtable-api.js` - API wrapper with caching, CRUD operations
-- `js/charter.js` - Uses Airtable API to save charter signatures
+- `charter-signature-form.html` - Self-contained standalone form (no dependencies on other pages)
+- `api/env.js` - Vercel serverless function that exposes environment variables securely
+- Loads Airtable API key from Vercel environment variables via `/api/env.js` endpoint
+- Direct Airtable API integration (no wrapper libraries)
 
-**Setup:**
-1. Copy `config.example.js` to `config.js`
-2. Add Airtable credentials (API key, Base ID)
-3. See `AIRTABLE_SETUP.md` for detailed setup instructions
+**How it works:**
+1. Form loads and fetches configuration from `/api/env.js`
+2. Serverless function returns `AIRTABLE_API_KEY` and `AIRTABLE_BASE_ID` from Vercel env vars
+3. Form validates configuration is loaded
+4. User submits form → data sent directly to Airtable API
+5. Success/error feedback displayed to user
 
-**Key Functions:**
-- `AirtableAPI.getRecords(tableName, options)` - Fetch records with caching
-- `AirtableAPI.createRecord(tableName, fields)` - Create new record
-- `AirtableAPI.updateRecord(tableName, recordId, fields)` - Update existing record
-- `AirtableAPI.deleteRecord(tableName, recordId)` - Delete record
+**Setup for Vercel:**
+1. Set `AIRTABLE_API_KEY` environment variable in Vercel project settings
+2. Optionally set `AIRTABLE_BASE_ID` (defaults to `appJ4MLPYJyuWWBG8`)
+3. Deploy - the serverless function at `api/env.js` will automatically expose these values
 
-**Security Note:** The `config.js` file is gitignored to prevent API key exposure. Always use the template file for new setups.
-
-### Charter Signature System (js/charter.js)
-
-**Features:**
-- Collects signatures (name, email) on charte.html
-- Stores signatures in localStorage for immediate display
-- Persists to Airtable for permanent storage
-- Displays current signature count
-- Shows list of signatories
-
-**Workflow:**
-1. User fills form on charte.html
-2. JavaScript validates input
-3. Saves to localStorage (instant feedback)
-4. Sends to Airtable (permanent storage)
-5. Updates UI with new signature count
+**Security:**
+- No secrets hardcoded in the codebase
+- API key stored securely in Vercel environment variables
+- Client-side code loads config dynamically from serverless function
+- Compatible with GitHub secret scanning and push protection
 
 ### UI System (js/main.js)
 
@@ -170,36 +154,29 @@ tailwind.config = {
 
 ## Configuration & Environment Setup
 
-### Setting Up Airtable Integration
+### Setting Up Charter Signature Form
 
-If you need to work with the charter signature system or other Airtable-backed features:
+The charter signature form requires Airtable configuration via Vercel environment variables:
 
-1. **Copy the config template:**
-   ```bash
-   cp config.example.js config.js
-   ```
-
-2. **Get Airtable credentials:**
+1. **Get Airtable credentials:**
    - Create an Airtable account at airtable.com
    - Create a new base or use existing "TARMAQ Website Backend"
    - Generate a Personal Access Token with `data.records:read` and `data.records:write` scopes
    - Copy your Base ID from the API documentation
 
-3. **Update config.js:**
-   ```javascript
-   window.CONFIG = {
-       AIRTABLE: {
-           API_KEY: 'patXXXXXXXXXXXXXX',  // Your token
-           BASE_ID: 'appXXXXXXXXXXXXXX'   // Your base ID
-       }
-   };
-   ```
+2. **Configure in Vercel:**
+   - Go to your Vercel project settings
+   - Navigate to "Environment Variables"
+   - Add `AIRTABLE_API_KEY` with your Airtable Personal Access Token
+   - Optionally add `AIRTABLE_BASE_ID` (defaults to `appJ4MLPYJyuWWBG8`)
+   - Redeploy the project
 
-4. **Security:** Never commit `config.js` to git - it's already in `.gitignore`
+3. **How it works:**
+   - The `api/env.js` serverless function reads environment variables
+   - Form loads configuration from `/api/env.js` endpoint
+   - No secrets are stored in the codebase
 
-**Note:** The site will work without Airtable configuration, but charter signatures will only be stored in localStorage (browser-only, not persistent across devices).
-
-For detailed setup instructions, see [AIRTABLE_SETUP.md](AIRTABLE_SETUP.md).
+**Note:** The form will display an error if the API key cannot be loaded. Make sure environment variables are set in Vercel and the deployment has access to them.
 
 ## Common Development Tasks
 
@@ -300,7 +277,7 @@ Add `data-animate` attribute to trigger on scroll:
 4. **impact.html** - Impact: statistics, testimonials, success stories
 5. **soutenir.html** - Support hub: overview of 6 ways to help with links to detail pages
 6. **contact.html** - Contact form, coordinates, HubSpot booking integration
-7. **charte.html** - Charter page with signature form and Airtable integration
+7. **charter-signature-form.html** - Standalone charter signature form (separate from main site)
 8. **about.html** - About TARMAQ
 9. **formation-residence.html** - Residential training program details
 10. **404.html** - Custom error page
@@ -336,14 +313,16 @@ Each provides detailed information about a specific way to support TARMAQ:
 
 ## Deployment
 
-**Zero configuration needed** - pure static files.
+**Minimal configuration needed** - pure static files + optional serverless function.
 
-1. **Netlify**: Drag & drop folder → done
+1. **Netlify**: Drag & drop folder → done (charter form won't work without serverless functions setup)
 2. **Vercel**: Import from GitHub or drag & drop
-3. **GitHub Pages**: Push to repo → enable in settings
-4. **FTP**: Upload all files to web server
+   - **Required**: Set `AIRTABLE_API_KEY` environment variable for charter form to work
+   - Serverless function at `api/env.js` automatically handles env var exposure
+3. **GitHub Pages**: Push to repo → enable in settings (charter form requires serverless support)
+4. **FTP**: Upload all files to web server (charter form requires serverless function support)
 
-No build step, no environment variables, no config files required.
+**Note:** The main site works as pure static files. The `charter-signature-form.html` requires a serverless function (`api/env.js`) and environment variables to function properly. For Vercel deployments, this is automatically handled.
 
 ## Common Issues
 
@@ -355,9 +334,9 @@ No build step, no environment variables, no config files required.
 | Images not loading | Use relative paths (`assets/logo.svg` not `/assets/logo.svg`) |
 | Animations not triggering | Check IntersectionObserver support, verify `data-animate` attribute |
 | Mobile menu not working | Check `js/main.js` loaded, verify IDs match (`mobile-menu-btn`, `mobile-menu`) |
-| Charter signatures not saving | Verify `config.js` exists with valid Airtable credentials, check browser console for API errors |
-| Airtable API errors | Check API key has correct scopes (`data.records:read`, `data.records:write`), verify Base ID is correct |
-| Config file not loading | Ensure `config.js` exists (copy from `config.example.js`), check it's loaded before `airtable-api.js` in HTML |
+| Charter form not working | Verify `AIRTABLE_API_KEY` is set in Vercel environment variables, check browser console for errors |
+| Charter form API errors | Check API key has correct scopes (`data.records:read`, `data.records:write`), verify Base ID in Vercel env vars |
+| Config endpoint not loading | Verify `api/env.js` exists and is deployed, check Vercel function logs for errors |
 
 ## Critical Rules
 
@@ -383,8 +362,6 @@ No build step, no environment variables, no config files required.
 
 - **README.md** - User-facing project documentation (French, comprehensive)
 - **CHANGELOG.md** - Version history and changes
-- **AIRTABLE_SETUP.md** - Detailed Airtable integration setup guide
-- **CONFIG_SETUP.md** / **CONFIGURATION_GUIDE.md** - Configuration instructions
 - **subagent-content-editor.md** - Detailed translation guide
 - **subagent-frontend-developer.md** - Frontend development guide
 
@@ -396,14 +373,21 @@ Before deploying changes, verify:
 - [ ] Responsive design on mobile, tablet, desktop
 - [ ] Navigation works on all pages (main + mobile menu)
 - [ ] Animations trigger properly on scroll
-- [ ] Forms submit correctly (contact, charter)
-- [ ] Airtable integration works (if configured)
+- [ ] Forms submit correctly (contact form)
+- [ ] Charter signature form loads config from `/api/env.js` (if using)
 - [ ] No console errors in browser DevTools
 - [ ] All images and assets load
 - [ ] Links work (internal and external)
 
 ---
 
-**Last Updated**: 2025-11-02
-**Version**: 3.1+ (Static HTML with 4-language support + Airtable integration)
+**Last Updated**: 2025-11-03
+**Version**: 3.2+ (Static HTML with 4-language support, cleaned up charter/Airtable integration)
 **Status**: Production ready
+
+**Recent Changes (2025-11-03):**
+- Removed all legacy charter and Airtable integration files (charte.html, js/charter.js, js/airtable-*.js, config.js)
+- Kept standalone `charter-signature-form.html` for charter signatures
+- Created `api/env.js` Vercel serverless function for secure environment variable access
+- Form now loads API key from Vercel environment variables via serverless function endpoint
+- Removed all hardcoded secrets - all configuration via Vercel environment variables
