@@ -10,6 +10,7 @@ const translations = {
         'nav.support': 'Nous soutenir',
         'nav.contact': 'Contact',
         'nav.about': 'À propos',
+        'nav.charter': 'Charte',
         
         // Hero Section
         'hero.title': 'Catalyseur d\'excellence',
@@ -223,6 +224,7 @@ const translations = {
         'nav.support': 'Support Us',
         'nav.contact': 'Contact',
         'nav.about': 'About',
+        'nav.charter': 'Charter',
         
         // Hero Section
         'hero.title': 'Excellence Catalyst',
@@ -436,6 +438,7 @@ const translations = {
         'nav.support': 'Unterstützen Sie uns',
         'nav.contact': 'Kontakt',
         'nav.about': 'Über uns',
+        'nav.charter': 'Charta',
         
         // Hero Section
         'hero.title': 'Katalysator für Exzellenz',
@@ -649,6 +652,7 @@ const translations = {
         'nav.support': 'Sostienici',
         'nav.contact': 'Contatti',
         'nav.about': 'Chi Siamo',
+        'nav.charter': 'Carta',
         
         // Hero Section
         'hero.title': 'Catalizzatore di Eccellenza',

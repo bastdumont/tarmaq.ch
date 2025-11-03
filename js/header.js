@@ -63,8 +63,8 @@ class TarmaqHeader {
             >Projet</a
           >
           <a
-            href="${this.isAcademie ? '../charte.html' : 'charte.html'}"
-            class="nav-link ${this.currentPage === 'charte' ? 'text-primary font-semibold' : 'hover:text-primary transition'}"
+            href="${this.isAcademie ? '../main-charte.html' : 'main-charte.html'}"
+            class="nav-link ${this.currentPage === 'main-charte' ? 'text-primary font-semibold' : 'hover:text-primary transition'}"
             data-i18n="nav.charter"
             >Charte</a
           >
@@ -142,8 +142,8 @@ class TarmaqHeader {
             >Projet</a
           >
           <a
-            href="${this.isAcademie ? '../charte.html' : 'charte.html'}"
-            class="nav-link ${this.currentPage === 'charte' ? 'text-primary font-semibold' : 'hover:text-primary transition'}"
+            href="${this.isAcademie ? '../main-charte.html' : 'main-charte.html'}"
+            class="nav-link ${this.currentPage === 'main-charte' ? 'text-primary font-semibold' : 'hover:text-primary transition'}"
             data-i18n="nav.charter"
             >Charte</a
           >
