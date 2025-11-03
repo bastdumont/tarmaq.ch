@@ -300,6 +300,174 @@
               </div>
             </div>
 
+            <!-- Token KPIs Section -->
+            <div class="bg-white rounded-2xl shadow-lg p-6 mb-8">
+              <div class="flex items-center justify-between mb-6">
+                <h2 class="text-2xl font-bold text-secondary">
+                  <i class="fas fa-coins text-primary mr-2"></i>
+                  Métriques Token TAQ
+                </h2>
+                <a
+                  href="tokenomics.html"
+                  class="text-primary hover:text-red-700 font-semibold text-sm transition flex items-center gap-1"
+                >
+                  <i class="fas fa-external-link-alt"></i>
+                  Voir les détails
+                </a>
+              </div>
+
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Token KPI 1: Total Supply -->
+                <div
+                  class="metric-card bg-gradient-to-br from-primary/5 to-red-50 rounded-xl p-6 border border-primary/20"
+                >
+                  <div class="flex items-center justify-between mb-4">
+                    <div
+                      class="w-12 h-12 bg-primary/20 rounded-lg flex items-center justify-center"
+                    >
+                      <i class="fas fa-wallet text-primary text-xl"></i>
+                    </div>
+                    <span class="text-xs text-gray-500 font-semibold"
+                      >SUPPLY FIXE</span
+                    >
+                  </div>
+                  <h3
+                    class="text-3xl font-bold text-secondary mb-2"
+                    id="tokenSupply"
+                  >
+                    10 000 000
+                  </h3>
+                  <p class="text-sm text-gray-600">TAQ en circulation totale</p>
+                  <div class="mt-4 pt-4 border-t border-gray-200">
+                    <p class="text-xs text-gray-500">
+                      Émission liée à la preuve d'impact
+                    </p>
+                  </div>
+                </div>
+
+                <!-- Token KPI 2: Reserve -->
+                <div
+                  class="metric-card bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl p-6 border border-green-200"
+                >
+                  <div class="flex items-center justify-between mb-4">
+                    <div
+                      class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center"
+                    >
+                      <i class="fas fa-piggy-bank text-green-600 text-xl"></i>
+                    </div>
+                    <span class="text-xs text-gray-500 font-semibold"
+                      >RÉSERVE CHF</span
+                    >
+                  </div>
+                  <h3
+                    class="text-3xl font-bold text-green-700 mb-2"
+                    id="tokenReserve"
+                  >
+                    0
+                  </h3>
+                  <p class="text-sm text-gray-600">
+                    Stablecoins en réserve d'impact
+                  </p>
+                  <div class="mt-4 pt-4 border-t border-gray-200">
+                    <p class="text-xs text-gray-500">
+                      10% des dons versé en réserve
+                    </p>
+                  </div>
+                </div>
+
+                <!-- Token KPI 3: Distributed -->
+                <div
+                  class="metric-card bg-gradient-to-br from-blue-50 to-cyan-50 rounded-xl p-6 border border-blue-200"
+                >
+                  <div class="flex items-center justify-between mb-4">
+                    <div
+                      class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center"
+                    >
+                      <i class="fas fa-exchange-alt text-blue-600 text-xl"></i>
+                    </div>
+                    <span class="text-xs text-gray-500 font-semibold"
+                      >DISTRIBUÉ</span
+                    >
+                  </div>
+                  <h3
+                    class="text-3xl font-bold text-blue-700 mb-2"
+                    id="tokenDistributed"
+                  >
+                    0
+                  </h3>
+                  <p class="text-sm text-gray-600">TAQ émis et distribué</p>
+                  <div class="mt-4 pt-4 border-t border-gray-200">
+                    <p class="text-xs text-gray-500">Proof-of-Impact</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Token Distribution Mini-Chart -->
+              <div class="mt-6 pt-6 border-t border-gray-200">
+                <h3 class="text-lg font-semibold mb-4 text-gray-700">
+                  Distribution par catégorie
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-7 gap-3">
+                  <div class="text-center">
+                    <div
+                      class="w-full h-24 bg-primary rounded-lg mb-2 flex items-center justify-center"
+                    >
+                      <span class="text-white font-bold text-sm">30%</span>
+                    </div>
+                    <p class="text-xs text-gray-600">Éducation</p>
+                  </div>
+                  <div class="text-center">
+                    <div
+                      class="w-full h-20 bg-red-500 rounded-lg mb-2 flex items-center justify-center"
+                    >
+                      <span class="text-white font-bold text-sm">20%</span>
+                    </div>
+                    <p class="text-xs text-gray-600">Mentors</p>
+                  </div>
+                  <div class="text-center">
+                    <div
+                      class="w-full h-16 bg-orange-500 rounded-lg mb-2 flex items-center justify-center"
+                    >
+                      <span class="text-white font-bold text-sm">15%</span>
+                    </div>
+                    <p class="text-xs text-gray-600">Entreprises</p>
+                  </div>
+                  <div class="text-center">
+                    <div
+                      class="w-full h-16 bg-amber-500 rounded-lg mb-2 flex items-center justify-center"
+                    >
+                      <span class="text-white font-bold text-sm">15%</span>
+                    </div>
+                    <p class="text-xs text-gray-600">Donateurs</p>
+                  </div>
+                  <div class="text-center">
+                    <div
+                      class="w-full h-12 bg-green-500 rounded-lg mb-2 flex items-center justify-center"
+                    >
+                      <span class="text-white font-bold text-sm">10%</span>
+                    </div>
+                    <p class="text-xs text-gray-600">Réserve</p>
+                  </div>
+                  <div class="text-center">
+                    <div
+                      class="w-full h-8 bg-blue-500 rounded-lg mb-2 flex items-center justify-center"
+                    >
+                      <span class="text-white font-bold text-sm">5%</span>
+                    </div>
+                    <p class="text-xs text-gray-600">Équipe</p>
+                  </div>
+                  <div class="text-center">
+                    <div
+                      class="w-full h-8 bg-purple-500 rounded-lg mb-2 flex items-center justify-center"
+                    >
+                      <span class="text-white font-bold text-sm">5%</span>
+                    </div>
+                    <p class="text-xs text-gray-600">DAO</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
             <!-- Charts Row 1 -->
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
               <!-- Community Growth Chart -->
@@ -423,6 +591,14 @@
                   class="hover:text-white transition"
                   data-i18n="nav.support"
                   >Nous soutenir</a
+                >
+              </li>
+              <li>
+                <a
+                  href="tokenomics.html"
+                  class="hover:text-white transition"
+                  data-i18n="nav.tokenomics"
+                  >Tokenomics</a
                 >
               </li>
             </ul>

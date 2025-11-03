@@ -69,12 +69,6 @@ class TarmaqHeader {
             >Charte</a
           >
           <a
-            href="${this.isAcademie ? '../tokenomics.html' : 'tokenomics.html'}"
-            class="nav-link ${this.currentPage === 'tokenomics' ? 'text-primary font-semibold' : 'hover:text-primary transition'}"
-            data-i18n="nav.tokenomics"
-            >Tokenomics</a
-          >
-          <a
             href="${this.isAcademie ? '../contact.html' : 'contact.html'}"
             class="nav-link ${this.currentPage === 'contact' ? 'text-primary font-semibold' : 'hover:text-primary transition'}"
             data-i18n="nav.contact"
@@ -152,12 +146,6 @@ class TarmaqHeader {
             class="nav-link ${this.currentPage === 'main-charte' ? 'text-primary font-semibold' : 'hover:text-primary transition'}"
             data-i18n="nav.charter"
             >Charte</a
-          >
-          <a
-            href="${this.isAcademie ? '../tokenomics.html' : 'tokenomics.html'}"
-            class="nav-link ${this.currentPage === 'tokenomics' ? 'text-primary font-semibold' : 'hover:text-primary transition'}"
-            data-i18n="nav.tokenomics"
-            >Tokenomics</a
           >
           <a
             href="${this.isAcademie ? '../contact.html' : 'contact.html'}"
