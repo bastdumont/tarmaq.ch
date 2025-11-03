@@ -1,0 +1,17 @@
+/**
+ * Local Airtable Configuration (Development Only)
+ * 
+ * Copy this file to js/airtable-config.local.js and add your API credentials.
+ * This file is gitignored and will not be committed to the repository.
+ * 
+ * Usage:
+ * 1. Copy this file: cp js/airtable-config.local.js.example js/airtable-config.local.js
+ * 2. Add your Airtable API key and Base ID
+ * 3. Include the file in your HTML: <script src="js/airtable-config.local.js"></script>
+ */
+
+window.AIRTABLE_CONFIG = {
+  AIRTABLE_API_KEY: 'your-api-key-here',
+  AIRTABLE_BASE_ID: 'appJ4MLPYJyuWWBG8' // Optional, defaults to this value
+};
+
