@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tableau de Bord - TARMAQ</title>
+    <meta
+      name="description"
+      content="Tableau de bord interactif des KPIs TARMAQ : impact du projet, croissance communautaire et performance des programmes."
+    />
+
+    <link rel="icon" href="assets/favicon.png" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+
+    <!-- jsPDF and html2canvas for PDF export -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: '#DA2F2C',
+              secondary: '#111827',
+              accent: '#F3F4F6',
+            },
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+            },
+          },
+        },
+      };
+    </script>
+
+    <style>
+      .metric-card {
+        transition: transform 0.2s, box-shadow 0.2s;
+      }
+      .metric-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+      }
+      .chart-container {
+        position: relative;
+        height: 300px;
+      }
+      .chart-container-lg {
+        position: relative;
+        height: 400px;
+      }
+      .loading-spinner {
+        border: 4px solid #f3f4f6;
+        border-top: 4px solid #da2f2c;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        animation: spin 1s linear infinite;
+      }
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+    </style>
+  </head>
+  <body class="font-sans bg-white text-secondary">
+    <!-- Header will be loaded by header.js -->
+
+    <!-- Dashboard Header -->
+    <section
+      class="pt-32 pb-12 bg-gradient-to-br from-secondary via-gray-800 to-primary text-white"
+    >
+      <div class="container mx-auto px-4">
+        <div class="max-w-7xl mx-auto">
+          <!-- Countdown Timer -->
+          <div
+            id="countdownContainer"
+            class="mb-8 bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20"
+          >
+            <div class="text-center">
+              <h2 class="text-2xl font-bold mb-4">
+                <i class="fas fa-calendar-alt mr-2"></i>
+                Objectif 2030
+              </h2>
+              <div
+                id="countdown"
+                class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center"
+              >
+                <div class="bg-white/20 rounded-xl p-4">
+                  <div
+                    id="countdown-days"
+                    class="text-4xl md:text-5xl font-bold mb-2"
+                  >
+                    0
+                  </div>
+                  <div class="text-sm opacity-90">Jours</div>
+                </div>
+                <div class="bg-white/20 rounded-xl p-4">
+                  <div
+                    id="countdown-hours"
+                    class="text-4xl md:text-5xl font-bold mb-2"
+                  >
+                    0
+                  </div>
+                  <div class="text-sm opacity-90">Heures</div>
+                </div>
+                <div class="bg-white/20 rounded-xl p-4">
+                  <div
+                    id="countdown-minutes"
+                    class="text-4xl md:text-5xl font-bold mb-2"
+                  >
+                    0
+                  </div>
+                  <div class="text-sm opacity-90">Minutes</div>
+                </div>
+                <div class="bg-white/20 rounded-xl p-4">
+                  <div
+                    id="countdown-seconds"
+                    class="text-4xl md:text-5xl font-bold mb-2"
+                  >
+                    0
+                  </div>
+                  <div class="text-sm opacity-90">Secondes</div>
+                </div>
+              </div>
+              <p class="text-sm mt-4 opacity-75">
+                Temps restant jusqu'au 1er février 2026
+              </p>
+            </div>
+          </div>
+
+          <div
+            class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4"
+          >
+            <div>
+              <div class="inline-block mb-4">
+                <span
+                  class="bg-white/20 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm font-semibold"
+                >
+                  <i class="fas fa-chart-line mr-2"></i>KPIs & Métriques
+                </span>
+              </div>
+              <h1 class="text-4xl md:text-5xl font-bold mb-2">
+                Tableau de Bord
+              </h1>
+              <p class="text-xl opacity-90">
+                Vue d'ensemble de l'impact et de la performance de TARMAQ
+              </p>
+            </div>
+            <div class="flex gap-3">
+              <button
+                id="exportPDF"
+                class="bg-white/20 hover:bg-white/30 text-white px-6 py-3 rounded-lg font-semibold transition flex items-center gap-2"
+              >
+                <i class="fas fa-file-pdf"></i>
+                Export PDF
+              </button>
+              <button
+                id="exportCSV"
+                class="bg-white/20 hover:bg-white/30 text-white px-6 py-3 rounded-lg font-semibold transition flex items-center gap-2"
+              >
+                <i class="fas fa-file-csv"></i>
+                Export CSV
+              </button>
+              <button
+                id="refreshData"
+                class="bg-white/20 hover:bg-white/30 text-white px-6 py-3 rounded-lg font-semibold transition flex items-center gap-2"
+              >
+                <i class="fas fa-sync-alt"></i>
+                Actualiser
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Main Dashboard Content -->
+    <section class="py-12 bg-accent">
+      <div class="container mx-auto px-4">
+        <div class="max-w-7xl mx-auto">
+          <!-- Error Message -->
+          <div
+            id="errorMessage"
+            class="hidden bg-red-50 border-l-4 border-red-500 text-red-700 p-4 mb-6 rounded-r-lg"
+          >
+            <div class="flex items-center">
+              <i class="fas fa-exclamation-circle mr-3"></i>
+              <span id="errorText"></span>
+            </div>
+          </div>
+
+          <!-- Loading State -->
+          <div id="loadingState" class="text-center py-12">
+            <div class="inline-block">
+              <div class="loading-spinner mx-auto mb-4"></div>
+              <p class="text-gray-600">Chargement des données...</p>
+            </div>
+          </div>
+
+          <!-- Dashboard Content -->
+          <div id="dashboardContent" class="hidden">
+            <!-- Key Metrics Cards -->
+            <div
+              class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8"
+            >
+              <!-- Metric Card 1: Participants -->
+              <div class="metric-card bg-white rounded-2xl shadow-lg p-6">
+                <div class="flex items-center justify-between mb-4">
+                  <div
+                    class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center"
+                  >
+                    <i class="fas fa-users text-primary text-xl"></i>
+                  </div>
+                  <span
+                    class="text-sm text-gray-500"
+                    id="participantsTrend"
+                  ></span>
+                </div>
+                <h3
+                  class="text-2xl font-bold text-secondary mb-1"
+                  id="participantsCount"
+                >
+                  —
+                </h3>
+                <p class="text-sm text-gray-600">Jeunes formés</p>
+              </div>
+
+              <!-- Metric Card 2: Programs -->
+              <div class="metric-card bg-white rounded-2xl shadow-lg p-6">
+                <div class="flex items-center justify-between mb-4">
+                  <div
+                    class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center"
+                  >
+                    <i class="fas fa-graduation-cap text-primary text-xl"></i>
+                  </div>
+                  <span class="text-sm text-gray-500" id="programsTrend"></span>
+                </div>
+                <h3
+                  class="text-2xl font-bold text-secondary mb-1"
+                  id="programsCount"
+                >
+                  —
+                </h3>
+                <p class="text-sm text-gray-600">Programmes actifs</p>
+              </div>
+
+              <!-- Metric Card 3: Partners -->
+              <div class="metric-card bg-white rounded-2xl shadow-lg p-6">
+                <div class="flex items-center justify-between mb-4">
+                  <div
+                    class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center"
+                  >
+                    <i class="fas fa-handshake text-primary text-xl"></i>
+                  </div>
+                  <span class="text-sm text-gray-500" id="partnersTrend"></span>
+                </div>
+                <h3
+                  class="text-2xl font-bold text-secondary mb-1"
+                  id="partnersCount"
+                >
+                  —
+                </h3>
+                <p class="text-sm text-gray-600">Partenaires</p>
+              </div>
+
+              <!-- Metric Card 4: Funding -->
+              <div class="metric-card bg-white rounded-2xl shadow-lg p-6">
+                <div class="flex items-center justify-between mb-4">
+                  <div
+                    class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center"
+                  >
+                    <i class="fas fa-chart-line text-primary text-xl"></i>
+                  </div>
+                  <span class="text-sm text-gray-500" id="fundingTrend"></span>
+                </div>
+                <h3
+                  class="text-2xl font-bold text-secondary mb-1"
+                  id="fundingAmount"
+                >
+                  —
+                </h3>
+                <p class="text-sm text-gray-600">Financement</p>
+              </div>
+            </div>
+
+            <!-- Charts Row 1 -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+              <!-- Community Growth Chart -->
+              <div class="bg-white rounded-2xl shadow-lg p-6">
+                <h3 class="text-xl font-bold mb-4">Croissance Communautaire</h3>
+                <div class="chart-container">
+                  <canvas id="communityGrowthChart"></canvas>
+                </div>
+              </div>
+
+              <!-- Program Performance Chart -->
+              <div class="bg-white rounded-2xl shadow-lg p-6">
+                <h3 class="text-xl font-bold mb-4">
+                  Performance des Programmes
+                </h3>
+                <div class="chart-container">
+                  <canvas id="programPerformanceChart"></canvas>
+                </div>
+              </div>
+            </div>
+
+            <!-- Charts Row 2 -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+              <!-- Engagement Statistics Chart -->
+              <div class="bg-white rounded-2xl shadow-lg p-6">
+                <h3 class="text-xl font-bold mb-4">
+                  Statistiques d'Engagement
+                </h3>
+                <div class="chart-container">
+                  <canvas id="engagementChart"></canvas>
+                </div>
+              </div>
+
+              <!-- Funding Progress Chart -->
+              <div class="bg-white rounded-2xl shadow-lg p-6">
+                <h3 class="text-xl font-bold mb-4">
+                  Progression du Financement
+                </h3>
+                <div class="chart-container">
+                  <canvas id="fundingChart"></canvas>
+                </div>
+              </div>
+            </div>
+
+            <!-- Full Width Chart -->
+            <div class="bg-white rounded-2xl shadow-lg p-6 mb-6">
+              <h3 class="text-xl font-bold mb-4">Tendances Mensuelles</h3>
+              <div class="chart-container-lg">
+                <canvas id="monthlyTrendsChart"></canvas>
+              </div>
+            </div>
+
+            <!-- Data Table -->
+            <div class="bg-white rounded-2xl shadow-lg p-6">
+              <h3 class="text-xl font-bold mb-4">Données Détaillées</h3>
+              <div class="overflow-x-auto">
+                <table class="w-full text-sm" id="dataTable">
+                  <thead class="bg-accent">
+                    <tr>
+                      <th class="px-4 py-3 text-left font-semibold">Date</th>
+                      <th class="px-4 py-3 text-left font-semibold">Type</th>
+                      <th class="px-4 py-3 text-left font-semibold">Valeur</th>
+                      <th class="px-4 py-3 text-left font-semibold">Statut</th>
+                    </tr>
+                  </thead>
+                  <tbody id="dataTableBody">
+                    <!-- Data will be populated here -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-secondary text-white py-12">
+      <div class="container mx-auto px-4">
+        <div class="grid md:grid-cols-4 gap-8 mb-8">
+          <div>
+            <img src="assets/logo.png" alt="TARMAQ" class="h-12 mb-4" />
+            <p class="text-gray-400 text-sm" data-i18n="footer.about">
+              Catalyseur de motivation pour les jeunes talents dans les
+              technologies émergentes.
+            </p>
+          </div>
+
+          <div>
+            <h4 class="font-bold mb-4" data-i18n="footer.links">
+              Liens rapides
+            </h4>
+            <ul class="space-y-2 text-gray-400 text-sm">
+              <li>
+                <a
+                  href="projet.html"
+                  class="hover:text-white transition"
+                  data-i18n="nav.project"
+                  >Le projet</a
+                >
+              </li>
+              <li>
+                <a
+                  href="activites.html"
+                  class="hover:text-white transition"
+                  data-i18n="nav.activities"
+                  >Activités</a
+                >
+              </li>
+              <li>
+                <a
+                  href="impact.html"
+                  class="hover:text-white transition"
+                  data-i18n="nav.impact"
+                  >Impact</a
+                >
+              </li>
+              <li>
+                <a
+                  href="soutenir.html"
+                  class="hover:text-white transition"
+                  data-i18n="nav.support"
+                  >Nous soutenir</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 class="font-bold mb-4" data-i18n="footer.contact">Contact</h4>
+            <ul class="space-y-2 text-gray-400 text-sm">
+              <li>
+                <i class="fas fa-envelope mr-2"></i>bastien@bdi-solutions.com
+              </li>
+              <li><i class="fas fa-phone mr-2"></i>+41 79 670 77 43</li>
+              <li>
+                <i class="fas fa-map-marker-alt mr-2"></i>11 avenue
+                Eugène-Pittard, 1206 Genève
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 class="font-bold mb-4" data-i18n="footer.newsletter">
+              Restez Informé
+            </h4>
+            <p
+              class="text-gray-400 text-sm mb-4"
+              data-i18n="footer.newsletter.description"
+            >
+              Recevez nos dernières actualités et opportunités.
+            </p>
+            <a
+              href="contact.html"
+              class="bg-primary hover:bg-red-700 text-white px-4 py-2 rounded-full text-sm transition inline-flex items-center"
+              data-i18n="footer.newsletter.cta"
+            >
+              Nous Contacter
+            </a>
+          </div>
+        </div>
+
+        <div
+          class="border-t border-gray-700 pt-8 text-center text-gray-400 text-sm"
+        >
+          <p>
+            &copy; 2025 TARMAQ.
+            <span data-i18n="footer.rights">Tous droits réservés.</span>
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/header.js"></script>
+    <script src="js/i18n.js"></script>
+    <script src="js/main.js"></script>
+    <!-- Local Airtable config (for development only, gitignored) -->
+    <!-- Uncomment and create js/airtable-config.local.js for local development:
+    <script src="js/airtable-config.local.js"></script>
+    -->
+    <script src="js/airtable.js"></script>
+    <script src="js/dashboard.js"></script>
+  </body>
+</html>

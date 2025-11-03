@@ -122,6 +122,7 @@ secrets.json
 
 # Airtable configuration (contains API keys)
 js/airtable-config.js
+js/airtable-config.local.js
 
 # Database files
 *.db
