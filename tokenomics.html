@@ -1,0 +1,1404 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TARMAQ Token (TQ) – Tokenomics d'Impact</title>
+    <meta
+      name="description"
+      content="Découvrez le modèle tokenomics TARMAQ : un système d'impact basé sur la blockchain pour récompenser mentorat, projets et dons."
+    />
+
+    <link rel="icon" href="assets/favicon.png" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: '#DA2F2C',
+              secondary: '#111827',
+              accent: '#F3F4F6',
+            },
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+            },
+          },
+        },
+      };
+    </script>
+
+    <style>
+      /* Custom animations for tokenomics page */
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-20px);
+        }
+      }
+      @keyframes pulse-glow {
+        0%,
+        100% {
+          opacity: 0.12;
+          transform: scale(1);
+        }
+        50% {
+          opacity: 0.2;
+          transform: scale(1.1);
+        }
+      }
+      .float-animation {
+        animation: float 6s ease-in-out infinite;
+      }
+      .pulse-glow {
+        animation: pulse-glow 4s ease-in-out infinite;
+      }
+      .chart-segment {
+        transition: stroke-width 0.3s ease, opacity 0.3s ease;
+      }
+      .chart-segment:hover {
+        stroke-width: 7;
+        opacity: 0.9;
+      }
+      .token-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      .token-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 24px rgba(218, 47, 44, 0.15);
+      }
+      .roadmap-circle {
+        transition: transform 0.3s ease, r 0.3s ease;
+        cursor: pointer;
+      }
+      .roadmap-circle:hover {
+        transform: scale(1.2);
+        r: 9;
+      }
+      .table-row {
+        transition: background-color 0.2s ease;
+      }
+      .table-row:hover {
+        background-color: #f9fafb;
+      }
+    </style>
+  </head>
+  <body class="font-sans bg-white text-secondary">
+    <!-- Header will be loaded by header.js -->
+
+    <!-- Hero Section -->
+    <section
+      class="pt-32 pb-16 bg-gradient-to-br from-primary to-red-700 text-white relative overflow-hidden"
+      id="top"
+    >
+      <!-- Animated bubbles background -->
+      <div class="absolute inset-0 opacity-20">
+        <div
+          class="absolute w-60 h-60 bg-white rounded-full blur-3xl float-animation"
+          style="right: -60px; top: -40px; animation-delay: 0s"
+        ></div>
+        <div
+          class="absolute w-48 h-48 bg-white rounded-full blur-3xl float-animation"
+          style="left: 6%; top: 12%; animation-delay: 1s"
+        ></div>
+        <div
+          class="absolute w-40 h-40 bg-white rounded-full blur-3xl float-animation"
+          style="left: 40%; bottom: -60px; animation-delay: 2s"
+        ></div>
+      </div>
+
+      <div class="container mx-auto px-4 relative z-10">
+        <div class="max-w-4xl mx-auto">
+          <div
+            class="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm border border-white/30 px-4 py-2 rounded-full text-sm mb-6 fade-in"
+            data-i18n="tokenomics.badge"
+          >
+            🎯 Économie d'impact • Utility + Governance • Traçabilité on-chain
+          </div>
+          <h1
+            class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 fade-in-delay"
+            data-i18n="tokenomics.title"
+          >
+            TARMAQ Token (TQ) — Tokenomics d'Impact
+          </h1>
+          <p
+            class="text-xl md:text-2xl mb-8 opacity-90 fade-in-delay-2"
+            data-i18n="tokenomics.subtitle"
+          >
+            Un modèle suisse qui transforme chaque heure de mentorat, chaque
+            franc investi et chaque projet livré en valeur mesurable — au
+            service des jeunes, des mentors, des entreprises et des donateurs.
+          </p>
+          <div
+            class="flex flex-col sm:flex-row gap-4 fade-in-delay-2"
+            data-animate
+          >
+            <a
+              href="#distribution"
+              class="bg-white text-primary hover:bg-gray-100 px-8 py-4 rounded-full font-semibold text-lg transition inline-flex items-center justify-center transform hover:scale-105"
+              data-i18n="tokenomics.cta.distribution"
+            >
+              Voir la distribution
+            </a>
+            <a
+              href="#reserve"
+              class="border-2 border-white text-white hover:bg-white hover:text-primary px-8 py-4 rounded-full font-semibold text-lg transition inline-flex items-center justify-center"
+              data-i18n="tokenomics.cta.reserve"
+            >
+              Mécanisme de réserve
+            </a>
+            <a
+              href="#roadmap"
+              class="border-2 border-white text-white hover:bg-white hover:text-primary px-8 py-4 rounded-full font-semibold text-lg transition inline-flex items-center justify-center"
+              data-i18n="tokenomics.cta.roadmap"
+            >
+              Feuille de route 5 ans
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="py-12 bg-accent">
+      <div class="container mx-auto px-4">
+        <div class="max-w-7xl mx-auto">
+          <!-- KPIs Section -->
+          <section
+            class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8"
+            aria-label="Synthèse"
+            data-animate
+          >
+            <div class="token-card bg-white rounded-2xl shadow-lg p-6">
+              <div class="flex items-baseline gap-2 mb-4">
+                <span class="text-3xl font-bold text-primary">10 000 000</span>
+                <span
+                  class="text-xs text-gray-500 uppercase tracking-wider"
+                  data-i18n="tokenomics.kpi1.label"
+                >
+                  Supply fixe
+                </span>
+              </div>
+              <p
+                class="text-sm text-gray-600"
+                data-i18n="tokenomics.kpi1.description"
+              >
+                Aucune inflation. Émission liée à la preuve d'impact (mentorat,
+                projets, dons).
+              </p>
+            </div>
+
+            <div class="token-card bg-white rounded-2xl shadow-lg p-6">
+              <div class="flex items-baseline gap-2 mb-4">
+                <span class="text-3xl font-bold text-primary">CHF-backed</span>
+                <span
+                  class="text-xs text-gray-500 uppercase tracking-wider"
+                  data-i18n="tokenomics.kpi2.label"
+                >
+                  Réserve d'impact
+                </span>
+              </div>
+              <p
+                class="text-sm text-gray-600"
+                data-i18n="tokenomics.kpi2.description"
+              >
+                10% des dons et mécénats versés en stablecoins pour soutenir un
+                plancher de valeur.
+              </p>
+            </div>
+
+            <div class="token-card bg-white rounded-2xl shadow-lg p-6">
+              <div class="flex items-baseline gap-2 mb-4">
+                <span class="text-3xl font-bold text-primary">DAO hybride</span>
+                <span
+                  class="text-xs text-gray-500 uppercase tracking-wider"
+                  data-i18n="tokenomics.kpi3.label"
+                >
+                  Gouvernance
+                </span>
+              </div>
+              <p
+                class="text-sm text-gray-600"
+                data-i18n="tokenomics.kpi3.description"
+              >
+                Association + smart contracts : votes, budgets, bourses, projets
+                financés.
+              </p>
+            </div>
+          </section>
+
+          <!-- Architecture & Distribution -->
+          <section
+            class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8"
+            data-animate
+          >
+            <div class="bg-white rounded-2xl shadow-lg p-6">
+              <h2
+                class="text-2xl font-bold mb-4"
+                data-i18n="tokenomics.architecture.title"
+              >
+                Architecture du token
+              </h2>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span
+                  class="inline-flex items-center gap-2 border border-gray-200 rounded-full px-3 py-1.5 text-xs text-gray-600"
+                >
+                  Blockchain : Polygon (faible coût)
+                </span>
+                <span
+                  class="inline-flex items-center gap-2 border border-gray-200 rounded-full px-3 py-1.5 text-xs text-gray-600"
+                >
+                  Standard : ERC-20 + NFT (ERC-1155)
+                </span>
+                <span
+                  class="inline-flex items-center gap-2 border border-gray-200 rounded-full px-3 py-1.5 text-xs text-gray-600"
+                >
+                  Rôle : Utility • Governance • Impact
+                </span>
+              </div>
+              <ul class="space-y-3 mb-4">
+                <li class="flex items-start gap-3">
+                  <span class="text-primary text-xl">🔗</span>
+                  <div>
+                    <b data-i18n="tokenomics.architecture.utility.title"
+                      >Utility</b
+                    >
+                    :
+                    <span data-i18n="tokenomics.architecture.utility.text"
+                      >formations, événements, coworking, bourses de
+                      mobilité.</span
+                    >
+                  </div>
+                </li>
+                <li class="flex items-start gap-3">
+                  <span class="text-primary text-xl">🗳️</span>
+                  <div>
+                    <b data-i18n="tokenomics.architecture.governance.title"
+                      >Governance</b
+                    >
+                    :
+                    <span data-i18n="tokenomics.architecture.governance.text"
+                      >vote DAO (poids plafonné à 2%) pour éviter la
+                      concentration.</span
+                    >
+                  </div>
+                </li>
+                <li class="flex items-start gap-3">
+                  <span class="text-primary text-xl">🧾</span>
+                  <div>
+                    <b data-i18n="tokenomics.architecture.impact.title"
+                      >Impact</b
+                    >
+                    :
+                    <span data-i18n="tokenomics.architecture.impact.text"
+                      >certificats NFT pour mécènes & suivi on-chain des
+                      projets.</span
+                    >
+                  </div>
+                </li>
+              </ul>
+              <blockquote
+                class="border-l-4 border-primary pl-4 font-bold text-gray-700 mt-4"
+                data-i18n="tokenomics.architecture.quote"
+              >
+                « 1 TQ = 1 unité d'impact validée (heure mentorat, livrable,
+                don, formation certifiée) »
+              </blockquote>
+            </div>
+
+            <div
+              class="bg-white rounded-2xl shadow-lg p-6"
+              id="distribution"
+              data-animate
+            >
+              <h2
+                class="text-2xl font-bold mb-4"
+                data-i18n="tokenomics.distribution.title"
+              >
+                Distribution initiale (Genèse)
+              </h2>
+              <div class="flex flex-wrap gap-3 mb-4 text-xs">
+                <span class="flex items-center gap-2">
+                  <span class="w-3 h-3 rounded-full bg-primary"></span>
+                  <span data-i18n="tokenomics.distribution.legend1"
+                    >Éducation & Jeunesse 30%</span
+                  >
+                </span>
+                <span class="flex items-center gap-2">
+                  <span class="w-3 h-3 rounded-full bg-red-500"></span>
+                  <span data-i18n="tokenomics.distribution.legend2"
+                    >Mentors & Devs 20%</span
+                  >
+                </span>
+                <span class="flex items-center gap-2">
+                  <span class="w-3 h-3 rounded-full bg-orange-500"></span>
+                  <span data-i18n="tokenomics.distribution.legend3"
+                    >Entreprises 15%</span
+                  >
+                </span>
+                <span class="flex items-center gap-2">
+                  <span class="w-3 h-3 rounded-full bg-amber-500"></span>
+                  <span data-i18n="tokenomics.distribution.legend4"
+                    >Donateurs 15%</span
+                  >
+                </span>
+                <span class="flex items-center gap-2">
+                  <span class="w-3 h-3 rounded-full bg-green-500"></span>
+                  <span data-i18n="tokenomics.distribution.legend5"
+                    >Réserve & Liquidity 10%</span
+                  >
+                </span>
+                <span class="flex items-center gap-2">
+                  <span class="w-3 h-3 rounded-full bg-blue-500"></span>
+                  <span data-i18n="tokenomics.distribution.legend6"
+                    >Équipe & Ops 5%</span
+                  >
+                </span>
+                <span class="flex items-center gap-2">
+                  <span class="w-3 h-3 rounded-full bg-purple-500"></span>
+                  <span data-i18n="tokenomics.distribution.legend7"
+                    >DAO 5%</span
+                  >
+                </span>
+              </div>
+
+              <!-- Interactive Donut Chart -->
+              <div
+                class="grid grid-cols-[160px_1fr] gap-4 items-center mb-4"
+                id="distribution-chart-container"
+              >
+                <svg
+                  viewBox="0 0 42 42"
+                  width="160"
+                  height="160"
+                  role="img"
+                  aria-label="Répartition en anneau"
+                  class="mx-auto"
+                >
+                  <circle
+                    cx="21"
+                    cy="21"
+                    r="15.915"
+                    fill="none"
+                    stroke="#f3f4f6"
+                    stroke-width="6"
+                  ></circle>
+                  <circle
+                    class="chart-segment"
+                    cx="21"
+                    cy="21"
+                    r="15.915"
+                    fill="none"
+                    stroke="#DA2F2C"
+                    stroke-width="6"
+                    stroke-dasharray="30 70"
+                    stroke-dashoffset="25"
+                    data-category="education"
+                  ></circle>
+                  <circle
+                    class="chart-segment"
+                    cx="21"
+                    cy="21"
+                    r="15.915"
+                    fill="none"
+                    stroke="#ef4444"
+                    stroke-width="6"
+                    stroke-dasharray="20 80"
+                    stroke-dashoffset="-5"
+                    data-category="mentors"
+                  ></circle>
+                  <circle
+                    class="chart-segment"
+                    cx="21"
+                    cy="21"
+                    r="15.915"
+                    fill="none"
+                    stroke="#f97316"
+                    stroke-width="6"
+                    stroke-dasharray="15 85"
+                    stroke-dashoffset="-25"
+                    data-category="enterprises"
+                  ></circle>
+                  <circle
+                    class="chart-segment"
+                    cx="21"
+                    cy="21"
+                    r="15.915"
+                    fill="none"
+                    stroke="#f59e0b"
+                    stroke-width="6"
+                    stroke-dasharray="15 85"
+                    stroke-dashoffset="-40"
+                    data-category="donors"
+                  ></circle>
+                  <circle
+                    class="chart-segment"
+                    cx="21"
+                    cy="21"
+                    r="15.915"
+                    fill="none"
+                    stroke="#10b981"
+                    stroke-width="6"
+                    stroke-dasharray="10 90"
+                    stroke-dashoffset="-55"
+                    data-category="reserve"
+                  ></circle>
+                  <circle
+                    class="chart-segment"
+                    cx="21"
+                    cy="21"
+                    r="15.915"
+                    fill="none"
+                    stroke="#3b82f6"
+                    stroke-width="6"
+                    stroke-dasharray="5 95"
+                    stroke-dashoffset="-65"
+                    data-category="team"
+                  ></circle>
+                  <circle
+                    class="chart-segment"
+                    cx="21"
+                    cy="21"
+                    r="15.915"
+                    fill="none"
+                    stroke="#8b5cf6"
+                    stroke-width="6"
+                    stroke-dasharray="5 95"
+                    stroke-dashoffset="-70"
+                    data-category="dao"
+                  ></circle>
+                </svg>
+
+                <div class="overflow-x-auto">
+                  <table class="w-full text-sm">
+                    <thead>
+                      <tr class="bg-accent">
+                        <th
+                          class="px-3 py-2 text-left text-xs uppercase tracking-wider text-gray-600"
+                        >
+                          Catégorie
+                        </th>
+                        <th
+                          class="px-3 py-2 text-left text-xs uppercase tracking-wider text-gray-600"
+                        >
+                          Allocation
+                        </th>
+                        <th
+                          class="px-3 py-2 text-left text-xs uppercase tracking-wider text-gray-600"
+                        >
+                          Vesting / Notes
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr
+                        class="table-row border-t border-dashed border-gray-200"
+                        data-category="education"
+                      >
+                        <td class="px-3 py-3">
+                          🎓
+                          <span
+                            data-i18n="tokenomics.distribution.table1.category"
+                            >Éducation & Jeunesse</span
+                          >
+                        </td>
+                        <td class="px-3 py-3 font-bold">
+                          <span
+                            data-i18n="tokenomics.distribution.table1.allocation"
+                            >30% (3 000 000 TQ)</span
+                          >
+                        </td>
+                        <td
+                          class="px-3 py-3 text-gray-600"
+                          data-i18n="tokenomics.distribution.table1.vesting"
+                        >
+                          Bourses, voyages, récompenses étudiants
+                        </td>
+                      </tr>
+                      <tr
+                        class="table-row border-t border-dashed border-gray-200"
+                        data-category="mentors"
+                      >
+                        <td class="px-3 py-3">
+                          🧠
+                          <span
+                            data-i18n="tokenomics.distribution.table2.category"
+                            >Mentors & Développeurs</span
+                          >
+                        </td>
+                        <td class="px-3 py-3 font-bold">
+                          <span
+                            data-i18n="tokenomics.distribution.table2.allocation"
+                            >20% (2 000 000)</span
+                          >
+                        </td>
+                        <td
+                          class="px-3 py-3 text-gray-600"
+                          data-i18n="tokenomics.distribution.table2.vesting"
+                        >
+                          Vesting 12–36 mois selon contributions
+                        </td>
+                      </tr>
+                      <tr
+                        class="table-row border-t border-dashed border-gray-200"
+                        data-category="enterprises"
+                      >
+                        <td class="px-3 py-3">
+                          🏢
+                          <span
+                            data-i18n="tokenomics.distribution.table3.category"
+                            >Entreprises partenaires</span
+                          >
+                        </td>
+                        <td class="px-3 py-3 font-bold">
+                          <span
+                            data-i18n="tokenomics.distribution.table3.allocation"
+                            >15% (1 500 000)</span
+                          >
+                        </td>
+                        <td
+                          class="px-3 py-3 text-gray-600"
+                          data-i18n="tokenomics.distribution.table3.vesting"
+                        >
+                          Projets, stages, mécénat en nature
+                        </td>
+                      </tr>
+                      <tr
+                        class="table-row border-t border-dashed border-gray-200"
+                        data-category="donors"
+                      >
+                        <td class="px-3 py-3">
+                          💖
+                          <span
+                            data-i18n="tokenomics.distribution.table4.category"
+                            >Donateurs & Fondations</span
+                          >
+                        </td>
+                        <td class="px-3 py-3 font-bold">
+                          <span
+                            data-i18n="tokenomics.distribution.table4.allocation"
+                            >15% (1 500 000)</span
+                          >
+                        </td>
+                        <td
+                          class="px-3 py-3 text-gray-600"
+                          data-i18n="tokenomics.distribution.table4.vesting"
+                        >
+                          Certificats NFT d'impact + reporting
+                        </td>
+                      </tr>
+                      <tr
+                        class="table-row border-t border-dashed border-gray-200"
+                        data-category="reserve"
+                      >
+                        <td class="px-3 py-3">
+                          💧
+                          <span
+                            data-i18n="tokenomics.distribution.table5.category"
+                            >Réserve & Liquidité</span
+                          >
+                        </td>
+                        <td class="px-3 py-3 font-bold">
+                          <span
+                            data-i18n="tokenomics.distribution.table5.allocation"
+                            >10% (1 000 000)</span
+                          >
+                        </td>
+                        <td
+                          class="px-3 py-3 text-gray-600"
+                          data-i18n="tokenomics.distribution.table5.vesting"
+                        >
+                          Plancher de valeur (stablecoins)
+                        </td>
+                      </tr>
+                      <tr
+                        class="table-row border-t border-dashed border-gray-200"
+                        data-category="team"
+                      >
+                        <td class="px-3 py-3">
+                          🛠️
+                          <span
+                            data-i18n="tokenomics.distribution.table6.category"
+                            >Équipe & Opérations</span
+                          >
+                        </td>
+                        <td class="px-3 py-3 font-bold">
+                          <span
+                            data-i18n="tokenomics.distribution.table6.allocation"
+                            >5% (500 000)</span
+                          >
+                        </td>
+                        <td
+                          class="px-3 py-3 text-gray-600"
+                          data-i18n="tokenomics.distribution.table6.vesting"
+                        >
+                          Vesting 36 mois
+                        </td>
+                      </tr>
+                      <tr
+                        class="table-row border-t border-dashed border-gray-200"
+                        data-category="dao"
+                      >
+                        <td class="px-3 py-3">
+                          🌍
+                          <span
+                            data-i18n="tokenomics.distribution.table7.category"
+                            >DAO communautaire</span
+                          >
+                        </td>
+                        <td class="px-3 py-3 font-bold">
+                          <span
+                            data-i18n="tokenomics.distribution.table7.allocation"
+                            >5% (500 000)</span
+                          >
+                        </td>
+                        <td
+                          class="px-3 py-3 text-gray-600"
+                          data-i18n="tokenomics.distribution.table7.vesting"
+                        >
+                          Initiatives locales et votes
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <p
+                class="text-xs text-gray-500 mt-2"
+                data-i18n="tokenomics.distribution.note"
+              >
+                Vesting développeurs/experts aligné sur des jalons livrables
+                (open-source, modules éducatifs, projets associatifs).
+              </p>
+            </div>
+          </section>
+
+          <!-- Emission & Circulation -->
+          <section
+            class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8"
+            data-animate
+          >
+            <div class="bg-white rounded-2xl shadow-lg p-6">
+              <h2
+                class="text-2xl font-bold mb-4"
+                data-i18n="tokenomics.emission.title"
+              >
+                Émission (Proof-of-Impact)
+              </h2>
+              <div class="overflow-x-auto">
+                <table
+                  class="w-full text-sm border border-gray-200 rounded-xl overflow-hidden"
+                >
+                  <thead>
+                    <tr class="bg-accent">
+                      <th
+                        class="px-3 py-2 text-left text-xs uppercase tracking-wider text-gray-600"
+                      >
+                        Action vérifiée
+                      </th>
+                      <th
+                        class="px-3 py-2 text-left text-xs uppercase tracking-wider text-gray-600"
+                      >
+                        TQ émis
+                      </th>
+                      <th
+                        class="px-3 py-2 text-left text-xs uppercase tracking-wider text-gray-600"
+                      >
+                        Validation
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="table-row border-t border-gray-200">
+                      <td
+                        class="px-3 py-3"
+                        data-i18n="tokenomics.emission.row1.action"
+                      >
+                        1h de mentorat
+                      </td>
+                      <td class="px-3 py-3 font-bold text-primary">10 TQ</td>
+                      <td
+                        class="px-3 py-3 text-gray-600"
+                        data-i18n="tokenomics.emission.row1.validation"
+                      >
+                        Coordinateur + DAO
+                      </td>
+                    </tr>
+                    <tr class="table-row border-t border-gray-200">
+                      <td
+                        class="px-3 py-3"
+                        data-i18n="tokenomics.emission.row2.action"
+                      >
+                        Projet livré (livrable tech/asso)
+                      </td>
+                      <td class="px-3 py-3 font-bold text-primary">100 TQ</td>
+                      <td
+                        class="px-3 py-3 text-gray-600"
+                        data-i18n="tokenomics.emission.row2.validation"
+                      >
+                        Comité Tarmak
+                      </td>
+                    </tr>
+                    <tr class="table-row border-t border-gray-200">
+                      <td
+                        class="px-3 py-3"
+                        data-i18n="tokenomics.emission.row3.action"
+                      >
+                        Don de 100 CHF
+                      </td>
+                      <td class="px-3 py-3 font-bold text-primary">100 TQ</td>
+                      <td
+                        class="px-3 py-3 text-gray-600"
+                        data-i18n="tokenomics.emission.row3.validation"
+                      >
+                        Smart contract de donation
+                      </td>
+                    </tr>
+                    <tr class="table-row border-t border-gray-200">
+                      <td
+                        class="px-3 py-3"
+                        data-i18n="tokenomics.emission.row4.action"
+                      >
+                        Formation certifiée (LMS)
+                      </td>
+                      <td class="px-3 py-3 font-bold text-primary">50 TQ</td>
+                      <td
+                        class="px-3 py-3 text-gray-600"
+                        data-i18n="tokenomics.emission.row4.validation"
+                      >
+                        Plateforme Tarmak
+                      </td>
+                    </tr>
+                    <tr class="table-row border-t border-gray-200">
+                      <td
+                        class="px-3 py-3"
+                        data-i18n="tokenomics.emission.row5.action"
+                      >
+                        Bourse de mobilité
+                      </td>
+                      <td class="px-3 py-3 font-bold text-primary">200 TQ</td>
+                      <td
+                        class="px-3 py-3 text-gray-600"
+                        data-i18n="tokenomics.emission.row5.validation"
+                      >
+                        Équipe opérationnelle
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <p
+                class="text-xs text-gray-500 mt-4"
+                data-i18n="tokenomics.emission.note"
+              >
+                Chaque émission est liée à une donnée on-chain : bénéficiaire,
+                livrable, horodatage.
+              </p>
+            </div>
+
+            <div class="bg-white rounded-2xl shadow-lg p-6">
+              <h2
+                class="text-2xl font-bold mb-4"
+                data-i18n="tokenomics.circulation.title"
+              >
+                Utilisation (Burn & Circulation)
+              </h2>
+              <ul class="space-y-3">
+                <li
+                  class="flex items-start gap-3 border-t border-dashed border-gray-200 pt-3 first:border-t-0 first:pt-0"
+                >
+                  <span class="text-primary text-xl">🎫</span>
+                  <div>
+                    Accès à des
+                    <b data-i18n="tokenomics.circulation.item1.title"
+                      >formations premium</b
+                    >,
+                    <span data-i18n="tokenomics.circulation.item1.text"
+                      >événements, coworking.</span
+                    >
+                  </div>
+                </li>
+                <li
+                  class="flex items-start gap-3 border-t border-dashed border-gray-200 pt-3"
+                >
+                  <span class="text-primary text-xl">🎒</span>
+                  <div>
+                    <b data-i18n="tokenomics.circulation.item2.title"
+                      >Bourses de mobilité</b
+                    >
+                    <span data-i18n="tokenomics.circulation.item2.text"
+                      >(TQ → subvention partielle, puis burn).</span
+                    >
+                  </div>
+                </li>
+                <li
+                  class="flex items-start gap-3 border-t border-dashed border-gray-200 pt-3"
+                >
+                  <span class="text-primary text-xl">🧑‍🤝‍🧑</span>
+                  <div>
+                    <b data-i18n="tokenomics.circulation.item3.title"
+                      >Parrainage</b
+                    >
+                    :
+                    <span data-i18n="tokenomics.circulation.item3.text"
+                      >"impact staking" de TQ pour financer d'autres
+                      jeunes.</span
+                    >
+                  </div>
+                </li>
+                <li
+                  class="flex items-start gap-3 border-t border-dashed border-gray-200 pt-3"
+                >
+                  <span class="text-primary text-xl">💱</span>
+                  <div>
+                    <b data-i18n="tokenomics.circulation.item4.title"
+                      >Conversion</b
+                    >
+                    <span data-i18n="tokenomics.circulation.item4.text"
+                      >via la réserve (TQ ↔ CHF) selon règles DAO.</span
+                    >
+                  </div>
+                </li>
+                <li
+                  class="flex items-start gap-3 border-t border-dashed border-gray-200 pt-3"
+                >
+                  <span class="text-primary text-xl">🏷️</span>
+                  <div>
+                    <b data-i18n="tokenomics.circulation.item5.title"
+                      >Visibilité partenaires</b
+                    >
+                    :
+                    <span data-i18n="tokenomics.circulation.item5.text"
+                      >pages projets, badges, reporting d'impact.</span
+                    >
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+
+          <!-- Reserve Section -->
+          <section
+            class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8"
+            id="reserve"
+            data-animate
+          >
+            <div class="bg-white rounded-2xl shadow-lg p-6">
+              <h2
+                class="text-2xl font-bold mb-4"
+                data-i18n="tokenomics.reserve.title"
+              >
+                Mécanisme de Réserve (CHF-backed)
+              </h2>
+              <p class="mb-4" data-i18n="tokenomics.reserve.description">
+                10% de chaque don/mécénat est converti en stablecoins (USDC/CHF)
+                et versé dans une <b>réserve d'impact</b>. Cette réserve crée un
+                <b>plancher de valeur</b> pour TQ et alimente la liquidité.
+              </p>
+              <div
+                class="inline-flex items-center gap-2 border border-gray-200 rounded-full px-4 py-2 mb-4 text-sm"
+              >
+                Formule (plancher) :
+                <b>Prix min TQ = Réserve / Supply en circulation</b>
+              </div>
+              <ul class="space-y-3">
+                <li
+                  class="flex items-start gap-3 border-t border-dashed border-gray-200 pt-3 first:border-t-0 first:pt-0"
+                >
+                  <span class="text-primary text-xl">💧</span>
+                  <div>
+                    <b data-i18n="tokenomics.reserve.item1.title">Pool DEX</b> :
+                    <span data-i18n="tokenomics.reserve.item1.text"
+                      >5% des flux pour la liquidité (ex. QuickSwap/Uniswap sur
+                      Polygon).</span
+                    >
+                  </div>
+                </li>
+                <li
+                  class="flex items-start gap-3 border-t border-dashed border-gray-200 pt-3"
+                >
+                  <span class="text-primary text-xl">🏦</span>
+                  <div>
+                    <b data-i18n="tokenomics.reserve.item2.title"
+                      >Buyback interne</b
+                    >
+                    :
+                    <span data-i18n="tokenomics.reserve.item2.text"
+                      >rachat TQ par l'association (fenêtres
+                      trimestrielles).</span
+                    >
+                  </div>
+                </li>
+                <li
+                  class="flex items-start gap-3 border-t border-dashed border-gray-200 pt-3"
+                >
+                  <span class="text-primary text-xl">🧱</span>
+                  <div>
+                    <b data-i18n="tokenomics.reserve.item3.title">On-ramp CH</b>
+                    :
+                    <span data-i18n="tokenomics.reserve.item3.text"
+                      >partenaires régulés (MtPelerin / banques crypto) pour TQ
+                      ↔ CHF.</span
+                    >
+                  </div>
+                </li>
+              </ul>
+            </div>
+
+            <div class="bg-white rounded-2xl shadow-lg p-6">
+              <h2
+                class="text-2xl font-bold mb-4"
+                data-i18n="tokenomics.compliance.title"
+              >
+                Cadre & Conformité (Suisse)
+              </h2>
+              <ul class="space-y-3">
+                <li
+                  class="flex items-start gap-3 border-t border-dashed border-gray-200 pt-3 first:border-t-0 first:pt-0"
+                >
+                  <span class="text-primary text-xl">📜</span>
+                  <div>
+                    <b data-i18n="tokenomics.compliance.item1.title"
+                      >Utility token</b
+                    >
+                    <span data-i18n="tokenomics.compliance.item1.text"
+                      >à impact (non spéculatif par défaut, usage défini).</span
+                    >
+                  </div>
+                </li>
+                <li
+                  class="flex items-start gap-3 border-t border-dashed border-gray-200 pt-3"
+                >
+                  <span class="text-primary text-xl">🔎</span>
+                  <div>
+                    <b data-i18n="tokenomics.compliance.item2.title"
+                      >Transparence</b
+                    >
+                    :
+                    <span data-i18n="tokenomics.compliance.item2.text"
+                      >rapports d'impact publics (on-chain + PDF annuel).</span
+                    >
+                  </div>
+                </li>
+                <li
+                  class="flex items-start gap-3 border-t border-dashed border-gray-200 pt-3"
+                >
+                  <span class="text-primary text-xl">🔐</span>
+                  <div>
+                    <b data-i18n="tokenomics.compliance.item3.title"
+                      >Multi-sig</b
+                    >
+                    <span data-i18n="tokenomics.compliance.item3.text"
+                      >sur la trésorerie, audits de smart contracts, KYC pour
+                      conversions fiat.</span
+                    >
+                  </div>
+                </li>
+                <li
+                  class="flex items-start gap-3 border-t border-dashed border-gray-200 pt-3"
+                >
+                  <span class="text-primary text-xl">⚖️</span>
+                  <div>
+                    <b data-i18n="tokenomics.compliance.item4.title"
+                      >DAO associative</b
+                    >
+                    :
+                    <span data-i18n="tokenomics.compliance.item4.text"
+                      >l'association demeure garante de la mission d'intérêt
+                      général.</span
+                    >
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+
+          <!-- Governance Section -->
+          <section
+            class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8"
+            data-animate
+          >
+            <div class="bg-white rounded-2xl shadow-lg p-6">
+              <h2
+                class="text-xl font-bold mb-4"
+                data-i18n="tokenomics.governance.title"
+              >
+                Gouvernance
+              </h2>
+              <ul class="space-y-3">
+                <li
+                  class="border-t border-dashed border-gray-200 pt-3 first:border-t-0 first:pt-0"
+                  data-i18n="tokenomics.governance.item1"
+                >
+                  🗳️ 1 TQ = 1 voix (plafond 2% / entité).
+                </li>
+                <li
+                  class="border-t border-dashed border-gray-200 pt-3"
+                  data-i18n="tokenomics.governance.item2"
+                >
+                  🏛️ Conseil d'impact (investisseurs philantropiques &
+                  entreprises) : suivi KPI.
+                </li>
+                <li
+                  class="border-t border-dashed border-gray-200 pt-3"
+                  data-i18n="tokenomics.governance.item3"
+                >
+                  🧩 Budgets participatifs : bourses, hackathons, projets
+                  associatifs.
+                </li>
+              </ul>
+            </div>
+
+            <div class="bg-white rounded-2xl shadow-lg p-6">
+              <h2
+                class="text-xl font-bold mb-4"
+                data-i18n="tokenomics.alignment.title"
+              >
+                Alignement Développeurs & Experts
+              </h2>
+              <ul class="space-y-3">
+                <li
+                  class="border-t border-dashed border-gray-200 pt-3 first:border-t-0 first:pt-0"
+                  data-i18n="tokenomics.alignment.item1"
+                >
+                  💼 Rémunération mixte CHF + TQ (vesting 24–36 mois).
+                </li>
+                <li
+                  class="border-t border-dashed border-gray-200 pt-3"
+                  data-i18n="tokenomics.alignment.item2"
+                >
+                  🏅 Bonus TQ pour livrables open-source et modules éducatifs.
+                </li>
+                <li
+                  class="border-t border-dashed border-gray-200 pt-3"
+                  data-i18n="tokenomics.alignment.item3"
+                >
+                  🎯 Primes à l'impact : TQ additionnels si objectifs
+                  pédagogiques atteints.
+                </li>
+              </ul>
+            </div>
+
+            <div class="bg-white rounded-2xl shadow-lg p-6">
+              <h2
+                class="text-xl font-bold mb-4"
+                data-i18n="tokenomics.investors.title"
+              >
+                Investisseurs & Philanthropes
+              </h2>
+              <ul class="space-y-3">
+                <li
+                  class="border-t border-dashed border-gray-200 pt-3 first:border-t-0 first:pt-0"
+                  data-i18n="tokenomics.investors.item1"
+                >
+                  💠 NFT "Impact Certificate" avec traçabilité des fonds.
+                </li>
+                <li
+                  class="border-t border-dashed border-gray-200 pt-3"
+                  data-i18n="tokenomics.investors.item2"
+                >
+                  💧 Accès à la réserve (règles DAO) + reporting on-chain.
+                </li>
+                <li
+                  class="border-t border-dashed border-gray-200 pt-3"
+                  data-i18n="tokenomics.investors.item3"
+                >
+                  👁️ Co-branding ESG : pages projets, badge partenaire.
+                </li>
+              </ul>
+            </div>
+          </section>
+
+          <!-- Roadmap Section -->
+          <section
+            class="bg-white rounded-2xl shadow-lg p-6 mb-8"
+            id="roadmap"
+            data-animate
+          >
+            <h2
+              class="text-2xl font-bold mb-4"
+              data-i18n="tokenomics.roadmap.title"
+            >
+              Feuille de route (5 ans)
+            </h2>
+            <p
+              class="text-sm text-gray-600 mb-6"
+              data-i18n="tokenomics.roadmap.subtitle"
+            >
+              Objectif : passer d'un utility interne à une référence d'impact
+              token éducatif en Suisse.
+            </p>
+            <!-- Interactive Timeline SVG -->
+            <div class="overflow-x-auto">
+              <svg
+                viewBox="0 0 960 140"
+                width="100%"
+                height="140"
+                role="img"
+                aria-label="Timeline 5 ans"
+                class="min-w-full"
+              >
+                <defs>
+                  <linearGradient
+                    id="timeline-gradient"
+                    x1="0"
+                    x2="1"
+                    y1="0"
+                    y2="0"
+                  >
+                    <stop offset="0" stop-color="#DA2F2C" />
+                    <stop offset="1" stop-color="#b22724" />
+                  </linearGradient>
+                </defs>
+                <line
+                  x1="40"
+                  y1="70"
+                  x2="920"
+                  y2="70"
+                  stroke="url(#timeline-gradient)"
+                  stroke-width="6"
+                  stroke-linecap="round"
+                />
+                <g fill="#111827" font-size="12" text-anchor="middle">
+                  <circle
+                    class="roadmap-circle"
+                    cx="80"
+                    cy="70"
+                    r="7"
+                    fill="#fff"
+                    stroke="#DA2F2C"
+                    stroke-width="3"
+                    data-year="1"
+                  />
+                  <text
+                    x="80"
+                    y="30"
+                    font-weight="700"
+                    data-i18n="tokenomics.roadmap.year1.title"
+                  >
+                    Année 1
+                  </text>
+                  <text
+                    x="80"
+                    y="102"
+                    data-i18n="tokenomics.roadmap.year1.description"
+                  >
+                    MVP token + DAO
+                  </text>
+
+                  <circle
+                    class="roadmap-circle"
+                    cx="280"
+                    cy="70"
+                    r="7"
+                    fill="#fff"
+                    stroke="#DA2F2C"
+                    stroke-width="3"
+                    data-year="2"
+                  />
+                  <text
+                    x="280"
+                    y="30"
+                    font-weight="700"
+                    data-i18n="tokenomics.roadmap.year2.title"
+                  >
+                    Année 2
+                  </text>
+                  <text
+                    x="280"
+                    y="102"
+                    data-i18n="tokenomics.roadmap.year2.description"
+                  >
+                    Adoption interne (10 entreprises, 100 jeunes)
+                  </text>
+
+                  <circle
+                    class="roadmap-circle"
+                    cx="480"
+                    cy="70"
+                    r="7"
+                    fill="#fff"
+                    stroke="#DA2F2C"
+                    stroke-width="3"
+                    data-year="3"
+                  />
+                  <text
+                    x="480"
+                    y="30"
+                    font-weight="700"
+                    data-i18n="tokenomics.roadmap.year3.title"
+                  >
+                    Année 3
+                  </text>
+                  <text
+                    x="480"
+                    y="102"
+                    data-i18n="tokenomics.roadmap.year3.description"
+                  >
+                    Réserve ≥ 50k CHF + DEX
+                  </text>
+
+                  <circle
+                    class="roadmap-circle"
+                    cx="680"
+                    cy="70"
+                    r="7"
+                    fill="#fff"
+                    stroke="#DA2F2C"
+                    stroke-width="3"
+                    data-year="4"
+                  />
+                  <text
+                    x="680"
+                    y="30"
+                    font-weight="700"
+                    data-i18n="tokenomics.roadmap.year4.title"
+                  >
+                    Année 4
+                  </text>
+                  <text
+                    x="680"
+                    y="102"
+                    data-i18n="tokenomics.roadmap.year4.description"
+                  >
+                    On-ramp CH (TQ ↔ CHF)
+                  </text>
+
+                  <circle
+                    class="roadmap-circle"
+                    cx="880"
+                    cy="70"
+                    r="7"
+                    fill="#fff"
+                    stroke="#DA2F2C"
+                    stroke-width="3"
+                    data-year="5"
+                  />
+                  <text
+                    x="880"
+                    y="30"
+                    font-weight="700"
+                    data-i18n="tokenomics.roadmap.year5.title"
+                  >
+                    Année 5
+                  </text>
+                  <text
+                    x="880"
+                    y="102"
+                    data-i18n="tokenomics.roadmap.year5.description"
+                  >
+                    Extension nationale (5 villes)
+                  </text>
+                </g>
+              </svg>
+            </div>
+          </section>
+
+          <!-- Next Steps & Contact -->
+          <section
+            class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8"
+            data-animate
+          >
+            <div class="bg-white rounded-2xl shadow-lg p-6">
+              <h2
+                class="text-2xl font-bold mb-4"
+                data-i18n="tokenomics.nextsteps.title"
+              >
+                Prochaines étapes (actionnable)
+              </h2>
+              <ol class="space-y-3 list-decimal list-inside">
+                <li
+                  class="text-gray-700"
+                  data-i18n="tokenomics.nextsteps.item1"
+                >
+                  📐 Finaliser la <b>charte d'usage</b> et le cadre DAO.
+                </li>
+                <li
+                  class="text-gray-700"
+                  data-i18n="tokenomics.nextsteps.item2"
+                >
+                  🧪 Déployer les <b>smart contracts</b> (ERC-20 + NFT Impact)
+                  sur Polygon.
+                </li>
+                <li
+                  class="text-gray-700"
+                  data-i18n="tokenomics.nextsteps.item3"
+                >
+                  📊 Ouvrir le <b>tableau de bord d'impact</b> (on-chain + KPI
+                  pédagogiques).
+                </li>
+                <li
+                  class="text-gray-700"
+                  data-i18n="tokenomics.nextsteps.item4"
+                >
+                  💧 Mettre en place la <b>réserve</b> & la pool de liquidité
+                  initiale.
+                </li>
+                <li
+                  class="text-gray-700"
+                  data-i18n="tokenomics.nextsteps.item5"
+                >
+                  🤝 Lancer la <b>cohorte pilote</b> (100 jeunes, 20 mentors, 10
+                  entreprises).
+                </li>
+              </ol>
+            </div>
+
+            <div class="bg-white rounded-2xl shadow-lg p-6">
+              <h2
+                class="text-2xl font-bold mb-4"
+                data-i18n="tokenomics.contact.title"
+              >
+                Contact & Démo
+              </h2>
+              <p class="mb-6" data-i18n="tokenomics.contact.description">
+                Je te prépare volontiers un
+                <b>mini-site de démonstration</b> (dashboard live, mint testnet,
+                vote DAO, certificats NFT) pour tes rendez-vous partenaires &
+                fondations.
+              </p>
+              <div class="flex flex-col sm:flex-row gap-4">
+                <a
+                  href="contact.html"
+                  class="bg-primary text-white hover:bg-red-700 px-6 py-3 rounded-full font-semibold transition inline-flex items-center justify-center transform hover:scale-105"
+                  data-i18n="tokenomics.contact.cta1"
+                >
+                  Demander la démo
+                </a>
+                <a
+                  href="#top"
+                  class="border-2 border-primary text-primary hover:bg-primary hover:text-white px-6 py-3 rounded-full font-semibold transition inline-flex items-center justify-center"
+                  data-i18n="tokenomics.contact.cta2"
+                >
+                  <i class="fas fa-arrow-up mr-2"></i>
+                  Retour en haut
+                </a>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer will be loaded by header.js -->
+
+    <!-- Scripts -->
+    <script src="js/header.js"></script>
+    <script src="js/i18n.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/tokenomics.js"></script>
+  </body>
+</html>
