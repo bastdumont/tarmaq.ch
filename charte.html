@@ -4,206 +4,282 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Signature de la Charte - TARMAQ</title>
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
+    <meta
+      name="description"
+      content="Signez la Charte TARMAQ pour soutenir notre engagement pour un avenir numérique inclusif et responsable."
+    />
 
-      body {
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
-          Oxygen, Ubuntu, Cantarell, sans-serif;
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        min-height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 20px;
-      }
+    <link rel="icon" href="assets/favicon.png" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="css/style.css" />
 
-      .container {
-        background: white;
-        border-radius: 16px;
-        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-        max-width: 500px;
-        width: 100%;
-        padding: 40px;
-      }
-
-      h1 {
-        color: #333;
-        margin-bottom: 10px;
-        font-size: 28px;
-        text-align: center;
-      }
-
-      .subtitle {
-        color: #666;
-        text-align: center;
-        margin-bottom: 30px;
-        font-size: 14px;
-      }
-
-      .form-group {
-        margin-bottom: 25px;
-      }
-
-      label {
-        display: block;
-        color: #333;
-        font-weight: 600;
-        margin-bottom: 8px;
-        font-size: 14px;
-      }
-
-      input[type='text'],
-      input[type='email'] {
-        width: 100%;
-        padding: 12px 16px;
-        border: 2px solid #e0e0e0;
-        border-radius: 8px;
-        font-size: 16px;
-        transition: border-color 0.3s;
-      }
-
-      input[type='text']:focus,
-      input[type='email']:focus {
-        outline: none;
-        border-color: #667eea;
-      }
-
-      .checkbox-group {
-        display: flex;
-        align-items: flex-start;
-        gap: 12px;
-      }
-
-      input[type='checkbox'] {
-        width: 20px;
-        height: 20px;
-        margin-top: 2px;
-        cursor: pointer;
-        accent-color: #667eea;
-      }
-
-      .checkbox-label {
-        color: #555;
-        font-size: 14px;
-        line-height: 1.5;
-        cursor: pointer;
-      }
-
-      .checkbox-label a {
-        color: #667eea;
-        text-decoration: none;
-        font-weight: 600;
-      }
-
-      .checkbox-label a:hover {
-        text-decoration: underline;
-      }
-
-      button {
-        width: 100%;
-        padding: 14px;
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        color: white;
-        border: none;
-        border-radius: 8px;
-        font-size: 16px;
-        font-weight: 600;
-        cursor: pointer;
-        transition: transform 0.2s, box-shadow 0.2s;
-      }
-
-      button:hover:not(:disabled) {
-        transform: translateY(-2px);
-        box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
-      }
-
-      button:disabled {
-        opacity: 0.6;
-        cursor: not-allowed;
-      }
-
-      .error-message {
-        background: #fee;
-        color: #c33;
-        padding: 12px;
-        border-radius: 8px;
-        margin-bottom: 20px;
-        font-size: 14px;
-        display: none;
-      }
-
-      .success-message {
-        background: #efe;
-        color: #3c3;
-        padding: 12px;
-        border-radius: 8px;
-        margin-bottom: 20px;
-        font-size: 14px;
-        display: none;
-      }
-
-      .required {
-        color: #e74c3c;
-      }
-    </style>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: '#DA2F2C',
+              secondary: '#111827',
+              accent: '#F3F4F6',
+            },
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+            },
+          },
+        },
+      };
+    </script>
   </head>
-  <body>
-    <div class="container">
-      <h1>📜 Signature de la Charte</h1>
-      <p class="subtitle">TARMAQ - Engagement communautaire</p>
+  <body class="font-sans bg-white text-secondary">
+    <!-- Header will be loaded by header.js -->
 
-      <div id="errorMessage" class="error-message"></div>
-      <div id="successMessage" class="success-message"></div>
-
-      <form id="charterForm">
-        <div class="form-group">
-          <label for="name">
-            Nom complet <span class="required">*</span>
-          </label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            required
-            placeholder="Jean Dupont"
-          />
+    <!-- Page Content -->
+    <section
+      class="pt-32 pb-20 bg-gradient-to-br from-secondary via-gray-800 to-primary text-white"
+    >
+      <div class="container mx-auto px-4">
+        <div class="max-w-2xl mx-auto text-center mb-12">
+          <div class="inline-block mb-4">
+            <span
+              class="bg-white/20 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm font-semibold"
+            >
+              📜 Signature
+            </span>
+          </div>
+          <h1 class="text-4xl md:text-5xl font-bold mb-4">
+            Signez la Charte TARMAQ
+          </h1>
+          <p class="text-xl opacity-90">
+            Manifestez votre soutien à notre mission et vos valeurs communes
+          </p>
         </div>
+      </div>
+    </section>
 
-        <div class="form-group">
-          <label for="email"> Email <span class="required">*</span> </label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            required
-            placeholder="jean.dupont@example.com"
-          />
+    <!-- Form Section -->
+    <section class="py-20 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-2xl mx-auto">
+          <!-- Error/Success Messages -->
+          <div
+            id="errorMessage"
+            class="bg-red-50 border-l-4 border-red-500 text-red-700 p-4 mb-6 rounded-r-lg hidden"
+          >
+            <div class="flex items-center">
+              <i class="fas fa-exclamation-circle mr-3"></i>
+              <span id="errorText"></span>
+            </div>
+          </div>
+
+          <div
+            id="successMessage"
+            class="bg-green-50 border-l-4 border-green-500 text-green-700 p-4 mb-6 rounded-r-lg hidden"
+          >
+            <div class="flex items-center">
+              <i class="fas fa-check-circle mr-3"></i>
+              <span id="successText"></span>
+            </div>
+          </div>
+
+          <!-- Form Card -->
+          <div
+            class="bg-white border-2 border-gray-200 rounded-2xl shadow-xl p-8 md:p-12"
+          >
+            <form id="charterForm">
+              <div class="mb-6">
+                <label
+                  for="name"
+                  class="block text-gray-700 font-semibold mb-2"
+                >
+                  Nom complet <span class="text-primary">*</span>
+                </label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  required
+                  placeholder="Jean Dupont"
+                  class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-primary focus:ring-2 focus:ring-primary/20 transition outline-none"
+                />
+              </div>
+
+              <div class="mb-6">
+                <label
+                  for="email"
+                  class="block text-gray-700 font-semibold mb-2"
+                >
+                  Email <span class="text-primary">*</span>
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  required
+                  placeholder="jean.dupont@example.com"
+                  class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-primary focus:ring-2 focus:ring-primary/20 transition outline-none"
+                />
+              </div>
+
+              <div class="mb-8">
+                <div class="flex items-start gap-3">
+                  <input
+                    type="checkbox"
+                    id="acceptCharter"
+                    name="acceptCharter"
+                    required
+                    class="mt-1 w-5 h-5 text-primary border-gray-300 rounded focus:ring-primary accent-primary"
+                  />
+                  <label
+                    for="acceptCharter"
+                    class="text-gray-700 text-sm leading-relaxed cursor-pointer"
+                  >
+                    J'accepte la
+                    <a
+                      href="main-charte.html"
+                      class="text-primary font-semibold hover:underline"
+                      target="_blank"
+                      >charte</a
+                    >
+                    et les conditions générales
+                    <span class="text-primary">*</span>
+                  </label>
+                </div>
+              </div>
+
+              <button
+                type="submit"
+                id="submitButton"
+                class="w-full bg-primary hover:bg-red-700 text-white font-bold py-4 px-8 rounded-lg transition transform hover:scale-105 shadow-lg"
+              >
+                <i class="fas fa-pen-fancy mr-2"></i>
+                Signer la charte
+              </button>
+            </form>
+          </div>
+
+          <!-- Back to Charter Link -->
+          <div class="text-center mt-8">
+            <a
+              href="main-charte.html"
+              class="text-primary hover:text-red-700 font-semibold inline-flex items-center"
+            >
+              <i class="fas fa-arrow-left mr-2"></i>
+              Retour à la charte
+            </a>
+          </div>
         </div>
+      </div>
+    </section>
 
-        <div class="form-group">
-          <div class="checkbox-group">
-            <input
-              type="checkbox"
-              id="acceptCharter"
-              name="acceptCharter"
-              required
-            />
-            <label for="acceptCharter" class="checkbox-label">
-              J'accepte la <a href="#" target="_blank">charte</a> et les
-              <a href="#" target="_blank">conditions générales</a>
-              <span class="required">*</span>
-            </label>
+    <!-- Footer -->
+    <footer class="bg-secondary text-white py-12">
+      <div class="container mx-auto px-4">
+        <div class="grid md:grid-cols-4 gap-8 mb-8">
+          <div>
+            <img src="assets/logo.png" alt="TARMAQ" class="h-12 mb-4" />
+            <p class="text-gray-400 text-sm" data-i18n="footer.about">
+              Catalyseur d'excellence pour les jeunes talents dans les
+              technologies émergentes.
+            </p>
+          </div>
+
+          <div>
+            <h4 class="font-bold mb-4" data-i18n="footer.links">
+              Liens rapides
+            </h4>
+            <ul class="space-y-2 text-gray-400 text-sm">
+              <li>
+                <a
+                  href="projet.html"
+                  class="hover:text-white transition"
+                  data-i18n="nav.project"
+                  >Le projet</a
+                >
+              </li>
+              <li>
+                <a
+                  href="activites.html"
+                  class="hover:text-white transition"
+                  data-i18n="nav.activities"
+                  >Activités</a
+                >
+              </li>
+              <li>
+                <a
+                  href="impact.html"
+                  class="hover:text-white transition"
+                  data-i18n="nav.impact"
+                  >Impact</a
+                >
+              </li>
+              <li>
+                <a
+                  href="soutenir.html"
+                  class="hover:text-white transition"
+                  data-i18n="nav.support"
+                  >Nous soutenir</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 class="font-bold mb-4" data-i18n="footer.contact">Contact</h4>
+            <ul class="space-y-2 text-gray-400 text-sm">
+              <li>
+                <i class="fas fa-envelope mr-2"></i>bastien@bdi-solutions.com
+              </li>
+              <li><i class="fas fa-phone mr-2"></i>+41 79 670 77 43</li>
+              <li>
+                <i class="fas fa-map-marker-alt mr-2"></i>11 avenue
+                Eugène-Pittard, 1206 Genève
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 class="font-bold mb-4" data-i18n="footer.newsletter">
+              Restez Informé
+            </h4>
+            <p
+              class="text-gray-400 text-sm mb-4"
+              data-i18n="footer.newsletter.description"
+            >
+              Recevez nos dernières actualités et opportunités.
+            </p>
+            <a
+              href="contact.html"
+              class="bg-primary hover:bg-red-700 text-white px-4 py-2 rounded-full text-sm transition inline-flex items-center"
+              data-i18n="footer.newsletter.cta"
+            >
+              Nous Contacter
+            </a>
           </div>
         </div>
 
-        <button type="submit" id="submitButton">Signer la charte</button>
-      </form>
-    </div>
+        <div
+          class="border-t border-gray-700 pt-8 text-center text-gray-400 text-sm"
+        >
+          <p>
+            &copy; 2025 TARMAQ.
+            <span data-i18n="footer.rights">Tous droits réservés.</span>
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/header.js"></script>
+    <script src="js/i18n.js"></script>
+    <script src="js/main.js"></script>
 
     <script>
       (async function () {
@@ -226,9 +302,11 @@
           }
         } catch (error) {
           console.error('❌ Failed to load configuration:', error);
-          document.getElementById('errorMessage').textContent =
+          const errorEl = document.getElementById('errorMessage');
+          const errorTextEl = document.getElementById('errorText');
+          errorTextEl.textContent =
             'Configuration error: Unable to load API configuration.';
-          document.getElementById('errorMessage').style.display = 'block';
+          errorEl.classList.remove('hidden');
           document.getElementById('submitButton').disabled = true;
           return;
         }
@@ -236,45 +314,51 @@
         // Check if API key is configured
         if (!AIRTABLE_API_KEY) {
           console.error('❌ AIRTABLE_API_KEY is empty');
-          document.getElementById('errorMessage').textContent =
+          const errorEl = document.getElementById('errorMessage');
+          const errorTextEl = document.getElementById('errorText');
+          errorTextEl.textContent =
             'Configuration error: API key not found. Please contact support.';
-          document.getElementById('errorMessage').style.display = 'block';
+          errorEl.classList.remove('hidden');
           document.getElementById('submitButton').disabled = true;
           return;
         }
 
         const form = document.getElementById('charterForm');
         const submitButton = document.getElementById('submitButton');
-        const errorMessage = document.getElementById('errorMessage');
-        const successMessage = document.getElementById('successMessage');
+        const errorEl = document.getElementById('errorMessage');
+        const successEl = document.getElementById('successMessage');
+        const errorTextEl = document.getElementById('errorText');
+        const successTextEl = document.getElementById('successText');
 
         form.addEventListener('submit', async (e) => {
           e.preventDefault();
 
-          // Réinitialiser les messages
-          errorMessage.style.display = 'none';
-          successMessage.style.display = 'none';
+          // Reset messages
+          errorEl.classList.add('hidden');
+          successEl.classList.add('hidden');
 
-          // Désactiver le bouton pendant l'envoi
+          // Disable button during submission
           submitButton.disabled = true;
-          submitButton.textContent = 'Envoi en cours...';
+          submitButton.innerHTML =
+            '<i class="fas fa-spinner fa-spin mr-2"></i>Envoi en cours...';
 
-          // Récupérer les données du formulaire
+          // Get form data
           const name = document.getElementById('name').value;
           const email = document.getElementById('email').value;
           const acceptCharter =
             document.getElementById('acceptCharter').checked;
 
           if (!acceptCharter) {
-            showError(
-              'Vous devez accepter la charte et les conditions générales.'
-            );
+            errorTextEl.textContent =
+              'Vous devez accepter la charte et les conditions générales.';
+            errorEl.classList.remove('hidden');
             submitButton.disabled = false;
-            submitButton.textContent = 'Signer la charte';
+            submitButton.innerHTML =
+              '<i class="fas fa-pen-fancy mr-2"></i>Signer la charte';
             return;
           }
 
-          // Créer la date actuelle au format ISO
+          // Create current date in ISO format
           const now = new Date().toISOString();
           const signatureDate = new Date().toLocaleDateString('fr-FR');
 
@@ -307,29 +391,21 @@
               );
             }
 
-            // Succès
-            showSuccess(
-              '✅ Merci ! Votre signature a été enregistrée avec succès.'
-            );
+            // Success
+            successTextEl.textContent =
+              '✅ Merci ! Votre signature a été enregistrée avec succès.';
+            successEl.classList.remove('hidden');
             form.reset();
           } catch (error) {
             console.error('Erreur:', error);
-            showError(`Une erreur s'est produite : ${error.message}`);
+            errorTextEl.textContent = `Une erreur s'est produite : ${error.message}`;
+            errorEl.classList.remove('hidden');
           } finally {
             submitButton.disabled = false;
-            submitButton.textContent = 'Signer la charte';
+            submitButton.innerHTML =
+              '<i class="fas fa-pen-fancy mr-2"></i>Signer la charte';
           }
         });
-
-        function showError(message) {
-          errorMessage.textContent = message;
-          errorMessage.style.display = 'block';
-        }
-
-        function showSuccess(message) {
-          successMessage.textContent = message;
-          successMessage.style.display = 'block';
-        }
       })();
     </script>
   </body>
