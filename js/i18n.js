@@ -13,14 +13,14 @@ const translations = {
         'nav.charter': 'Charte',
         
         // Hero Section
-        'hero.title': 'Catalyseur d\'excellence',
+        'hero.title': 'Catalyseur d\'opportunité',
         'hero.subtitle': 'Un espace d\'innovation dédié à la formation, au mentorat et aux technologies émergentes pour les jeunes talents',
         'hero.cta1': 'Découvrir Tarmaq',
         'hero.cta2': 'Soutenir le projet',
         
         // Mission Section
         'mission.title': 'Notre mission',
-        'mission.description': 'TARMAQ est un catalyseur d\'excellence qui vise à démocratiser l\'accès aux technologies émergentes et à accompagner les jeunes talents dans leur développement professionnel.',
+        'mission.description': 'TARMAQ est un catalyseur d\'opportunité qui vise à démocratiser l\'accès aux technologies émergentes et à accompagner les jeunes talents dans leur développement professionnel.',
         'mission.card1.title': 'Formation',
         'mission.card1.description': 'Programmes de formation en IA, blockchain, cybersécurité et technologies émergentes adaptés aux besoins du marché.',
         'mission.card2.title': 'Mentorat',
@@ -135,15 +135,15 @@ const translations = {
         
         // About Page
         'about.hero.title': 'À Propos de TARMAQ',
-        'about.hero.subtitle': 'L\'équipe et les valeurs qui nous guident dans notre mission d\'excellence',
+        'about.hero.subtitle': 'L\'équipe et les valeurs qui nous guident dans notre mission d\'opportunité',
         'about.mission.title': 'Notre Mission',
         'about.mission.description': 'TARMAQ est né de la conviction que chaque jeune talent mérite d\'avoir accès aux technologies émergentes et aux opportunités de développement professionnel, indépendamment de son parcours ou de ses ressources.',
         'about.values.passion.title': 'Passion',
         'about.values.passion.description': 'Nous sommes passionnés par l\'innovation et l\'impact positif que la technologie peut avoir sur la société.',
         'about.values.community.title': 'Communauté',
         'about.values.community.description': 'Nous croyons en la force du collectif et de l\'entraide pour créer un écosystème d\'apprentissage durable.',
-        'about.values.excellence.title': 'Excellence',
-        'about.values.excellence.description': 'Nous visons l\'excellence dans tout ce que nous entreprenons, en nous appuyant sur les meilleures pratiques.',
+        'about.values.excellence.title': 'Opportunité',
+        'about.values.excellence.description': 'Nous visons l\'opportunité dans tout ce que nous entreprenons, en nous appuyant sur les meilleures pratiques.',
         'about.team.title': 'Notre Équipe',
         'about.team.subtitle': 'Des professionnels dédiés à votre réussite',
         'about.team.bastien.name': 'Bastien Dumont',
@@ -227,14 +227,14 @@ const translations = {
         'nav.charter': 'Charter',
         
         // Hero Section
-        'hero.title': 'Excellence Catalyst',
+        'hero.title': 'Opportunity Catalyst',
         'hero.subtitle': 'An innovation space dedicated to training, mentorship and emerging technologies for young talents',
         'hero.cta1': 'Discover Tarmaq',
         'hero.cta2': 'Support the Project',
         
         // Mission Section
         'mission.title': 'Our Mission',
-        'mission.description': 'TARMAQ is an excellence catalyst that aims to democratize access to emerging technologies and support young talents in their professional development.',
+        'mission.description': 'TARMAQ is an opportunity catalyst that aims to democratize access to emerging technologies and support young talents in their professional development.',
         'mission.card1.title': 'Training',
         'mission.card1.description': 'Training programs in AI, blockchain, cybersecurity and emerging technologies adapted to market needs.',
         'mission.card2.title': 'Mentorship',
@@ -349,15 +349,15 @@ const translations = {
         
         // About Page
         'about.hero.title': 'About TARMAQ',
-        'about.hero.subtitle': 'The team and values that guide us in our mission of excellence',
+        'about.hero.subtitle': 'The team and values that guide us in our mission of opportunity',
         'about.mission.title': 'Our Mission',
         'about.mission.description': 'TARMAQ was born from the conviction that every young talent deserves access to emerging technologies and professional development opportunities, regardless of their background or resources.',
         'about.values.passion.title': 'Passion',
         'about.values.passion.description': 'We are passionate about innovation and the positive impact that technology can have on society.',
         'about.values.community.title': 'Community',
         'about.values.community.description': 'We believe in the power of collective action and mutual support to create a sustainable learning ecosystem.',
-        'about.values.excellence.title': 'Excellence',
-        'about.values.excellence.description': 'We strive for excellence in everything we undertake, relying on best practices.',
+        'about.values.excellence.title': 'Opportunity',
+        'about.values.excellence.description': 'We strive for opportunity in everything we undertake, relying on best practices.',
         'about.team.title': 'Our Team',
         'about.team.subtitle': 'Professionals dedicated to your success',
         'about.team.bastien.name': 'Bastien Dumont',
@@ -441,14 +441,14 @@ const translations = {
         'nav.charter': 'Charta',
         
         // Hero Section
-        'hero.title': 'Katalysator für Exzellenz',
+        'hero.title': 'Katalysator für Gelegenheiten',
         'hero.subtitle': 'Ein Innovationsraum für Ausbildung, Mentoring und neue Technologien für junge Talente',
         'hero.cta1': 'Tarmaq entdecken',
         'hero.cta2': 'Projekt unterstützen',
         
         // Mission Section
         'mission.title': 'Unsere Mission',
-        'mission.description': 'TARMAQ ist ein Katalysator für Exzellenz, der den Zugang zu neuen Technologien demokratisieren und junge Talente in ihrer beruflichen Entwicklung unterstützen möchte.',
+        'mission.description': 'TARMAQ ist ein Katalysator für Gelegenheiten, der den Zugang zu neuen Technologien demokratisieren und junge Talente in ihrer beruflichen Entwicklung unterstützen möchte.',
         'mission.card1.title': 'Ausbildung',
         'mission.card1.description': 'Schulungsprogramme in KI, Blockchain, Cybersicherheit und neuen Technologien, angepasst an die Marktbedürfnisse.',
         'mission.card2.title': 'Mentoring',
@@ -563,15 +563,15 @@ const translations = {
         
         // About Page
         'about.hero.title': 'Über TARMAQ',
-        'about.hero.subtitle': 'Das Team und die Werte, die uns in unserer Mission der Exzellenz leiten',
+        'about.hero.subtitle': 'Das Team und die Werte, die uns in unserer Mission der Gelegenheiten leiten',
         'about.mission.title': 'Unsere Mission',
         'about.mission.description': 'TARMAQ entstand aus der Überzeugung, dass jeder junge Talent Zugang zu aufkommenden Technologien und beruflichen Entwicklungsmöglichkeiten verdient, unabhängig von seinem Hintergrund oder seinen Ressourcen.',
         'about.values.passion.title': 'Leidenschaft',
         'about.values.passion.description': 'Wir sind leidenschaftlich für Innovation und die positive Wirkung, die Technologie auf die Gesellschaft haben kann.',
         'about.values.community.title': 'Gemeinschaft',
         'about.values.community.description': 'Wir glauben an die Kraft des kollektiven Handelns und der gegenseitigen Unterstützung, um ein nachhaltiges Lernökosystem zu schaffen.',
-        'about.values.excellence.title': 'Exzellenz',
-        'about.values.excellence.description': 'Wir streben nach Exzellenz in allem, was wir unternehmen, und verlassen uns auf bewährte Praktiken.',
+        'about.values.excellence.title': 'Gelegenheit',
+        'about.values.excellence.description': 'Wir streben nach Gelegenheiten in allem, was wir unternehmen, und verlassen uns auf bewährte Praktiken.',
         'about.team.title': 'Unser Team',
         'about.team.subtitle': 'Profis, die Ihrem Erfolg gewidmet sind',
         'about.team.bastien.name': 'Bastien Dumont',
@@ -655,14 +655,14 @@ const translations = {
         'nav.charter': 'Carta',
         
         // Hero Section
-        'hero.title': 'Catalizzatore di Eccellenza',
+        'hero.title': 'Catalizzatore di Opportunità',
         'hero.subtitle': 'Uno spazio di innovazione dedicato alla formazione, al mentoring e alle tecnologie emergenti per giovani talenti',
         'hero.cta1': 'Scopri Tarmaq',
         'hero.cta2': 'Sostieni il Progetto',
         
         // Mission Section
         'mission.title': 'La Nostra Missione',
-        'mission.description': 'TARMAQ è un catalizzatore di eccellenza che mira a democratizzare l\'accesso alle tecnologie emergenti e ad accompagnare i giovani talenti nel loro sviluppo professionale.',
+        'mission.description': 'TARMAQ è un catalizzatore di opportunità che mira a democratizzare l\'accesso alle tecnologie emergenti e ad accompagnare i giovani talenti nel loro sviluppo professionale.',
         'mission.card1.title': 'Formazione',
         'mission.card1.description': 'Programmi di formazione in IA, blockchain, cybersecurity e tecnologie emergenti adattati alle esigenze del mercato.',
         'mission.card2.title': 'Mentoring',
@@ -777,15 +777,15 @@ const translations = {
         
         // About Page
         'about.hero.title': 'Chi Siamo - TARMAQ',
-        'about.hero.subtitle': 'Il team e i valori che ci guidano nella nostra missione di eccellenza',
+        'about.hero.subtitle': 'Il team e i valori che ci guidano nella nostra missione di opportunità',
         'about.mission.title': 'La Nostra Missione',
         'about.mission.description': 'TARMAQ è nato dalla convinzione che ogni giovane talento meriti accesso alle tecnologie emergenti e alle opportunità di sviluppo professionale, indipendentemente dal suo background o dalle sue risorse.',
         'about.values.passion.title': 'Passione',
         'about.values.passion.description': 'Siamo appassionati di innovazione e dell\'impatto positivo che la tecnologia può avere sulla società.',
         'about.values.community.title': 'Comunità',
         'about.values.community.description': 'Crediamo nella forza dell\'azione collettiva e del supporto reciproco per creare un ecosistema di apprendimento sostenibile.',
-        'about.values.excellence.title': 'Eccellenza',
-        'about.values.excellence.description': 'Miriamo all\'eccellenza in tutto ciò che intraprendiamo, basandoci sulle migliori pratiche.',
+        'about.values.excellence.title': 'Opportunità',
+        'about.values.excellence.description': 'Miriamo alle opportunità in tutto ciò che intraprendiamo, basandoci sulle migliori pratiche.',
         'about.team.title': 'Il Nostro Team',
         'about.team.subtitle': 'Professionisti dedicati al tuo successo',
         'about.team.bastien.name': 'Bastien Dumont',
