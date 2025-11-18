@@ -222,7 +222,8 @@
             <div class="bg-accent p-6 rounded-2xl">
               <h3 class="font-bold text-xl mb-4">Restez Informé</h3>
               <p class="text-gray-600 mb-4">
-                Recevez nos dernières actualités et opportunités directement par email.
+                Recevez nos dernières actualités et opportunités directement par
+                email.
               </p>
               <a
                 href="mailto:bastien@bdi-solutions.com"
@@ -324,7 +325,10 @@
             <h4 class="font-bold mb-4" data-i18n="footer.newsletter">
               Restez Informé
             </h4>
-            <p class="text-gray-400 text-sm mb-4" data-i18n="footer.newsletter.description">
+            <p
+              class="text-gray-400 text-sm mb-4"
+              data-i18n="footer.newsletter.description"
+            >
               Recevez nos dernières actualités et opportunités.
             </p>
             <a
@@ -390,7 +394,10 @@ ${data.message}
           try {
             // Send email using FormSubmit (free service, no API key needed)
             const response = await fetch(
-              `https://formsubmit.co/ajax/${window.CONFIG?.EMAIL?.CONTACT_FORM_EMAIL || 'bastien@balder-app.com'}`,
+              `https://formsubmit.co/ajax/${
+                window.CONFIG?.EMAIL?.CONTACT_FORM_EMAIL ||
+                'bastien@balder-app.com'
+              }`,
               {
                 method: 'POST',
                 headers: {
