@@ -14,20 +14,22 @@ const translations = {
         'nav.tokenomics': 'Tokenomics',
         
         // Hero Section
-        'hero.title': 'Catalyseur d\'opportunité',
-        'hero.subtitle': 'Un espace d\'innovation dédié à la formation, au mentorat et aux technologies émergentes pour les jeunes talents',
+        'hero.title': 'tarmaq',
+        'hero.subtitle': 'Un espace innovant dédié à la formation, au voyage, au mentorat et aux technologies émergentes pour les jeunes talents',
         'hero.cta1': 'Découvrir Tarmaq',
         'hero.cta2': 'Soutenir le projet',
         
         // Mission Section
         'mission.title': 'Notre mission',
-        'mission.description': 'TARMAQ est un catalyseur d\'opportunité qui vise à démocratiser l\'accès aux technologies émergentes et à accompagner les jeunes talents dans leur développement professionnel.',
-        'mission.card1.title': 'Formation',
+        'mission.description': 'tarmaq est un catalyseur d\'opportunité qui vise à démocratiser l\'accès aux technologies émergentes et à accompagner les jeunes talents dans leur développement professionnel.',
+        'mission.card1.title': 'Formation Libre',
         'mission.card1.description': 'Programmes de formation en IA, blockchain, cybersécurité et technologies émergentes adaptés aux besoins du marché.',
         'mission.card2.title': 'Mentorat',
         'mission.card2.description': 'Accompagnement personnalisé par des professionnels expérimentés pour guider les jeunes dans leur parcours.',
         'mission.card3.title': 'Innovation',
         'mission.card3.description': 'Espace d\'expérimentation et d\'innovation pour développer des projets concrets et impactants.',
+        'mission.card4.title': 'Voyages',
+        'mission.card4.description': 'Voyages éducatifs pour découvrir les écosystèmes tech internationaux et rencontrer des leaders de l\'industrie.',
         
         // Statistics
         'stats.participants': 'Jeunes formés',
@@ -243,6 +245,8 @@ const translations = {
         'mission.card2.description': 'Personalized support by experienced professionals to guide young people in their journey.',
         'mission.card3.title': 'Innovation',
         'mission.card3.description': 'Experimentation and innovation space to develop concrete and impactful projects.',
+        'mission.card4.title': 'Travel',
+        'mission.card4.description': 'Educational trips to discover international tech ecosystems and meet industry leaders.',
         
         // Statistics
         'stats.participants': 'Trained Youth',
@@ -584,6 +588,8 @@ const translations = {
         'mission.card2.description': 'Persönliche Betreuung durch erfahrene Fachleute, um junge Menschen auf ihrem Weg zu begleiten.',
         'mission.card3.title': 'Innovation',
         'mission.card3.description': 'Experimentier- und Innovationsraum zur Entwicklung konkreter und wirkungsvoller Projekte.',
+        'mission.card4.title': 'Reisen',
+        'mission.card4.description': 'Bildungsreisen zur Entdeckung internationaler Tech-Ökosysteme und zum Treffen mit Branchenführern.',
         
         // Statistics
         'stats.participants': 'Ausgebildete Jugendliche',
@@ -925,6 +931,8 @@ const translations = {
         'mission.card2.description': 'Accompagnamento personalizzato da parte di professionisti esperti per guidare i giovani nel loro percorso.',
         'mission.card3.title': 'Innovazione',
         'mission.card3.description': 'Spazio di sperimentazione e innovazione per sviluppare progetti concreti e di impatto.',
+        'mission.card4.title': 'Viaggi',
+        'mission.card4.description': 'Viaggi educativi per scoprire gli ecosistemi tech internazionali e incontrare i leader del settore.',
         
         // Statistics
         'stats.participants': 'Giovani Formati',
