@@ -1,4 +1,4 @@
-// i18n System for TARMAQ - Multilingual Support (FR, EN, DE, IT)
+// i18n System for tarmaq - Multilingual Support (FR, EN, DE, IT)
 
 const translations = {
     fr: {
@@ -16,7 +16,7 @@ const translations = {
         // Hero Section
         'hero.title': 'tarmaq',
         'hero.subtitle': 'Un espace innovant dédié à la formation, au voyage, au mentorat et aux technologies émergentes pour les jeunes talents',
-        'hero.cta1': 'Découvrir Tarmaq',
+        'hero.cta1': 'Découvrir tarmaq',
         'hero.cta2': 'Soutenir le projet',
         
         // Mission Section
@@ -51,7 +51,7 @@ const translations = {
         'programs.learn_more': 'En savoir plus →',
         
         // CTA Section
-        'cta.title': 'Rejoignez l\'aventure TARMAQ',
+        'cta.title': 'Rejoignez l\'aventure tarmaq',
         'cta.description': 'Que vous soyez un jeune talent, un mentor, un partenaire ou un mécène, il y a une place pour vous dans notre écosystème.',
         'cta.btn1': 'Nous contacter',
         'cta.btn2': 'Devenir partenaire',
@@ -66,12 +66,12 @@ const translations = {
         'footer.rights': 'Tous droits réservés.',
         
         // Support Page
-        'support.page_title': 'Nous Soutenir - TARMAQ',
+        'support.page_title': 'Nous Soutenir - tarmaq',
         'support.hero.badge': 'Rejoignez-nous',
         'support.hero.title': 'Soutenez la nouvelle génération',
         'support.hero.subtitle': 'Ensemble, construisons l\'avenir des jeunes talents en technologie',
         'support.intro.title': 'Pourquoi nous soutenir ?',
-        'support.intro.description': 'TARMAQ est une initiative à but non lucratif qui vise à démocratiser l\'accès aux technologies émergentes pour les jeunes talents. Votre soutien nous permet de former, d\'accompagner et d\'inspirer la prochaine génération d\'innovateurs.',
+        'support.intro.description': 'tarmaq est une initiative à but non lucratif qui vise à démocratiser l\'accès aux technologies émergentes pour les jeunes talents. Votre soutien nous permet de former, d\'accompagner et d\'inspirer la prochaine génération d\'innovateurs.',
         'support.ways.title': 'Comment nous aider ?',
         'support.ways.subtitle': 'Plusieurs façons de contribuer à notre mission',
         
@@ -117,7 +117,7 @@ const translations = {
         
         // Community
         'support.community.title': 'Communauté de soutien',
-        'support.community.description': 'Rejoignez notre communauté ! Partagez nos contenus, parlez de nous autour de vous, participez à nos événements et aidez à faire connaître TARMAQ.',
+        'support.community.description': 'Rejoignez notre communauté ! Partagez nos contenus, parlez de nous autour de vous, participez à nos événements et aidez à faire connaître tarmaq.',
         'support.community.item1': 'Partage sur réseaux sociaux',
         'support.community.item2': 'Bouche-à-oreille',
         'support.community.item3': 'Bénévolat ponctuel',
@@ -137,10 +137,10 @@ const translations = {
         'support.cta.meeting': 'Réserver un rendez-vous',
         
         // About Page
-        'about.hero.title': 'À Propos de TARMAQ',
+        'about.hero.title': 'À Propos de tarmaq',
         'about.hero.subtitle': 'L\'équipe et les valeurs qui nous guident dans notre mission d\'opportunité',
         'about.mission.title': 'Notre Mission',
-        'about.mission.description': 'TARMAQ est né de la conviction que chaque jeune talent mérite d\'avoir accès aux technologies émergentes et aux opportunités de développement professionnel, indépendamment de son parcours ou de ses ressources.',
+        'about.mission.description': 'tarmaq est né de la conviction que chaque jeune talent mérite d\'avoir accès aux technologies émergentes et aux opportunités de développement professionnel, indépendamment de son parcours ou de ses ressources.',
         'about.values.passion.title': 'Passion',
         'about.values.passion.description': 'Nous sommes passionnés par l\'innovation et l\'impact positif que la technologie peut avoir sur la société.',
         'about.values.community.title': 'Communauté',
@@ -160,7 +160,7 @@ const translations = {
         'about.team.partners.bio': 'Des partenaires institutionnels et privés qui partagent notre vision et soutiennent notre mission.',
         'about.history.title': 'Notre Histoire',
         'about.history.subtitle': 'Un parcours marqué par l\'innovation et l\'impact',
-        'about.timeline.2023.title': 'Fondation de TARMAQ',
+        'about.timeline.2023.title': 'Fondation de tarmaq',
         'about.timeline.2023.description': 'Création de l\'organisation avec la vision de démocratiser l\'accès aux technologies émergentes pour les jeunes talents de Suisse romande.',
         'about.timeline.2024.title': 'Premiers Programmes',
         'about.timeline.2024.description': 'Lancement des premiers programmes de formation en IA, hackathons et voyages éducatifs avec plus de 200 participants.',
@@ -173,7 +173,7 @@ const translations = {
         'about.stats.projects': 'Projets Réalisés',
         'about.stats.partners': 'Partenaires',
         'about.cta.title': 'Rejoignez Notre Mission',
-        'about.cta.description': 'Que vous soyez un jeune talent, un mentor ou un partenaire, il y a une place pour vous dans l\'écosystème TARMAQ.',
+        'about.cta.description': 'Que vous soyez un jeune talent, un mentor ou un partenaire, il y a une place pour vous dans l\'écosystème tarmaq.',
         'about.cta.contact': 'Nous Contacter',
         'about.cta.support': 'Nous Soutenir',
         'footer.newsletter': 'Restez Informé',
@@ -182,11 +182,11 @@ const translations = {
 
         // Charter Page
         'charter.badge': '📜 Notre Engagement',
-        'charter.title': 'Charte TARMAQ',
+        'charter.title': 'Charte tarmaq',
         'charter.subtitle': 'Notre engagement pour un avenir numérique accessible, inclusif et responsable',
         'charter.mission.title': 'Notre Mission',
         'charter.mission.statement': '"Démocratiser l\'accès aux technologies émergentes, former les talents de demain et construire un écosystème numérique où l\'innovation rime avec inclusion, éthique et impact positif."',
-        'charter.mission.p1': '<strong>TARMAQ</strong> est né d\'une conviction profonde : la technologie ne doit pas être un privilège réservé à quelques-uns, mais une opportunité accessible à tous les jeunes talents, quelle que soit leur origine sociale, économique ou géographique.',
+        'charter.mission.p1': '<strong>tarmaq</strong> est né d\'une conviction profonde : la technologie ne doit pas être un privilège réservé à quelques-uns, mais une opportunité accessible à tous les jeunes talents, quelle que soit leur origine sociale, économique ou géographique.',
         'charter.mission.p2': 'Dans un monde où l\'intelligence artificielle, la blockchain, la cybersécurité et les technologies émergentes transforment rapidement nos sociétés, nous croyons que chaque jeune mérite d\'être non seulement un spectateur, mais un acteur de cette révolution numérique.',
         'charter.commitments.title': 'Nos Engagements',
         'charter.commitments.subtitle': 'Les principes fondamentaux qui guident toutes nos actions',
@@ -203,7 +203,7 @@ const translations = {
         'charter.commitment6.title': '6. Impact Durable',
         'charter.commitment6.text': 'Nous mesurons notre succès non par le nombre de participants, mais par l\'impact réel et durable sur leurs carrières, leurs projets et leur contribution à la société. Nous nous engageons pour un changement positif à long terme.',
         'charter.vision.title': 'Notre Vision pour 2030',
-        'charter.vision.statement': 'D\'ici 2030, TARMAQ sera reconnu comme le catalyseur de motivation de référence en Suisse romande pour les jeunes talents en technologies émergentes.',
+        'charter.vision.statement': 'D\'ici 2030, tarmaq sera reconnu comme le catalyseur de motivation de référence en Suisse romande pour les jeunes talents en technologies émergentes.',
         'charter.vision.metric1': 'Jeunes formés',
         'charter.vision.metric2': 'Partenaires entreprises',
         'charter.vision.metric3': 'Projets innovants',
@@ -233,12 +233,12 @@ const translations = {
         // Hero Section
         'hero.title': 'Opportunity Catalyst',
         'hero.subtitle': 'An innovation space dedicated to training, mentorship and emerging technologies for young talents',
-        'hero.cta1': 'Discover Tarmaq',
+        'hero.cta1': 'Discover tarmaq',
         'hero.cta2': 'Support the Project',
         
         // Mission Section
         'mission.title': 'Our Mission',
-        'mission.description': 'TARMAQ is an opportunity catalyst that aims to democratize access to emerging technologies and support young talents in their professional development.',
+        'mission.description': 'tarmaq is an opportunity catalyst that aims to democratize access to emerging technologies and support young talents in their professional development.',
         'mission.card1.title': 'Training',
         'mission.card1.description': 'Training programs in AI, blockchain, cybersecurity and emerging technologies adapted to market needs.',
         'mission.card2.title': 'Mentorship',
@@ -268,7 +268,7 @@ const translations = {
         'programs.learn_more': 'Learn more →',
         
         // CTA Section
-        'cta.title': 'Join the TARMAQ Adventure',
+        'cta.title': 'Join the tarmaq Adventure',
         'cta.description': 'Whether you are a young talent, a mentor, a partner or a patron, there is a place for you in our ecosystem.',
         'cta.btn1': 'Contact Us',
         'cta.btn2': 'Become a Partner',
@@ -283,12 +283,12 @@ const translations = {
         'footer.rights': 'All rights reserved.',
         
         // Support Page
-        'support.page_title': 'Support Us - TARMAQ',
+        'support.page_title': 'Support Us - tarmaq',
         'support.hero.badge': 'Join Us',
         'support.hero.title': 'Support the Next Generation',
         'support.hero.subtitle': 'Together, let\'s build the future of young tech talents',
         'support.intro.title': 'Why Support Us?',
-        'support.intro.description': 'TARMAQ is a non-profit initiative aiming to democratize access to emerging technologies for young talents. Your support allows us to train, guide, and inspire the next generation of innovators.',
+        'support.intro.description': 'tarmaq is a non-profit initiative aiming to democratize access to emerging technologies for young talents. Your support allows us to train, guide, and inspire the next generation of innovators.',
         'support.ways.title': 'How Can You Help?',
         'support.ways.subtitle': 'Multiple ways to contribute to our mission',
         
@@ -334,7 +334,7 @@ const translations = {
         
         // Community
         'support.community.title': 'Support Community',
-        'support.community.description': 'Join our community! Share our content, talk about us around you, participate in our events and help spread the word about TARMAQ.',
+        'support.community.description': 'Join our community! Share our content, talk about us around you, participate in our events and help spread the word about tarmaq.',
         'support.community.item1': 'Social media sharing',
         'support.community.item2': 'Word of mouth',
         'support.community.item3': 'Occasional volunteering',
@@ -354,10 +354,10 @@ const translations = {
         'support.cta.meeting': 'Book a Meeting',
         
         // About Page
-        'about.hero.title': 'About TARMAQ',
+        'about.hero.title': 'About tarmaq',
         'about.hero.subtitle': 'The team and values that guide us in our mission of opportunity',
         'about.mission.title': 'Our Mission',
-        'about.mission.description': 'TARMAQ was born from the conviction that every young talent deserves access to emerging technologies and professional development opportunities, regardless of their background or resources.',
+        'about.mission.description': 'tarmaq was born from the conviction that every young talent deserves access to emerging technologies and professional development opportunities, regardless of their background or resources.',
         'about.values.passion.title': 'Passion',
         'about.values.passion.description': 'We are passionate about innovation and the positive impact that technology can have on society.',
         'about.values.community.title': 'Community',
@@ -377,7 +377,7 @@ const translations = {
         'about.team.partners.bio': 'Institutional and private partners who share our vision and support our mission.',
         'about.history.title': 'Our History',
         'about.history.subtitle': 'A journey marked by innovation and impact',
-        'about.timeline.2023.title': 'Foundation of TARMAQ',
+        'about.timeline.2023.title': 'Foundation of tarmaq',
         'about.timeline.2023.description': 'Creation of the organization with the vision to democratize access to emerging technologies for young talents in French-speaking Switzerland.',
         'about.timeline.2024.title': 'First Programs',
         'about.timeline.2024.description': 'Launch of the first AI training programs, hackathons and educational trips with over 200 participants.',
@@ -390,7 +390,7 @@ const translations = {
         'about.stats.projects': 'Projects Completed',
         'about.stats.partners': 'Partners',
         'about.cta.title': 'Join Our Mission',
-        'about.cta.description': 'Whether you are a young talent, a mentor or a partner, there is a place for you in the TARMAQ ecosystem.',
+        'about.cta.description': 'Whether you are a young talent, a mentor or a partner, there is a place for you in the tarmaq ecosystem.',
         'about.cta.contact': 'Contact Us',
         'about.cta.support': 'Support Us',
         'footer.newsletter': 'Stay Informed',
@@ -399,11 +399,11 @@ const translations = {
 
         // Charter Page
         'charter.badge': '📜 Our Commitment',
-        'charter.title': 'TARMAQ Charter',
+        'charter.title': 'tarmaq Charter',
         'charter.subtitle': 'Our commitment to an accessible, inclusive, and responsible digital future',
         'charter.mission.title': 'Our Mission',
         'charter.mission.statement': '"Democratize access to emerging technologies, train tomorrow\'s talents, and build a digital ecosystem where innovation goes hand in hand with inclusion, ethics, and positive impact."',
-        'charter.mission.p1': '<strong>TARMAQ</strong> was born from a deep conviction: technology should not be a privilege reserved for a few, but an opportunity accessible to all young talents, regardless of their social, economic, or geographic background.',
+        'charter.mission.p1': '<strong>tarmaq</strong> was born from a deep conviction: technology should not be a privilege reserved for a few, but an opportunity accessible to all young talents, regardless of their social, economic, or geographic background.',
         'charter.mission.p2': 'In a world where artificial intelligence, blockchain, cybersecurity, and emerging technologies are rapidly transforming our societies, we believe that every young person deserves to be not just a spectator, but an actor in this digital revolution.',
         'charter.commitments.title': 'Our Commitments',
         'charter.commitments.subtitle': 'The fundamental principles that guide all our actions',
@@ -420,7 +420,7 @@ const translations = {
         'charter.commitment6.title': '6. Sustainable Impact',
         'charter.commitment6.text': 'We measure our success not by the number of participants, but by the real and lasting impact on their careers, projects, and contributions to society. We are committed to long-term positive change.',
         'charter.vision.title': 'Our Vision for 2030',
-        'charter.vision.statement': 'By 2030, TARMAQ will be recognized as the leading motivation catalyst in French-speaking Switzerland for young talents in emerging technologies.',
+        'charter.vision.statement': 'By 2030, tarmaq will be recognized as the leading motivation catalyst in French-speaking Switzerland for young talents in emerging technologies.',
         'charter.vision.metric1': 'Youth trained',
         'charter.vision.metric2': 'Corporate partners',
         'charter.vision.metric3': 'Innovative projects',
@@ -436,7 +436,7 @@ const translations = {
 
         // Tokenomics Page
         'tokenomics.badge': '🎯 Impact Economy • Utility + Governance • On-chain Traceability',
-        'tokenomics.title': 'TARMAQ Token (TAQ) — Impact Tokenomics',
+        'tokenomics.title': 'tarmaq Token (TAQ) — Impact Tokenomics',
         'tokenomics.subtitle': 'A Swiss model that transforms every hour of mentoring, every franc invested, and every project delivered into measurable value — serving youth, mentors, companies, and donors.',
         'tokenomics.cta.distribution': 'View distribution',
         'tokenomics.cta.reserve': 'Reserve mechanism',
@@ -576,12 +576,12 @@ const translations = {
         // Hero Section
         'hero.title': 'Katalysator für Gelegenheiten',
         'hero.subtitle': 'Ein Innovationsraum für Ausbildung, Mentoring und neue Technologien für junge Talente',
-        'hero.cta1': 'Tarmaq entdecken',
+        'hero.cta1': 'tarmaq entdecken',
         'hero.cta2': 'Projekt unterstützen',
         
         // Mission Section
         'mission.title': 'Unsere Mission',
-        'mission.description': 'TARMAQ ist ein Katalysator für Gelegenheiten, der den Zugang zu neuen Technologien demokratisieren und junge Talente in ihrer beruflichen Entwicklung unterstützen möchte.',
+        'mission.description': 'tarmaq ist ein Katalysator für Gelegenheiten, der den Zugang zu neuen Technologien demokratisieren und junge Talente in ihrer beruflichen Entwicklung unterstützen möchte.',
         'mission.card1.title': 'Ausbildung',
         'mission.card1.description': 'Schulungsprogramme in KI, Blockchain, Cybersicherheit und neuen Technologien, angepasst an die Marktbedürfnisse.',
         'mission.card2.title': 'Mentoring',
@@ -611,7 +611,7 @@ const translations = {
         'programs.learn_more': 'Mehr erfahren →',
         
         // CTA Section
-        'cta.title': 'Treten Sie dem TARMAQ-Abenteuer bei',
+        'cta.title': 'Treten Sie dem tarmaq-Abenteuer bei',
         'cta.description': 'Ob Sie ein junges Talent, ein Mentor, ein Partner oder ein Mäzen sind, es gibt einen Platz für Sie in unserem Ökosystem.',
         'cta.btn1': 'Kontaktieren Sie uns',
         'cta.btn2': 'Partner werden',
@@ -626,12 +626,12 @@ const translations = {
         'footer.rights': 'Alle Rechte vorbehalten.',
         
         // Support Page
-        'support.page_title': 'Unterstützen Sie uns - TARMAQ',
+        'support.page_title': 'Unterstützen Sie uns - tarmaq',
         'support.hero.badge': 'Machen Sie mit',
         'support.hero.title': 'Unterstützen Sie die nächste Generation',
         'support.hero.subtitle': 'Gemeinsam bauen wir die Zukunft junger Tech-Talente auf',
         'support.intro.title': 'Warum uns unterstützen?',
-        'support.intro.description': 'TARMAQ ist eine gemeinnützige Initiative, die darauf abzielt, den Zugang zu aufkommenden Technologien für junge Talente zu demokratisieren. Ihre Unterstützung ermöglicht es uns, die nächste Generation von Innovatoren auszubilden, zu begleiten und zu inspirieren.',
+        'support.intro.description': 'tarmaq ist eine gemeinnützige Initiative, die darauf abzielt, den Zugang zu aufkommenden Technologien für junge Talente zu demokratisieren. Ihre Unterstützung ermöglicht es uns, die nächste Generation von Innovatoren auszubilden, zu begleiten und zu inspirieren.',
         'support.ways.title': 'Wie können Sie helfen?',
         'support.ways.subtitle': 'Mehrere Möglichkeiten, zu unserer Mission beizutragen',
         
@@ -677,7 +677,7 @@ const translations = {
         
         // Community
         'support.community.title': 'Support-Community',
-        'support.community.description': 'Treten Sie unserer Community bei! Teilen Sie unsere Inhalte, sprechen Sie über uns, nehmen Sie an unseren Veranstaltungen teil und helfen Sie, TARMAQ bekannt zu machen.',
+        'support.community.description': 'Treten Sie unserer Community bei! Teilen Sie unsere Inhalte, sprechen Sie über uns, nehmen Sie an unseren Veranstaltungen teil und helfen Sie, tarmaq bekannt zu machen.',
         'support.community.item1': 'Social-Media-Sharing',
         'support.community.item2': 'Mundpropaganda',
         'support.community.item3': 'Gelegentliche Freiwilligenarbeit',
@@ -697,10 +697,10 @@ const translations = {
         'support.cta.meeting': 'Termin buchen',
         
         // About Page
-        'about.hero.title': 'Über TARMAQ',
+        'about.hero.title': 'Über tarmaq',
         'about.hero.subtitle': 'Das Team und die Werte, die uns in unserer Mission der Gelegenheiten leiten',
         'about.mission.title': 'Unsere Mission',
-        'about.mission.description': 'TARMAQ entstand aus der Überzeugung, dass jeder junge Talent Zugang zu aufkommenden Technologien und beruflichen Entwicklungsmöglichkeiten verdient, unabhängig von seinem Hintergrund oder seinen Ressourcen.',
+        'about.mission.description': 'tarmaq entstand aus der Überzeugung, dass jeder junge Talent Zugang zu aufkommenden Technologien und beruflichen Entwicklungsmöglichkeiten verdient, unabhängig von seinem Hintergrund oder seinen Ressourcen.',
         'about.values.passion.title': 'Leidenschaft',
         'about.values.passion.description': 'Wir sind leidenschaftlich für Innovation und die positive Wirkung, die Technologie auf die Gesellschaft haben kann.',
         'about.values.community.title': 'Gemeinschaft',
@@ -720,7 +720,7 @@ const translations = {
         'about.team.partners.bio': 'Institutionelle und private Partner, die unsere Vision teilen und unsere Mission unterstützen.',
         'about.history.title': 'Unsere Geschichte',
         'about.history.subtitle': 'Eine Reise geprägt von Innovation und Wirkung',
-        'about.timeline.2023.title': 'Gründung von TARMAQ',
+        'about.timeline.2023.title': 'Gründung von tarmaq',
         'about.timeline.2023.description': 'Schaffung der Organisation mit der Vision, den Zugang zu aufkommenden Technologien für junge Talente in der französischsprachigen Schweiz zu demokratisieren.',
         'about.timeline.2024.title': 'Erste Programme',
         'about.timeline.2024.description': 'Start der ersten KI-Schulungsprogramme, Hackathons und Bildungsreisen mit über 200 Teilnehmern.',
@@ -733,7 +733,7 @@ const translations = {
         'about.stats.projects': 'Projekte Abgeschlossen',
         'about.stats.partners': 'Partner',
         'about.cta.title': 'Treten Sie unserer Mission bei',
-        'about.cta.description': 'Ob Sie ein junges Talent, ein Mentor oder ein Partner sind, es gibt einen Platz für Sie im TARMAQ-Ökosystem.',
+        'about.cta.description': 'Ob Sie ein junges Talent, ein Mentor oder ein Partner sind, es gibt einen Platz für Sie im tarmaq-Ökosystem.',
         'about.cta.contact': 'Kontaktieren Sie uns',
         'about.cta.support': 'Unterstützen Sie uns',
         'footer.newsletter': 'Bleiben Sie informiert',
@@ -742,11 +742,11 @@ const translations = {
 
         // Charter Page
         'charter.badge': '📜 Unser Engagement',
-        'charter.title': 'TARMAQ Charta',
+        'charter.title': 'tarmaq Charta',
         'charter.subtitle': 'Unser Engagement für eine zugängliche, inklusive und verantwortungsvolle digitale Zukunft',
         'charter.mission.title': 'Unsere Mission',
         'charter.mission.statement': '"Den Zugang zu aufkommenden Technologien demokratisieren, die Talente von morgen ausbilden und ein digitales Ökosystem aufbauen, in dem Innovation Hand in Hand mit Inklusion, Ethik und positiven Auswirkungen geht."',
-        'charter.mission.p1': '<strong>TARMAQ</strong> wurde aus einer tiefen Überzeugung geboren: Technologie sollte kein Privileg für wenige sein, sondern eine Chance, die allen jungen Talenten zugänglich ist, unabhängig von ihrer sozialen, wirtschaftlichen oder geografischen Herkunft.',
+        'charter.mission.p1': '<strong>tarmaq</strong> wurde aus einer tiefen Überzeugung geboren: Technologie sollte kein Privileg für wenige sein, sondern eine Chance, die allen jungen Talenten zugänglich ist, unabhängig von ihrer sozialen, wirtschaftlichen oder geografischen Herkunft.',
         'charter.mission.p2': 'In einer Welt, in der künstliche Intelligenz, Blockchain, Cybersicherheit und aufkommende Technologien unsere Gesellschaften schnell verändern, glauben wir, dass jeder junge Mensch nicht nur Zuschauer, sondern Akteur dieser digitalen Revolution sein sollte.',
         'charter.commitments.title': 'Unsere Verpflichtungen',
         'charter.commitments.subtitle': 'Die grundlegenden Prinzipien, die all unsere Handlungen leiten',
@@ -763,7 +763,7 @@ const translations = {
         'charter.commitment6.title': '6. Nachhaltige Wirkung',
         'charter.commitment6.text': 'Wir messen unseren Erfolg nicht an der Anzahl der Teilnehmer, sondern an der realen und dauerhaften Wirkung auf ihre Karrieren, Projekte und Beiträge zur Gesellschaft. Wir setzen uns für langfristige positive Veränderungen ein.',
         'charter.vision.title': 'Unsere Vision für 2030',
-        'charter.vision.statement': 'Bis 2030 wird TARMAQ als führender Motivations-Katalysator in der französischsprachigen Schweiz für junge Talente in aufkommenden Technologien anerkannt sein.',
+        'charter.vision.statement': 'Bis 2030 wird tarmaq als führender Motivations-Katalysator in der französischsprachigen Schweiz für junge Talente in aufkommenden Technologien anerkannt sein.',
         'charter.vision.metric1': 'Ausgebildete Jugendliche',
         'charter.vision.metric2': 'Unternehmenspartner',
         'charter.vision.metric3': 'Innovative Projekte',
@@ -779,7 +779,7 @@ const translations = {
 
         // Tokenomics Page
         'tokenomics.badge': '🎯 Impact-Wirtschaft • Utility + Governance • On-Chain-Nachverfolgbarkeit',
-        'tokenomics.title': 'TARMAQ Token (TAQ) — Impact-Tokenomics',
+        'tokenomics.title': 'tarmaq Token (TAQ) — Impact-Tokenomics',
         'tokenomics.subtitle': 'Ein Schweizer Modell, das jede Mentoring-Stunde, jeden investierten Franken und jedes gelieferte Projekt in messbaren Wert umwandelt — im Dienst der Jugend, Mentoren, Unternehmen und Spender.',
         'tokenomics.cta.distribution': 'Verteilung anzeigen',
         'tokenomics.cta.reserve': 'Reservemechanismus',
@@ -919,12 +919,12 @@ const translations = {
         // Hero Section
         'hero.title': 'Catalizzatore di Opportunità',
         'hero.subtitle': 'Uno spazio di innovazione dedicato alla formazione, al mentoring e alle tecnologie emergenti per giovani talenti',
-        'hero.cta1': 'Scopri Tarmaq',
+        'hero.cta1': 'Scopri tarmaq',
         'hero.cta2': 'Sostieni il Progetto',
         
         // Mission Section
         'mission.title': 'La Nostra Missione',
-        'mission.description': 'TARMAQ è un catalizzatore di opportunità che mira a democratizzare l\'accesso alle tecnologie emergenti e ad accompagnare i giovani talenti nel loro sviluppo professionale.',
+        'mission.description': 'tarmaq è un catalizzatore di opportunità che mira a democratizzare l\'accesso alle tecnologie emergenti e ad accompagnare i giovani talenti nel loro sviluppo professionale.',
         'mission.card1.title': 'Formazione',
         'mission.card1.description': 'Programmi di formazione in IA, blockchain, cybersecurity e tecnologie emergenti adattati alle esigenze del mercato.',
         'mission.card2.title': 'Mentoring',
@@ -954,7 +954,7 @@ const translations = {
         'programs.learn_more': 'Scopri di più →',
         
         // CTA Section
-        'cta.title': 'Unisciti all\'Avventura TARMAQ',
+        'cta.title': 'Unisciti all\'Avventura tarmaq',
         'cta.description': 'Che tu sia un giovane talento, un mentor, un partner o un mecenate, c\'è un posto per te nel nostro ecosistema.',
         'cta.btn1': 'Contattaci',
         'cta.btn2': 'Diventa Partner',
@@ -969,12 +969,12 @@ const translations = {
         'footer.rights': 'Tutti i diritti riservati.',
         
         // Support Page
-        'support.page_title': 'Sostienici - TARMAQ',
+        'support.page_title': 'Sostienici - tarmaq',
         'support.hero.badge': 'Unisciti a Noi',
         'support.hero.title': 'Sostieni la Nuova Generazione',
         'support.hero.subtitle': 'Insieme, costruiamo il futuro dei giovani talenti nella tecnologia',
         'support.intro.title': 'Perché Sostenerci?',
-        'support.intro.description': 'TARMAQ è un\'iniziativa no-profit che mira a democratizzare l\'accesso alle tecnologie emergenti per i giovani talenti. Il tuo sostegno ci permette di formare, accompagnare e ispirare la prossima generazione di innovatori.',
+        'support.intro.description': 'tarmaq è un\'iniziativa no-profit che mira a democratizzare l\'accesso alle tecnologie emergenti per i giovani talenti. Il tuo sostegno ci permette di formare, accompagnare e ispirare la prossima generazione di innovatori.',
         'support.ways.title': 'Come Puoi Aiutarci?',
         'support.ways.subtitle': 'Diversi modi per contribuire alla nostra missione',
         
@@ -1020,7 +1020,7 @@ const translations = {
         
         // Community
         'support.community.title': 'Comunità di Sostegno',
-        'support.community.description': 'Unisciti alla nostra comunità! Condividi i nostri contenuti, parla di noi intorno a te, partecipa ai nostri eventi e aiutaci a far conoscere TARMAQ.',
+        'support.community.description': 'Unisciti alla nostra comunità! Condividi i nostri contenuti, parla di noi intorno a te, partecipa ai nostri eventi e aiutaci a far conoscere tarmaq.',
         'support.community.item1': 'Condivisione sui social',
         'support.community.item2': 'Passaparola',
         'support.community.item3': 'Volontariato occasionale',
@@ -1040,10 +1040,10 @@ const translations = {
         'support.cta.meeting': 'Prenota un Appuntamento',
         
         // About Page
-        'about.hero.title': 'Chi Siamo - TARMAQ',
+        'about.hero.title': 'Chi Siamo - tarmaq',
         'about.hero.subtitle': 'Il team e i valori che ci guidano nella nostra missione di opportunità',
         'about.mission.title': 'La Nostra Missione',
-        'about.mission.description': 'TARMAQ è nato dalla convinzione che ogni giovane talento meriti accesso alle tecnologie emergenti e alle opportunità di sviluppo professionale, indipendentemente dal suo background o dalle sue risorse.',
+        'about.mission.description': 'tarmaq è nato dalla convinzione che ogni giovane talento meriti accesso alle tecnologie emergenti e alle opportunità di sviluppo professionale, indipendentemente dal suo background o dalle sue risorse.',
         'about.values.passion.title': 'Passione',
         'about.values.passion.description': 'Siamo appassionati di innovazione e dell\'impatto positivo che la tecnologia può avere sulla società.',
         'about.values.community.title': 'Comunità',
@@ -1063,7 +1063,7 @@ const translations = {
         'about.team.partners.bio': 'Partner istituzionali e privati che condividono la nostra visione e supportano la nostra missione.',
         'about.history.title': 'La Nostra Storia',
         'about.history.subtitle': 'Un percorso segnato da innovazione e impatto',
-        'about.timeline.2023.title': 'Fondazione di TARMAQ',
+        'about.timeline.2023.title': 'Fondazione di tarmaq',
         'about.timeline.2023.description': 'Creazione dell\'organizzazione con la visione di democratizzare l\'accesso alle tecnologie emergenti per i giovani talenti della Svizzera francofona.',
         'about.timeline.2024.title': 'Primi Programmi',
         'about.timeline.2024.description': 'Lancio dei primi programmi di formazione in IA, hackathon e viaggi educativi con oltre 200 partecipanti.',
@@ -1076,7 +1076,7 @@ const translations = {
         'about.stats.projects': 'Progetti Completati',
         'about.stats.partners': 'Partner',
         'about.cta.title': 'Unisciti alla Nostra Missione',
-        'about.cta.description': 'Che tu sia un giovane talento, un mentor o un partner, c\'è un posto per te nell\'ecosistema TARMAQ.',
+        'about.cta.description': 'Che tu sia un giovane talento, un mentor o un partner, c\'è un posto per te nell\'ecosistema tarmaq.',
         'about.cta.contact': 'Contattaci',
         'about.cta.support': 'Sostienici',
         'footer.newsletter': 'Rimani Informato',
@@ -1085,11 +1085,11 @@ const translations = {
 
         // Charter Page
         'charter.badge': '📜 Il Nostro Impegno',
-        'charter.title': 'Carta TARMAQ',
+        'charter.title': 'Carta tarmaq',
         'charter.subtitle': 'Il nostro impegno per un futuro digitale accessibile, inclusivo e responsabile',
         'charter.mission.title': 'La Nostra Missione',
         'charter.mission.statement': '"Democratizzare l\'accesso alle tecnologie emergenti, formare i talenti di domani e costruire un ecosistema digitale dove l\'innovazione va di pari passo con inclusione, etica e impatto positivo."',
-        'charter.mission.p1': '<strong>TARMAQ</strong> è nato da una profonda convinzione: la tecnologia non deve essere un privilegio riservato a pochi, ma un\'opportunità accessibile a tutti i giovani talenti, indipendentemente dalla loro origine sociale, economica o geografica.',
+        'charter.mission.p1': '<strong>tarmaq</strong> è nato da una profonda convinzione: la tecnologia non deve essere un privilegio riservato a pochi, ma un\'opportunità accessibile a tutti i giovani talenti, indipendentemente dalla loro origine sociale, economica o geografica.',
         'charter.mission.p2': 'In un mondo dove l\'intelligenza artificiale, la blockchain, la cybersecurity e le tecnologie emergenti stanno trasformando rapidamente le nostre società, crediamo che ogni giovane meriti di essere non solo spettatore, ma attore di questa rivoluzione digitale.',
         'charter.commitments.title': 'I Nostri Impegni',
         'charter.commitments.subtitle': 'I principi fondamentali che guidano tutte le nostre azioni',
@@ -1106,7 +1106,7 @@ const translations = {
         'charter.commitment6.title': '6. Impatto Sostenibile',
         'charter.commitment6.text': 'Misuriamo il nostro successo non dal numero di partecipanti, ma dall\'impatto reale e duraturo sulle loro carriere, progetti e contributi alla società. Ci impegniamo per un cambiamento positivo a lungo termine.',
         'charter.vision.title': 'La Nostra Visione per il 2030',
-        'charter.vision.statement': 'Entro il 2030, TARMAQ sarà riconosciuto come il principale catalizzatore di motivazione nella Svizzera francofona per i giovani talenti nelle tecnologie emergenti.',
+        'charter.vision.statement': 'Entro il 2030, tarmaq sarà riconosciuto come il principale catalizzatore di motivazione nella Svizzera francofona per i giovani talenti nelle tecnologie emergenti.',
         'charter.vision.metric1': 'Giovani formati',
         'charter.vision.metric2': 'Partner aziendali',
         'charter.vision.metric3': 'Progetti innovativi',
@@ -1122,7 +1122,7 @@ const translations = {
 
         // Tokenomics Page
         'tokenomics.badge': '🎯 Economia d\'Impatto • Utility + Governance • Tracciabilità On-Chain',
-        'tokenomics.title': 'Token TARMAQ (TAQ) — Tokenomics d\'Impatto',
+        'tokenomics.title': 'Token tarmaq (TAQ) — Tokenomics d\'Impatto',
         'tokenomics.subtitle': 'Un modello svizzero che trasforma ogni ora di mentorato, ogni franco investito e ogni progetto consegnato in valore misurabile — al servizio dei giovani, dei mentor, delle aziende e dei donatori.',
         'tokenomics.cta.distribution': 'Visualizza la distribuzione',
         'tokenomics.cta.reserve': 'Meccanismo di riserva',
