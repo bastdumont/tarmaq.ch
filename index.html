@@ -103,14 +103,13 @@
             <div
               class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start animate-fade-in-delay-2"
             >
-              <a
-                href="assets/tarmaq-live-pepiniere-talents.pdf"
+              <button
+                onclick="openPresentationModal()"
                 class="btn-primary bg-white text-primary hover:bg-gray-100 px-8 py-4 rounded-full font-semibold text-lg transition inline-flex items-center justify-center"
                 data-i18n="hero.cta1"
-                target="_blank"
               >
                 Découvrir tarmaq
-              </a>
+              </button>
               <a
                 href="contact.html"
                 class="btn-secondary border-2 border-white text-white hover:bg-white hover:text-primary px-8 py-4 rounded-full font-semibold text-lg transition inline-flex items-center justify-center"
@@ -246,40 +245,6 @@
             >
               Voyages éducatifs pour découvrir les écosystèmes tech
               internationaux et rencontrer des leaders de l'industrie.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Statistics Section -->
-    <section
-      class="py-20 bg-gradient-to-r from-secondary to-gray-800 text-white"
-    >
-      <div class="container mx-auto px-4">
-        <div class="grid md:grid-cols-4 gap-8 text-center">
-          <div>
-            <div class="text-5xl font-bold text-primary mb-2">500+</div>
-            <p class="text-lg opacity-90" data-i18n="stats.participants">
-              Jeunes formés
-            </p>
-          </div>
-          <div>
-            <div class="text-5xl font-bold text-primary mb-2">50+</div>
-            <p class="text-lg opacity-90" data-i18n="stats.mentors">
-              Mentors actifs
-            </p>
-          </div>
-          <div>
-            <div class="text-5xl font-bold text-primary mb-2">30+</div>
-            <p class="text-lg opacity-90" data-i18n="stats.projects">
-              Projets réalisés
-            </p>
-          </div>
-          <div>
-            <div class="text-5xl font-bold text-primary mb-2">10+</div>
-            <p class="text-lg opacity-90" data-i18n="stats.partners">
-              Partenaires
             </p>
           </div>
         </div>
@@ -585,9 +550,66 @@
       </div>
     </footer>
 
+    <!-- Presentation Modal -->
+    <div
+      id="presentationModal"
+      class="fixed inset-0 bg-black bg-opacity-75 z-50 hidden items-center justify-center p-4"
+      onclick="closePresentationModal(event)"
+    >
+      <div
+        class="bg-white rounded-lg max-w-7xl w-full max-h-[90vh] overflow-hidden relative"
+        onclick="event.stopPropagation()"
+      >
+        <button
+          onclick="closePresentationModal()"
+          class="absolute top-4 right-4 z-10 bg-white rounded-full p-2 hover:bg-gray-100 transition shadow-lg"
+          aria-label="Close"
+        >
+          <i class="fas fa-times text-gray-700 text-xl"></i>
+        </button>
+        <div class="w-full h-[90vh] overflow-auto">
+          <iframe
+            src="https://docs.google.com/presentation/d/e/2PACX-1vRXQWltZGR4JxYtQ4KRrX4-_Hxx40JxUAnrOTLlK21GlgVD0SC6qoCneSJr12bJP00zw9n9MW9-r5e0/pubembed?start=true&loop=false&delayms=10000"
+            frameborder="0"
+            width="100%"
+            height="100%"
+            allowfullscreen="true"
+            mozallowfullscreen="true"
+            webkitallowfullscreen="true"
+            style="min-height: 600px"
+          ></iframe>
+        </div>
+      </div>
+    </div>
+
     <!-- Scripts -->
     <script src="js/header.js"></script>
     <script src="js/i18n.js"></script>
     <script src="js/main.js"></script>
+    <script>
+      function openPresentationModal() {
+        const modal = document.getElementById('presentationModal');
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closePresentationModal(event) {
+        if (event && event.target !== event.currentTarget) {
+          return;
+        }
+        const modal = document.getElementById('presentationModal');
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+        document.body.style.overflow = '';
+      }
+
+      // Close modal on Escape key
+      document.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape') {
+          closePresentationModal();
+        }
+      });
+    </script>
   </body>
 </html>
