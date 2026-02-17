@@ -94,10 +94,13 @@
     <!-- Header Partagé -->
     <header class="fixed w-full top-0 z-50 bg-[#F9F8F5]/90 backdrop-blur-md border-b border-gray-100">
         <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-            <div class="flex items-center gap-2 cursor-pointer" onclick="navigateTo('home')">
-                <div class="w-8 h-8 bg-tarmaq-red rounded-full flex items-center justify-center text-white font-bold text-xl">T</div>
-                <span class="text-2xl font-black tracking-tighter uppercase italic">Tarmaq</span>
-            </div>
+            <a href="index.html" class="flex items-center gap-3 group">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-8 h-8 text-tarmaq-black group-hover:text-tarmaq-red transition-colors">
+                    <path d="M22 2L11 13"></path>
+                    <path d="M22 2L15 22L11 13L2 9L22 2Z"></path>
+                </svg>
+                <span class="text-2xl font-black tracking-tighter uppercase text-tarmaq-black" style="font-family: 'Montserrat', sans-serif;">Tarmaq</span>
+            </a>
             
             <nav class="hidden md:flex items-center gap-8">
                 <a onclick="navigateTo('academy')" class="nav-link" id="nav-academy">Academy</a>
@@ -144,6 +147,33 @@
                         <p class="font-bold text-sm uppercase tracking-wider mb-1 text-tarmaq-red">En plein vol</p>
                         <p class="text-tarmaq-gray text-xs">Un écosystème unique pour briser les barrières technologiques à Genève.</p>
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Vision Focus Section (New Hero) -->
+        <section class="bg-[#111111] py-12 px-6 border-b border-gray-800">
+            <div class="max-w-7xl mx-auto bg-gradient-to-r from-tarmaq-red/10 to-transparent rounded-2xl p-8 md:p-12 border border-tarmaq-red/20 flex flex-col md:flex-row items-center justify-between gap-8 relative overflow-hidden group hover:border-tarmaq-red/40 transition-all cursor-pointer shadow-2xl" onclick="window.open('Tarmaq.pdf', '_blank')">
+                
+                <!-- Background Decoration -->
+                <div class="absolute -right-20 -top-20 w-64 h-64 bg-tarmaq-red/10 rounded-full blur-3xl group-hover:bg-tarmaq-red/20 transition-all duration-500"></div>
+
+                <div class="relative z-10 max-w-2xl">
+                    <div class="flex items-center gap-3 mb-3">
+                        <span class="bg-tarmaq-red text-white text-[10px] font-bold px-2 py-1 rounded uppercase tracking-widest shadow-lg">Document Stratégique</span>
+                        <p class="text-tarmaq-red font-bold uppercase tracking-widest text-sm">Vision 2030</p>
+                    </div>
+                    <h2 class="text-3xl md:text-4xl font-black text-white mb-4 italic">Le Masterplan <span class="text-tarmaq-red">Tarmaq.</span></h2>
+                    <p class="text-gray-400 text-lg leading-relaxed mb-0 font-medium">
+                        Explorez notre feuille de route détaillée pour faire de Genève le hub technologique de référence. Une vision ambitieuse pour les 5 prochaines années.
+                    </p>
+                </div>
+                
+                <div class="relative z-10 shrink-0">
+                   <div class="btn-primary uppercase text-sm tracking-widest px-8 py-4 shadow-xl group-hover:scale-105 transition-transform bg-white text-black hover:bg-tarmaq-red hover:text-white border-2 border-transparent">
+                        Lire la vision
+                        <i data-lucide="file-text" class="w-5 h-5 ml-2"></i>
+                   </div>
                 </div>
             </div>
         </section>
@@ -400,9 +430,12 @@
     <footer class="bg-[#F9F8F5] py-16 border-t border-gray-100">
         <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-start gap-12">
             <div>
-                <div class="flex items-center gap-2 mb-6">
-                    <div class="w-6 h-6 bg-tarmaq-red rounded-full"></div>
-                    <span class="text-xl font-black uppercase tracking-tighter italic">Tarmaq</span>
+                <div class="flex items-center gap-3 mb-6 group">
+                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 text-tarmaq-black group-hover:text-tarmaq-red transition-colors">
+                        <path d="M22 2L11 13"></path>
+                        <path d="M22 2L15 22L11 13L2 9L22 2Z"></path>
+                    </svg>
+                    <span class="text-xl font-black uppercase tracking-tighter text-tarmaq-black" style="font-family: 'Montserrat', sans-serif;">Tarmaq</span>
                 </div>
                 <p class="text-sm text-tarmaq-gray max-w-xs">Le catalyseur d'opportunités de la jeunesse genevoise. Ensemble, construisons le cercle vertueux de demain.</p>
             </div>
@@ -411,7 +444,7 @@
                 <div>
                     <p class="font-bold text-xs uppercase tracking-widest mb-4">Navigation</p>
                     <ul class="text-sm text-tarmaq-gray space-y-2">
-                        <li><a onclick="navigateTo('home')" class="hover:text-tarmaq-red cursor-pointer">Vision</a></li>
+                        <li><a href="Tarmaq.pdf" target="_blank" class="hover:text-tarmaq-red cursor-pointer">Vision (PDF)</a></li>
                         <li><a onclick="navigateTo('academy')" class="hover:text-tarmaq-red cursor-pointer">Academy</a></li>
                         <li><a onclick="navigateTo('launchpad')" class="hover:text-tarmaq-red cursor-pointer">Launchpad</a></li>
                         <li><a href="main-charte.html" class="hover:text-tarmaq-red cursor-pointer">Charte</a></li>
