@@ -1,420 +1,378 @@
 <!DOCTYPE html>
 <html lang="fr">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Signature de la Charte - tarmaq</title>
-    <meta
-      name="description"
-      content="Signez la Charte tarmaq pour soutenir notre engagement pour un avenir numérique inclusif et responsable."
-    />
-
-    <link rel="icon" href="assets/favicon.png" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signer la Charte | Tarmaq</title>
+    <meta name="description" content="Signez la Charte Tarmaq pour soutenir notre engagement pour un avenir numérique inclusif et responsable.">
+    <link rel="icon" href="assets/favicon.png">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css"
-    />
-    <link rel="stylesheet" href="css/style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --tarmaq-red: #DA2F2C;
+            --tarmaq-black: #111111;
+            --tarmaq-gray: #777777;
+            --tarmaq-bg: #F9F8F5;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--tarmaq-bg);
+            color: var(--tarmaq-black);
+            scroll-behavior: smooth;
+        }
+        h1, h2, h3 {
+            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+        }
+        .bg-tarmaq-red { background-color: var(--tarmaq-red); }
+        .text-tarmaq-red { color: var(--tarmaq-red); }
+        .border-tarmaq-red { border-color: var(--tarmaq-red); }
+        .btn-primary {
+            background-color: var(--tarmaq-red);
+            color: white;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            filter: brightness(1.1);
+            box-shadow: 0 4px 12px rgba(218, 47, 44, 0.2);
+        }
+        .btn-primary:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+        .nav-link {
+            font-weight: 500;
+            transition: color 0.2s;
+            cursor: pointer;
+        }
+        .nav-link:hover, .nav-link.active {
+            color: var(--tarmaq-red);
+        }
+        .form-input {
+            width: 100%;
+            padding: 1rem;
+            background-color: white;
+            border: 2px solid #e5e7eb;
+            border-radius: 4px;
+            outline: none;
+            transition: all 0.2s ease;
+            font-family: 'Inter', sans-serif;
+        }
+        .form-input:focus {
+            border-color: var(--tarmaq-red);
+            box-shadow: 0 0 0 3px rgba(218, 47, 44, 0.1);
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        .animate-spin {
+            animation: spin 1s linear infinite;
+        }
+    </style>
+</head>
+<body>
 
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              primary: '#DA2F2C',
-              secondary: '#111827',
-              accent: '#F3F4F6',
-            },
-            fontFamily: {
-              sans: ['Inter', 'sans-serif'],
-            },
-          },
-        },
-      };
-    </script>
-  </head>
-  <body class="font-sans bg-white text-secondary">
-    <!-- Header will be loaded by header.js -->
-
-    <!-- Page Content -->
-    <section
-      class="pt-32 pb-20 bg-gradient-to-br from-secondary via-gray-800 to-primary text-white"
-    >
-      <div class="container mx-auto px-4">
-        <div class="max-w-2xl mx-auto text-center mb-12">
-          <div class="inline-block mb-4">
-            <span
-              class="bg-white/20 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm font-semibold"
-            >
-              📜 Signature
-            </span>
-          </div>
-          <h1 class="text-4xl md:text-5xl font-bold mb-4">
-            Signez la Charte tarmaq
-          </h1>
-          <p class="text-xl opacity-90">
-            Manifestez votre soutien à notre mission et vos valeurs communes
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Form Section -->
-    <section class="py-20 bg-white">
-      <div class="container mx-auto px-4">
-        <div class="max-w-2xl mx-auto">
-          <!-- Error/Success Messages -->
-          <div
-            id="errorMessage"
-            class="bg-red-50 border-l-4 border-red-500 text-red-700 p-4 mb-6 rounded-r-lg hidden"
-          >
-            <div class="flex items-center">
-              <i class="fas fa-exclamation-circle mr-3"></i>
-              <span id="errorText"></span>
-            </div>
-          </div>
-
-          <div
-            id="successMessage"
-            class="bg-green-50 border-l-4 border-green-500 text-green-700 p-4 mb-6 rounded-r-lg hidden"
-          >
-            <div class="flex items-center">
-              <i class="fas fa-check-circle mr-3"></i>
-              <span id="successText"></span>
-            </div>
-          </div>
-
-          <!-- Form Card -->
-          <div
-            class="bg-white border-2 border-gray-200 rounded-2xl shadow-xl p-8 md:p-12"
-          >
-            <form id="charterForm">
-              <div class="mb-6">
-                <label
-                  for="name"
-                  class="block text-gray-700 font-semibold mb-2"
-                >
-                  Nom complet <span class="text-primary">*</span>
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  required
-                  placeholder="Jean Dupont"
-                  class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-primary focus:ring-2 focus:ring-primary/20 transition outline-none"
-                />
-              </div>
-
-              <div class="mb-6">
-                <label
-                  for="email"
-                  class="block text-gray-700 font-semibold mb-2"
-                >
-                  Email <span class="text-primary">*</span>
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  required
-                  placeholder="jean.dupont@example.com"
-                  class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-primary focus:ring-2 focus:ring-primary/20 transition outline-none"
-                />
-              </div>
-
-              <div class="mb-8">
-                <div class="flex items-start gap-3">
-                  <input
-                    type="checkbox"
-                    id="acceptCharter"
-                    name="acceptCharter"
-                    required
-                    class="mt-1 w-5 h-5 text-primary border-gray-300 rounded focus:ring-primary accent-primary"
-                  />
-                  <label
-                    for="acceptCharter"
-                    class="text-gray-700 text-sm leading-relaxed cursor-pointer"
-                  >
-                    J'accepte la
-                    <a
-                      href="main-charte.html"
-                      class="text-primary font-semibold hover:underline"
-                      target="_blank"
-                      >charte</a
-                    >
-                    et les conditions générales
-                    <span class="text-primary">*</span>
-                  </label>
-                </div>
-              </div>
-
-              <button
-                type="submit"
-                id="submitButton"
-                class="w-full bg-primary hover:bg-red-700 text-white font-bold py-4 px-8 rounded-lg transition transform hover:scale-105 shadow-lg"
-              >
-                <i class="fas fa-pen-fancy mr-2"></i>
-                Signer la charte
-              </button>
-            </form>
-          </div>
-
-          <!-- Back to Charter Link -->
-          <div class="text-center mt-8">
-            <a
-              href="main-charte.html"
-              class="text-primary hover:text-red-700 font-semibold inline-flex items-center"
-            >
-              <i class="fas fa-arrow-left mr-2"></i>
-              Retour à la charte
+    <!-- Header -->
+    <header class="fixed w-full top-0 z-50 bg-[#F9F8F5]/90 backdrop-blur-md border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-2">
+                <div class="w-8 h-8 bg-tarmaq-red rounded-full flex items-center justify-center text-white font-bold text-xl">T</div>
+                <span class="text-2xl font-black tracking-tighter uppercase italic">Tarmaq</span>
             </a>
-          </div>
+            
+            <nav class="hidden md:flex items-center gap-8">
+                <a href="index.html" class="nav-link">Accueil</a>
+                <a href="main-charte.html" class="nav-link">Charte</a>
+                <a href="charte.html" class="nav-link active">Signer</a>
+            </nav>
+
+            <div class="flex items-center gap-4">
+                <a href="main-charte.html" class="px-6 py-3 border-2 border-black font-bold uppercase text-xs tracking-widest rounded hover:bg-black hover:text-white transition-all hidden md:inline-flex">
+                    Lire la charte
+                </a>
+            </div>
         </div>
-      </div>
+    </header>
+
+    <!-- Content -->
+    <section class="pt-40 pb-24 px-6">
+        <div class="max-w-7xl mx-auto">
+            <nav class="flex gap-2 text-xs uppercase tracking-widest font-bold text-[#777] mb-8">
+                <a href="index.html" class="hover:text-tarmaq-red">Accueil</a>
+                <span>/</span>
+                <a href="main-charte.html" class="hover:text-tarmaq-red">Charte</a>
+                <span>/</span>
+                <span class="text-tarmaq-red">Signature</span>
+            </nav>
+
+            <div class="grid lg:grid-cols-2 gap-16 items-start">
+                <!-- Left: Info -->
+                <div>
+                    <div class="w-12 h-1 bg-tarmaq-red mb-6"></div>
+                    <h1 class="text-5xl lg:text-6xl font-black leading-tight mb-6">
+                        Signez la <br><span class="text-tarmaq-red">charte.</span>
+                    </h1>
+                    <p class="text-xl text-[#777] leading-relaxed mb-8">
+                        Manifestez votre soutien à notre mission et vos valeurs communes pour un avenir numérique inclusif et responsable.
+                    </p>
+
+                    <div class="space-y-6">
+                        <div class="flex gap-4 items-start">
+                            <div class="w-10 h-10 rounded bg-[#FDF2F2] flex items-center justify-center shrink-0">
+                                <i data-lucide="shield-check" class="text-tarmaq-red w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-sm uppercase tracking-wider mb-1">Engagement vérifié</h3>
+                                <p class="text-sm text-[#777]">Votre signature est enregistrée de manière sécurisée et transparente.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4 items-start">
+                            <div class="w-10 h-10 rounded bg-[#FDF2F2] flex items-center justify-center shrink-0">
+                                <i data-lucide="users" class="text-tarmaq-red w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-sm uppercase tracking-wider mb-1">Communauté grandissante</h3>
+                                <p class="text-sm text-[#777]">Rejoignez un réseau de visionnaires engagés pour le changement.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Form -->
+                <div>
+                    <!-- Error Message -->
+                    <div id="errorMessage" class="bg-red-50 border-l-4 border-red-500 text-red-700 p-4 mb-6 rounded-r hidden">
+                        <div class="flex items-center gap-2">
+                            <i data-lucide="alert-circle" class="w-5 h-5 shrink-0"></i>
+                            <span id="errorText"></span>
+                        </div>
+                    </div>
+
+                    <!-- Success Message -->
+                    <div id="successMessage" class="bg-green-50 border-l-4 border-green-500 text-green-700 p-4 mb-6 rounded-r hidden">
+                        <div class="flex items-center gap-2">
+                            <i data-lucide="check-circle" class="w-5 h-5 shrink-0"></i>
+                            <span id="successText"></span>
+                        </div>
+                    </div>
+
+                    <!-- Form Card -->
+                    <div class="bg-white rounded-lg shadow-xl border-t-4 border-tarmaq-red p-8 md:p-10">
+                        <h2 class="text-2xl font-black mb-2">Votre signature</h2>
+                        <p class="text-sm text-[#777] mb-8">Remplissez le formulaire ci-dessous pour signer la charte.</p>
+
+                        <form id="charterForm" class="space-y-5">
+                            <div>
+                                <label for="name" class="block text-sm font-semibold mb-2">
+                                    Nom complet <span class="text-tarmaq-red">*</span>
+                                </label>
+                                <input type="text" id="name" name="name" required placeholder="Jean Dupont" class="form-input">
+                            </div>
+
+                            <div>
+                                <label for="email" class="block text-sm font-semibold mb-2">
+                                    Email <span class="text-tarmaq-red">*</span>
+                                </label>
+                                <input type="email" id="email" name="email" required placeholder="jean.dupont@example.com" class="form-input">
+                            </div>
+
+                            <div class="flex items-start gap-3 pt-2">
+                                <input type="checkbox" id="acceptCharter" name="acceptCharter" required
+                                    class="mt-1 w-5 h-5 rounded border-gray-300 accent-[#DA2F2C]">
+                                <label for="acceptCharter" class="text-sm text-[#777] leading-relaxed cursor-pointer">
+                                    J'accepte la
+                                    <a href="main-charte.html" class="text-tarmaq-red font-semibold hover:underline" target="_blank">charte</a>
+                                    et les conditions générales
+                                    <span class="text-tarmaq-red">*</span>
+                                </label>
+                            </div>
+
+                            <button type="submit" id="submitButton" class="btn-primary w-full py-4 uppercase text-sm tracking-widest mt-4">
+                                <i data-lucide="pen-tool" class="w-4 h-4"></i>
+                                Signer la charte
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Back Link -->
+                    <div class="text-center mt-8">
+                        <a href="main-charte.html" class="text-tarmaq-red hover:underline font-semibold inline-flex items-center gap-2 text-sm uppercase tracking-widest">
+                            <i data-lucide="arrow-left" class="w-4 h-4"></i>
+                            Retour à la charte
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-secondary text-white py-12">
-      <div class="container mx-auto px-4">
-        <div class="grid md:grid-cols-4 gap-8 mb-8">
-          <div>
-            <img src="assets/logo.png" alt="tarmaq" class="h-12 mb-4" />
-            <p class="text-gray-400 text-sm" data-i18n="footer.about">
-              Catalyseur de motivation pour les jeunes talents dans les
-              technologies émergentes.
-            </p>
-          </div>
-
-          <div>
-            <h4 class="font-bold mb-4" data-i18n="footer.links">
-              Liens rapides
-            </h4>
-            <ul class="space-y-2 text-gray-400 text-sm">
-              <li>
-                <a
-                  href="projet.html"
-                  class="hover:text-white transition"
-                  data-i18n="nav.project"
-                  >Le projet</a
-                >
-              </li>
-              <li>
-                <a
-                  href="activites.html"
-                  class="hover:text-white transition"
-                  data-i18n="nav.activities"
-                  >Activités</a
-                >
-              </li>
-              <li>
-                <a
-                  href="impact.html"
-                  class="hover:text-white transition"
-                  data-i18n="nav.impact"
-                  >Impact</a
-                >
-              </li>
-              <li>
-                <a
-                  href="soutenir.html"
-                  class="hover:text-white transition"
-                  data-i18n="nav.support"
-                  >Nous soutenir</a
-                >
-              </li>
-              <li>
-                <a
-                  href="tokenomics.html"
-                  class="hover:text-white transition"
-                  data-i18n="nav.tokenomics"
-                  >Tokenomics</a
-                >
-              </li>
-            </ul>
-          </div>
-
-          <div>
-            <h4 class="font-bold mb-4" data-i18n="footer.contact">Contact</h4>
-            <ul class="space-y-2 text-gray-400 text-sm">
-              <li>
-                <i class="fas fa-envelope mr-2"></i>bastien@bdi-solutions.com
-              </li>
-              <li><i class="fas fa-phone mr-2"></i>+41 79 670 77 43</li>
-              <li>
-                <i class="fas fa-map-marker-alt mr-2"></i>11 avenue
-                Eugène-Pittard, 1206 Genève
-              </li>
-            </ul>
-          </div>
-
-          <div>
-            <h4 class="font-bold mb-4" data-i18n="footer.newsletter">
-              Restez Informé
-            </h4>
-            <p
-              class="text-gray-400 text-sm mb-4"
-              data-i18n="footer.newsletter.description"
-            >
-              Recevez nos dernières actualités et opportunités.
-            </p>
-            <a
-              href="contact.html"
-              class="bg-primary hover:bg-red-700 text-white px-4 py-2 rounded-full text-sm transition inline-flex items-center"
-              data-i18n="footer.newsletter.cta"
-            >
-              Nous Contacter
-            </a>
-          </div>
+    <footer class="bg-[#F9F8F5] py-16 border-t border-gray-100">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-start gap-12">
+            <div>
+                <div class="flex items-center gap-2 mb-6">
+                    <div class="w-6 h-6 bg-tarmaq-red rounded-full"></div>
+                    <span class="text-xl font-black uppercase tracking-tighter italic">Tarmaq</span>
+                </div>
+                <p class="text-sm text-[#777] max-w-xs">Le catalyseur d'opportunités de la jeunesse genevoise. Ensemble, construisons le cercle vertueux de demain.</p>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-12 text-left">
+                <div>
+                    <p class="font-bold text-xs uppercase tracking-widest mb-4">Navigation</p>
+                    <ul class="text-sm text-[#777] space-y-2">
+                        <li><a href="index.html" class="hover:text-tarmaq-red">Accueil</a></li>
+                        <li><a href="main-charte.html" class="hover:text-tarmaq-red">Charte</a></li>
+                        <li><a href="charte.html" class="hover:text-tarmaq-red">Signer</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <p class="font-bold text-xs uppercase tracking-widest mb-4">Contact</p>
+                    <ul class="text-sm text-[#777] space-y-2">
+                        <li>Genève, Suisse</li>
+                        <li>hello@tarmaq.ch</li>
+                    </ul>
+                </div>
+                <div>
+                    <p class="font-bold text-xs uppercase tracking-widest mb-4">Social</p>
+                    <div class="flex gap-4">
+                        <a href="#" class="text-[#777] hover:text-tarmaq-red"><i data-lucide="linkedin"></i></a>
+                        <a href="#" class="text-[#777] hover:text-tarmaq-red"><i data-lucide="instagram"></i></a>
+                    </div>
+                </div>
+            </div>
         </div>
-
-        <div
-          class="border-t border-gray-700 pt-8 text-center text-gray-400 text-sm"
-        >
-          <p>
-            &copy; 2025 tarmaq.
-            <span data-i18n="footer.rights">Tous droits réservés.</span>
-          </p>
+        <div class="max-w-7xl mx-auto px-6 mt-16 pt-8 border-t border-gray-200 text-xs text-[#777] flex justify-between">
+            <p>© 2026 Tarmaq.ch - Tous droits réservés.</p>
+            <p>Inspiré par l'Excellence Suisse.</p>
         </div>
-      </div>
     </footer>
 
-    <!-- Scripts -->
-    <script src="js/header.js"></script>
-    <script src="js/i18n.js"></script>
-    <script src="js/main.js"></script>
-
     <script>
-      (async function () {
-        // Load configuration from Vercel serverless function
-        let AIRTABLE_API_KEY = '';
-        let BASE_ID = 'appJ4MLPYJyuWWBG8';
-        const TABLE_NAME = 'Charter Signatures';
+        // Initialize Lucide icons
+        lucide.createIcons();
 
-        try {
-          const response = await fetch('/api/env.js');
-          if (response.ok) {
-            const config = await response.json();
-            AIRTABLE_API_KEY = config.AIRTABLE_API_KEY;
-            if (config.AIRTABLE_BASE_ID) {
-              BASE_ID = config.AIRTABLE_BASE_ID;
-            }
-            console.log('✅ Configuration loaded from Vercel');
-          } else {
-            throw new Error('Failed to load config from /api/env.js');
-          }
-        } catch (error) {
-          console.error('❌ Failed to load configuration:', error);
-          const errorEl = document.getElementById('errorMessage');
-          const errorTextEl = document.getElementById('errorText');
-          errorTextEl.textContent =
-            'Configuration error: Unable to load API configuration.';
-          errorEl.classList.remove('hidden');
-          document.getElementById('submitButton').disabled = true;
-          return;
-        }
+        // Airtable Charter Signature Submission
+        (async function () {
+            let AIRTABLE_API_KEY = '';
+            let BASE_ID = 'appJ4MLPYJyuWWBG8';
+            const TABLE_NAME = 'Charter Signatures';
 
-        // Check if API key is configured
-        if (!AIRTABLE_API_KEY) {
-          console.error('❌ AIRTABLE_API_KEY is empty');
-          const errorEl = document.getElementById('errorMessage');
-          const errorTextEl = document.getElementById('errorText');
-          errorTextEl.textContent =
-            'Configuration error: API key not found. Please contact support.';
-          errorEl.classList.remove('hidden');
-          document.getElementById('submitButton').disabled = true;
-          return;
-        }
-
-        const form = document.getElementById('charterForm');
-        const submitButton = document.getElementById('submitButton');
-        const errorEl = document.getElementById('errorMessage');
-        const successEl = document.getElementById('successMessage');
-        const errorTextEl = document.getElementById('errorText');
-        const successTextEl = document.getElementById('successText');
-
-        form.addEventListener('submit', async (e) => {
-          e.preventDefault();
-
-          // Reset messages
-          errorEl.classList.add('hidden');
-          successEl.classList.add('hidden');
-
-          // Disable button during submission
-          submitButton.disabled = true;
-          submitButton.innerHTML =
-            '<i class="fas fa-spinner fa-spin mr-2"></i>Envoi en cours...';
-
-          // Get form data
-          const name = document.getElementById('name').value;
-          const email = document.getElementById('email').value;
-          const acceptCharter =
-            document.getElementById('acceptCharter').checked;
-
-          if (!acceptCharter) {
-            errorTextEl.textContent =
-              'Vous devez accepter la charte et les conditions générales.';
-            errorEl.classList.remove('hidden');
-            submitButton.disabled = false;
-            submitButton.innerHTML =
-              '<i class="fas fa-pen-fancy mr-2"></i>Signer la charte';
-            return;
-          }
-
-          // Create current date in ISO format
-          const now = new Date().toISOString();
-          const signatureDate = new Date().toLocaleDateString('fr-FR');
-
-          try {
-            const response = await fetch(
-              `https://api.airtable.com/v0/${BASE_ID}/${encodeURIComponent(
-                TABLE_NAME
-              )}`,
-              {
-                method: 'POST',
-                headers: {
-                  Authorization: `Bearer ${AIRTABLE_API_KEY}`,
-                  'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                  fields: {
-                    Name: name,
-                    Email: email,
-                    Timestamp: now,
-                    Signature_Date: signatureDate,
-                  },
-                }),
-              }
-            );
-
-            if (!response.ok) {
-              const errorData = await response.json();
-              throw new Error(
-                errorData.error?.message || "Erreur lors de l'envoi"
-              );
+            try {
+                const response = await fetch('/api/env.js');
+                if (response.ok) {
+                    const config = await response.json();
+                    AIRTABLE_API_KEY = config.AIRTABLE_API_KEY;
+                    if (config.AIRTABLE_BASE_ID) {
+                        BASE_ID = config.AIRTABLE_BASE_ID;
+                    }
+                    console.log('✅ Configuration loaded');
+                } else {
+                    throw new Error('Failed to load config from /api/env.js');
+                }
+            } catch (error) {
+                console.error('❌ Failed to load configuration:', error);
+                const errorEl = document.getElementById('errorMessage');
+                const errorTextEl = document.getElementById('errorText');
+                errorTextEl.textContent = 'Configuration error: Unable to load API configuration.';
+                errorEl.classList.remove('hidden');
+                document.getElementById('submitButton').disabled = true;
+                return;
             }
 
-            // Success
-            successTextEl.textContent =
-              '✅ Merci ! Votre signature a été enregistrée avec succès.';
-            successEl.classList.remove('hidden');
-            form.reset();
-          } catch (error) {
-            console.error('Erreur:', error);
-            errorTextEl.textContent = `Une erreur s'est produite : ${error.message}`;
-            errorEl.classList.remove('hidden');
-          } finally {
-            submitButton.disabled = false;
-            submitButton.innerHTML =
-              '<i class="fas fa-pen-fancy mr-2"></i>Signer la charte';
-          }
-        });
-      })();
+            if (!AIRTABLE_API_KEY) {
+                console.error('❌ AIRTABLE_API_KEY is empty');
+                const errorEl = document.getElementById('errorMessage');
+                const errorTextEl = document.getElementById('errorText');
+                errorTextEl.textContent = 'Configuration error: API key not found. Please contact support.';
+                errorEl.classList.remove('hidden');
+                document.getElementById('submitButton').disabled = true;
+                return;
+            }
+
+            const form = document.getElementById('charterForm');
+            const submitButton = document.getElementById('submitButton');
+            const errorEl = document.getElementById('errorMessage');
+            const successEl = document.getElementById('successMessage');
+            const errorTextEl = document.getElementById('errorText');
+            const successTextEl = document.getElementById('successText');
+
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+
+                errorEl.classList.add('hidden');
+                successEl.classList.add('hidden');
+
+                submitButton.disabled = true;
+                submitButton.innerHTML = '<div class="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div> Envoi en cours...';
+
+                const name = document.getElementById('name').value;
+                const email = document.getElementById('email').value;
+                const acceptCharter = document.getElementById('acceptCharter').checked;
+
+                if (!acceptCharter) {
+                    errorTextEl.textContent = 'Vous devez accepter la charte et les conditions générales.';
+                    errorEl.classList.remove('hidden');
+                    submitButton.disabled = false;
+                    submitButton.innerHTML = '<i data-lucide="pen-tool" class="w-4 h-4"></i> Signer la charte';
+                    lucide.createIcons();
+                    return;
+                }
+
+                const now = new Date().toISOString();
+                const signatureDate = new Date().toLocaleDateString('fr-FR');
+
+                try {
+                    const response = await fetch(
+                        `https://api.airtable.com/v0/${BASE_ID}/${encodeURIComponent(TABLE_NAME)}`,
+                        {
+                            method: 'POST',
+                            headers: {
+                                Authorization: `Bearer ${AIRTABLE_API_KEY}`,
+                                'Content-Type': 'application/json',
+                            },
+                            body: JSON.stringify({
+                                fields: {
+                                    Name: name,
+                                    Email: email,
+                                    Timestamp: now,
+                                    Signature_Date: signatureDate,
+                                },
+                            }),
+                        }
+                    );
+
+                    if (!response.ok) {
+                        const errorData = await response.json();
+                        throw new Error(errorData.error?.message || "Erreur lors de l'envoi");
+                    }
+
+                    successTextEl.textContent = '✅ Merci ! Votre signature a été enregistrée avec succès.';
+                    successEl.classList.remove('hidden');
+                    form.reset();
+                } catch (error) {
+                    console.error('Erreur:', error);
+                    errorTextEl.textContent = `Une erreur s'est produite : ${error.message}`;
+                    errorEl.classList.remove('hidden');
+                } finally {
+                    submitButton.disabled = false;
+                    submitButton.innerHTML = '<i data-lucide="pen-tool" class="w-4 h-4"></i> Signer la charte';
+                    lucide.createIcons();
+                }
+            });
+        })();
     </script>
-  </body>
+</body>
 </html>
