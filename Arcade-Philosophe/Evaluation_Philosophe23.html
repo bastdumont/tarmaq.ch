@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Évaluation — Rue du Philosophe 23, Genève</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+  :root {
+    --bg: #0a0a0f;
+    --surface: #12121a;
+    --surface2: #1a1a26;
+    --border: #2a2a3a;
+    --text: #e4e4ed;
+    --text-muted: #8888a0;
+    --accent: #f0c000;
+    --accent-dim: rgba(240,192,0,0.12);
+    --green: #34d399;
+    --green-dim: rgba(52,211,153,0.12);
+    --red: #f87171;
+    --red-dim: rgba(248,113,113,0.12);
+    --orange: #fb923c;
+    --orange-dim: rgba(251,146,60,0.12);
+    --blue: #60a5fa;
+    --blue-dim: rgba(96,165,250,0.12);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  .container { max-width: 1200px; margin: 0 auto; padding: 2rem 1.5rem; }
+
+  /* Header */
+  .header {
+    text-align: center;
+    padding: 3rem 0 2rem;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 2.5rem;
+  }
+  .header-badge {
+    display: inline-block;
+    background: var(--accent-dim);
+    color: var(--accent);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.35rem 1rem;
+    border-radius: 100px;
+    border: 1px solid rgba(240,192,0,0.25);
+    margin-bottom: 1.2rem;
+  }
+  .header h1 {
+    font-size: 2rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    margin-bottom: 0.4rem;
+  }
+  .header h1 span { color: var(--accent); }
+  .header .subtitle {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    font-weight: 400;
+  }
+  .header .meta {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 1.2rem;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+  }
+  .header .meta span { display: flex; align-items: center; gap: 0.4rem; }
+
+  /* Verdict Banner */
+  .verdict {
+    background: linear-gradient(135deg, rgba(240,192,0,0.08), rgba(251,146,60,0.06));
+    border: 1px solid rgba(240,192,0,0.2);
+    border-radius: 16px;
+    padding: 2rem;
+    margin-bottom: 2.5rem;
+    text-align: center;
+  }
+  .verdict-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 0.6rem;
+  }
+  .verdict h2 {
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: var(--accent);
+    margin-bottom: 0.8rem;
+  }
+  .verdict p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+
+  /* KPI Cards */
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+  }
+  .kpi-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.2rem;
+    text-align: center;
+  }
+  .kpi-card .kpi-label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+    margin-bottom: 0.5rem;
+  }
+  .kpi-card .kpi-value {
+    font-size: 1.5rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+  }
+  .kpi-card .kpi-sub {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    margin-top: 0.3rem;
+  }
+  .kpi-card.accent .kpi-value { color: var(--accent); }
+  .kpi-card.green .kpi-value { color: var(--green); }
+  .kpi-card.blue .kpi-value { color: var(--blue); }
+  .kpi-card.orange .kpi-value { color: var(--orange); }
+
+  /* Section headers */
+  .section-title {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--text-muted);
+    margin-bottom: 1.2rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  /* Comparison Table */
+  .comparison-wrapper {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    margin-bottom: 2.5rem;
+  }
+  .comparison-wrapper .cw-header {
+    padding: 1.2rem 1.5rem;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+  .comparison-wrapper .cw-header h3 {
+    font-size: 1rem;
+    font-weight: 700;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  thead th {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+    padding: 0.9rem 1.2rem;
+    text-align: right;
+    border-bottom: 1px solid var(--border);
+  }
+  thead th:first-child { text-align: left; }
+  tbody td {
+    padding: 0.75rem 1.2rem;
+    font-size: 0.88rem;
+    text-align: right;
+    border-bottom: 1px solid rgba(42,42,58,0.5);
+    font-variant-numeric: tabular-nums;
+  }
+  tbody td:first-child {
+    text-align: left;
+    color: var(--text-muted);
+    font-weight: 500;
+  }
+  tbody tr:hover { background: rgba(255,255,255,0.02); }
+  .highlight-row td { font-weight: 700; color: var(--accent); }
+  .best-val { color: var(--green); font-weight: 700; }
+
+  /* Pro forma */
+  .proforma-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+  }
+  @media (max-width: 768px) { .proforma-grid { grid-template-columns: 1fr; } }
+  .proforma-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+  }
+  .proforma-card .pc-header {
+    padding: 1rem 1.2rem;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .proforma-card .pc-header h4 { font-size: 0.95rem; font-weight: 700; }
+  .proforma-card .pc-header .tag {
+    font-size: 0.68rem;
+    font-weight: 600;
+    padding: 0.25rem 0.7rem;
+    border-radius: 100px;
+  }
+  .tag-green { background: var(--green-dim); color: var(--green); }
+  .tag-blue { background: var(--blue-dim); color: var(--blue); }
+  .proforma-card table th { font-size: 0.65rem; padding: 0.6rem 0.8rem; }
+  .proforma-card table td { font-size: 0.78rem; padding: 0.55rem 0.8rem; }
+
+  /* Risk cards */
+  .risk-grid {
+    display: grid;
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+  }
+  .risk-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.3rem 1.5rem;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 1rem;
+    align-items: start;
+  }
+  .risk-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+  }
+  .risk-high .risk-icon { background: var(--red-dim); }
+  .risk-med .risk-icon { background: var(--orange-dim); }
+  .risk-low .risk-icon { background: var(--green-dim); }
+  .risk-card h4 { font-size: 0.9rem; font-weight: 700; margin-bottom: 0.3rem; }
+  .risk-card p { font-size: 0.8rem; color: var(--text-muted); line-height: 1.5; }
+  .risk-badge {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    padding: 0.2rem 0.6rem;
+    border-radius: 6px;
+    white-space: nowrap;
+  }
+  .badge-high { background: var(--red-dim); color: var(--red); }
+  .badge-med { background: var(--orange-dim); color: var(--orange); }
+  .badge-low { background: var(--green-dim); color: var(--green); }
+
+  /* Recommendation */
+  .reco-card {
+    background: linear-gradient(135deg, rgba(52,211,153,0.06), rgba(96,165,250,0.04));
+    border: 1px solid rgba(52,211,153,0.2);
+    border-radius: 16px;
+    padding: 2rem;
+    margin-bottom: 2.5rem;
+  }
+  .reco-card h3 {
+    font-size: 1.1rem;
+    font-weight: 800;
+    margin-bottom: 0.3rem;
+    color: var(--green);
+  }
+  .reco-card .reco-sub {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 1.2rem;
+  }
+  .action-list {
+    list-style: none;
+    display: grid;
+    gap: 0.6rem;
+  }
+  .action-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.7rem;
+    font-size: 0.85rem;
+    line-height: 1.5;
+  }
+  .action-num {
+    width: 22px;
+    height: 22px;
+    border-radius: 6px;
+    background: var(--green-dim);
+    color: var(--green);
+    font-size: 0.7rem;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  /* Footer */
+  .footer {
+    text-align: center;
+    padding: 2rem 0;
+    border-top: 1px solid var(--border);
+    color: var(--text-muted);
+    font-size: 0.75rem;
+  }
+
+  /* Chart area */
+  .chart-section {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 1.5rem;
+    margin-bottom: 2.5rem;
+  }
+  .chart-section h3 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+  canvas { width: 100% !important; max-height: 280px; }
+
+  /* Document Cards */
+  .doc-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.2rem;
+    margin-bottom: 2.5rem;
+  }
+  .doc-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+  .doc-card:hover {
+    border-color: var(--accent);
+    background: var(--surface2);
+    transform: translateY(-2px);
+  }
+  .doc-icon {
+    width: 40px;
+    height: 40px;
+    background: var(--surface2);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+  }
+  .doc-info {
+    flex-grow: 1;
+    overflow: hidden;
+  }
+  .doc-title {
+    display: block;
+    color: var(--text);
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 0.2rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .doc-meta {
+    display: block;
+    color: var(--text-muted);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .doc-action {
+    color: var(--accent);
+    font-size: 1rem;
+    opacity: 0.5;
+    transition: opacity 0.2s;
+  }
+  .doc-card:hover .doc-action { opacity: 1; }
+  .doc-icon svg {
+    width: 20px;
+    height: 20px;
+    color: var(--accent);
+  }
+
+  /* Specific white box for documents */
+  .doc-box-white {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 2rem;
+    margin-bottom: 2.5rem;
+    border: 1px solid #ddd;
+  }
+  .doc-box-white .section-title {
+    color: #666;
+    border-bottom: 1px solid #eee;
+  }
+  .doc-box-white .doc-card {
+    background: #f8f9fa;
+    border: 1px solid #e9ecef;
+  }
+  .doc-box-white .doc-card:hover {
+    border-color: var(--accent);
+    background: #ffffff;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  }
+  .doc-box-white .doc-title { color: #12121a; }
+  .doc-box-white .doc-meta { color: #888; }
+  .doc-box-white .doc-icon { background: #eee; }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-badge">Évaluation immobilière</div>
+    <h1>Rue du Philosophe <span>23</span></h1>
+    <div class="subtitle">2 lots PPE commerciaux — Genève Centre</div>
+    <div class="meta">
+      <span>📅 18 février 2026</span>
+      <span>📄 Source : Henbad SA</span>
+      <span>👤 Pour Bastien Dumont</span>
+    </div>
+  </div>
+
+  <!-- VERDICT -->
+  <div class="verdict">
+    <div class="verdict-label">Verdict</div>
+    <h2>🟡 GO CONDITIONNEL — Arcade recommandée</h2>
+    <p>L'Arcade à CHF 375K offre le meilleur ratio rendement/risque avec un ticket d'entrée modéré. L'Atelier à CHF 700K est correct mais une négociation à CHF 650K le rendrait nettement plus attractif. Aucun lot ne convient pour un coliving Tarmaq (surfaces insuffisantes).</p>
+  </div>
+
+  <!-- KPI OVERVIEW -->
+  <div class="section-title">Vue d'ensemble</div>
+  <div class="kpi-grid">
+    <div class="kpi-card accent">
+      <div class="kpi-label">Invest. total combiné</div>
+      <div class="kpi-value">1.15M</div>
+      <div class="kpi-sub">CHF — 2 lots</div>
+    </div>
+    <div class="kpi-card green">
+      <div class="kpi-label">Rendement brut moyen</div>
+      <div class="kpi-value">4.5%</div>
+      <div class="kpi-sub">Marché GE : 3.5-5%</div>
+    </div>
+    <div class="kpi-card blue">
+      <div class="kpi-label">Cash flow annuel</div>
+      <div class="kpi-value">15.7K</div>
+      <div class="kpi-sub">CHF — après dette</div>
+    </div>
+    <div class="kpi-card orange">
+      <div class="kpi-label">Fonds propres requis</div>
+      <div class="kpi-value">451K</div>
+      <div class="kpi-sub">CHF — les 2 lots</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Surface totale</div>
+      <div class="kpi-value">102m²</div>
+      <div class="kpi-sub">33 + 69 m²</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Loyer mensuel cible</div>
+      <div class="kpi-value">4'000</div>
+      <div class="kpi-sub">CHF/mois combiné</div>
+    </div>
+  </div>
+
+  <!-- DOCUMENTARY SOURCES (Moved & Styled White) -->
+  <div class="doc-box-white">
+    <div class="section-title">Sources Documentaires</div>
+    <div class="doc-grid">
+      <a href="P23_Extrait%20cahier%20PPE%20plan%20sous-sol%20(1).pdf" class="doc-card" target="_blank">
+        <div class="doc-icon"><i data-lucide="map"></i></div>
+        <div class="doc-info">
+          <span class="doc-title">Plan Sous-sol PPE</span>
+          <span class="doc-meta">PDF · Extrait Cahier</span>
+        </div>
+        <div class="doc-action">→</div>
+      </a>
+
+      <a href="P23_PV%20AGO%202024_exercice%202023.pdf" class="doc-card" target="_blank">
+        <div class="doc-icon"><i data-lucide="file-text"></i></div>
+        <div class="doc-info">
+          <span class="doc-title">PV AGO 2024</span>
+          <span class="doc-meta">PDF · Exercice 2023</span>
+        </div>
+        <div class="doc-action">→</div>
+      </a>
+
+      <a href="P23_rapport%20gestion%20exercice%202023.pdf" class="doc-card" target="_blank">
+        <div class="doc-icon"><i data-lucide="bar-chart-3"></i></div>
+        <div class="doc-info">
+          <span class="doc-title">Rapport de Gestion</span>
+          <span class="doc-meta">PDF · Exercice 2023</span>
+        </div>
+        <div class="doc-action">→</div>
+      </a>
+
+      <a href="Police_Philosophe%2023.pdf" class="doc-card" target="_blank">
+        <div class="doc-icon"><i data-lucide="shield"></i></div>
+        <div class="doc-info">
+          <span class="doc-title">Police d'Assurance</span>
+          <span class="doc-meta">PDF · Immeuble</span>
+        </div>
+        <div class="doc-action">→</div>
+      </a>
+
+      <a href="RAU.pdf" class="doc-card" target="_blank">
+        <div class="doc-icon"><i data-lucide="clipboard"></i></div>
+        <div class="doc-info">
+          <span class="doc-title">RAU</span>
+          <span class="doc-meta">PDF · Document</span>
+        </div>
+        <div class="doc-action">→</div>
+      </a>
+
+      <a href="Evaluation_Philosophe23_Rapport.md" class="doc-card" target="_blank">
+        <div class="doc-icon"><i data-lucide="file"></i></div>
+        <div class="doc-info">
+          <span class="doc-title">Rapport d'Évaluation</span>
+          <span class="doc-meta">Markdown · Texte Brut</span>
+        </div>
+        <div class="doc-action">→</div>
+      </a>
+
+      <a href="Evaluation_Philosophe23_Geneve.xlsx" class="doc-card" target="_blank">
+        <div class="doc-icon"><i data-lucide="table"></i></div>
+        <div class="doc-info">
+          <span class="doc-title">Modèle Financier</span>
+          <span class="doc-meta">XLSX · Calculs</span>
+        </div>
+        <div class="doc-action">→</div>
+      </a>
+
+      <a href="DEVIS%20–%20RÉNOVATION%20DU%20LOCAL%20V2.pdf" class="doc-card" target="_blank">
+        <div class="doc-icon"><i data-lucide="hammer"></i></div>
+        <div class="doc-info">
+          <span class="doc-title">Devis Rénovation Local</span>
+          <span class="doc-meta">PDF · Version 2</span>
+        </div>
+        <div class="doc-action">→</div>
+      </a>
+
+      <a href="DEVIS%20–%20RÉNOVATION%20D’APPARTEMENT%20V2.pdf" class="doc-card" target="_blank">
+        <div class="doc-icon"><i data-lucide="home"></i></div>
+        <div class="doc-info">
+          <span class="doc-title">Devis Rénovation Appt</span>
+          <span class="doc-meta">PDF · Version 2</span>
+        </div>
+        <div class="doc-action">→</div>
+      </a>
+
+      <a href="Cahier%20PPE.pdf" class="doc-card" target="_blank">
+        <div class="doc-icon"><i data-lucide="book"></i></div>
+        <div class="doc-info">
+          <span class="doc-title">Cahier PPE Complet</span>
+          <span class="doc-meta">PDF · Règlement</span>
+        </div>
+        <div class="doc-action">→</div>
+      </a>
+    </div>
+  </div>
+
+  <!-- COMPARISON TABLE -->
+  <div class="section-title">Comparaison des lots</div>
+  <div class="comparison-wrapper">
+    <div class="cw-header">
+      <h3>📊 Scorecard</h3>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>Métrique</th>
+          <th>Arcade (33m²)</th>
+          <th>Atelier (69m²)</th>
+          <th>Combiné</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Prix d'achat</td>
+          <td>CHF 375'000</td>
+          <td>CHF 700'000</td>
+          <td>CHF 1'075'000</td>
+        </tr>
+        <tr>
+          <td>Prix au m²</td>
+          <td>CHF 11'364</td>
+          <td class="best-val">CHF 10'145</td>
+          <td>CHF 10'539</td>
+        </tr>
+        <tr>
+          <td>Investissement total</td>
+          <td>CHF 425'125</td>
+          <td>CHF 724'500</td>
+          <td>CHF 1'149'625</td>
+        </tr>
+        <tr>
+          <td>Loyer mensuel cible</td>
+          <td>CHF 1'500</td>
+          <td>CHF 2'500</td>
+          <td>CHF 4'000</td>
+        </tr>
+        <tr class="highlight-row">
+          <td>Rendement brut</td>
+          <td class="best-val">4.8%</td>
+          <td>4.3%</td>
+          <td>4.5%</td>
+        </tr>
+        <tr class="highlight-row">
+          <td>Rendement net (sur prix)</td>
+          <td class="best-val">3.9%</td>
+          <td>3.4%</td>
+          <td>3.6%</td>
+        </tr>
+        <tr>
+          <td>Cap rate (sur invest. total)</td>
+          <td class="best-val">3.5%</td>
+          <td>3.3%</td>
+          <td>3.4%</td>
+        </tr>
+        <tr class="highlight-row">
+          <td>Cash flow après dette / an</td>
+          <td>CHF 6'684</td>
+          <td class="best-val">CHF 9'018</td>
+          <td>CHF 15'702</td>
+        </tr>
+        <tr>
+          <td>Cash-on-cash return</td>
+          <td class="best-val">3.7%</td>
+          <td>3.3%</td>
+          <td>3.5%</td>
+        </tr>
+        <tr>
+          <td>Fonds propres requis</td>
+          <td class="best-val">CHF 181'375</td>
+          <td>CHF 269'500</td>
+          <td>CHF 450'875</td>
+        </tr>
+        <tr>
+          <td>Seuil de rentabilité</td>
+          <td class="best-val">18.3%</td>
+          <td>20.1%</td>
+          <td>19.4%</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- CHART -->
+  <div class="section-title">Projection sur 5 ans</div>
+  <div class="chart-section">
+    <h3>Cash flow net cumulé + plus-value latente</h3>
+    <canvas id="chartCashflow"></canvas>
+  </div>
+
+  <!-- PRO FORMA CARDS -->
+  <div class="proforma-grid">
+    <div class="proforma-card">
+      <div class="pc-header">
+        <h4>Arcade — 5 ans</h4>
+        <span class="tag tag-green">Recommandé</span>
+      </div>
+      <table>
+        <thead><tr><th></th><th>An 1</th><th>An 3</th><th>An 5</th></tr></thead>
+        <tbody>
+          <tr><td>NOI</td><td>14'700</td><td>15'011</td><td>15'328</td></tr>
+          <tr><td>Cash flow net</td><td>6'684</td><td>6'995</td><td>7'312</td></tr>
+          <tr><td>Valeur estimée</td><td>380'625</td><td>392'129</td><td>403'982</td></tr>
+          <tr><td>Plus-value</td><td>+5'625</td><td>+17'129</td><td>+28'982</td></tr>
+          <tr class="highlight-row"><td>Rendement total</td><td>12'309</td><td>24'124</td><td>36'293</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="proforma-card">
+      <div class="pc-header">
+        <h4>Atelier — 5 ans</h4>
+        <span class="tag tag-blue">Alternatif</span>
+      </div>
+      <table>
+        <thead><tr><th></th><th>An 1</th><th>An 3</th><th>An 5</th></tr></thead>
+        <tbody>
+          <tr><td>NOI</td><td>23'980</td><td>24'492</td><td>25'015</td></tr>
+          <tr><td>Cash flow net</td><td>9'018</td><td>9'530</td><td>10'053</td></tr>
+          <tr><td>Valeur estimée</td><td>710'500</td><td>731'975</td><td>754'099</td></tr>
+          <tr><td>Plus-value</td><td>+10'500</td><td>+31'975</td><td>+54'099</td></tr>
+          <tr class="highlight-row"><td>Rendement total</td><td>19'518</td><td>41'505</td><td>64'152</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- RISKS -->
+  <div class="section-title">Analyse des risques</div>
+  <div class="risk-grid">
+    <div class="risk-card risk-high">
+      <div class="risk-icon">🏗️</div>
+      <div>
+        <h4>Bâtiment pré-1919 — Travaux copro imprévus</h4>
+        <p>Appels de fonds CHF 20-50K possibles sur 5 ans (toiture, façade, conduites, amiante/plomb). Exiger l'état du fonds de rénovation et les diagnostics avant closing.</p>
+      </div>
+      <span class="risk-badge badge-high">Impact élevé · Prob. élevée</span>
+    </div>
+    <div class="risk-card risk-med">
+      <div class="risk-icon">🏢</div>
+      <div>
+        <h4>Vacance locative commerciale</h4>
+        <p>Taux de vacance commerciale Genève : 4-6%. 3 mois de vacance sur l'Arcade = CHF 4'500 de perte, soit ~67% du cash flow annuel. Sécuriser un bail 5 ans ferme avant acquisition.</p>
+      </div>
+      <span class="risk-badge badge-med">Impact élevé · Prob. moyenne</span>
+    </div>
+    <div class="risk-card risk-med">
+      <div class="risk-icon">📈</div>
+      <div>
+        <h4>Hausse des taux hypothécaires</h4>
+        <p>+0.75% de taux réduit le cash flow Arcade de CHF 6'684 à ~CHF 4'859/an. Verrouiller un taux fixe 5-10 ans et obtenir 2-3 offres bancaires.</p>
+      </div>
+      <span class="risk-badge badge-med">Impact moyen · Prob. moyenne</span>
+    </div>
+  </div>
+
+  <!-- RECOMMENDATION -->
+  <div class="section-title">Recommandation</div>
+  <div class="reco-card">
+    <h3>✅ Scénario recommandé : Acquisition de l'Arcade seule</h3>
+    <div class="reco-sub">Meilleur rendement brut (4.8%), ticket d'entrée modéré (CHF 181K), seuil de rentabilité très bas (18.3%)</div>
+    <ul class="action-list">
+      <li><span class="action-num">1</span>Demander le détail du fonds de rénovation de la copropriété</li>
+      <li><span class="action-num">2</span>Vérifier les diagnostics amiante/plomb du bâtiment</li>
+      <li><span class="action-num">3</span>Obtenir 2-3 offres de financement bancaire</li>
+      <li><span class="action-num">4</span>Négocier le prix à CHF 350'000 (argument : cap rate net post-frais < 3.5%)</li>
+      <li><span class="action-num">5</span>Sécuriser un bail commercial 5 ans ferme avant closing</li>
+    </ul>
+  </div>
+
+  <!-- ALT SCENARIO -->
+  <div style="background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:1.8rem;margin-bottom:2.5rem;">
+    <h3 style="font-size:1rem;font-weight:700;margin-bottom:0.5rem;">🔄 Alternative : Location des 2 lots (CHF 4'000/mois)</h3>
+    <p style="font-size:0.85rem;color:var(--text-muted);line-height:1.7;">Si l'objectif est un usage Tarmaq immédiat sans immobilisation de capital, louer les deux lots permet de démarrer sans risque patrimonial. Le capital épargné (CHF 450K) peut être déployé sur un deal plus impactant (lot >150m² pour un vrai coliving). Ni l'Arcade ni l'Atelier ne remplissent les critères Tarmaq coliving (min. 150m², 30% espaces communs).</p>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    Analyse générée le 18 février 2026 · Données : Henbad SA / Rue du Philosophe 23, Genève · Modèle financier Excel disponible séparément
+  </div>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<script>
+  lucide.createIcons();
+</script>
+<script>
+const ctx = document.getElementById('chartCashflow').getContext('2d');
+new Chart(ctx, {
+  type: 'bar',
+  data: {
+    labels: ['An 1', 'An 2', 'An 3', 'An 4', 'An 5'],
+    datasets: [
+      {
+        label: 'Cash flow — Arcade',
+        data: [6684, 6839, 6995, 7153, 7312],
+        backgroundColor: 'rgba(52,211,153,0.7)',
+        borderRadius: 4,
+        barPercentage: 0.6,
+      },
+      {
+        label: 'Cash flow — Atelier',
+        data: [9018, 9272, 9530, 9790, 10053],
+        backgroundColor: 'rgba(96,165,250,0.7)',
+        borderRadius: 4,
+        barPercentage: 0.6,
+      },
+      {
+        label: 'Plus-value Arcade',
+        data: [5625, 11334, 17129, 23011, 28982],
+        type: 'line',
+        borderColor: 'rgba(52,211,153,0.9)',
+        borderWidth: 2,
+        pointRadius: 4,
+        pointBackgroundColor: '#34d399',
+        fill: false,
+        tension: 0.3,
+      },
+      {
+        label: 'Plus-value Atelier',
+        data: [10500, 21158, 31975, 42954, 54099],
+        type: 'line',
+        borderColor: 'rgba(96,165,250,0.9)',
+        borderWidth: 2,
+        pointRadius: 4,
+        pointBackgroundColor: '#60a5fa',
+        fill: false,
+        tension: 0.3,
+      }
+    ]
+  },
+  options: {
+    responsive: true,
+    interaction: { intersect: false, mode: 'index' },
+    plugins: {
+      legend: {
+        labels: { color: '#8888a0', font: { family: 'Inter', size: 11 }, usePointStyle: true, padding: 16 }
+      },
+      tooltip: {
+        backgroundColor: '#1a1a26',
+        borderColor: '#2a2a3a',
+        borderWidth: 1,
+        titleFont: { family: 'Inter', weight: '600' },
+        bodyFont: { family: 'Inter' },
+        callbacks: {
+          label: function(ctx) {
+            return ctx.dataset.label + ': CHF ' + ctx.parsed.y.toLocaleString('fr-CH');
+          }
+        }
+      }
+    },
+    scales: {
+      x: {
+        grid: { color: 'rgba(42,42,58,0.5)' },
+        ticks: { color: '#8888a0', font: { family: 'Inter', size: 11 } }
+      },
+      y: {
+        grid: { color: 'rgba(42,42,58,0.5)' },
+        ticks: {
+          color: '#8888a0',
+          font: { family: 'Inter', size: 11 },
+          callback: function(v) { return 'CHF ' + (v/1000).toFixed(0) + 'K'; }
+        }
+      }
+    }
+  }
+});
+</script>
+</body>
+</html>
