@@ -1,122 +1,117 @@
 <!DOCTYPE html>
 <html lang="fr">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>tarmaq - Catalyseur d'opportunité</title>
-    <meta
-      name="description"
-      content="tarmaq : espace d'innovation dédié à la formation, au mentorat et aux technologies émergentes pour les jeunes talents."
-    />
-
-    <!-- Open Graph / Facebook / Social Media -->
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://tarmaq.ch/" />
-    <meta property="og:title" content="tarmaq - Catalyseur d'opportunité" />
-    <meta
-      property="og:description"
-      content="tarmaq : espace d'innovation dédié à la formation, au mentorat et aux technologies émergentes pour les jeunes talents."
-    />
-    <meta
-      property="og:image"
-      content="https://tarmaq.ch/assets/Capture d'écran 2025-08-20 à 06.02.24.png"
-    />
-    <meta property="og:image:width" content="430" />
-    <meta property="og:image:height" content="932" />
-
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:url" content="https://tarmaq.ch/" />
-    <meta name="twitter:title" content="tarmaq - Catalyseur d'opportunité" />
-    <meta
-      name="twitter:description"
-      content="tarmaq : espace d'innovation dédié à la formation, au mentorat et aux technologies émergentes pour les jeunes talents."
-    />
-    <meta
-      name="twitter:image"
-      content="https://tarmaq.ch/assets/Capture d'écran 2025-08-20 à 06.02.24.png"
-    />
-
-    <!-- Favicon -->
-    <link rel="icon" href="assets/favicon.png" />
-
-    <!-- Tailwind CSS -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarmaq | Pépinière de talents & Catalyseur d'opportunités</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --tarmaq-red: #DA2F2C;
+            --tarmaq-black: #111111;
+            --tarmaq-gray: #777777;
+            --tarmaq-bg: #F9F8F5;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--tarmaq-bg);
+            color: var(--tarmaq-black);
+            scroll-behavior: smooth;
+        }
+        h1, h2, h3 {
+            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+        }
+        .bg-tarmaq-red { background-color: var(--tarmaq-red); }
+        .text-tarmaq-red { color: var(--tarmaq-red); }
+        .border-tarmaq-red { border-color: var(--tarmaq-red); }
+        
+        .btn-primary {
+            background-color: var(--tarmaq-red);
+            color: white;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            filter: brightness(1.1);
+            box-shadow: 0 4px 12px rgba(218, 47, 44, 0.2);
+        }
+        .card {
+            background: white;
+            border-radius: 8px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            border-left: 0px solid var(--tarmaq-red);
+            cursor: pointer;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            border-left-width: 4px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+        }
+        .nav-link {
+            font-weight: 500;
+            transition: color 0.2s;
+            cursor: pointer;
+        }
+        .nav-link:hover, .nav-link.active {
+            color: var(--tarmaq-red);
+        }
+        .page-content {
+            display: none;
+            animation: fadeIn 0.4s ease-out forwards;
+        }
+        .page-content.active {
+            display: block;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .icon-box {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background-color: #FDF2F2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+    </style>
+</head>
+<body>
 
-    <!-- Google Fonts -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
+    <!-- Header Partagé -->
+    <header class="fixed w-full top-0 z-50 bg-[#F9F8F5]/90 backdrop-blur-md border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-3 group">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-8 h-8 text-tarmaq-black group-hover:text-tarmaq-red transition-colors">
+                    <path d="M22 2L11 13"></path>
+                    <path d="M22 2L15 22L11 13L2 9L22 2Z"></path>
+                </svg>
+                <span class="text-2xl font-black tracking-tighter uppercase text-tarmaq-black" style="font-family: 'Montserrat', sans-serif;">Tarmaq</span>
+            </a>
+            
+            <nav class="hidden md:flex items-center gap-8">
+                <a onclick="navigateTo('academy')" class="nav-link" id="nav-academy">Academy</a>
+                <a onclick="navigateTo('residence')" class="nav-link" id="nav-residence">Residence</a>
+                <a onclick="navigateTo('mobilite')" class="nav-link" id="nav-mobilite">Mobilité</a>
+                <a onclick="navigateTo('launchpad')" class="nav-link" id="nav-launchpad">Launchpad</a>
+                <a href="main-charte.html" class="nav-link" id="nav-charte">Charte</a>
+            </nav>
 
-    <!-- Font Awesome -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css"
-    />
-
-    <!-- Custom Styles -->
-    <link rel="stylesheet" href="css/style.css" />
-
-    <!-- Tailwind Config -->
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              primary: '#DA2F2C',
-              secondary: '#111827',
-              accent: '#F3F4F6',
-            },
-            fontFamily: {
-              sans: ['Inter', 'sans-serif'],
-            },
-          },
-        },
-      };
-    </script>
-  </head>
-  <body class="font-sans bg-white text-secondary">
-    <!-- Header will be loaded by header.js -->
-
-    <!-- Hero Section -->
-    <section
-      class="pt-24 pb-16 bg-gradient-to-br from-primary to-red-700 text-white relative overflow-hidden"
-    >
-      <div class="container mx-auto px-4 py-16">
-        <div class="grid md:grid-cols-2 gap-12 items-center">
-          <!-- Text Content -->
-          <div class="text-center md:text-left">
-            <h1
-              class="text-5xl md:text-6xl font-bold mb-6 animate-fade-in"
-              data-i18n="hero.title"
-            >
-              tarmaq
-            </h1>
-            <p
-              class="text-xl md:text-2xl mb-8 opacity-90 animate-fade-in-delay"
-              data-i18n="hero.subtitle"
-            >
-              Un espace dédié à la formation, la création et l'innovation pour
-              les jeunes talents
-            </p>
-            <div
-              class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start animate-fade-in-delay-2"
-            >
-              <button
-                onclick="openPresentationModal()"
-                class="btn-primary bg-white text-primary hover:bg-gray-100 px-8 py-4 rounded-full font-semibold text-lg transition inline-flex items-center justify-center"
-                data-i18n="hero.cta1"
-              >
-                Découvrir tarmaq
-              </button>
-              <a
-                href="soutenir.html"
-                class="btn-secondary border-2 border-white text-white hover:bg-white hover:text-primary px-8 py-4 rounded-full font-semibold text-lg transition inline-flex items-center justify-center"
-                data-i18n="hero.cta2"
-              >
-                Soutenir le projet
-              </a>
+            <div class="flex items-center gap-4">
+                <a href="#" class="btn-primary uppercase text-sm tracking-widest">Nous rejoindre</a>
             </div>
           </div>
 
@@ -209,538 +204,389 @@
             Nous démocratisons l'accès aux technologies émergentes et accompagnons les jeunes talents dans leur développement professionnel.
           </p>
         </div>
+    </header>
 
-        <div class="grid md:grid-cols-4 gap-8">
-          <!-- Card 1 -->
-          <div
-            class="bg-accent p-8 rounded-2xl hover:shadow-xl transition duration-300"
-          >
-            <div
-              class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mb-6 mx-auto"
-            >
-              <i class="fas fa-graduation-cap text-white text-2xl"></i>
-            </div>
-            <h3
-              class="text-2xl font-bold mb-4 text-center"
-              data-i18n="mission.card1.title"
-            >
-              Formation
-            </h3>
-            <p
-              class="text-gray-600 text-center"
-              data-i18n="mission.card1.description"
-            >
-              Programmes de formation en IA, blockchain, cybersécurité et
-              technologies émergentes adaptés aux besoins du marché.
-            </p>
-          </div>
-
-          <!-- Card 2 -->
-          <div
-            class="bg-accent p-8 rounded-2xl hover:shadow-xl transition duration-300"
-          >
-            <div
-              class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mb-6 mx-auto"
-            >
-              <i class="fas fa-users text-white text-2xl"></i>
-            </div>
-            <h3
-              class="text-2xl font-bold mb-4 text-center"
-              data-i18n="mission.card2.title"
-            >
-              Mentorat
-            </h3>
-            <p
-              class="text-gray-600 text-center"
-              data-i18n="mission.card2.description"
-            >
-              Accompagnement personnalisé par des professionnels expérimentés
-              pour guider les jeunes dans leur parcours.
-            </p>
-          </div>
-
-          <!-- Card 3 -->
-          <div
-            class="bg-accent p-8 rounded-2xl hover:shadow-xl transition duration-300"
-          >
-            <div
-              class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mb-6 mx-auto"
-            >
-              <i class="fas fa-rocket text-white text-2xl"></i>
-            </div>
-            <h3
-              class="text-2xl font-bold mb-4 text-center"
-              data-i18n="mission.card3.title"
-            >
-              Innovation
-            </h3>
-            <p
-              class="text-gray-600 text-center"
-              data-i18n="mission.card3.description"
-            >
-              Espace d'expérimentation et d'innovation pour développer des
-              projets concrets et impactants.
-            </p>
-          </div>
-
-          <!-- Card 4 -->
-          <div
-            class="bg-accent p-8 rounded-2xl hover:shadow-xl transition duration-300"
-          >
-            <div
-              class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mb-6 mx-auto"
-            >
-              <i class="fas fa-globe text-white text-2xl"></i>
-            </div>
-            <h3
-              class="text-2xl font-bold mb-4 text-center"
-              data-i18n="mission.card4.title"
-            >
-              Voyages
-            </h3>
-            <p
-              class="text-gray-600 text-center"
-              data-i18n="mission.card4.description"
-            >
-              Voyages éducatifs pour découvrir les écosystèmes tech
-              internationaux et rencontrer des leaders de l'industrie.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Objectives Section -->
-    <section class="py-20 bg-gradient-to-br from-accent to-white">
-      <div class="container mx-auto px-4">
-        <div class="max-w-4xl mx-auto text-center mb-16">
-          <span class="inline-block bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-semibold mb-6" data-i18n="objectives.badge">
-            Vision 2030
-          </span>
-          <h2 class="text-4xl font-bold mb-6" data-i18n="objectives.title">
-            Nos objectifs
-          </h2>
-          <p class="text-xl text-gray-600" data-i18n="objectives.description">
-            D'ici 2030, tarmaq sera le catalyseur de référence en Suisse romande pour les jeunes talents en technologies émergentes.
-          </p>
-        </div>
-
-        <div class="grid md:grid-cols-4 gap-8 max-w-5xl mx-auto">
-          <!-- Objective 1 -->
-          <div class="text-center">
-            <div class="text-5xl font-bold text-primary mb-2" data-i18n="objectives.stat1.value">5'000+</div>
-            <p class="text-gray-600 font-medium" data-i18n="objectives.stat1.label">Jeunes formés</p>
-          </div>
-
-          <!-- Objective 2 -->
-          <div class="text-center">
-            <div class="text-5xl font-bold text-primary mb-2" data-i18n="objectives.stat2.value">100+</div>
-            <p class="text-gray-600 font-medium" data-i18n="objectives.stat2.label">Partenaires entreprises</p>
-          </div>
-
-          <!-- Objective 3 -->
-          <div class="text-center">
-            <div class="text-5xl font-bold text-primary mb-2" data-i18n="objectives.stat3.value">200+</div>
-            <p class="text-gray-600 font-medium" data-i18n="objectives.stat3.label">Projets innovants</p>
-          </div>
-
-          <!-- Objective 4 -->
-          <div class="text-center">
-            <div class="text-5xl font-bold text-primary mb-2" data-i18n="objectives.stat4.value">80%</div>
-            <p class="text-gray-600 font-medium" data-i18n="objectives.stat4.label">Taux d'insertion</p>
-          </div>
-        </div>
-
-        <div class="max-w-3xl mx-auto mt-16">
-          <div class="bg-white p-8 rounded-2xl shadow-lg">
-            <h3 class="text-2xl font-bold mb-6 text-center" data-i18n="objectives.plan.title">Notre plan stratégique</h3>
-            <div class="space-y-4">
-              <div class="flex items-start space-x-4">
-                <div class="w-8 h-8 bg-primary rounded-full flex items-center justify-center flex-shrink-0 text-white font-bold">1</div>
+    <!-- PAGE : ACCUEIL -->
+    <main id="page-home" class="page-content active">
+        <!-- Hero Section -->
+        <section class="pt-40 pb-20 px-6">
+            <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
                 <div>
-                  <h4 class="font-semibold" data-i18n="objectives.plan.phase1.title">Phase Fondation (2023-2024)</h4>
-                  <p class="text-gray-600 text-sm" data-i18n="objectives.plan.phase1.description">Lancer les premiers programmes, constituer l'équipe et le réseau de mentors.</p>
+                    <div class="w-12 h-1 bg-tarmaq-red mb-6"></div>
+                    <h1 class="text-5xl lg:text-7xl font-black leading-tight mb-6">
+                        Propulsez <br><span class="text-tarmaq-red">votre avenir.</span>
+                    </h1>
+                    <p class="text-xl text-tarmaq-gray leading-relaxed mb-8 max-w-lg">
+                        Tarmaq est une pépinière de talents à Genève. Nous formons les jeunes aux technologies de demain pour les connecter aux opportunités d'aujourd'hui.
+                    </p>
+                    <div class="flex flex-wrap gap-4">
+                        <button onclick="navigateTo('academy')" class="btn-primary uppercase text-sm tracking-widest">
+                            Découvrir nos programmes
+                            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </button>
+                        <button class="px-8 py-3 border-2 border-black font-bold uppercase text-sm tracking-widest rounded hover:bg-black hover:text-white transition-all">
+                            Soutenir le projet
+                        </button>
+                    </div>
                 </div>
-              </div>
-              <div class="flex items-start space-x-4">
-                <div class="w-8 h-8 bg-primary rounded-full flex items-center justify-center flex-shrink-0 text-white font-bold">2</div>
+                <div class="relative">
+                    <div class="aspect-square bg-gray-200 rounded-lg overflow-hidden flex items-center justify-center border border-gray-100 shadow-2xl">
+                        <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&q=80&w=800" alt="Apprentissage chez Tarmaq" class="object-cover w-full h-full">
+                    </div>
+                    <div class="absolute -bottom-6 -left-6 bg-white p-6 rounded shadow-xl border-l-4 border-tarmaq-red max-w-xs">
+                        <p class="font-bold text-sm uppercase tracking-wider mb-1 text-tarmaq-red">En plein vol</p>
+                        <p class="text-tarmaq-gray text-xs">Un écosystème unique pour briser les barrières technologiques à Genève.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Vision Focus Section (New Hero) -->
+        <section class="bg-[#111111] py-12 px-6 border-b border-gray-800">
+            <div class="max-w-7xl mx-auto bg-gradient-to-r from-tarmaq-red/10 to-transparent rounded-2xl p-8 md:p-12 border border-tarmaq-red/20 flex flex-col md:flex-row items-center justify-between gap-8 relative overflow-hidden group hover:border-tarmaq-red/40 transition-all cursor-pointer shadow-2xl" onclick="window.open('Tarmaq.pdf', '_blank')">
+                
+                <!-- Background Decoration -->
+                <div class="absolute -right-20 -top-20 w-64 h-64 bg-tarmaq-red/10 rounded-full blur-3xl group-hover:bg-tarmaq-red/20 transition-all duration-500"></div>
+
+                <div class="relative z-10 max-w-2xl">
+                    <div class="flex items-center gap-3 mb-3">
+                        <span class="bg-tarmaq-red text-white text-[10px] font-bold px-2 py-1 rounded uppercase tracking-widest shadow-lg">Document Stratégique</span>
+                        <p class="text-tarmaq-red font-bold uppercase tracking-widest text-sm">Vision 2030</p>
+                    </div>
+                    <h2 class="text-3xl md:text-4xl font-black text-white mb-4 italic">Le Masterplan <span class="text-tarmaq-red">Tarmaq.</span></h2>
+                    <p class="text-gray-400 text-lg leading-relaxed mb-0 font-medium">
+                        Explorez notre feuille de route détaillée pour faire de Genève le hub technologique de référence. Une vision ambitieuse pour les 5 prochaines années.
+                    </p>
+                </div>
+                
+                <div class="relative z-10 shrink-0">
+                   <div class="btn-primary uppercase text-sm tracking-widest px-8 py-4 shadow-xl group-hover:scale-105 transition-transform bg-white text-black hover:bg-tarmaq-red hover:text-white border-2 border-transparent">
+                        Lire la vision
+                        <i data-lucide="file-text" class="w-5 h-5 ml-2"></i>
+                   </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Piliers Cards -->
+        <section class="py-24 px-6 bg-[#F9F8F5]">
+            <div class="max-w-7xl mx-auto">
+                <div class="mb-16">
+                    <p class="text-tarmaq-red font-bold uppercase tracking-widest text-sm mb-2">Notre écosystème</p>
+                    <h2 class="text-4xl font-black">Apprendre par l'aventure.</h2>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="card shadow-sm" onclick="navigateTo('academy')">
+                        <div class="icon-box"><i data-lucide="book-open" class="text-tarmaq-red w-6 h-6"></i></div>
+                        <h3 class="font-bold text-lg mb-3">Academy Libre</h3>
+                        <p class="text-sm text-tarmaq-gray leading-relaxed">Formation gratuite aux technologies émergentes pour réduire la fracture numérique.</p>
+                    </div>
+                    <div class="card shadow-sm" onclick="navigateTo('residence')">
+                        <div class="icon-box"><i data-lucide="home" class="text-tarmaq-red w-6 h-6"></i></div>
+                        <h3 class="font-bold text-lg mb-3">Residence</h3>
+                        <p class="text-sm text-tarmaq-gray leading-relaxed">Un espace de vie et de co-création pour apprendre par la pratique en immersion.</p>
+                    </div>
+                    <div class="card shadow-sm" onclick="navigateTo('mobilite')">
+                        <div class="icon-box"><i data-lucide="globe" class="text-tarmaq-red w-6 h-6"></i></div>
+                        <h3 class="font-bold text-lg mb-3">Mobilité</h3>
+                        <p class="text-sm text-tarmaq-gray leading-relaxed">Programmes d'échanges et voyages éducatifs pour élargir les horizons culturels.</p>
+                    </div>
+                    <div class="card shadow-sm" onclick="navigateTo('launchpad')">
+                        <div class="icon-box"><i data-lucide="rocket" class="text-tarmaq-red w-6 h-6"></i></div>
+                        <h3 class="font-bold text-lg mb-3">Launchpad</h3>
+                        <p class="text-sm text-tarmaq-gray leading-relaxed">Pont stratégique pour les sociétés et entrepreneurs en quête d'impact et d'innovation.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Charte CTA Section -->
+        <section class="py-24 px-6">
+            <div class="max-w-7xl mx-auto">
+                <div class="bg-[#111111] rounded-lg p-12 md:p-16 flex flex-col md:flex-row items-center justify-between gap-8">
+                    <div class="text-white max-w-xl">
+                        <p class="text-tarmaq-red font-bold uppercase tracking-widest text-sm mb-3">📜 Notre engagement</p>
+                        <h2 class="text-3xl md:text-4xl font-black mb-4">Signez la Charte Tarmaq.</h2>
+                        <p class="text-gray-400 leading-relaxed">Manifestez votre soutien à notre mission pour un avenir numérique inclusif et responsable. Rejoignez les signataires qui partagent nos valeurs.</p>
+                    </div>
+                    <div class="flex flex-col gap-4 shrink-0">
+                        <a href="main-charte.html" class="btn-primary uppercase text-sm tracking-widest">
+                            Découvrir la charte
+                            <i data-lucide="scroll-text" class="w-4 h-4"></i>
+                        </a>
+                        <a href="charte.html" class="px-6 py-3 border-2 border-white text-white font-bold uppercase text-sm tracking-widest rounded text-center hover:bg-white hover:text-black transition-all">
+                            Signer maintenant
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- PAGE : ACADEMY LIBRE -->
+    <main id="page-academy" class="page-content">
+        <section class="pt-40 pb-20 px-6">
+            <div class="max-w-7xl mx-auto">
+                <nav class="flex gap-2 text-xs uppercase tracking-widest font-bold text-tarmaq-gray mb-8">
+                    <span class="hover:text-tarmaq-red cursor-pointer" onclick="navigateTo('home')">Accueil</span>
+                    <span>/</span>
+                    <span class="text-tarmaq-red">Academy Libre</span>
+                </nav>
+                <div class="grid lg:grid-cols-2 gap-16 items-center">
+                    <div>
+                        <h1 class="text-6xl font-black mb-8 leading-tight">L'éducation <br><span class="text-tarmaq-red">sans barrières.</span></h1>
+                        <p class="text-xl text-tarmaq-gray mb-8">L'Academy Libre offre des parcours de formation intensifs sur les technologies critiques. Notre modèle repose sur la gratuité totale pour les jeunes, financé par notre écosystème partenaire.</p>
+                        <div class="space-y-6">
+                            <div class="flex gap-4 items-start">
+                                <div class="w-10 h-10 rounded bg-black text-white flex items-center justify-center shrink-0 font-bold italic">IA</div>
+                                <div>
+                                    <h3 class="font-bold">Intelligence Artificielle</h3>
+                                    <p class="text-sm text-tarmaq-gray">Comprendre et maîtriser les outils génératifs et les modèles de données.</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-4 items-start">
+                                <div class="w-10 h-10 rounded bg-black text-white flex items-center justify-center shrink-0 font-bold italic">CY</div>
+                                <div>
+                                    <h3 class="font-bold">Cybersécurité</h3>
+                                    <p class="text-sm text-tarmaq-gray">Se former aux enjeux de protection des données et de défense numérique.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white p-8 rounded-lg shadow-xl border-t-8 border-tarmaq-red">
+                        <h2 class="text-2xl font-black mb-6">Inscriptions ouvertes</h2>
+                        <form class="space-y-4" onsubmit="event.preventDefault();">
+                            <input type="text" placeholder="Prénom & Nom" class="w-full p-4 bg-gray-50 border border-gray-100 rounded focus:border-tarmaq-red outline-none transition-all">
+                            <input type="email" placeholder="Email" class="w-full p-4 bg-gray-50 border border-gray-100 rounded focus:border-tarmaq-red outline-none transition-all">
+                            <select class="w-full p-4 bg-gray-50 border border-gray-100 rounded focus:border-tarmaq-red outline-none transition-all">
+                                <option>Choisir un parcours</option>
+                                <option>Intelligence Artificielle</option>
+                                <option>Cybersécurité</option>
+                                <option>Transformation Digitale</option>
+                            </select>
+                            <button class="btn-primary w-full justify-center py-4 uppercase tracking-widest">Candidater</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- PAGE : RESIDENCE -->
+    <main id="page-residence" class="page-content">
+        <section class="pt-40 pb-24 px-6">
+            <div class="max-w-7xl mx-auto">
+                <nav class="flex gap-2 text-xs uppercase tracking-widest font-bold text-tarmaq-gray mb-8">
+                    <span class="hover:text-tarmaq-red cursor-pointer" onclick="navigateTo('home')">Accueil</span>
+                    <span>/</span>
+                    <span class="text-tarmaq-red">Residence</span>
+                </nav>
+                <div class="grid lg:grid-cols-3 gap-8">
+                    <div class="lg:col-span-2">
+                        <div class="aspect-video bg-gray-200 rounded-lg overflow-hidden mb-12 shadow-2xl">
+                            <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=1200" alt="Espace de co-working Tarmaq" class="w-full h-full object-cover">
+                        </div>
+                        <h1 class="text-5xl font-black mb-6 uppercase italic">Un laboratoire <span class="text-tarmaq-red">de vie.</span></h1>
+                        <p class="text-xl text-tarmaq-gray leading-relaxed mb-8">Située au cœur de Genève, la Résidence Tarmaq n'est pas seulement un lieu de logement. C'est un espace hybride où cohabitent étudiants, mentors et entrepreneurs.</p>
+                        <div class="grid md:grid-cols-2 gap-8">
+                            <div class="p-6 bg-white border-l-4 border-black rounded">
+                                <h3 class="font-bold mb-2">Immersion 24/7</h3>
+                                <p class="text-sm text-tarmaq-gray">Vivre au contact de projets concrets et de technologies émergentes pour apprendre plus vite.</p>
+                            </div>
+                            <div class="p-6 bg-white border-l-4 border-black rounded">
+                                <h3 class="font-bold mb-2">Ateliers & Prototype</h3>
+                                <p class="text-sm text-tarmaq-gray">Accès illimité à nos espaces de co-working et zones de prototypage digital.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="space-y-6">
+                        <div class="bg-tarmaq-black text-white p-8 rounded-lg">
+                            <h2 class="text-xl font-bold mb-4 uppercase tracking-tighter italic">La Vie Tarmaq</h2>
+                            <ul class="space-y-4 text-sm text-gray-400">
+                                <li class="flex gap-3"><i data-lucide="check" class="text-tarmaq-red w-5 h-5"></i> Chambres privées / Dortoirs</li>
+                                <li class="flex gap-3"><i data-lucide="check" class="text-tarmaq-red w-5 h-5"></i> Cuisine communautaire</li>
+                                <li class="flex gap-3"><i data-lucide="check" class="text-tarmaq-red w-5 h-5"></i> Zone de hackathon</li>
+                                <li class="flex gap-3"><i data-lucide="check" class="text-tarmaq-red w-5 h-5"></i> Accès sécurisé 24/7</li>
+                            </ul>
+                        </div>
+                        <div class="border-2 border-dashed border-gray-300 p-8 text-center rounded-lg">
+                            <i data-lucide="camera" class="mx-auto w-8 h-8 text-gray-300 mb-4"></i>
+                            <p class="text-xs font-bold uppercase text-gray-400">Visite virtuelle bientôt disponible</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- PAGE : MOBILITÉ -->
+    <main id="page-mobilite" class="page-content">
+        <section class="pt-40 pb-24 px-6">
+            <div class="max-w-7xl mx-auto text-center">
+                <nav class="flex justify-center gap-2 text-xs uppercase tracking-widest font-bold text-tarmaq-gray mb-12">
+                    <span class="hover:text-tarmaq-red cursor-pointer" onclick="navigateTo('home')">Accueil</span>
+                    <span>/</span>
+                    <span class="text-tarmaq-red">Mobilité</span>
+                </nav>
+                <div class="max-w-3xl mx-auto mb-16">
+                    <h1 class="text-6xl font-black mb-8 leading-none">Genève est votre <span class="text-tarmaq-red italic">rampe de lancement.</span></h1>
+                    <p class="text-xl text-tarmaq-gray">Nous croyons que l'excellence se nourrit de la diversité des expériences. Tarmaq facilite la mobilité internationale pour ses résidents via des ponts académiques et professionnels.</p>
+                </div>
+                <div class="grid md:grid-cols-3 gap-8 text-left">
+                    <div class="bg-white p-8 rounded border border-gray-100 hover:border-tarmaq-red transition-all">
+                        <div class="w-12 h-12 bg-red-50 rounded flex items-center justify-center mb-6"><i data-lucide="plane" class="text-tarmaq-red"></i></div>
+                        <h3 class="font-bold text-lg mb-2">Voyages Exploratoires</h3>
+                        <p class="text-sm text-tarmaq-gray">Des séjours courts dans des hubs technologiques mondiaux pour observer les meilleures pratiques.</p>
+                    </div>
+                    <div class="bg-white p-8 rounded border border-gray-100 hover:border-tarmaq-red transition-all">
+                        <div class="w-12 h-12 bg-red-50 rounded flex items-center justify-center mb-6"><i data-lucide="users" class="text-tarmaq-red"></i></div>
+                        <h3 class="font-bold text-lg mb-2">Echanges Académiques</h3>
+                        <p class="text-sm text-tarmaq-gray">Partenariats avec des écoles internationales pour des crédits partagés et des hackathons mondiaux.</p>
+                    </div>
+                    <div class="bg-white p-8 rounded border border-gray-100 hover:border-tarmaq-red transition-all">
+                        <div class="w-12 h-12 bg-red-50 rounded flex items-center justify-center mb-6"><i data-lucide="map" class="text-tarmaq-red"></i></div>
+                        <h3 class="font-bold text-lg mb-2">Stage Outpost</h3>
+                        <p class="text-sm text-tarmaq-gray">Placement dans nos réseaux d'entreprises partenaires à l'étranger sous l'égide Tarmaq.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- PAGE : LAUNCHPAD -->
+    <main id="page-launchpad" class="page-content">
+        <section class="pt-40 pb-24 px-6">
+            <div class="max-w-7xl mx-auto">
+                <nav class="flex gap-2 text-xs uppercase tracking-widest font-bold text-tarmaq-gray mb-8">
+                    <span class="hover:text-tarmaq-red cursor-pointer" onclick="navigateTo('home')">Accueil</span>
+                    <span>/</span>
+                    <span class="text-tarmaq-red">Launchpad</span>
+                </nav>
+                <div class="grid lg:grid-cols-2 gap-16 items-start">
+                    <div>
+                        <h1 class="text-6xl font-black mb-8 leading-tight">Le moteur de <br><span class="text-tarmaq-red">l'écosystème.</span></h1>
+                        <p class="text-lg text-tarmaq-gray mb-12">Le Launchpad est le point de rencontre entre les talents formés chez Tarmaq et le tissu économique. Il s'adresse spécifiquement aux entreprises visionnaires et aux entrepreneurs audacieux.</p>
+                        
+                        <div class="grid md:grid-cols-2 gap-8">
+                            <!-- Section Sociétés -->
+                            <div class="bg-white p-8 rounded border border-gray-100 shadow-sm border-t-4 border-black">
+                                <div class="flex items-center gap-3 mb-6">
+                                    <i data-lucide="building-2" class="text-tarmaq-red w-8 h-8"></i>
+                                    <h2 class="text-xl font-bold">Sociétés</h2>
+                                </div>
+                                <ul class="space-y-4 text-sm text-tarmaq-gray">
+                                    <li class="flex items-start gap-2 italic">Matchmaking de talents digitaux certifiés.</li>
+                                    <li class="flex items-start gap-2 italic">Projets de transformation digitale clés en main.</li>
+                                    <li class="flex items-start gap-2 italic">Impact RSE mesurable via le soutien aux jeunes talents.</li>
+                                </ul>
+                                <button class="mt-8 text-black font-bold text-xs uppercase tracking-widest flex items-center gap-2 hover:text-tarmaq-red transition-all">
+                                    Devenir partenaire <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                                </button>
+                            </div>
+
+                            <!-- Section Entrepreneurs -->
+                            <div class="bg-white p-8 rounded border border-gray-100 shadow-sm border-t-4 border-tarmaq-red">
+                                <div class="flex items-center gap-3 mb-6">
+                                    <i data-lucide="rocket" class="text-tarmaq-red w-8 h-8"></i>
+                                    <h2 class="text-xl font-bold">Entrepreneurs</h2>
+                                </div>
+                                <ul class="space-y-4 text-sm text-tarmaq-gray">
+                                    <li class="flex items-start gap-2 italic">Accès à des mentors et experts technologiques.</li>
+                                    <li class="flex items-start gap-2 italic">Prototypage rapide dans notre laboratoire.</li>
+                                    <li class="flex items-start gap-2 italic">Mise en réseau avec les investisseurs de la place.</li>
+                                </ul>
+                                <button class="mt-8 text-black font-bold text-xs uppercase tracking-widest flex items-center gap-2 hover:text-tarmaq-red transition-all">
+                                    Lancer son projet <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="relative hidden lg:block">
+                        <div class="aspect-[4/5] bg-gray-900 rounded-lg overflow-hidden relative">
+                             <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=800" alt="Networking chez Tarmaq" class="w-full h-full object-cover opacity-60">
+                             <div class="absolute inset-0 p-12 flex flex-col justify-end text-white">
+                                <p class="text-4xl font-black italic uppercase mb-4 tracking-tighter">Ici, les idées <br><span class="text-tarmaq-red">décollent.</span></p>
+                                <p class="text-sm text-gray-400">Launchpad : La plateforme d'accélération pour Genève et au-delà.</p>
+                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Partagé -->
+    <footer class="bg-[#F9F8F5] py-16 border-t border-gray-100">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-start gap-12">
+            <div>
+                <div class="flex items-center gap-3 mb-6 group">
+                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 text-tarmaq-black group-hover:text-tarmaq-red transition-colors">
+                        <path d="M22 2L11 13"></path>
+                        <path d="M22 2L15 22L11 13L2 9L22 2Z"></path>
+                    </svg>
+                    <span class="text-xl font-black uppercase tracking-tighter text-tarmaq-black" style="font-family: 'Montserrat', sans-serif;">Tarmaq</span>
+                </div>
+                <p class="text-sm text-tarmaq-gray max-w-xs">Le catalyseur d'opportunités de la jeunesse genevoise. Ensemble, construisons le cercle vertueux de demain.</p>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-12 text-left">
                 <div>
-                  <h4 class="font-semibold" data-i18n="objectives.plan.phase2.title">Phase Croissance (2025-2026)</h4>
-                  <p class="text-gray-600 text-sm" data-i18n="objectives.plan.phase2.description">Élargir les formations, développer les partenariats, mesurer l'impact.</p>
+                    <p class="font-bold text-xs uppercase tracking-widest mb-4">Navigation</p>
+                    <ul class="text-sm text-tarmaq-gray space-y-2">
+                        <li><a href="Tarmaq.pdf" target="_blank" class="hover:text-tarmaq-red cursor-pointer">Vision (PDF)</a></li>
+                        <li><a onclick="navigateTo('academy')" class="hover:text-tarmaq-red cursor-pointer">Academy</a></li>
+                        <li><a onclick="navigateTo('launchpad')" class="hover:text-tarmaq-red cursor-pointer">Launchpad</a></li>
+                        <li><a href="main-charte.html" class="hover:text-tarmaq-red cursor-pointer">Charte</a></li>
+                    </ul>
                 </div>
-              </div>
-              <div class="flex items-start space-x-4">
-                <div class="w-8 h-8 bg-primary rounded-full flex items-center justify-center flex-shrink-0 text-white font-bold">3</div>
                 <div>
-                  <h4 class="font-semibold" data-i18n="objectives.plan.phase3.title">Phase Expansion (2027-2030)</h4>
-                  <p class="text-gray-600 text-sm" data-i18n="objectives.plan.phase3.description">Répliquer le modèle, atteindre l'autonomie, devenir la référence régionale.</p>
+                    <p class="font-bold text-xs uppercase tracking-widest mb-4">Contact</p>
+                    <ul class="text-sm text-tarmaq-gray space-y-2">
+                        <li>Genève, Suisse</li>
+                        <li>hello@tarmaq.ch</li>
+                    </ul>
                 </div>
-              </div>
+                <div>
+                    <p class="font-bold text-xs uppercase tracking-widest mb-4">Social</p>
+                    <div class="flex gap-4">
+                        <a href="#" class="text-tarmaq-gray hover:text-tarmaq-red"><i data-lucide="linkedin"></i></a>
+                        <a href="#" class="text-tarmaq-gray hover:text-tarmaq-red"><i data-lucide="instagram"></i></a>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
-    </section>
-
-    <!-- Programs Preview -->
-    <section class="py-20 bg-white">
-      <div class="container mx-auto px-4">
-        <div class="text-center mb-16">
-          <h2 class="text-4xl font-bold mb-4" data-i18n="programs.title">
-            Nos programmes
-          </h2>
-          <p class="text-xl text-gray-600" data-i18n="programs.subtitle">
-            Des formations et activités conçues pour développer les compétences
-            du futur
-          </p>
+        <div class="max-w-7xl mx-auto px-6 mt-16 pt-8 border-t border-gray-200 text-xs text-tarmaq-gray flex justify-between">
+            <p>© 2026 Tarmaq.ch - Tous droits réservés.</p>
+            <p>Inspiré par l'Excellence Suisse.</p>
         </div>
-
-        <div class="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-          <!-- Program 1 -->
-          <div
-            class="bg-gradient-to-br from-accent to-white p-8 rounded-2xl border border-gray-200 hover:shadow-xl transition"
-          >
-            <div class="flex items-start space-x-4">
-              <div
-                class="w-12 h-12 bg-primary rounded-xl flex items-center justify-center flex-shrink-0"
-              >
-                <i class="fas fa-brain text-white text-xl"></i>
-              </div>
-              <div>
-                <h3
-                  class="text-2xl font-bold mb-3"
-                  data-i18n="programs.ai.title"
-                >
-                  Formation IA
-                </h3>
-                <p
-                  class="text-gray-600 mb-4"
-                  data-i18n="programs.ai.description"
-                >
-                  Ateliers pratiques et théoriques sur l'intelligence
-                  artificielle, le machine learning et les applications
-                  concrètes.
-                </p>
-                <a
-                  href="activites.html"
-                  class="text-primary font-semibold hover:underline"
-                  data-i18n="programs.learn_more"
-                >
-                  En savoir plus →
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Program 2 -->
-          <div
-            class="bg-gradient-to-br from-accent to-white p-8 rounded-2xl border border-gray-200 hover:shadow-xl transition"
-          >
-            <div class="flex items-start space-x-4">
-              <div
-                class="w-12 h-12 bg-primary rounded-xl flex items-center justify-center flex-shrink-0"
-              >
-                <i class="fas fa-code text-white text-xl"></i>
-              </div>
-              <div>
-                <h3
-                  class="text-2xl font-bold mb-3"
-                  data-i18n="programs.hackathon.title"
-                >
-                  Hackathons
-                </h3>
-                <p
-                  class="text-gray-600 mb-4"
-                  data-i18n="programs.hackathon.description"
-                >
-                  Événements intensifs pour développer des solutions innovantes
-                  en équipe sur des défis concrets.
-                </p>
-                <a
-                  href="activites.html"
-                  class="text-primary font-semibold hover:underline"
-                  data-i18n="programs.learn_more"
-                >
-                  En savoir plus →
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Program 3 -->
-          <div
-            class="bg-gradient-to-br from-accent to-white p-8 rounded-2xl border border-gray-200 hover:shadow-xl transition"
-          >
-            <div class="flex items-start space-x-4">
-              <div
-                class="w-12 h-12 bg-primary rounded-xl flex items-center justify-center flex-shrink-0"
-              >
-                <i class="fas fa-plane text-white text-xl"></i>
-              </div>
-              <div>
-                <h3
-                  class="text-2xl font-bold mb-3"
-                  data-i18n="programs.travel.title"
-                >
-                  Voyages éducatifs
-                </h3>
-                <p
-                  class="text-gray-600 mb-4"
-                  data-i18n="programs.travel.description"
-                >
-                  Découverte des écosystèmes tech internationaux et rencontres
-                  avec des leaders de l'industrie.
-                </p>
-                <a
-                  href="activites.html"
-                  class="text-primary font-semibold hover:underline"
-                  data-i18n="programs.learn_more"
-                >
-                  En savoir plus →
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Program 4 -->
-          <div
-            class="bg-gradient-to-br from-accent to-white p-8 rounded-2xl border border-gray-200 hover:shadow-xl transition"
-          >
-            <div class="flex items-start space-x-4">
-              <div
-                class="w-12 h-12 bg-primary rounded-xl flex items-center justify-center flex-shrink-0"
-              >
-                <i class="fas fa-handshake text-white text-xl"></i>
-              </div>
-              <div>
-                <h3
-                  class="text-2xl font-bold mb-3"
-                  data-i18n="programs.mentoring.title"
-                >
-                  Programme de mentorat
-                </h3>
-                <p
-                  class="text-gray-600 mb-4"
-                  data-i18n="programs.mentoring.description"
-                >
-                  Accompagnement individuel par des professionnels pour le
-                  développement de carrière.
-                </p>
-                <a
-                  href="activites.html"
-                  class="text-primary font-semibold hover:underline"
-                  data-i18n="programs.learn_more"
-                >
-                  En savoir plus →
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="py-20 bg-primary text-white">
-      <div class="container mx-auto px-4 text-center">
-        <h2 class="text-4xl font-bold mb-6" data-i18n="cta.title">
-          Rejoignez l'aventure tarmaq
-        </h2>
-        <p
-          class="text-xl mb-8 opacity-90 max-w-2xl mx-auto"
-          data-i18n="cta.description"
-        >
-          Que vous soyez un jeune talent, un mentor, un partenaire ou un mécène,
-          il y a une place pour vous dans notre écosystème.
-        </p>
-        <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <a
-            href="contact.html"
-            class="bg-white text-primary hover:bg-gray-100 px-8 py-4 rounded-full font-semibold text-lg transition inline-flex items-center justify-center"
-            data-i18n="cta.btn1"
-          >
-            Nous contacter
-          </a>
-          <a
-            href="soutenir.html"
-            class="border-2 border-white text-white hover:bg-white hover:text-primary px-8 py-4 rounded-full font-semibold text-lg transition inline-flex items-center justify-center"
-            data-i18n="cta.btn2"
-          >
-            Devenir partenaire
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="bg-secondary text-white py-12">
-      <div class="container mx-auto px-4">
-        <div class="grid md:grid-cols-4 gap-8 mb-8">
-          <!-- About -->
-          <div>
-            <img src="assets/logo.png" alt="tarmaq" class="h-12 mb-4" />
-            <p class="text-gray-400 text-sm" data-i18n="footer.about">
-              Catalyseur d'opportunité pour les jeunes talents, la création et
-              l'innovation.
-            </p>
-          </div>
-
-          <!-- Quick Links -->
-          <div>
-            <h4 class="font-bold mb-4" data-i18n="footer.links">
-              Liens rapides
-            </h4>
-            <ul class="space-y-2 text-gray-400 text-sm">
-              <li>
-                <a
-                  href="projet.html"
-                  class="hover:text-white transition"
-                  data-i18n="nav.project"
-                  >Le projet</a
-                >
-              </li>
-              <li>
-                <a
-                  href="activites.html"
-                  class="hover:text-white transition"
-                  data-i18n="nav.activities"
-                  >Activités</a
-                >
-              </li>
-              <li>
-                <a
-                  href="impact.html"
-                  class="hover:text-white transition"
-                  data-i18n="nav.impact"
-                  >Impact</a
-                >
-              </li>
-              <li>
-                <a
-                  href="soutenir.html"
-                  class="hover:text-white transition"
-                  data-i18n="nav.support"
-                  >Nous soutenir</a
-                >
-              </li>
-              <li>
-                <a
-                  href="dashboard.html"
-                  class="hover:text-white transition"
-                  data-i18n="nav.dashboard"
-                  >Dashboard</a
-                >
-              </li>
-            </ul>
-          </div>
-
-          <!-- Contact -->
-          <div>
-            <h4 class="font-bold mb-4" data-i18n="footer.contact">Contact</h4>
-            <ul class="space-y-2 text-gray-400 text-sm">
-              <li>
-                <i class="fas fa-envelope mr-2"></i>bastien@bdi-solutions.com
-              </li>
-              <li><i class="fas fa-phone mr-2"></i>+41 79 670 77 43</li>
-              <li>
-                <i class="fas fa-map-marker-alt mr-2"></i>11 avenue
-                Eugène-Pittard, 1206 Genève
-              </li>
-            </ul>
-          </div>
-
-          <!-- Newsletter -->
-          <div>
-            <h4 class="font-bold mb-4" data-i18n="footer.newsletter">
-              Restez Informé
-            </h4>
-            <p
-              class="text-gray-400 text-sm mb-4"
-              data-i18n="footer.newsletter.description"
-            >
-              Recevez nos dernières actualités et opportunités.
-            </p>
-            <a
-              href="contact.html"
-              class="bg-primary hover:bg-red-700 text-white px-4 py-2 rounded-full text-sm transition inline-flex items-center"
-              data-i18n="footer.newsletter.cta"
-            >
-              Nous Contacter
-            </a>
-          </div>
-        </div>
-
-        <div
-          class="border-t border-gray-700 pt-8 text-center text-gray-400 text-sm"
-        >
-          <p>
-            &copy; 2025 tarmaq.
-            <span data-i18n="footer.rights">Tous droits réservés.</span>
-          </p>
-        </div>
-      </div>
     </footer>
 
-    <!-- Presentation Modal -->
-    <div
-      id="presentationModal"
-      class="fixed inset-0 bg-black bg-opacity-75 z-50 hidden items-center justify-center p-4"
-      onclick="closePresentationModal(event)"
-    >
-      <div
-        class="bg-white rounded-lg max-w-7xl w-full max-h-[90vh] overflow-hidden relative"
-        onclick="event.stopPropagation()"
-      >
-        <button
-          onclick="closePresentationModal()"
-          class="absolute top-4 right-4 z-10 bg-white rounded-full p-2 hover:bg-gray-100 transition shadow-lg"
-          aria-label="Close"
-        >
-          <i class="fas fa-times text-gray-700 text-xl"></i>
-        </button>
-        <div class="w-full h-[90vh] overflow-auto">
-          <iframe
-            src="https://docs.google.com/presentation/d/e/2PACX-1vRXQWltZGR4JxYtQ4KRrX4-_Hxx40JxUAnrOTLlK21GlgVD0SC6qoCneSJr12bJP00zw9n9MW9-r5e0/pubembed?start=true&loop=false&delayms=10000"
-            frameborder="0"
-            width="100%"
-            height="100%"
-            allowfullscreen="true"
-            mozallowfullscreen="true"
-            webkitallowfullscreen="true"
-            style="min-height: 600px"
-          ></iframe>
-        </div>
-      </div>
-    </div>
-
-    <!-- Scripts -->
-    <script src="js/header.js"></script>
-    <script src="js/i18n.js"></script>
-    <script src="js/main.js"></script>
     <script>
-      function openPresentationModal() {
-        const modal = document.getElementById('presentationModal');
-        modal.classList.remove('hidden');
-        modal.classList.add('flex');
-        document.body.style.overflow = 'hidden';
-      }
+        // Gestion de la navigation
+        function navigateTo(pageId) {
+            // Cacher toutes les pages
+            document.querySelectorAll('.page-content').forEach(page => {
+                page.classList.remove('active');
+            });
+            
+            // Afficher la page cible
+            const target = document.getElementById('page-' + pageId);
+            if (target) {
+                target.classList.add('active');
+                window.scrollTo(0, 0);
+            }
 
-      function closePresentationModal(event) {
-        if (event && event.target !== event.currentTarget) {
-          return;
+            // Mettre à jour l'état actif des liens
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+            });
+            const activeNav = document.getElementById('nav-' + pageId);
+            if (activeNav) activeNav.classList.add('active');
         }
-        const modal = document.getElementById('presentationModal');
-        modal.classList.add('hidden');
-        modal.classList.remove('flex');
-        document.body.style.overflow = '';
-      }
 
-      // Close modal on Escape key
-      document.addEventListener('keydown', function (event) {
-        if (event.key === 'Escape') {
-          closePresentationModal();
-        }
-      });
+        // Initialisation des icônes Lucide
+        lucide.createIcons();
     </script>
-  </body>
+</body>
 </html>
