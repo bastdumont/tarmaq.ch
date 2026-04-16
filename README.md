@@ -1,7 +1,7 @@
 # 🌟 TARMAQ Website - Documentation Complète
 
-**Version**: 3.1 - Static HTML Pure  
-**Date**: 2025-10-22  
+**Version**: 3.2 - Static HTML Pure  
+**Date**: 2026-04-13  
 **Status**: ✅ Production Ready
 
 ---
@@ -25,6 +25,12 @@
 ## 🎯 Vue d'ensemble
 
 **TARMAQ** est un site web statique multilingue pour une organisation jeunesse tech basée à Genève. Le site présente les activités, programmes et valeurs de TARMAQ avec un focus sur l'innovation, l'entrepreneuriat et la formation technologique.
+
+### 🆕 Mise à jour récente
+
+- Ajout de deux pages internes dans `index.html` : `Workshops` et `Events`
+- Ajout de la navigation dédiée `Workshops` et `Events` dans le header principal
+- Ajout des liens `Workshops` et `Events` dans la navigation du footer
 
 ### ✨ Caractéristiques Principales
 

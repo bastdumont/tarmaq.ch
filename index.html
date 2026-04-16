@@ -104,6 +104,8 @@
             
             <nav class="hidden md:flex items-center gap-8">
                 <a onclick="navigateTo('academy')" class="nav-link" id="nav-academy">Academy</a>
+                <a onclick="navigateTo('workshops')" class="nav-link" id="nav-workshops">Workshops</a>
+                <a onclick="navigateTo('events')" class="nav-link" id="nav-events">Events</a>
                 <a onclick="navigateTo('mobilite')" class="nav-link" id="nav-mobilite">Mobilité</a>
                 <a onclick="navigateTo('launchpad')" class="nav-link" id="nav-launchpad">Launchpad</a>
                 <a href="main-charte.html" class="nav-link" id="nav-charte">Charte</a>
@@ -185,11 +187,21 @@
                     <h2 class="text-4xl font-black">Apprendre par l'aventure.</h2>
                 </div>
 
-                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                     <div class="card shadow-sm" onclick="navigateTo('academy')">
                         <div class="icon-box"><i data-lucide="book-open" class="text-tarmaq-red w-6 h-6"></i></div>
                         <h3 class="font-bold text-lg mb-3">Academy Libre</h3>
                         <p class="text-sm text-tarmaq-gray leading-relaxed">Formation gratuite aux technologies émergentes pour réduire la fracture numérique.</p>
+                    </div>
+                    <div class="card shadow-sm" onclick="navigateTo('workshops')">
+                        <div class="icon-box"><i data-lucide="presentation" class="text-tarmaq-red w-6 h-6"></i></div>
+                        <h3 class="font-bold text-lg mb-3">Workshops</h3>
+                        <p class="text-sm text-tarmaq-gray leading-relaxed">Ateliers pratiques orientés compétences terrain, mentorat et prototypage rapide.</p>
+                    </div>
+                    <div class="card shadow-sm" onclick="navigateTo('events')">
+                        <div class="icon-box"><i data-lucide="calendar-days" class="text-tarmaq-red w-6 h-6"></i></div>
+                        <h3 class="font-bold text-lg mb-3">Events</h3>
+                        <p class="text-sm text-tarmaq-gray leading-relaxed">Rencontres, hackathons et conférences pour connecter les talents à l'écosystème.</p>
                     </div>
                     <div class="card shadow-sm" onclick="navigateTo('residence')">
                         <div class="icon-box"><i data-lucide="home" class="text-tarmaq-red w-6 h-6"></i></div>
@@ -329,6 +341,90 @@
         </section>
     </main>
 
+    <!-- PAGE : WORKSHOPS -->
+    <main id="page-workshops" class="page-content">
+        <section class="pt-40 pb-24 px-6">
+            <div class="max-w-7xl mx-auto">
+                <nav class="flex gap-2 text-xs uppercase tracking-widest font-bold text-tarmaq-gray mb-8">
+                    <span class="hover:text-tarmaq-red cursor-pointer" onclick="navigateTo('home')">Accueil</span>
+                    <span>/</span>
+                    <span class="text-tarmaq-red">Workshops</span>
+                </nav>
+                <div class="grid lg:grid-cols-2 gap-12 items-start">
+                    <div>
+                        <h1 class="text-5xl font-black mb-6 leading-tight">Des workshops <span class="text-tarmaq-red">concrets.</span></h1>
+                        <p class="text-xl text-tarmaq-gray mb-10">Nos workshops sont pensés pour apprendre vite, pratiquer immédiatement et repartir avec des compétences activables.</p>
+                        <div class="space-y-6">
+                            <div class="bg-white border border-gray-100 rounded-lg p-6 shadow-sm">
+                                <h3 class="font-bold mb-2">Ateliers IA générative</h3>
+                                <p class="text-sm text-tarmaq-gray">Prompting, automatisation et prototypage d'agents adaptés aux besoins terrain.</p>
+                            </div>
+                            <div class="bg-white border border-gray-100 rounded-lg p-6 shadow-sm">
+                                <h3 class="font-bold mb-2">Cybersécurité pratique</h3>
+                                <p class="text-sm text-tarmaq-gray">Sensibilisation offensive/défensive, hygiène numérique et plans d'action concrets.</p>
+                            </div>
+                            <div class="bg-white border border-gray-100 rounded-lg p-6 shadow-sm">
+                                <h3 class="font-bold mb-2">No-code & product design</h3>
+                                <p class="text-sm text-tarmaq-gray">De l'idée au prototype testable en une journée avec feedback mentor.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-tarmaq-black text-white p-8 rounded-lg">
+                        <p class="text-tarmaq-red text-xs uppercase tracking-widest font-bold mb-3">Format</p>
+                        <h2 class="text-2xl font-black mb-6">Sessions hebdomadaires</h2>
+                        <ul class="space-y-4 text-sm text-gray-300">
+                            <li class="flex gap-3"><i data-lucide="check" class="text-tarmaq-red w-5 h-5"></i> Groupes de 12 à 20 participants</li>
+                            <li class="flex gap-3"><i data-lucide="check" class="text-tarmaq-red w-5 h-5"></i> Cas pratiques issus de partenaires</li>
+                            <li class="flex gap-3"><i data-lucide="check" class="text-tarmaq-red w-5 h-5"></i> Encadrement par mentors experts</li>
+                            <li class="flex gap-3"><i data-lucide="check" class="text-tarmaq-red w-5 h-5"></i> Certification de participation</li>
+                        </ul>
+                        <button class="btn-primary mt-8 uppercase text-sm tracking-widest">Proposer un workshop</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- PAGE : EVENTS -->
+    <main id="page-events" class="page-content">
+        <section class="pt-40 pb-24 px-6">
+            <div class="max-w-7xl mx-auto">
+                <nav class="flex gap-2 text-xs uppercase tracking-widest font-bold text-tarmaq-gray mb-8">
+                    <span class="hover:text-tarmaq-red cursor-pointer" onclick="navigateTo('home')">Accueil</span>
+                    <span>/</span>
+                    <span class="text-tarmaq-red">Events</span>
+                </nav>
+                <div class="max-w-3xl mb-12">
+                    <h1 class="text-5xl font-black mb-6 leading-tight">Des events pour <span class="text-tarmaq-red">connecter l'écosystème.</span></h1>
+                    <p class="text-xl text-tarmaq-gray">Chaque événement Tarmaq crée des passerelles entre jeunes talents, mentors, entreprises et institutions.</p>
+                </div>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="bg-white border border-gray-100 rounded-lg p-8">
+                        <div class="w-12 h-12 bg-red-50 rounded flex items-center justify-center mb-6">
+                            <i data-lucide="calendar" class="text-tarmaq-red"></i>
+                        </div>
+                        <h3 class="font-bold text-lg mb-2">Tech Talks</h3>
+                        <p class="text-sm text-tarmaq-gray">Conférences avec experts locaux et internationaux sur les tendances clés.</p>
+                    </div>
+                    <div class="bg-white border border-gray-100 rounded-lg p-8">
+                        <div class="w-12 h-12 bg-red-50 rounded flex items-center justify-center mb-6">
+                            <i data-lucide="trophy" class="text-tarmaq-red"></i>
+                        </div>
+                        <h3 class="font-bold text-lg mb-2">Hackathons</h3>
+                        <p class="text-sm text-tarmaq-gray">Formats intensifs pour prototyper en équipe et accélérer l'apprentissage.</p>
+                    </div>
+                    <div class="bg-white border border-gray-100 rounded-lg p-8">
+                        <div class="w-12 h-12 bg-red-50 rounded flex items-center justify-center mb-6">
+                            <i data-lucide="handshake" class="text-tarmaq-red"></i>
+                        </div>
+                        <h3 class="font-bold text-lg mb-2">Networking Nights</h3>
+                        <p class="text-sm text-tarmaq-gray">Rencontres ciblées entre talents, recruteurs et partenaires du territoire.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
     <!-- PAGE : MOBILITÉ -->
     <main id="page-mobilite" class="page-content">
         <section class="pt-40 pb-24 px-6">
@@ -445,6 +541,8 @@
                     <ul class="text-sm text-tarmaq-gray space-y-2">
                         <li><a href="Tarmaq.pdf" target="_blank" class="hover:text-tarmaq-red cursor-pointer">Vision (PDF)</a></li>
                         <li><a onclick="navigateTo('academy')" class="hover:text-tarmaq-red cursor-pointer">Academy</a></li>
+                        <li><a onclick="navigateTo('workshops')" class="hover:text-tarmaq-red cursor-pointer">Workshops</a></li>
+                        <li><a onclick="navigateTo('events')" class="hover:text-tarmaq-red cursor-pointer">Events</a></li>
                         <li><a onclick="navigateTo('launchpad')" class="hover:text-tarmaq-red cursor-pointer">Launchpad</a></li>
                         <li><a href="main-charte.html" class="hover:text-tarmaq-red cursor-pointer">Charte</a></li>
                     </ul>
