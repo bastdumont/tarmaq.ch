@@ -30,7 +30,43 @@ const translations = {
         'mission.card3.description': 'Espace d\'expérimentation et d\'innovation pour développer des projets concrets et impactants.',
         'mission.card4.title': 'Voyages',
         'mission.card4.description': 'Voyages éducatifs pour découvrir les écosystèmes tech internationaux et rencontrer des leaders de l\'industrie.',
-        
+
+        // Problem Section
+        'problem.badge': 'Le défi',
+        'problem.title': 'Un fossé numérique qui s\'élargit',
+        'problem.description': 'Les jeunes talents de Suisse romande font face à des barrières significatives pour accéder aux technologies émergentes. L\'éducation traditionnelle ne suit pas le rythme de l\'innovation.',
+        'problem.card1.title': 'Formations coûteuses',
+        'problem.card1.description': 'Les formations tech de qualité sont souvent hors de portée financière pour de nombreux jeunes motivés.',
+        'problem.card2.title': 'Manque de réseau',
+        'problem.card2.description': 'Sans connexions dans l\'industrie, les jeunes peinent à trouver des mentors et des opportunités concrètes.',
+        'problem.card3.title': 'Exposition limitée',
+        'problem.card3.description': 'Peu d\'accès aux écosystèmes tech internationaux et aux meilleures pratiques mondiales.',
+
+        // Solution Section
+        'solution.badge': 'Notre réponse',
+        'solution.title': 'tarmaq : Catalyseur d\'opportunité',
+        'solution.description': 'Nous démocratisons l\'accès aux technologies émergentes et accompagnons les jeunes talents dans leur développement professionnel.',
+
+        // Objectives Section
+        'objectives.badge': 'Vision 2030',
+        'objectives.title': 'Nos objectifs',
+        'objectives.description': 'D\'ici 2030, tarmaq sera le catalyseur de référence en Suisse romande pour les jeunes talents en technologies émergentes.',
+        'objectives.stat1.value': '5\'000+',
+        'objectives.stat1.label': 'Jeunes formés',
+        'objectives.stat2.value': '100+',
+        'objectives.stat2.label': 'Partenaires entreprises',
+        'objectives.stat3.value': '200+',
+        'objectives.stat3.label': 'Projets innovants',
+        'objectives.stat4.value': '80%',
+        'objectives.stat4.label': 'Taux d\'insertion',
+        'objectives.plan.title': 'Notre plan stratégique',
+        'objectives.plan.phase1.title': 'Phase Fondation (2023-2024)',
+        'objectives.plan.phase1.description': 'Lancer les premiers programmes, constituer l\'équipe et le réseau de mentors.',
+        'objectives.plan.phase2.title': 'Phase Croissance (2025-2026)',
+        'objectives.plan.phase2.description': 'Élargir les formations, développer les partenariats, mesurer l\'impact.',
+        'objectives.plan.phase3.title': 'Phase Expansion (2027-2030)',
+        'objectives.plan.phase3.description': 'Répliquer le modèle, atteindre l\'autonomie, devenir la référence régionale.',
+
         // Statistics
         'stats.participants': 'Jeunes formés',
         'stats.mentors': 'Mentors actifs',
@@ -247,7 +283,43 @@ const translations = {
         'mission.card3.description': 'Experimentation and innovation space to develop concrete and impactful projects.',
         'mission.card4.title': 'Travel',
         'mission.card4.description': 'Educational trips to discover international tech ecosystems and meet industry leaders.',
-        
+
+        // Problem Section
+        'problem.badge': 'The Challenge',
+        'problem.title': 'A Widening Digital Divide',
+        'problem.description': 'Young talents in French-speaking Switzerland face significant barriers to accessing emerging technologies. Traditional education cannot keep pace with innovation.',
+        'problem.card1.title': 'Expensive Training',
+        'problem.card1.description': 'Quality tech training is often financially out of reach for many motivated young people.',
+        'problem.card2.title': 'Lack of Network',
+        'problem.card2.description': 'Without industry connections, young people struggle to find mentors and concrete opportunities.',
+        'problem.card3.title': 'Limited Exposure',
+        'problem.card3.description': 'Little access to international tech ecosystems and global best practices.',
+
+        // Solution Section
+        'solution.badge': 'Our Response',
+        'solution.title': 'tarmaq: Opportunity Catalyst',
+        'solution.description': 'We democratize access to emerging technologies and support young talents in their professional development.',
+
+        // Objectives Section
+        'objectives.badge': 'Vision 2030',
+        'objectives.title': 'Our Objectives',
+        'objectives.description': 'By 2030, tarmaq will be the reference catalyst in French-speaking Switzerland for young talents in emerging technologies.',
+        'objectives.stat1.value': '5,000+',
+        'objectives.stat1.label': 'Youth Trained',
+        'objectives.stat2.value': '100+',
+        'objectives.stat2.label': 'Corporate Partners',
+        'objectives.stat3.value': '200+',
+        'objectives.stat3.label': 'Innovative Projects',
+        'objectives.stat4.value': '80%',
+        'objectives.stat4.label': 'Placement Rate',
+        'objectives.plan.title': 'Our Strategic Plan',
+        'objectives.plan.phase1.title': 'Foundation Phase (2023-2024)',
+        'objectives.plan.phase1.description': 'Launch initial programs, build core team and mentor network.',
+        'objectives.plan.phase2.title': 'Growth Phase (2025-2026)',
+        'objectives.plan.phase2.description': 'Expand training offerings, develop partnerships, measure impact.',
+        'objectives.plan.phase3.title': 'Expansion Phase (2027-2030)',
+        'objectives.plan.phase3.description': 'Replicate model, achieve sustainability, become regional reference.',
+
         // Statistics
         'stats.participants': 'Trained Youth',
         'stats.mentors': 'Active Mentors',
@@ -590,7 +662,43 @@ const translations = {
         'mission.card3.description': 'Experimentier- und Innovationsraum zur Entwicklung konkreter und wirkungsvoller Projekte.',
         'mission.card4.title': 'Reisen',
         'mission.card4.description': 'Bildungsreisen zur Entdeckung internationaler Tech-Ökosysteme und zum Treffen mit Branchenführern.',
-        
+
+        // Problem Section
+        'problem.badge': 'Die Herausforderung',
+        'problem.title': 'Eine wachsende digitale Kluft',
+        'problem.description': 'Junge Talente in der französischsprachigen Schweiz stehen vor erheblichen Hindernissen beim Zugang zu neuen Technologien. Die traditionelle Bildung kann mit dem Innovationstempo nicht mithalten.',
+        'problem.card1.title': 'Teure Ausbildungen',
+        'problem.card1.description': 'Qualitativ hochwertige Tech-Ausbildungen sind für viele motivierte junge Menschen finanziell unerreichbar.',
+        'problem.card2.title': 'Fehlendes Netzwerk',
+        'problem.card2.description': 'Ohne Branchenkontakte finden junge Menschen schwer Mentoren und konkrete Möglichkeiten.',
+        'problem.card3.title': 'Begrenzte Exposition',
+        'problem.card3.description': 'Wenig Zugang zu internationalen Tech-Ökosystemen und globalen Best Practices.',
+
+        // Solution Section
+        'solution.badge': 'Unsere Antwort',
+        'solution.title': 'tarmaq: Katalysator für Gelegenheiten',
+        'solution.description': 'Wir demokratisieren den Zugang zu neuen Technologien und unterstützen junge Talente in ihrer beruflichen Entwicklung.',
+
+        // Objectives Section
+        'objectives.badge': 'Vision 2030',
+        'objectives.title': 'Unsere Ziele',
+        'objectives.description': 'Bis 2030 wird tarmaq der Referenz-Katalysator in der französischsprachigen Schweiz für junge Talente in neuen Technologien sein.',
+        'objectives.stat1.value': '5\'000+',
+        'objectives.stat1.label': 'Ausgebildete Jugendliche',
+        'objectives.stat2.value': '100+',
+        'objectives.stat2.label': 'Unternehmenspartner',
+        'objectives.stat3.value': '200+',
+        'objectives.stat3.label': 'Innovative Projekte',
+        'objectives.stat4.value': '80%',
+        'objectives.stat4.label': 'Vermittlungsquote',
+        'objectives.plan.title': 'Unser strategischer Plan',
+        'objectives.plan.phase1.title': 'Gründungsphase (2023-2024)',
+        'objectives.plan.phase1.description': 'Erste Programme starten, Kernteam und Mentorennetzwerk aufbauen.',
+        'objectives.plan.phase2.title': 'Wachstumsphase (2025-2026)',
+        'objectives.plan.phase2.description': 'Schulungsangebote erweitern, Partnerschaften entwickeln, Wirkung messen.',
+        'objectives.plan.phase3.title': 'Expansionsphase (2027-2030)',
+        'objectives.plan.phase3.description': 'Modell replizieren, Nachhaltigkeit erreichen, regionale Referenz werden.',
+
         // Statistics
         'stats.participants': 'Ausgebildete Jugendliche',
         'stats.mentors': 'Aktive Mentoren',
@@ -933,7 +1041,43 @@ const translations = {
         'mission.card3.description': 'Spazio di sperimentazione e innovazione per sviluppare progetti concreti e di impatto.',
         'mission.card4.title': 'Viaggi',
         'mission.card4.description': 'Viaggi educativi per scoprire gli ecosistemi tech internazionali e incontrare i leader del settore.',
-        
+
+        // Problem Section
+        'problem.badge': 'La Sfida',
+        'problem.title': 'Un divario digitale che si allarga',
+        'problem.description': 'I giovani talenti della Svizzera romanda affrontano barriere significative nell\'accesso alle tecnologie emergenti. L\'istruzione tradizionale non riesce a stare al passo con l\'innovazione.',
+        'problem.card1.title': 'Formazioni costose',
+        'problem.card1.description': 'Le formazioni tech di qualità sono spesso finanziariamente fuori portata per molti giovani motivati.',
+        'problem.card2.title': 'Mancanza di rete',
+        'problem.card2.description': 'Senza connessioni nel settore, i giovani faticano a trovare mentor e opportunità concrete.',
+        'problem.card3.title': 'Esposizione limitata',
+        'problem.card3.description': 'Poco accesso agli ecosistemi tech internazionali e alle migliori pratiche globali.',
+
+        // Solution Section
+        'solution.badge': 'La Nostra Risposta',
+        'solution.title': 'tarmaq: Catalizzatore di Opportunità',
+        'solution.description': 'Democratizziamo l\'accesso alle tecnologie emergenti e accompagniamo i giovani talenti nel loro sviluppo professionale.',
+
+        // Objectives Section
+        'objectives.badge': 'Visione 2030',
+        'objectives.title': 'I Nostri Obiettivi',
+        'objectives.description': 'Entro il 2030, tarmaq sarà il catalizzatore di riferimento nella Svizzera romanda per i giovani talenti nelle tecnologie emergenti.',
+        'objectives.stat1.value': '5\'000+',
+        'objectives.stat1.label': 'Giovani formati',
+        'objectives.stat2.value': '100+',
+        'objectives.stat2.label': 'Partner aziendali',
+        'objectives.stat3.value': '200+',
+        'objectives.stat3.label': 'Progetti innovativi',
+        'objectives.stat4.value': '80%',
+        'objectives.stat4.label': 'Tasso di inserimento',
+        'objectives.plan.title': 'Il nostro piano strategico',
+        'objectives.plan.phase1.title': 'Fase Fondazione (2023-2024)',
+        'objectives.plan.phase1.description': 'Lanciare i primi programmi, costruire il team e la rete di mentor.',
+        'objectives.plan.phase2.title': 'Fase Crescita (2025-2026)',
+        'objectives.plan.phase2.description': 'Ampliare le formazioni, sviluppare le partnership, misurare l\'impatto.',
+        'objectives.plan.phase3.title': 'Fase Espansione (2027-2030)',
+        'objectives.plan.phase3.description': 'Replicare il modello, raggiungere la sostenibilità, diventare riferimento regionale.',
+
         // Statistics
         'stats.participants': 'Giovani Formati',
         'stats.mentors': 'Mentor Attivi',

@@ -12,6 +12,42 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 **Critical Constraint**: This is a **pure static HTML project**. No npm, no build process, no server-side code. Everything runs directly in the browser via CDN-loaded libraries.
 
+## The Problem We Solve
+
+Young talents in Geneva and French-speaking Switzerland face significant barriers to accessing emerging technologies (AI, blockchain, cybersecurity). Traditional education pathways are slow, expensive, and often disconnected from real-world industry needs. This creates a growing digital divide that limits opportunities for motivated youth regardless of their background.
+
+## The Need
+
+- **Skills Gap**: Rapid technological evolution outpaces traditional education
+- **Access Barriers**: High-quality tech training is often costly and exclusive
+- **Mentorship Void**: Young people lack connections to industry professionals
+- **Practical Experience**: Few opportunities to work on real-world projects
+- **Global Exposure**: Limited access to international tech ecosystems
+
+## Our Solution
+
+tarmaq is an **opportunity catalyst** that democratizes access to emerging technologies through:
+
+1. **Free Training Programs** - AI, blockchain, cybersecurity courses adapted to market needs
+2. **Professional Mentorship** - 2-4h/month with experienced industry professionals
+3. **Hands-on Projects** - Hackathons, incubation, real deliverables
+4. **Educational Travel** - Trips to global tech hubs (Silicon Valley, Berlin, Singapore)
+5. **Community Building** - Network of peers, mentors, and partners
+
+## Objectives (2030 Vision)
+
+- Train **5,000+ young talents** in emerging technologies
+- Build network of **100+ corporate partners**
+- Launch **200+ innovative projects** by participants
+- Achieve **80%+ professional placement rate**
+- Establish tarmaq as the reference catalyst in French-speaking Switzerland
+
+## Strategic Plan
+
+1. **Foundation Phase (2023-2024)**: Launch initial programs, build core team and mentor network
+2. **Growth Phase (2025-2026)**: Expand training offerings, partnerships, measure impact
+3. **Scale Phase (2027-2030)**: Replicate model, achieve sustainability, become regional reference
+
 ## Running Locally
 
 ```bash
@@ -33,7 +69,7 @@ Then open `http://localhost:8000`
 
 ### File Structure
 ```
-├── Main Pages (10)
+├── Main Pages (12)
 │   ├── index.html              # Homepage
 │   ├── projet.html             # Project details
 │   ├── activites.html          # Activities overview
@@ -42,7 +78,11 @@ Then open `http://localhost:8000`
 │   ├── contact.html            # Contact form
 │   ├── about.html              # About page
 │   ├── formation-residence.html # Residential training
-│   ├── charter-signature-form.html # Standalone charter signature form
+│   ├── main-charte.html        # Main charter page
+│   ├── charte.html             # Legacy charter page
+│   ├── dashboard.html          # Metrics dashboard
+│   ├── tokenomics.html         # Token economy info
+│   ├── mentors.html            # Mentors page (not in nav)
 │   └── 404.html                # Error page
 │
 ├── Support Detail Pages (6)
@@ -93,24 +133,21 @@ const translations = {
 <button onclick="changeLanguage('fr')">🇫🇷</button>
 ```
 
-### Charter Signature Form (charter-signature-form.html)
+### Charter Pages
 
-**Purpose:** Standalone form for collecting charter signatures and storing them in Airtable.
+**Purpose:** Two charter-related pages exist for the organization's values and commitments.
 
 **Architecture:**
-- `charter-signature-form.html` - Self-contained standalone form (no dependencies on other pages)
+- `main-charte.html` - Main charter page (linked in navigation)
+- `charte.html` - Legacy charter page (may be deprecated)
+
+**Optional Airtable Integration:**
+If collecting charter signatures via Airtable:
 - `api/env.js` - Vercel serverless function that exposes environment variables securely
 - Loads Airtable API key from Vercel environment variables via `/api/env.js` endpoint
 - Direct Airtable API integration (no wrapper libraries)
 
-**How it works:**
-1. Form loads and fetches configuration from `/api/env.js`
-2. Serverless function returns `AIRTABLE_API_KEY` and `AIRTABLE_BASE_ID` from Vercel env vars
-3. Form validates configuration is loaded
-4. User submits form → data sent directly to Airtable API
-5. Success/error feedback displayed to user
-
-**Setup for Vercel:**
+**Setup for Vercel (if using Airtable):**
 1. Set `AIRTABLE_API_KEY` environment variable in Vercel project settings
 2. Optionally set `AIRTABLE_BASE_ID` (defaults to `appJ4MLPYJyuWWBG8`)
 3. Deploy - the serverless function at `api/env.js` will automatically expose these values
@@ -154,9 +191,9 @@ tailwind.config = {
 
 ## Configuration & Environment Setup
 
-### Setting Up Charter Signature Form
+### Setting Up Airtable Integration (Optional)
 
-The charter signature form requires Airtable configuration via Vercel environment variables:
+If using Airtable for charter signatures or other data collection:
 
 1. **Get Airtable credentials:**
    - Create an Airtable account at airtable.com
@@ -173,10 +210,10 @@ The charter signature form requires Airtable configuration via Vercel environmen
 
 3. **How it works:**
    - The `api/env.js` serverless function reads environment variables
-   - Form loads configuration from `/api/env.js` endpoint
+   - Forms load configuration from `/api/env.js` endpoint
    - No secrets are stored in the codebase
 
-**Note:** The form will display an error if the API key cannot be loaded. Make sure environment variables are set in Vercel and the deployment has access to them.
+**Note:** Forms will display an error if the API key cannot be loaded. Make sure environment variables are set in Vercel and the deployment has access to them.
 
 ## Common Development Tasks
 
@@ -269,18 +306,22 @@ Add `data-animate` attribute to trigger on scroll:
 
 ## Pages Overview
 
-### Main Pages (10)
+### Main Pages (12)
 
-1. **index.html** - Homepage: hero, mission, stats, programs
+1. **index.html** - Homepage: hero, problem/solution narrative, programs preview
 2. **projet.html** - Project details: vision, values, 2030 objectives
 3. **activites.html** - Activities: training, hackathons, educational trips
 4. **impact.html** - Impact: statistics, testimonials, success stories
 5. **soutenir.html** - Support hub: overview of 6 ways to help with links to detail pages
 6. **contact.html** - Contact form, coordinates, HubSpot booking integration
-7. **charter-signature-form.html** - Standalone charter signature form (separate from main site)
-8. **about.html** - About TARMAQ
-9. **formation-residence.html** - Residential training program details
-10. **404.html** - Custom error page
+7. **main-charte.html** - Main charter page (organization values and commitments)
+8. **charte.html** - Legacy charter page
+9. **about.html** - About TARMAQ
+10. **formation-residence.html** - Residential training program details
+11. **dashboard.html** - Metrics and statistics dashboard
+12. **tokenomics.html** - Token economy information
+13. **mentors.html** - Mentors page (not linked in main navigation)
+14. **404.html** - Custom error page
 
 ### Support Detail Pages (6)
 
@@ -334,9 +375,10 @@ Each provides detailed information about a specific way to support TARMAQ:
 | Images not loading | Use relative paths (`assets/logo.svg` not `/assets/logo.svg`) |
 | Animations not triggering | Check IntersectionObserver support, verify `data-animate` attribute |
 | Mobile menu not working | Check `js/main.js` loaded, verify IDs match (`mobile-menu-btn`, `mobile-menu`) |
-| Charter form not working | Verify `AIRTABLE_API_KEY` is set in Vercel environment variables, check browser console for errors |
-| Charter form API errors | Check API key has correct scopes (`data.records:read`, `data.records:write`), verify Base ID in Vercel env vars |
+| Airtable forms not working | Verify `AIRTABLE_API_KEY` is set in Vercel environment variables, check browser console for errors |
+| Airtable API errors | Check API key has correct scopes (`data.records:read`, `data.records:write`), verify Base ID in Vercel env vars |
 | Config endpoint not loading | Verify `api/env.js` exists and is deployed, check Vercel function logs for errors |
+| Favicon 404 errors | Ensure all pages use `favicon.png` not `favicon.svg` (only PNG exists in assets/) |
 
 ## Critical Rules
 
@@ -374,20 +416,26 @@ Before deploying changes, verify:
 - [ ] Navigation works on all pages (main + mobile menu)
 - [ ] Animations trigger properly on scroll
 - [ ] Forms submit correctly (contact form)
-- [ ] Charter signature form loads config from `/api/env.js` (if using)
+- [ ] Airtable forms load config from `/api/env.js` (if using Airtable integration)
 - [ ] No console errors in browser DevTools
 - [ ] All images and assets load
 - [ ] Links work (internal and external)
 
 ---
 
-**Last Updated**: 2025-11-03
-**Version**: 3.2+ (Static HTML with 4-language support, cleaned up charter/Airtable integration)
+**Last Updated**: 2025-12-12
+**Version**: 3.3 (Static HTML with 4-language support, improved documentation structure)
 **Status**: Production ready
 
-**Recent Changes (2025-11-03):**
-- Removed all legacy charter and Airtable integration files (charte.html, js/charter.js, js/airtable-*.js, config.js)
-- Kept standalone `charter-signature-form.html` for charter signatures
+**Recent Changes (2025-12-12):**
+- Added Problem/Need/Solution/Objectives/Plan narrative structure to documentation
+- Updated file structure to reflect actual pages (main-charte.html, dashboard.html, tokenomics.html, mentors.html)
+- Fixed broken references to non-existent charter-signature-form.html
+- Updated charter section to reflect actual main-charte.html and charte.html pages
+- Fixed broken favicon.svg references across 4 HTML files
+- Improved homepage narrative structure
+
+**Previous Changes (2025-11-03):**
+- Removed all legacy charter and Airtable integration files
 - Created `api/env.js` Vercel serverless function for secure environment variable access
-- Form now loads API key from Vercel environment variables via serverless function endpoint
 - Removed all hardcoded secrets - all configuration via Vercel environment variables
